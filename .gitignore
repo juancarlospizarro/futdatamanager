@@ -145,10 +145,10 @@ GitHub.sublime-settings
 .history
 
 # Docker
-Dockerfile
-docker-compose.yml
-.dockerignore
-create_superuser.sh
+# Dockerfile
+# docker-compose.yml
+# .dockerignore
+# create_superuser.sh
 
 # Volúmenes de Docker
 data/
