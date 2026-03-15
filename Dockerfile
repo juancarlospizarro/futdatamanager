@@ -14,4 +14,4 @@ COPY . .
 
 EXPOSE 8000
 
-CMD ["gunicorn", "football_stats_app.wsgi:application", "--bind", "0.0.0.0:8000"]
+ENTRYPOINT ["/football_stats_app/start_app.sh"]
