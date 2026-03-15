@@ -1,0 +1,39 @@
+site_name: FutDataManager Docs
+theme:
+  name: material
+
+  logo: img/logo.png
+  favicon: img/logo.png
+
+  palette:
+    # Configuración del modo claro
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: color-principal
+      accent: color-secundario
+      toggle:
+        icon: material/weather-night
+        name: Cambiar a modo oscuro
+    # Configuración del modo oscuro
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate # Slate es el nombre del modo oscuro elegante
+      primary: color-principal
+      accent: color-secundario
+      toggle:
+        icon: material/weather-sunny
+        name: Cambiar a modo claro
+
+extra_css:
+  - styles/style.css
+
+nav:
+  - Inicio: index.md
+  - Equipos: equipos.md
+  - Usuarios: usuarios.md
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: ["."]
