@@ -1,6 +1,7 @@
 services:
   db:
     image: postgres:15-alpine
+    env_file: .env
     environment:
       POSTGRES_DB: ${DATABASE_NAME}
       POSTGRES_USER: ${DATABASE_USER}
