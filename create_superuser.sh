@@ -1,5 +1,5 @@
 #!/bin/bash
-python manage.py migrate
+
 python manage.py shell << END
 from django.contrib.auth import get_user_model
 User = get_user_model()
