@@ -1,7 +1,7 @@
-# <img src="docs/img/logo.png" alt="Logo" width="45" align="left"> FutDataManager
+# <img src="docs/img/logo.png" alt="Logo" width="60" align="left"> FutDataManager
 <br clear="left"/>
 
-**Enlace a la web / Web application URL:** [FutDataManager](https://futdatamanager.alwaysdata.net)
+**Enlace a la web / Web application URL:** [FutDataManager](https://futdatamanager.alwaysdata.net)<br>
 **Documentación técnica / Technical documentation:** [Docs](https://juancarlospizarro.github.io/futdatamanager/)
 
 ## 🇪🇸 Descripción
@@ -32,16 +32,18 @@ This project is a web application built with **Django** that enables the managem
 
 ```bash
 # 1. Clonar repositorio / Clone repo
-git clone --single-branch --branch docker [https://github.com/juancarlospizarro/futdatamanager.git](https://github.com/juancarlospizarro/futdatamanager.git)
+git clone --single-branch --branch docker https://github.com/juancarlospizarro/futdatamanager.git
 
 # 2. Entrar en la carpeta / Navigate to the directory
 cd futdatamanager
 
-# 3. Modificar las credenciales del archivo .env.example y crear un nuevo archivo .env con ellas / Modify the .env.example credentials and create a new file with them called .env
+# 3. Modificar las credenciales del archivo .env.example y crear un nuevo archivo .env con ellas 
+# Modify the .env.example credentials and create a new file with them called .env
 cp .env.example .env
 nano .env
 
-# Si estás en Windows simplemente crea una copia del archivo, lo modificas y lo guardas como .env / If you are working on Windows just make a copy of the file, modify the copy and save it as .env
+# Si estás en Windows simplemente crea una copia del archivo, lo modificas y lo guardas como .env
+# If you are working on Windows just make a copy of the file, modify the copy and save it as .env
 
 # 4. Levantar con Docker / Run with Docker
 docker compose up -d
