@@ -19,8 +19,13 @@ from django.urls import path, include
 from . import views
 from django.conf import settings
 from django.conf.urls.static import static
+from django.conf.urls.i18n import i18n_patterns
 
 urlpatterns = [
+    path('i18n/', include('django.conf.urls.i18n')),
+]
+
+urlpatterns += i18n_patterns(
     path('admin/', admin.site.urls),
     path('', views.landing, name="landing"),
     path('auth/', include('usuarios.urls')),
@@ -28,7 +33,7 @@ urlpatterns = [
     path("test-400/", views.error_400_test),
     path("test-403/", views.error_403_test),
     path("test-500/", views.error_500_test),
-]
+)
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

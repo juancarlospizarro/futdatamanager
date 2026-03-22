@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 
 <header>
     <nav class="navbar navbar-expand-lg bg-foot-green navbar-dark shadow-sm">
@@ -28,22 +29,38 @@
                         <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
 
-                            <img src="{% static 'img/es.png' %}" width="20" class="me-2">
-                            ES
+                            {% get_current_language as current_language %}
+                            {% if current_language == 'es' %}
+                                <img src="{% static 'img/es.png' %}" width="20" class="me-2">
+                                ES
+                            {% else %}
+                                <img src="{% static 'img/en.png' %}" width="20" class="me-2">
+                                EN
+                            {% endif %}
                         </a>
 
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li>
-                                <a class="dropdown-item d-flex align-items-center" href="#" alt="Idioma español">
-                                    <img src="{% static 'img/es.png' %}" width="20" class="me-2">
-                                    Español
-                                </a>
+                                <form method="POST" action="{% url 'set_language' %}" style="display:inline;">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="language" value="es">
+                                    <input type="hidden" name="next" value="{{ clean_path }}">
+                                    <button class="dropdown-item d-flex align-items-center" type="submit" style="border:none; background:none; padding: 0.5rem 1rem; width:100%; text-align:left;">
+                                        <img src="{% static 'img/es.png' %}" width="20" class="me-2">
+                                        {% trans "Spanish" %}
+                                    </button>
+                                </form>
                             </li>
                             <li>
-                                <a class="dropdown-item d-flex align-items-center" href="#" alt="Idioma inglés">
-                                    <img src="{% static 'img/en.png' %}" width="20" class="me-2">
-                                    Inglés
-                                </a>
+                                <form method="POST" action="{% url 'set_language' %}" style="display:inline;">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="language" value="en">
+                                    <input type="hidden" name="next" value="{{ clean_path }}">
+                                    <button class="dropdown-item d-flex align-items-center" type="submit" style="border:none; background:none; padding: 0.5rem 1rem; width:100%; text-align:left;">
+                                        <img src="{% static 'img/en.png' %}" width="20" class="me-2">
+                                        {% trans "English" %}
+                                    </button>
+                                </form>
                             </li>
                         </ul>
                     </li>
@@ -55,7 +72,7 @@
                     {% if user.is_authenticated %}
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'landing' %}"><i class="bi bi-house-fill"></i> Inicio</a>
+                        <a class="nav-link" href="{% url 'landing' %}"><i class="bi bi-house-fill"></i> {% trans "Inicio" %}</a>
                     </li>
 
                     {# ===== ENTRENADOR ===== #}
@@ -63,14 +80,14 @@
                         {% if user.perfil_entrenador.get_equipos_activos %}
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'equipos:informacion_equipo' slug=user.perfil_entrenador.get_equipos_activos.0.equipo.slug %}">
-                                <i class="bi bi-shield-fill"></i> Equipo
+                                <i class="bi bi-shield-fill"></i> {% trans "Equipo" %}
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href=""><i class="bi bi-pie-chart-fill"></i> Análisis</a>
+                            <a class="nav-link" href=""><i class="bi bi-pie-chart-fill"></i> {% trans "Análisis" %}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href=""><i class="bi bi-clipboard2-fill"></i> Pizarra</a>
+                            <a class="nav-link" href=""><i class="bi bi-clipboard2-fill"></i> {% trans "Pizarra" %}</a>
                         </li>
                         {% endif %}
 
@@ -79,7 +96,7 @@
                         {% if user.perfil_jugador.get_equipos_activos %}
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'equipos:informacion_equipo' slug=user.perfil_jugador.get_equipos_activos.0.equipo.slug %}">
-                                <i class="bi bi-shield-fill"></i> Equipo
+                                <i class="bi bi-shield-fill"></i> {% trans "Equipo" %}
                             </a>
                         </li>
                         {% endif %}
@@ -95,7 +112,7 @@
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li>
                                 <a class="dropdown-item" href="{% url 'usuarios:miperfil' %}">
-                                    <i class="bi bi-person-lines-fill me-2"></i> Mi perfil
+                                    <i class="bi bi-person-lines-fill me-2"></i> {% trans "Mi perfil" %}
                                 </a>
                             </li>
                             <li>
@@ -103,7 +120,7 @@
                             </li>
                             <li>
                                 <a class="dropdown-item text-danger" href="{% url 'usuarios:logout' %}">
-                                    <i class="bi bi-box-arrow-in-left me-2"></i> Cerrar sesión
+                                    <i class="bi bi-box-arrow-in-left me-2"></i> {% trans "Cerrar sesión" %}
                                 </a>
                             </li>
                         </ul>
@@ -126,12 +143,12 @@
 
                     {# ===== NO AUTENTICADO ===== #}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'usuarios:login' %}">Iniciar sesión <i
+                        <a class="nav-link" href="{% url 'usuarios:login' %}"> {% trans "Iniciar sesión" %} <i
                                 class="bi bi-box-arrow-in-right"></i></a>
                     </li>
                     <li class="nav-item ms-lg-3">
                         <a class="btn btn-foot-register-header px-3 py-2" href="{% url 'usuarios:signin' %}">
-                            Registrarse
+                            {% trans "Registrarse" %}
                         </a>
                     </li>
 

@@ -1,14 +1,15 @@
 {% extends 'includes/base.html' %}
-
+{% load i18n %}
+{% block title %}FutDataManager - {% trans "Error 404" %}{% endblock %}
 {% block content %}
 <div class="container mt-5">
     <div class="alert alert-danger" role="alert">
         <div class="text-center">
             <h1 class="display-1">404</h1>
-            <h2>Página no encontrada</h2>
-            <p class="lead">Lo sentimos, la página que buscas no existe.</p>
+            <h2>{% trans "Página no encontrada" %}</h2>
+            <p class="lead">{% trans "Lo sentimos, la página que buscas no existe." %}</p>
             <hr>
-            <a href="/" class="btn btn-primary btn-lg">Volver al inicio</a>
+            <a href="/" class="btn btn-primary btn-lg">{% trans "Volver al inicio" %}</a>
         </div>
     </div>
 </div>

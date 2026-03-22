@@ -1,6 +1,7 @@
 {% extends "includes/base.html" %}
+{% load i18n %}
 {% load static %}
-{% block title %}FutDataManager - Inicio{% endblock %}
+{% block title %}FutDataManager - {% trans "Inicio" %}{% endblock %}
 {% block content %}
 <div class="container my-5">
 
@@ -8,9 +9,7 @@
             <section class="text-center col-lg-8 mx-auto mb-5 py-5">
                 <h1 class="display-4 fw-bold text-foot-darkgray mb-3">FutDataManager</h1>
                 <p class="fs-5 text-secondary">
-                    Diseñada para equipos de fútbol amateur y semiprofesionales que permite gestionar
-                    de manera eficiente el rendimiento de jugadores y equipos a través de herramientas
-                    avanzadas de análisis de datos.
+                    {% trans "Descripción breve de la aplicación y su propósito" %}
                 </p>
             </section>
 
@@ -19,11 +18,9 @@
                 
                 <div class="row g-5 align-items-center mb-5 pb-5">
                     <div class="col-md-6 text-center text-md-start">
-                        <h2 class="display-6 fw-bold text-foot-green mb-3">Gestiona tu equipo</h2>
+                        <h2 class="display-6 fw-bold text-foot-green mb-3">{% trans "Gestiona tu equipo" %}</h2>
                         <p class="fs-5 text-secondary">
-                            Gestione de forma sencilla e intuitiva su
-                            equipo de fútbol y recoja toda la
-                            información en un solo lugar.
+                            {% trans "Descripción de la característica gestión de equipo" %}
                         </p>
                     </div>
                     <div class="col-md-6">
@@ -35,11 +32,9 @@
 
                 <div class="row g-5 align-items-center mb-5 pb-5">
                     <div class="col-md-6 order-md-2 text-center text-md-start">
-                        <h2 class="display-6 fw-bold text-foot-green mb-3">Recoge información de los partidos</h2>
+                        <h2 class="display-6 fw-bold text-foot-green mb-3">{% trans "Recoge información de los partidos" %}</h2>
                         <p class="fs-5 text-secondary">
-                            Recopile y guarde toda la información
-                            acerca de los partidos que dispute su
-                            equipo.
+                            {% trans "Descripción de la característica recogida de información" %}
                         </p>
                     </div>
                     <div class="col-md-6 order-md-1">
@@ -51,12 +46,9 @@
 
                 <div class="row g-5 align-items-center mb-5 pb-5">
                     <div class="col-md-6 text-center text-md-start">
-                        <h2 class="display-6 fw-bold text-foot-green mb-3">Analiza los datos y toma decisiones</h2>
+                        <h2 class="display-6 fw-bold text-foot-green mb-3">{% trans "Analiza los datos y toma decisiones" %}</h2>
                         <p class="fs-5 text-secondary">
-                            Analice los datos recogidos de todos los
-                            partidos de su equipo y obtenga
-                            insights que le ayuden a tomar
-                            decisiones.
+                            {% trans "Descripción de la característica análisis de datos" %}
                         </p>
                     </div>
                     <div class="col-md-6">
@@ -68,11 +60,9 @@
 
                 <div class="row g-5 align-items-center mb-5 pb-5">
                     <div class="col-md-6 order-md-2 text-center text-md-start">
-                        <h2 class="display-6 fw-bold text-foot-green mb-3">Recibe avisos sobre eventos que ocurran en tu equipo</h2>
+                        <h2 class="display-6 fw-bold text-foot-green mb-3">{% trans "Recibe avisos sobre eventos que ocurran en tu equipo" %}</h2>
                         <p class="fs-5 text-secondary">
-                            Reciba avisos sobre lo que ocurre en su
-                            equipo. Desde eventos nuevos en su
-                            calendario hasta sanciones y lesiones.
+                            {% trans "Descripción de la característica notificaciones" %}
                         </p>
                     </div>
                     <div class="col-md-6 order-md-1">

@@ -1,0 +1,381 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-03-22 13:41+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? "
+"1 : 2;\n"
+
+#: .\football_stats_app\settings.py:135
+#: .\football_stats_app\templates\includes\header.html:50
+msgid "Spanish"
+msgstr "Español"
+
+#: .\football_stats_app\settings.py:136
+#: .\football_stats_app\templates\includes\header.html:61
+msgid "English"
+msgstr "Inglés"
+
+#: .\football_stats_app\templates\errors\400.html:3
+msgid "Error 400"
+msgstr "Error 400"
+
+#: .\football_stats_app\templates\errors\400.html:10
+msgid "Solicitud incorrecta"
+msgstr "Solicitud incorrecta"
+
+#: .\football_stats_app\templates\errors\400.html:11
+msgid "La solicitud enviada al servidor no es válida."
+msgstr "La solicitud enviada al servidor no es válida."
+
+#: .\football_stats_app\templates\errors\400.html:13
+#: .\football_stats_app\templates\errors\403.html:12
+#: .\football_stats_app\templates\errors\404.html:12
+#: .\football_stats_app\templates\errors\500.html:12
+msgid "Volver al inicio"
+msgstr "Volver al inicio"
+
+#: .\football_stats_app\templates\errors\403.html:3
+msgid "Error 403"
+msgstr "Error 403"
+
+#: .\football_stats_app\templates\errors\403.html:9
+msgid "Acceso denegado"
+msgstr "Acceso denegado"
+
+#: .\football_stats_app\templates\errors\403.html:10
+msgid "No tienes permiso para acceder a este recurso."
+msgstr "No tienes permiso para acceder a este recurso."
+
+#: .\football_stats_app\templates\errors\404.html:3
+msgid "Error 404"
+msgstr "Error 404"
+
+#: .\football_stats_app\templates\errors\404.html:9
+msgid "Página no encontrada"
+msgstr "Página no encontrada"
+
+#: .\football_stats_app\templates\errors\404.html:10
+msgid "Lo sentimos, la página que buscas no existe."
+msgstr "Lo sentimos, la página que buscas no existe."
+
+#: .\football_stats_app\templates\errors\500.html:3
+msgid "Error 500"
+msgstr "Error 500"
+
+#: .\football_stats_app\templates\errors\500.html:9
+msgid "Error del servidor"
+msgstr "Error del servidor"
+
+#: .\football_stats_app\templates\errors\500.html:10
+msgid "Ha ocurrido un error interno. Nuestro equipo ha sido notificado."
+msgstr "Ha ocurrido un error interno. Nuestro equipo ha sido notificado."
+
+#: .\football_stats_app\templates\includes\footer.html:18
+msgid "Todos los derechos reservados."
+msgstr "Todos los derechos reservados."
+
+#: .\football_stats_app\templates\includes\footer.html:26
+msgid "Contacto"
+msgstr "Contacto"
+
+#: .\football_stats_app\templates\includes\footer.html:31
+#: .\football_stats_app\templates\includes\footer.html:44
+msgid "Preguntas frecuentes"
+msgstr "Preguntas frecuentes"
+
+#: .\football_stats_app\templates\includes\footer.html:55
+msgid "¿Cómo me registro?"
+msgstr "¿Cómo me registro?"
+
+#: .\football_stats_app\templates\includes\footer.html:60
+msgid "Pulsa en “Registrarse”, rellena el formulario y confirma tu correo."
+msgstr "Pulsa en “Registrarse”, rellena el formulario y confirma tu correo."
+
+#: .\football_stats_app\templates\includes\footer.html:69
+msgid "¿Puedo cambiar mi contraseña?"
+msgstr "¿Puedo cambiar mi contraseña?"
+
+#: .\football_stats_app\templates\includes\footer.html:74
+msgid "Sí, desde “¿Olvidaste tu contraseña?” recibirás un enlace por email."
+msgstr "Sí, desde “¿Olvidaste tu contraseña?” recibirás un enlace por email."
+
+#: .\football_stats_app\templates\includes\footer.html:83
+msgid "¿Puedo cambiar mi rol?"
+msgstr "¿Puedo cambiar mi rol?"
+
+#: .\football_stats_app\templates\includes\footer.html:88
+msgid "No directamente; debes contactar con un administrador."
+msgstr "No directamente; debes contactar con un administrador."
+
+#: .\football_stats_app\templates\includes\footer.html:97
+msgid "¿Cómo creo un equipo?"
+msgstr "¿Cómo creo un equipo?"
+
+#: .\football_stats_app\templates\includes\footer.html:102
+msgid "Desde el panel principal puedes añadir un nuevo equipo."
+msgstr "Desde el panel principal puedes añadir un nuevo equipo."
+
+#: .\football_stats_app\templates\includes\footer.html:111
+msgid "¿Puedo borrar mi cuenta?"
+msgstr "¿Puedo borrar mi cuenta?"
+
+#: .\football_stats_app\templates\includes\footer.html:116
+msgid "Sí, desde “Mi perfil” → “Eliminar cuenta”."
+msgstr "Sí, desde “Mi perfil” → “Eliminar cuenta”."
+
+#: .\football_stats_app\templates\includes\footer.html:126
+msgid "Cerrar"
+msgstr "Cerrar"
+
+#: .\football_stats_app\templates\includes\header.html:75
+#: .\football_stats_app\templates\landing.html:4
+#: .\usuarios\context_processors.py:11
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:3
+#: .\usuarios\templates\usuarios\inicio_jugador_con_equipo.html:3
+msgid "Inicio"
+msgstr "Inicio"
+
+#: .\football_stats_app\templates\includes\header.html:83
+#: .\football_stats_app\templates\includes\header.html:99
+#, fuzzy
+#| msgid "Equipos"
+msgid "Equipo"
+msgstr "Equipo"
+
+#: .\football_stats_app\templates\includes\header.html:87
+msgid "Análisis"
+msgstr "Análisis"
+
+#: .\football_stats_app\templates\includes\header.html:90
+msgid "Pizarra"
+msgstr "Pizarra"
+
+#: .\football_stats_app\templates\includes\header.html:115
+#: .\usuarios\context_processors.py:35
+msgid "Mi perfil"
+msgstr "Mi perfil"
+
+#: .\football_stats_app\templates\includes\header.html:123
+#: .\usuarios\context_processors.py:44
+#, fuzzy
+#| msgid "Iniciar sesión"
+msgid "Cerrar sesión"
+msgstr "Iniciar sesión"
+
+#: .\football_stats_app\templates\includes\header.html:146
+#: .\usuarios\context_processors.py:38
+msgid "Iniciar sesión"
+msgstr "Iniciar sesión"
+
+#: .\football_stats_app\templates\includes\header.html:151
+#: .\usuarios\context_processors.py:41
+msgid "Registrarse"
+msgstr "Registrarse"
+
+#: .\football_stats_app\templates\landing.html:12
+msgid "Descripción breve de la aplicación y su propósito"
+msgstr ""
+"Diseñada para equipos de fútbol amateur y semiprofesionales que permite "
+"gestionar de manera eficiente el rendimiento de jugadores y equipos a través "
+"de herramientas avanzadas de análisis de datos."
+
+#: .\football_stats_app\templates\landing.html:21
+msgid "Gestiona tu equipo"
+msgstr "Gestiona tu equipo"
+
+#: .\football_stats_app\templates\landing.html:23
+msgid "Descripción de la característica gestión de equipo"
+msgstr ""
+"Gestione de forma sencilla e intuitiva su equipo de fútbol y recoja toda la "
+"información en un solo lugar."
+
+#: .\football_stats_app\templates\landing.html:35
+msgid "Recoge información de los partidos"
+msgstr "Recoge información de los partidos"
+
+#: .\football_stats_app\templates\landing.html:37
+msgid "Descripción de la característica recogida de información"
+msgstr ""
+"Recopile y guarde toda la información acerca de los partidos que dispute su "
+"equipo."
+
+#: .\football_stats_app\templates\landing.html:49
+msgid "Analiza los datos y toma decisiones"
+msgstr "Analiza los datos y toma decisiones"
+
+#: .\football_stats_app\templates\landing.html:51
+msgid "Descripción de la característica análisis de datos"
+msgstr ""
+"Analice los datos recogidos de todos los partidos de su equipo y obtenga "
+"insights que le ayuden a tomar decisiones."
+
+#: .\football_stats_app\templates\landing.html:63
+msgid "Recibe avisos sobre eventos que ocurran en tu equipo"
+msgstr "Recibe avisos sobre eventos que ocurran en tu equipo"
+
+#: .\football_stats_app\templates\landing.html:65
+msgid "Descripción de la característica notificaciones"
+msgstr ""
+"Reciba avisos sobre lo que ocurre en su equipo. Desde eventos nuevos en su "
+"calendario hasta sanciones y lesiones."
+
+#: .\usuarios\context_processors.py:47
+msgid "Eliminar cuenta"
+msgstr "Eliminar cuenta"
+
+#: .\usuarios\context_processors.py:50 .\usuarios\context_processors.py:53
+msgid "Restablecer contraseña"
+msgstr "Restablecer contraseña"
+
+#: .\usuarios\context_processors.py:56 .\usuarios\context_processors.py:59
+#, fuzzy
+#| msgid "¿Puedo cambiar mi contraseña?"
+msgid "Nueva contraseña"
+msgstr "Nueva contraseña"
+
+#: .\usuarios\context_processors.py:68 .\usuarios\models.py:37
+msgid "Usuarios"
+msgstr "Usuarios"
+
+#: .\usuarios\context_processors.py:83
+msgid "Equipos"
+msgstr "Equipos"
+
+#: .\usuarios\models.py:13
+msgid "Administrador"
+msgstr "Administrador"
+
+#: .\usuarios\models.py:14
+msgid "Entrenador"
+msgstr "Entrenador"
+
+#: .\usuarios\models.py:15
+msgid "Jugador"
+msgstr "Jugador"
+
+#: .\usuarios\models.py:16
+msgid "Invitado"
+msgstr "Invitado"
+
+#: .\usuarios\models.py:19
+msgid "dirección de correo electrónico"
+msgstr ""
+
+#: .\usuarios\models.py:20
+msgid "teléfono"
+msgstr ""
+
+#: .\usuarios\models.py:21
+msgid "fecha de nacimiento"
+msgstr ""
+
+#: .\usuarios\models.py:36
+msgid "Usuario"
+msgstr ""
+
+#: .\usuarios\models.py:53
+msgid "altura (cm)"
+msgstr ""
+
+#: .\usuarios\models.py:54
+msgid "peso (kg)"
+msgstr ""
+
+#: .\usuarios\models.py:55
+msgid "dorsal"
+msgstr ""
+
+#: .\usuarios\models.py:58
+msgid "Derecha"
+msgstr ""
+
+#: .\usuarios\models.py:59
+msgid "Izquierda"
+msgstr ""
+
+#: .\usuarios\models.py:60
+msgid "Ambas"
+msgstr ""
+
+#: .\usuarios\models.py:69
+msgid "Portero"
+msgstr ""
+
+#: .\usuarios\models.py:70
+msgid "Lateral Derecho"
+msgstr ""
+
+#: .\usuarios\models.py:71
+msgid "Defensa Central"
+msgstr ""
+
+#: .\usuarios\models.py:72
+msgid "Lateral Izquierdo"
+msgstr ""
+
+#: .\usuarios\models.py:73
+msgid "Mediocentro Defensivo"
+msgstr ""
+
+#: .\usuarios\models.py:74
+msgid "Mediocentro"
+msgstr ""
+
+#: .\usuarios\models.py:75
+msgid "Mediocentro Ofensivo"
+msgstr ""
+
+#: .\usuarios\models.py:76
+msgid "Interior Izquierda"
+msgstr ""
+
+#: .\usuarios\models.py:77
+msgid "Interior Derecha"
+msgstr ""
+
+#: .\usuarios\models.py:78
+msgid "Extremo Derecho"
+msgstr ""
+
+#: .\usuarios\models.py:79
+msgid "Extremo Izquierdo"
+msgstr ""
+
+#: .\usuarios\models.py:80
+msgid "Segundo Delantero"
+msgstr ""
+
+#: .\usuarios\models.py:81
+msgid "Delantero Centro"
+msgstr ""
+
+#: .\usuarios\models.py:91
+msgid "es capitán"
+msgstr ""
+
+#: .\usuarios\models.py:111
+msgid "número de licencia"
+msgstr ""
+
+#: .\usuarios\models.py:112
+msgid "años de experiencia"
+msgstr ""
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:9
+#: .\usuarios\templates\usuarios\inicio_jugador_con_equipo.html:9
+msgid "Bienvenid@"
+msgstr "Bienvenid@"

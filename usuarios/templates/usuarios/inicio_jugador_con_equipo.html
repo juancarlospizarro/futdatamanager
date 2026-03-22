@@ -1,12 +1,13 @@
 {% extends "includes/base.html" %}
 {% load static %}
-{% block title %}FutDataManager - Inicio{% endblock %}
+{% load i18n %}
+{% block title %}FutDataManager - {% trans "Inicio" %}{% endblock %}
 {% block content %}
 <div class="container my-5">
 
             <!-- Sección Título -->
             <section class="text-center col-lg-8 mx-auto mb-5 py-5">
-                <h1 class="display-4 fw-bold text-foot-darkgray mb-3">¡Bienvenid@ {{ user.first_name }}!</h1>
+                <h1 class="display-4 fw-bold text-foot-darkgray mb-3">¡{% trans "Bienvenid@" %} {{ user.first_name }}!</h1>
             </section>
 
             <!-- CALENDARIO -->
