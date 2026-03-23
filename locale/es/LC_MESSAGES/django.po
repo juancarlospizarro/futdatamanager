@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-22 13:41+0100\n"
+"POT-Creation-Date: 2026-03-23 21:26+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -85,6 +85,7 @@ msgid "Ha ocurrido un error interno. Nuestro equipo ha sido notificado."
 msgstr "Ha ocurrido un error interno. Nuestro equipo ha sido notificado."
 
 #: .\football_stats_app\templates\includes\footer.html:18
+#: .\usuarios\templates\usuarios\password_forget_email.html:114
 msgid "Todos los derechos reservados."
 msgstr "Todos los derechos reservados."
 
@@ -138,21 +139,29 @@ msgid "Sí, desde “Mi perfil” → “Eliminar cuenta”."
 msgstr "Sí, desde “Mi perfil” → “Eliminar cuenta”."
 
 #: .\football_stats_app\templates\includes\footer.html:126
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:228
+#: .\usuarios\templates\usuarios\login.html:33
+#: .\usuarios\templates\usuarios\miperfil.html:341
+#: .\usuarios\templates\usuarios\signin.html:33
+#: .\usuarios\templates\usuarios\signin.html:175
 msgid "Cerrar"
 msgstr "Cerrar"
 
 #: .\football_stats_app\templates\includes\header.html:75
 #: .\football_stats_app\templates\landing.html:4
 #: .\usuarios\context_processors.py:11
-#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:3
-#: .\usuarios\templates\usuarios\inicio_jugador_con_equipo.html:3
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:4
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:4
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:33
+#: .\usuarios\templates\usuarios\inicio_jugador_con_equipo.html:4
+#: .\usuarios\templates\usuarios\inicio_jugador_sin_equipo.html:4
+#: .\usuarios\templates\usuarios\inicio_jugador_sin_equipo.html:32
 msgid "Inicio"
 msgstr "Inicio"
 
 #: .\football_stats_app\templates\includes\header.html:83
 #: .\football_stats_app\templates\includes\header.html:99
-#, fuzzy
-#| msgid "Equipos"
+#: .\usuarios\templates\usuarios\miperfil.html:166
 msgid "Equipo"
 msgstr "Equipo"
 
@@ -166,23 +175,28 @@ msgstr "Pizarra"
 
 #: .\football_stats_app\templates\includes\header.html:115
 #: .\usuarios\context_processors.py:35
+#: .\usuarios\templates\usuarios\miperfil.html:7
 msgid "Mi perfil"
 msgstr "Mi perfil"
 
 #: .\football_stats_app\templates\includes\header.html:123
 #: .\usuarios\context_processors.py:44
-#, fuzzy
-#| msgid "Iniciar sesión"
+#: .\usuarios\templates\usuarios\miperfil.html:383
 msgid "Cerrar sesión"
-msgstr "Iniciar sesión"
+msgstr "Cerrar sesión"
 
 #: .\football_stats_app\templates\includes\header.html:146
 #: .\usuarios\context_processors.py:38
+#: .\usuarios\templates\usuarios\login.html:4
+#: .\usuarios\templates\usuarios\login.html:78
+#: .\usuarios\templates\usuarios\new_password_done.html:26
 msgid "Iniciar sesión"
 msgstr "Iniciar sesión"
 
 #: .\football_stats_app\templates\includes\header.html:151
 #: .\usuarios\context_processors.py:41
+#: .\usuarios\templates\usuarios\signin.html:4
+#: .\usuarios\templates\usuarios\signin.html:187
 msgid "Registrarse"
 msgstr "Registrarse"
 
@@ -234,16 +248,23 @@ msgstr ""
 "calendario hasta sanciones y lesiones."
 
 #: .\usuarios\context_processors.py:47
+#: .\usuarios\templates\usuarios\miperfil.html:389
+#: .\usuarios\templates\usuarios\miperfil.html:397
 msgid "Eliminar cuenta"
 msgstr "Eliminar cuenta"
 
 #: .\usuarios\context_processors.py:50 .\usuarios\context_processors.py:53
+#: .\usuarios\templates\usuarios\new_password.html:4
+#: .\usuarios\templates\usuarios\new_password_done.html:4
+#: .\usuarios\templates\usuarios\password_forget.html:4
+#: .\usuarios\templates\usuarios\password_forget_done.html:4
+#: .\usuarios\templates\usuarios\password_forget_email.html:7
+#: .\usuarios\templates\usuarios\password_forget_email.html:87
 msgid "Restablecer contraseña"
 msgstr "Restablecer contraseña"
 
 #: .\usuarios\context_processors.py:56 .\usuarios\context_processors.py:59
-#, fuzzy
-#| msgid "¿Puedo cambiar mi contraseña?"
+#: .\usuarios\templates\usuarios\new_password.html:41
 msgid "Nueva contraseña"
 msgstr "Nueva contraseña"
 
@@ -259,7 +280,7 @@ msgstr "Equipos"
 msgid "Administrador"
 msgstr "Administrador"
 
-#: .\usuarios\models.py:14
+#: .\usuarios\models.py:14 .\usuarios\templates\usuarios\signin.html:130
 msgid "Entrenador"
 msgstr "Entrenador"
 
@@ -273,109 +294,786 @@ msgstr "Invitado"
 
 #: .\usuarios\models.py:19
 msgid "dirección de correo electrónico"
-msgstr ""
+msgstr "dirección de correo electrónico"
 
 #: .\usuarios\models.py:20
 msgid "teléfono"
-msgstr ""
+msgstr "teléfono"
 
 #: .\usuarios\models.py:21
 msgid "fecha de nacimiento"
-msgstr ""
+msgstr "fecha de nacimiento"
 
 #: .\usuarios\models.py:36
 msgid "Usuario"
-msgstr ""
+msgstr "Usuario"
 
 #: .\usuarios\models.py:53
 msgid "altura (cm)"
-msgstr ""
+msgstr "altura (cm)"
 
 #: .\usuarios\models.py:54
 msgid "peso (kg)"
-msgstr ""
+msgstr "peso (kg)"
 
 #: .\usuarios\models.py:55
 msgid "dorsal"
-msgstr ""
+msgstr "dorsal"
 
 #: .\usuarios\models.py:58
 msgid "Derecha"
-msgstr ""
+msgstr "Derecha"
 
 #: .\usuarios\models.py:59
 msgid "Izquierda"
-msgstr ""
+msgstr "Izquierda"
 
 #: .\usuarios\models.py:60
 msgid "Ambas"
-msgstr ""
+msgstr "Ambas"
 
 #: .\usuarios\models.py:69
 msgid "Portero"
-msgstr ""
+msgstr "Portero"
 
 #: .\usuarios\models.py:70
 msgid "Lateral Derecho"
-msgstr ""
+msgstr "Lateral Derecho"
 
 #: .\usuarios\models.py:71
 msgid "Defensa Central"
-msgstr ""
+msgstr "Defensa Central"
 
 #: .\usuarios\models.py:72
 msgid "Lateral Izquierdo"
-msgstr ""
+msgstr "Lateral Izquierdo"
 
 #: .\usuarios\models.py:73
 msgid "Mediocentro Defensivo"
-msgstr ""
+msgstr "Mediocentro Defensivo"
 
 #: .\usuarios\models.py:74
 msgid "Mediocentro"
-msgstr ""
+msgstr "Mediocentro"
 
 #: .\usuarios\models.py:75
 msgid "Mediocentro Ofensivo"
-msgstr ""
+msgstr "Mediocentro Ofensivo"
 
 #: .\usuarios\models.py:76
 msgid "Interior Izquierda"
-msgstr ""
+msgstr "Interior Izquierda"
 
 #: .\usuarios\models.py:77
 msgid "Interior Derecha"
-msgstr ""
+msgstr "Interior Derecha"
 
 #: .\usuarios\models.py:78
 msgid "Extremo Derecho"
-msgstr ""
+msgstr "Extremo Derecho"
 
 #: .\usuarios\models.py:79
 msgid "Extremo Izquierdo"
-msgstr ""
+msgstr "Extremo Izquierdo"
 
 #: .\usuarios\models.py:80
 msgid "Segundo Delantero"
-msgstr ""
+msgstr "Segundo Delantero"
 
 #: .\usuarios\models.py:81
 msgid "Delantero Centro"
-msgstr ""
+msgstr "Delantero Centro"
 
 #: .\usuarios\models.py:91
 msgid "es capitán"
-msgstr ""
+msgstr "es capitán"
 
 #: .\usuarios\models.py:111
 msgid "número de licencia"
-msgstr ""
+msgstr "número de licencia"
 
 #: .\usuarios\models.py:112
 msgid "años de experiencia"
-msgstr ""
+msgstr "años de experiencia"
 
-#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:9
-#: .\usuarios\templates\usuarios\inicio_jugador_con_equipo.html:9
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:10
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:10
+#: .\usuarios\templates\usuarios\inicio_jugador_con_equipo.html:10
+#: .\usuarios\templates\usuarios\inicio_jugador_sin_equipo.html:10
 msgid "Bienvenid@"
 msgstr "Bienvenid@"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:14
+msgid "Puedes"
+msgstr "Puedes"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:15
+msgid "crear un equipo"
+msgstr "crear un equipo"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:15
+msgid "y convertirte en su entrenador/a de forma sencilla."
+msgstr "y convertirte en su entrenador/a de forma sencilla."
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:25
+msgid "Equipos donde ha entrenado"
+msgstr "Equipos donde ha entrenado"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:30
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:82
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:161
+#: .\usuarios\templates\usuarios\inicio_jugador_sin_equipo.html:29
+#: .\usuarios\templates\usuarios\inicio_jugador_sin_equipo.html:87
+msgid "Escudo"
+msgstr "Escudo"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:31
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:83
+#: .\usuarios\templates\usuarios\inicio_jugador_sin_equipo.html:30
+#: .\usuarios\templates\usuarios\inicio_jugador_sin_equipo.html:88
+#: .\usuarios\templates\usuarios\miperfil.html:223
+#: .\usuarios\templates\usuarios\signin.html:73
+msgid "Nombre"
+msgstr "Nombre"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:32
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:84
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:134
+#: .\usuarios\templates\usuarios\inicio_jugador_sin_equipo.html:31
+#: .\usuarios\templates\usuarios\inicio_jugador_sin_equipo.html:89
+msgid "Año de fundación"
+msgstr "Año de fundación"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:34
+#: .\usuarios\templates\usuarios\inicio_jugador_sin_equipo.html:33
+msgid "Fin"
+msgstr "Fin"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:58
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:103
+#: .\usuarios\templates\usuarios\inicio_jugador_sin_equipo.html:57
+#: .\usuarios\templates\usuarios\inicio_jugador_sin_equipo.html:106
+msgid "Ver equipo"
+msgstr "Ver equipo"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:64
+msgid "No has entrenado en ningún equipo aún."
+msgstr "No has entrenado en ningún equipo aún."
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:70
+#: .\usuarios\templates\usuarios\inicio_jugador_sin_equipo.html:75
+msgid "Equipos registrados"
+msgstr "Equipos registrados"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:76
+#: .\usuarios\templates\usuarios\inicio_jugador_sin_equipo.html:81
+msgid "Buscar equipo"
+msgstr "Buscar equipo"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:116
+msgid "Crear nuevo equipo"
+msgstr "Crear nuevo equipo"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:118
+msgid "Crea un nuevo club y conviértete en su entrenador automáticamente."
+msgstr "Crea un nuevo club y conviértete en su entrenador automáticamente."
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:127
+msgid "Nombre del equipo"
+msgstr "Nombre del equipo"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:144
+msgid "Dirección"
+msgstr "Dirección"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:151
+#: .\usuarios\templates\usuarios\miperfil.html:66
+#: .\usuarios\templates\usuarios\miperfil.html:249
+#: .\usuarios\templates\usuarios\signin.html:85
+msgid "Teléfono"
+msgstr "Teléfono"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:164
+msgid ""
+"Si no quieres añadir un escudo se utilizará por defecto el que se puede ver "
+"en el formulario."
+msgstr ""
+"Si no quieres añadir un escudo se utilizará por defecto el que se puede ver "
+"en el formulario."
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:177
+msgid "Color principal"
+msgstr "Color principal"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:180
+msgid "Elige el color principal"
+msgstr "Elige el color principal"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:186
+msgid "Color secundario"
+msgstr "Color secundario"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:190
+msgid "Elige el color secundario"
+msgstr "Elige el color secundario"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:195
+msgid ""
+"En caso de no modificar los colores, se tomarán los seleccionados por "
+"defecto."
+msgstr ""
+"En caso de no modificar los colores, se tomarán los seleccionados por "
+"defecto."
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:200
+msgid "Reiniciar"
+msgstr "Reiniciar"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:202
+msgid "Añadir equipo"
+msgstr "Añadir equipo"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:221
+msgid "Error al crear equipo"
+msgstr "Error al crear equipo"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:242
+msgid "Equipo creado"
+msgstr "Equipo creado"
+
+#: .\usuarios\templates\usuarios\inicio_jugador_sin_equipo.html:12
+msgid "Actualmente no perteneces a ningún equipo."
+msgstr "Actualmente no perteneces a ningún equipo."
+
+#: .\usuarios\templates\usuarios\inicio_jugador_sin_equipo.html:14
+msgid ""
+"Para poder pertenecer a un equipo registrado necesitas que un entrenador te "
+"añada a su equipo."
+msgstr ""
+"Para poder pertenecer a un equipo registrado necesitas que un entrenador te "
+"añada a su equipo."
+
+#: .\usuarios\templates\usuarios\inicio_jugador_sin_equipo.html:24
+msgid "Equipos donde ha jugado"
+msgstr "Equipos donde ha jugado"
+
+#: .\usuarios\templates\usuarios\inicio_jugador_sin_equipo.html:63
+msgid "No has jugado en ningún equipo aún."
+msgstr "No has jugado en ningún equipo aún."
+
+#: .\usuarios\templates\usuarios\inicio_jugador_sin_equipo.html:69
+msgid "Estadísticas generales"
+msgstr "Estadísticas generales"
+
+#: .\usuarios\templates\usuarios\inicio_jugador_sin_equipo.html:70
+msgid "Listado de estadísticas del jugador"
+msgstr "Listado de estadísticas del jugador"
+
+#: .\usuarios\templates\usuarios\login.html:14
+msgid "Introduzca la información para iniciar sesión"
+msgstr "Introduzca la información para iniciar sesión"
+
+#: .\usuarios\templates\usuarios\login.html:26
+msgid "Error en el inicio de sesión"
+msgstr "Error en el inicio de sesión"
+
+#: .\usuarios\templates\usuarios\login.html:47
+msgid "Inicio de sesión completado"
+msgstr "Inicio de sesión completado"
+
+#: .\usuarios\templates\usuarios\login.html:59
+msgid "Introduce tu correo electrónico."
+msgstr "Introduce tu correo electrónico."
+
+#: .\usuarios\templates\usuarios\login.html:60
+msgid "Introduce tu contraseña."
+msgstr "Introduce tu contraseña"
+
+#: .\usuarios\templates\usuarios\login.html:66
+#: .\usuarios\templates\usuarios\miperfil.html:53
+#: .\usuarios\templates\usuarios\miperfil.html:241
+#: .\usuarios\templates\usuarios\password_forget.html:27
+msgid "Email"
+msgstr "Correo electrónico"
+
+#: .\usuarios\templates\usuarios\login.html:72
+#: .\usuarios\templates\usuarios\signin.html:109
+msgid "Contraseña"
+msgstr "Contraseña"
+
+#: .\usuarios\templates\usuarios\login.html:82
+msgid "¿No recuerdas tu contraseña?"
+msgstr "¿No recuerdas tu contraseña?"
+
+#: .\usuarios\templates\usuarios\miperfil.html:25
+msgid "Información general"
+msgstr "Información general"
+
+#: .\usuarios\templates\usuarios\miperfil.html:40
+msgid "Nombre Completo"
+msgstr "Nombre Completo"
+
+#: .\usuarios\templates\usuarios\miperfil.html:79
+#: .\usuarios\templates\usuarios\signin.html:91
+msgid "Fecha de Nacimiento"
+msgstr "Fecha de nacimiento"
+
+#: .\usuarios\templates\usuarios\miperfil.html:92
+msgid "Rol"
+msgstr "Rol"
+
+#: .\usuarios\templates\usuarios\miperfil.html:105
+msgid "Miembro desde"
+msgstr "Miembro desde"
+
+#: .\usuarios\templates\usuarios\miperfil.html:123
+msgid "Altura"
+msgstr "Altura"
+
+#: .\usuarios\templates\usuarios\miperfil.html:131
+msgid "Peso"
+msgstr "Peso"
+
+#: .\usuarios\templates\usuarios\miperfil.html:139
+msgid "Posición"
+msgstr "Posición"
+
+#: .\usuarios\templates\usuarios\miperfil.html:147
+msgid "Dorsal"
+msgstr "Dorsal"
+
+#: .\usuarios\templates\usuarios\miperfil.html:155
+msgid "Pierna"
+msgstr "Pierna"
+
+#: .\usuarios\templates\usuarios\miperfil.html:179
+msgid "Este jugador es"
+msgstr "Este jugador es"
+
+#: .\usuarios\templates\usuarios\miperfil.html:179
+msgid "Capitán"
+msgstr "Capitán"
+
+#: .\usuarios\templates\usuarios\miperfil.html:179
+msgid "del equipo."
+msgstr "del equipo."
+
+#: .\usuarios\templates\usuarios\miperfil.html:195
+#: .\usuarios\templates\usuarios\miperfil.html:207
+msgid "Editar información personal"
+msgstr "Editar información personal"
+
+#: .\usuarios\templates\usuarios\miperfil.html:212
+#: .\usuarios\templates\usuarios\signin.html:59
+msgid ""
+"El nombre debe tener al menos 2 caracteres. No puede contener números ni "
+"carácteres especiales."
+msgstr ""
+"El nombre debe tener al menos 2 caracteres. No puede contener números ni "
+"carácteres especiales."
+
+#: .\usuarios\templates\usuarios\miperfil.html:213
+#: .\usuarios\templates\usuarios\signin.html:60
+msgid ""
+"Los apellidos deben tener al menos 2 caracteres. No puede contener números "
+"ni carácteres especiales."
+msgstr ""
+"Los apellidos deben tener al menos 2 caracteres. No puede contener números "
+"ni carácteres especiales."
+
+#: .\usuarios\templates\usuarios\miperfil.html:214
+#: .\usuarios\templates\usuarios\password_forget.html:20
+#: .\usuarios\templates\usuarios\signin.html:61
+msgid ""
+"Debe introducir un email válido. Se permite números, letras y caracteres "
+"especiales como '.', '_' y '-'."
+msgstr ""
+"Debe introducir un email válido. Se permite números, letras y caracteres "
+"especiales como '.', '_' y '-'."
+
+#: .\usuarios\templates\usuarios\miperfil.html:215
+#: .\usuarios\templates\usuarios\signin.html:63
+msgid "El teléfono debe tener exactamente 9 números."
+msgstr "El teléfono debe tener exactamente 9 números."
+
+#: .\usuarios\templates\usuarios\miperfil.html:216
+#: .\usuarios\templates\usuarios\signin.html:66
+msgid ""
+"Debes tener al menos 12 años. La fecha no puede ser anterior a 01/01/1900. "
+"El formato correcto es YYYY-MM-DD."
+msgstr ""
+"Debes tener al menos 12 años. La fecha no puede ser anterior a 01/01/1900. "
+"El formato correcto es YYYY-MM-DD."
+
+#: .\usuarios\templates\usuarios\miperfil.html:232
+#: .\usuarios\templates\usuarios\signin.html:79
+msgid "Apellidos"
+msgstr "Apellidos"
+
+#: .\usuarios\templates\usuarios\miperfil.html:258
+msgid "Fecha de nacimiento"
+msgstr "Fecha de nacimiento"
+
+#: .\usuarios\templates\usuarios\miperfil.html:268
+#: .\usuarios\templates\usuarios\signin.html:97
+msgid "Foto de perfil"
+msgstr "Foto de perfil"
+
+#: .\usuarios\templates\usuarios\miperfil.html:271
+msgid "Sube una nueva imagen solo si quieres cambiar la actual."
+msgstr "Sube una nueva imagen solo si quieres cambiar la actual."
+
+#: .\usuarios\templates\usuarios\miperfil.html:286
+msgid "¿Quieres cambiar tu contraseña?"
+msgstr "Quieres cambiar tu contraseña?"
+
+#: .\usuarios\templates\usuarios\miperfil.html:288
+msgid "Solicitar cambio por correo"
+msgstr "Solicitar cambio por correo"
+
+#: .\usuarios\templates\usuarios\miperfil.html:291
+msgid ""
+"Por seguridad, el cambio de contraseña se realiza mediante correo "
+"electrónico."
+msgstr ""
+"Por seguridad, el cambio de contraseña se realiza mediante correo "
+"electrónico."
+
+#: .\usuarios\templates\usuarios\miperfil.html:301
+#: .\usuarios\templates\usuarios\miperfil.html:409
+#: .\usuarios\templates\usuarios\password_forget.html:33
+msgid "Cancelar"
+msgstr "Cancelar"
+
+#: .\usuarios\templates\usuarios\miperfil.html:303
+msgid "Guardar cambios"
+msgstr "Guardar cambios"
+
+#: .\usuarios\templates\usuarios\miperfil.html:318
+msgid "Información personal actualizada"
+msgstr "Información personal actualizada"
+
+#: .\usuarios\templates\usuarios\miperfil.html:334
+msgid "Error al actualizar información"
+msgstr "Error al actualizar información"
+
+#: .\usuarios\templates\usuarios\miperfil.html:352
+msgid "Lesiones"
+msgstr "Lesiones"
+
+#: .\usuarios\templates\usuarios\miperfil.html:353
+msgid "Información lesiones del jugador"
+msgstr "Información lesiones del jugador"
+
+#: .\usuarios\templates\usuarios\miperfil.html:358
+msgid "Sanciones"
+msgstr "Sanciones"
+
+#: .\usuarios\templates\usuarios\miperfil.html:359
+msgid "Información sanciones del jugador"
+msgstr "Información sanciones del jugador"
+
+#: .\usuarios\templates\usuarios\miperfil.html:365
+msgid "Equipos a los que ha entrenado"
+msgstr "Equipos a los que ha entrenado"
+
+#: .\usuarios\templates\usuarios\miperfil.html:366
+msgid "Información equipos que el entrenador ha entrenado"
+msgstr "Información equipos que el entrenador ha entrenado"
+
+#: .\usuarios\templates\usuarios\miperfil.html:371
+msgid "Estadísticas del equipo actual"
+msgstr "Estadísticas del equipo actual"
+
+#: .\usuarios\templates\usuarios\miperfil.html:372
+msgid "Estadisticas del equipo actual del entrenador"
+msgstr "Estadisticas del equipo actual del entrenador"
+
+#: .\usuarios\templates\usuarios\miperfil.html:402
+msgid "Esta acción"
+msgstr "Esta acción"
+
+#: .\usuarios\templates\usuarios\miperfil.html:402
+msgid "no se puede deshacer"
+msgstr "no se puede deshacer"
+
+#: .\usuarios\templates\usuarios\miperfil.html:403
+msgid "¿Estás seguro de que quieres eliminar tu cuenta?"
+msgstr "¿Estás seguro de que quieres eliminar tu cuenta?"
+
+#: .\usuarios\templates\usuarios\miperfil.html:414
+msgid "Sí, eliminar cuenta"
+msgstr "Sí, eliminar cuenta"
+
+#: .\usuarios\templates\usuarios\miperfil.html:426
+msgid "Cuenta eliminada"
+msgstr "Cuenta eliminada"
+
+#: .\usuarios\templates\usuarios\miperfil.html:427
+msgid "Tu cuenta ha sido eliminada correctamente."
+msgstr "Tu cuenta ha sido eliminada correctamente."
+
+#: .\usuarios\templates\usuarios\new_password.html:13
+#: .\usuarios\templates\usuarios\new_password_done.html:13
+msgid "Introduzca su nueva contraseña"
+msgstr "Introduzca su nueva contraseña"
+
+#: .\usuarios\templates\usuarios\new_password.html:20
+#: .\usuarios\templates\usuarios\signin.html:64
+msgid "La contraseña no cumple los requisitos."
+msgstr "La contraseña no cumple los requisitos."
+
+#: .\usuarios\templates\usuarios\new_password.html:21
+#: .\usuarios\templates\usuarios\signin.html:65 .\usuarios\views.py:50
+msgid "Las contraseñas no coinciden."
+msgstr "Las contraseñas no coinciden."
+
+#: .\usuarios\templates\usuarios\new_password.html:46
+#: .\usuarios\templates\usuarios\signin.html:114
+msgid "• Al menos 6 caracteres"
+msgstr "• Al menos 6 caracteres"
+
+#: .\usuarios\templates\usuarios\new_password.html:47
+#: .\usuarios\templates\usuarios\signin.html:115
+msgid "• Al menos una mayúscula"
+msgstr "• Al menos una mayúscula"
+
+#: .\usuarios\templates\usuarios\new_password.html:48
+#: .\usuarios\templates\usuarios\signin.html:116
+msgid "• Al menos un número"
+msgstr "• Al menos un número"
+
+#: .\usuarios\templates\usuarios\new_password.html:49
+#: .\usuarios\templates\usuarios\signin.html:117
+msgid "• Al menos un carácter especial"
+msgstr "• Al menos un carácter especial"
+
+#: .\usuarios\templates\usuarios\new_password.html:54
+msgid "Confirmar contraseña"
+msgstr "Confirmar contraseña"
+
+#: .\usuarios\templates\usuarios\new_password.html:60
+msgid "Confirmar"
+msgstr "Confirmar"
+
+#: .\usuarios\templates\usuarios\new_password_done.html:18
+msgid "¡Contraseña cambiada!"
+msgstr "¡Contraseña cambiada!"
+
+#: .\usuarios\templates\usuarios\new_password_done.html:21
+msgid ""
+"Tu contraseña se ha restablecido correctamente. Ya puedes acceder a tu "
+"cuenta utilizando tu nueva contraseña."
+msgstr ""
+"Tu contraseña se ha restablecido correctamente. Ya puedes acceder a tu "
+"cuenta utilizando tu nueva contraseña."
+
+#: .\usuarios\templates\usuarios\password_forget.html:13
+#: .\usuarios\templates\usuarios\password_forget_done.html:13
+msgid "Introduzca su correo electrónico para recuperar la contraseña"
+msgstr "Introduzca su correo electrónico para recuperar la contraseña"
+
+#: .\usuarios\templates\usuarios\password_forget.html:28
+#: .\usuarios\templates\usuarios\signin.html:104
+msgid "nombre@dominio.com"
+msgstr "nombre@dominio.com"
+
+#: .\usuarios\templates\usuarios\password_forget.html:34
+msgid "Cambiar contraseña"
+msgstr "Cambiar contraseña"
+
+#: .\usuarios\templates\usuarios\password_forget_done.html:18
+msgid "¡Correo enviado!"
+msgstr "¡Correo enviado!"
+
+#: .\usuarios\templates\usuarios\password_forget_done.html:21
+msgid "Hemos recibido tu solicitud. "
+msgstr "Hemos recibido tu solicitud. "
+
+#: .\usuarios\templates\usuarios\password_forget_done.html:22
+msgid "Si el correo electrónico indicado existe en nuestra base de datos"
+msgstr "Si el correo electrónico indicado existe en nuestra base de datos"
+
+#: .\usuarios\templates\usuarios\password_forget_done.html:23
+msgid ""
+"recibirás un mensaje en breve con las instrucciones para restablecer tu "
+"contraseña."
+msgstr ""
+"recibirás un mensaje en breve con las instrucciones para restablecer tu "
+"contraseña."
+
+#: .\usuarios\templates\usuarios\password_forget_done.html:27
+msgid "Por favor, revisa tu bandeja de entrada y la carpeta de spam."
+msgstr "Por favor, revisa tu bandeja de entrada y la carpeta de spam."
+
+#: .\usuarios\templates\usuarios\password_forget_done.html:32
+msgid "Volver al inicio de sesión"
+msgstr "Volver al inicio de sesión"
+
+#: .\usuarios\templates\usuarios\password_forget_email.html:90
+msgid "Hola"
+msgstr "Hola"
+
+#: .\usuarios\templates\usuarios\password_forget_email.html:92
+msgid ""
+"Hemos recibido una solicitud para restablecer la contraseña de tu cuenta de"
+msgstr ""
+"Hemos recibido una solicitud para restablecer la contraseña de tu cuenta de"
+
+#: .\usuarios\templates\usuarios\password_forget_email.html:92
+msgid "asociada al correo"
+msgstr "asociada al correo"
+
+#: .\usuarios\templates\usuarios\password_forget_email.html:94
+msgid "Para crear una nueva contraseña, haz clic en el siguiente botón:"
+msgstr "Para crear una nueva contraseña, haz clic en el siguiente botón:"
+
+#: .\usuarios\templates\usuarios\password_forget_email.html:98
+msgid "Cambiar mi contraseña"
+msgstr "Cambiar mi contraseña"
+
+#: .\usuarios\templates\usuarios\password_forget_email.html:102
+msgid ""
+"Si el botón anterior no funciona, copia y pega el siguiente enlace en tu "
+"navegador:"
+msgstr ""
+"Si el botón anterior no funciona, copia y pega el siguiente enlace en tu "
+"navegador:"
+
+#: .\usuarios\templates\usuarios\password_forget_email.html:110
+msgid ""
+"Si tú no solicitaste este cambio, puedes ignorar este mensaje de forma "
+"segura. Tu contraseña no cambiará."
+msgstr ""
+"Si tú no solicitaste este cambio, puedes ignorar este mensaje de forma "
+"segura. Tu contraseña no cambiará."
+
+#: .\usuarios\templates\usuarios\password_forget_email.html:115
+msgid "Este es un mensaje automático, por favor no respondas a este correo."
+msgstr "Este es un mensaje automático, por favor no respondas a este correo."
+
+#: .\usuarios\templates\usuarios\signin.html:14
+msgid "Introduzca la información para registrarse"
+msgstr "Introduzca la información para registrarse"
+
+#: .\usuarios\templates\usuarios\signin.html:26
+msgid "Error en el registro"
+msgstr "Error del servidor"
+
+#: .\usuarios\templates\usuarios\signin.html:47
+msgid "Registro completado"
+msgstr "Registro completado"
+
+#: .\usuarios\templates\usuarios\signin.html:62
+msgid "Solo se permiten números y como máximo 9 dígitos."
+msgstr "Solo se permiten números y como máximo 9 dígitos."
+
+#: .\usuarios\templates\usuarios\signin.html:67
+msgid "Debes aceptar los términos y condiciones."
+msgstr "Debes aceptar los términos y condiciones."
+
+#: .\usuarios\templates\usuarios\signin.html:86
+msgid "Número de 9 dígitos"
+msgstr "Número de 9 dígitos"
+
+#: .\usuarios\templates\usuarios\signin.html:103
+msgid "Correo electrónico"
+msgstr "Correo electrónico"
+
+#: .\usuarios\templates\usuarios\signin.html:122
+msgid "Repita su contraseña"
+msgstr "Repita su contraseña"
+
+#: .\usuarios\templates\usuarios\signin.html:133
+msgid "Marca esta casilla en caso de que quieras registrarte como entrenador"
+msgstr "Marca esta casilla en caso de que quieras registrarte como entrenador"
+
+#: .\usuarios\templates\usuarios\signin.html:141
+msgid "Acepto los "
+msgstr "Acepto los "
+
+#: .\usuarios\templates\usuarios\signin.html:141
+msgid "términos y condiciones*"
+msgstr "términos y condiciones*"
+
+#: .\usuarios\templates\usuarios\signin.html:151
+msgid "Términos y condiciones"
+msgstr "Términos y condiciones"
+
+#: .\usuarios\templates\usuarios\signin.html:157
+msgid ""
+"Al registrarte en FutDataManager, aceptas que los datos proporcionados son "
+"veraces y que los utilizarás de forma responsable."
+msgstr ""
+"Al registrarte en FutDataManager, aceptas que los datos proporcionados son "
+"veraces y que los utilizarás de forma responsable."
+
+#: .\usuarios\templates\usuarios\signin.html:161
+msgid ""
+"Los datos personales recogidos se usarán únicamente para la gestión de la "
+"cuenta de usuario, el acceso a los servicios ofrecidos y la mejora de la "
+"experiencia en la plataforma. En ningún caso serán cedidos a terceros sin "
+"consentimiento expreso."
+msgstr ""
+"Los datos personales recogidos se usarán únicamente para la gestión de la "
+"cuenta de usuario, el acceso a los servicios ofrecidos y la mejora de la "
+"experiencia en la plataforma. En ningún caso serán cedidos a terceros sin "
+"consentimiento expreso."
+
+#: .\usuarios\templates\usuarios\signin.html:165
+msgid ""
+"El usuario se compromete a no realizar un uso indebido del sitio web, ni a "
+"introducir contenido malicioso o fraudulento. La empresa se reserva el "
+"derecho de modificar estos términos o suspender cuentas que incumplan las "
+"normas establecidas."
+msgstr ""
+"El usuario se compromete a no realizar un uso indebido del sitio web, ni a "
+"introducir contenido malicioso o fraudulento. La empresa se reserva el "
+"derecho de modificar estos términos o suspender cuentas que incumplan las "
+"normas establecidas."
+
+#: .\usuarios\templates\usuarios\signin.html:169
+msgid ""
+"Al hacer clic en “Acepto”, confirmas que has leído y aceptas estos términos "
+"y condiciones."
+msgstr ""
+"Al hacer clic en “Acepto”, confirmas que has leído y aceptas estos términos "
+"y condiciones."
+
+#: .\usuarios\templates\usuarios\signin.html:178
+msgid "Acepto"
+msgstr "Acepto"
+
+#: .\usuarios\views.py:28
+msgid "Sesión inciada correctamente."
+msgstr "Sesión inciada correctamente."
+
+#: .\usuarios\views.py:31
+msgid "El usuario no existe o la contraseña es incorrecta."
+msgstr "El usuario no existe o la contraseña es incorrecta."
+
+#: .\usuarios\views.py:53
+msgid "Este correo electrónico ya está registrado."
+msgstr "Este correo electrónico ya está registrado."
+
+#: .\usuarios\views.py:83
+msgid "Te has registrado correctamente"
+msgstr "Te has registrado correctamente"
+
+#: .\usuarios\views.py:89
+#, python-brace-format
+msgid "Error al registrar: {}"
+msgstr "Error al registrar: {}"
+
+#: .\usuarios\views.py:112
+msgid "Perfil actualizado correctamente"
+msgstr "Perfil actualizado correctamente"
+
+#: .\usuarios\views.py:121
+#, python-brace-format
+msgid "Error al actualizar: {}"
+msgstr "Error al actualizar: {}"
+
+#: .\usuarios\views.py:178
+msgid "Te hemos enviado un correo para cambiar tu contraseña."
+msgstr "Te hemos enviado un correo para cambiar tu contraseña."

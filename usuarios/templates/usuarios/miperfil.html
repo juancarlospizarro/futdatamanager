@@ -1,9 +1,10 @@
 {% extends "includes/base.html" %}
 {% load static %}
+{% load i18n %}
 
 {% block title %}
 {% if usuario_perfil.get_full_name == user.get_full_name %}
-FutDataManager - Mi perfil
+FutDataManager - {% trans "Mi perfil" %}
 {% else %}  
 FutDataManager - {{ usuario_perfil.get_full_name }}
 {% endif %}
@@ -18,11 +19,10 @@ FutDataManager - {{ usuario_perfil.get_full_name }}
         <div class="col-md-8 order-2 order-md-1">
 
             <!-- Encabezado con Nombre -->
-            <!-- Encabezado con Nombre -->
             <div class="mb-4">
                 <!-- Título principal -->
                 <h2 class="h3 fw-bold mb-3" style="color: #27a770;">
-                    Información general
+                    {% trans "Información general" %}
                 </h2>
                 
                 <!-- Tarjeta de Información Mejorada -->
@@ -37,7 +37,7 @@ FutDataManager - {{ usuario_perfil.get_full_name }}
                                         <i class="bi bi-person-fill fs-4" style="color: #27a770;"></i>
                                     </div>
                                     <div>
-                                        <small class="text-secondary d-block text-uppercase fw-bold" style="font-size: 0.7rem; letter-spacing: 0.5px;">Nombre Completo</small>
+                                        <small class="text-secondary d-block text-uppercase fw-bold" style="font-size: 0.7rem; letter-spacing: 0.5px;">{% trans "Nombre Completo" %}</small>
                                         <span class="fw-bold text-color-card">{{ usuario_perfil.first_name }} {{ usuario_perfil.last_name }}</span>
                                     </div>
                                 </div>
@@ -50,7 +50,7 @@ FutDataManager - {{ usuario_perfil.get_full_name }}
                                         <i class="bi bi-envelope-fill fs-4" style="color: #27a770;"></i>
                                     </div>
                                     <div>
-                                        <small class="text-secondary d-block text-uppercase fw-bold" style="font-size: 0.7rem; letter-spacing: 0.5px;">Email</small>
+                                        <small class="text-secondary d-block text-uppercase fw-bold" style="font-size: 0.7rem; letter-spacing: 0.5px;">{% trans "Email" %}</small>
                                         <span class="fw-bold text-color-card text-break">{{ usuario_perfil.email }}</span>
                                     </div>
                                 </div>
@@ -63,7 +63,7 @@ FutDataManager - {{ usuario_perfil.get_full_name }}
                                         <i class="bi bi-telephone-fill fs-4" style="color: #27a770;"></i>
                                     </div>
                                     <div>
-                                        <small class="text-secondary d-block text-uppercase fw-bold" style="font-size: 0.7rem; letter-spacing: 0.5px;">Teléfono</small>
+                                        <small class="text-secondary d-block text-uppercase fw-bold" style="font-size: 0.7rem; letter-spacing: 0.5px;">{% trans "Teléfono" %}</small>
                                         <span class="fw-bold text-color-card">{{ usuario_perfil.telefono|default:"No especificado" }}</span>
                                     </div>
                                 </div>
@@ -76,7 +76,7 @@ FutDataManager - {{ usuario_perfil.get_full_name }}
                                         <i class="bi bi-calendar-date-fill fs-4" style="color: #27a770;"></i>
                                     </div>
                                     <div>
-                                        <small class="text-secondary d-block text-uppercase fw-bold" style="font-size: 0.7rem; letter-spacing: 0.5px;">Fecha de Nacimiento</small>
+                                        <small class="text-secondary d-block text-uppercase fw-bold" style="font-size: 0.7rem; letter-spacing: 0.5px;">{% trans "Fecha de Nacimiento" %}</small>
                                         <span class="fw-bold text-color-card">{{ usuario_perfil.fecha_nacimiento|date:"d/m/Y"|default:"No especificada" }}</span>
                                     </div>
                                 </div>
@@ -89,7 +89,7 @@ FutDataManager - {{ usuario_perfil.get_full_name }}
                                         <i class="bi bi-person-badge-fill fs-4" style="color: #27a770;"></i>
                                     </div>
                                     <div>
-                                        <small class="text-secondary d-block text-uppercase fw-bold" style="font-size: 0.7rem; letter-spacing: 0.5px;">Rol</small>
+                                        <small class="text-secondary d-block text-uppercase fw-bold" style="font-size: 0.7rem; letter-spacing: 0.5px;">{% trans "Rol" %}</small>
                                         <span class="fw-bold text-color-card">{{ usuario_perfil.get_rol_display }}</span>
                                     </div>
                                 </div>
@@ -102,7 +102,7 @@ FutDataManager - {{ usuario_perfil.get_full_name }}
                                         <i class="bi bi-clock-history fs-4" style="color: #27a770;"></i>
                                     </div>
                                     <div>
-                                        <small class="text-secondary d-block text-uppercase fw-bold" style="font-size: 0.7rem; letter-spacing: 0.5px;">Miembro desde</small>
+                                        <small class="text-secondary d-block text-uppercase fw-bold" style="font-size: 0.7rem; letter-spacing: 0.5px;">{% trans "Miembro desde" %}</small>
                                         <span class="fw-bold text-color-card">{{ usuario_perfil.date_joined|date:"d/m/Y" }}</span>
                                     </div>
                                 </div>
@@ -120,7 +120,7 @@ FutDataManager - {{ usuario_perfil.get_full_name }}
                             <!-- Altura -->
                             <div class="col-6 col-md-3">
                                 <div class="text-center p-3 bg-light rounded-3">
-                                    <small class="d-block text-secondary mb-1">Altura</small>
+                                    <small class="d-block text-secondary mb-1">{% trans "Altura" %}</small>
                                     <span class="fw-bold h5 text-dark mb-0">{{ usuario_perfil.perfil_jugador.altura|default:"--" }} <small class="fs-6 text-muted">cm</small></span>
                                 </div>
                             </div>
@@ -128,7 +128,7 @@ FutDataManager - {{ usuario_perfil.get_full_name }}
                             <!-- Peso -->
                             <div class="col-6 col-md-3">
                                 <div class="text-center p-3 bg-light rounded-3">
-                                    <small class="d-block text-secondary mb-1">Peso</small>
+                                    <small class="d-block text-secondary mb-1">{% trans "Peso" %}</small>
                                     <span class="fw-bold h5 text-dark mb-0">{{ usuario_perfil.perfil_jugador.peso|default:"--" }} <small class="fs-6 text-muted">kg</small></span>
                                 </div>
                             </div>
@@ -136,7 +136,7 @@ FutDataManager - {{ usuario_perfil.get_full_name }}
                             <!-- Posición -->
                             <div class="col-6 col-md-3">
                                 <div class="text-center p-3 bg-light rounded-3">
-                                    <small class="d-block text-secondary mb-1">Posición</small>
+                                    <small class="d-block text-secondary mb-1">{% trans "Posición" %}</small>
                                     <span class="fw-bold h5 text-dark mb-0">{{ usuario_perfil.perfil_jugador.get_posicion_display|default:"--" }}</span>
                                 </div>
                             </div>
@@ -144,7 +144,7 @@ FutDataManager - {{ usuario_perfil.get_full_name }}
                             <!-- Dorsal -->
                             <div class="col-6 col-md-3">
                                 <div class="text-center p-3 bg-light rounded-3">
-                                    <small class="d-block text-secondary mb-1">Dorsal</small>
+                                    <small class="d-block text-secondary mb-1">{% trans "Dorsal" %}</small>
                                     <span class="fw-bold h5 text-dark mb-0">#{{ usuario_perfil.perfil_jugador.dorsal|default:"--" }}</span>
                                 </div>
                             </div>
@@ -152,7 +152,7 @@ FutDataManager - {{ usuario_perfil.get_full_name }}
                             <!-- Pierna -->
                             <div class="col-6 col-md-3">
                                 <div class="text-center p-3 bg-light rounded-3">
-                                    <small class="d-block text-secondary mb-1">Pierna</small>
+                                    <small class="d-block text-secondary mb-1">{% trans "Pierna" %}</small>
                                     <span class="fw-bold h5 text-dark mb-0">{{ usuario_perfil.perfil_jugador.get_pierna_habil_display|default:"--" }}</span>
                                 </div>
                             </div>
@@ -163,7 +163,7 @@ FutDataManager - {{ usuario_perfil.get_full_name }}
                             <div class="col-6 col-md-3">
                                 <a href="{% url 'equipos:informacion_equipo' equipo_actual.equipo.slug %}" class="text-decoration-none">
                                     <div class="text-center p-3 bg-light rounded-3" style="cursor: pointer; transition: all 0.3s ease;">
-                                        <small class="d-block text-secondary mb-1">Equipo</small>
+                                        <small class="d-block text-secondary mb-1">{% trans "Equipo" %}</small>
                                         <span class="fw-bold h5 text-dark mb-0">{{ equipo_actual.equipo.nombre }}</span>
                                     </div>
                                 </a>
@@ -176,7 +176,7 @@ FutDataManager - {{ usuario_perfil.get_full_name }}
                             <div class="col-12">
                                 <div class="alert alert-warning d-flex align-items-center border-0 shadow-sm mb-0" role="alert">
                                     <i class="bi bi-star-fill me-2"></i>
-                                    <div>Este jugador es <strong>Capitán</strong> del equipo.</div>
+                                    <div>{% trans "Este jugador es" %} <strong>{% trans "Capitán" %}</strong> {% trans "del equipo." %}</div>
                                 </div>
                             </div>
                             {% endif %}
@@ -192,7 +192,7 @@ FutDataManager - {{ usuario_perfil.get_full_name }}
             <div class="mb-5">
                 <a href="#" class="btn btn-foot-form-enviar px-4 py-2" data-bs-toggle="modal"
                     data-bs-target="#updateProfileModal">
-                    <i class="bi bi-person-lines-fill"></i> Editar información personal
+                    <i class="bi bi-person-lines-fill"></i> {% trans "Editar información personal" %}
                 </a>
             </div>
             {% endif %}
@@ -204,17 +204,23 @@ FutDataManager - {{ usuario_perfil.get_full_name }}
                     <div class="modal-content rounded-4 border-0 shadow">
                         <div class="modal-header border-bottom">
                             <h5 class="modal-title fw-bold" id="updateModalLabel" style="color: #27a770;"><i
-                                    class="bi bi-person-lines-fill"></i> Editar información personal</h5>
+                                    class="bi bi-person-lines-fill"></i> {% trans "Editar información personal" %}</h5>
                         </div>
 
                         <div class="modal-body p-4">
+                            <!-- Mensajes de validación para traducción -->
+                            <div id="msg-nombre" style="display:none;">{% trans "El nombre debe tener al menos 2 caracteres. No puede contener números ni carácteres especiales." %}</div>
+                            <div id="msg-apellidos" style="display:none;">{% trans "Los apellidos deben tener al menos 2 caracteres. No puede contener números ni carácteres especiales." %}</div>
+                            <div id="msg-email" style="display:none;">{% trans "Debe introducir un email válido. Se permite números, letras y caracteres especiales como '.', '_' y '-'." %}</div>
+                            <div id="msg-telefono-exacto" style="display:none;">{% trans "El teléfono debe tener exactamente 9 números." %}</div>
+                            <div id="msg-fecha" style="display:none;">{% trans "Debes tener al menos 12 años. La fecha no puede ser anterior a 01/01/1900. El formato correcto es YYYY-MM-DD." %}</div>
                             <form id="formulario_editar_datos" method="POST" enctype="multipart/form-data">
                                 {% csrf_token %}
                                 <div class="row g-3">
 
                                     <!-- Nombre -->
                                     <div class="col-md-6">
-                                        <label for="nombre" class="form-label fw-medium">Nombre</label>
+                                        <label for="nombre" class="form-label fw-medium">{% trans "Nombre" %}</label>
                                         <input type="text" class="form-control rounded-3" id="nombre" name="first_name"
                                             value="{{ usuario_perfil.first_name }}">
                                         <small id="errorNombre" class="help-text text-danger"
@@ -223,7 +229,7 @@ FutDataManager - {{ usuario_perfil.get_full_name }}
 
                                     <!-- Apellidos -->
                                     <div class="col-md-6">
-                                        <label for="apellidos" class="form-label fw-medium">Apellidos</label>
+                                        <label for="apellidos" class="form-label fw-medium">{% trans "Apellidos" %}</label>
                                         <input type="text" class="form-control rounded-3" id="apellidos"
                                             name="last_name" value="{{ usuario_perfil.last_name }}">
                                         <small id="errorApellidos" class="help-text text-danger"
@@ -232,7 +238,7 @@ FutDataManager - {{ usuario_perfil.get_full_name }}
 
                                     <!-- Email -->
                                     <div class="col-12">
-                                        <label for="email" class="form-label fw-medium">Email</label>
+                                        <label for="email" class="form-label fw-medium">{% trans "Email" %}</label>
                                         <input type="email" class="form-control rounded-3" id="email" name="email"
                                             value="{{ usuario_perfil.email }}" disabled>
                                         <small id="errorEmail" class="help-text text-danger" aria-live="polite"></small>
@@ -240,7 +246,7 @@ FutDataManager - {{ usuario_perfil.get_full_name }}
 
                                     <!-- Teléfono -->
                                     <div class="col-md-6">
-                                        <label for="telefono" class="form-label fw-medium">Teléfono</label>
+                                        <label for="telefono" class="form-label fw-medium">{% trans "Teléfono" %}</label>
                                         <input type="tel" class="form-control rounded-3" id="telefono" name="telefono"
                                             value="{{ usuario_perfil.telefono|default:'' }}">
                                         <small id="errorTelefono" class="help-text text-danger"
@@ -249,8 +255,7 @@ FutDataManager - {{ usuario_perfil.get_full_name }}
 
                                     <!-- Fecha Nacimiento -->
                                     <div class="col-md-6">
-                                        <label for="fechanacimiento" class="form-label fw-medium">Fecha de
-                                            nacimiento</label>
+                                        <label for="fechanacimiento" class="form-label fw-medium">{% trans "Fecha de nacimiento" %}</label>
                                         <!-- Importante: |date:'Y-m-d' es necesario para que el input type="date" reconozca el valor -->
                                         <input type="date" class="form-control rounded-3" id="fechanacimiento"
                                             name="fecha_nacimiento" value="{{ usuario_perfil.fecha_nacimiento|date:'Y-m-d' }}">
@@ -260,10 +265,10 @@ FutDataManager - {{ usuario_perfil.get_full_name }}
 
                                     <!-- Foto -->
                                     <div class="col-md-6">
-                                        <label for="foto" class="form-label fw-medium">Foto de perfil</label>
+                                        <label for="foto" class="form-label fw-medium">{% trans "Foto de perfil" %}</label>
                                         <input type="file" class="form-control rounded-3" id="foto" name="foto"
                                             accept="image/*">
-                                        <div class="form-text">Sube una nueva imagen solo si quieres cambiar la actual.
+                                        <div class="form-text">{% trans "Sube una nueva imagen solo si quieres cambiar la actual." %}
                                         </div>
                                     </div>
 
@@ -278,12 +283,13 @@ FutDataManager - {{ usuario_perfil.get_full_name }}
 
                                     <div class="col-12">
                                         <div class="form-text">
-                                            ¿Quieres cambiar tu contraseña?
+                                            {% trans "¿Quieres cambiar tu contraseña?" %}
                                             <a href="{% url 'usuarios:password_forget' %}">
-                                                Solicitar cambio por correo
+                                                {% trans "Solicitar cambio por correo" %}
                                             </a>
-                                            <div class="form-text">Por seguridad, el cambio de contraseña se realiza
-                                                mediante correo electrónico.</div>
+                                            <div class="form-text">
+                                                {% trans "Por seguridad, el cambio de contraseña se realiza mediante correo electrónico." %}
+                                            </div>
                                         </div>
                                     </div>
 
@@ -292,9 +298,9 @@ FutDataManager - {{ usuario_perfil.get_full_name }}
 
                                 <div class="d-flex justify-content-end gap-2 mt-4">
                                     <button type="button" class="btn btn-light text-secondary px-4 rounded-3"
-                                        data-bs-dismiss="modal">Cancelar</button>
+                                        data-bs-dismiss="modal">{% trans "Cancelar" %}</button>
                                     <button type="submit" class="btn text-white px-4 rounded-3"
-                                        style="background-color: #27a770;">Guardar cambios</button>
+                                        style="background-color: #27a770;">{% trans "Guardar cambios" %}</button>
                                 </div>
                             </form>
                         </div>
@@ -309,7 +315,7 @@ FutDataManager - {{ usuario_perfil.get_full_name }}
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header bg-success">
-                            <h5 class="modal-title text-white">Información personal actualizada</h5>
+                            <h5 class="modal-title text-white">{% trans "Información personal actualizada" %}</h5>
                         </div>
                         <div class="modal-body">
                             <p>{{ message }}</p>
@@ -325,14 +331,14 @@ FutDataManager - {{ usuario_perfil.get_full_name }}
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header bg-danger">
-                            <h5 class="modal-title text-white">Error al actualizar información</h5>
+                            <h5 class="modal-title text-white">{% trans "Error al actualizar información" %}</h5>
                         </div>
                         <div class="modal-body">
                             <p>{{ error }}</p>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                                Cerrar
+                                {% trans "Cerrar" %}
                             </button>
                         </div>
                     </div>
@@ -343,27 +349,27 @@ FutDataManager - {{ usuario_perfil.get_full_name }}
             {% if usuario_perfil.rol == "jugador" %}
             <!-- Sección Lesiones -->
             <div class="mb-5">
-                <h3 class="h4 text-foot-green fw-bold mb-2">Lesiones</h3>
-                <p class="fs-5 text-secondary">Información lesiones del jugador</p>
+                <h3 class="h4 text-foot-green fw-bold mb-2">{% trans "Lesiones" %}</h3>
+                <p class="fs-5 text-secondary">{% trans "Información lesiones del jugador" %}</p>
             </div>
 
             <!-- Sección Sanciones -->
             <div class="mb-5">
-                <h3 class="h4 text-foot-green fw-bold mb-2">Sanciones</h3>
-                <p class="fs-5 text-secondary">Información sanciones del jugador</p>
+                <h3 class="h4 text-foot-green fw-bold mb-2">{% trans "Sanciones" %}</h3>
+                <p class="fs-5 text-secondary">{% trans "Información sanciones del jugador" %}</p>
             </div>
 
             {% elif usuario_perfil.rol == "entrenador" %}
             <!-- Sección Equipos -->
             <div class="mb-5">
-                <h3 class="h4 text-foot-green fw-bold mb-2">Equipos a los que ha entrenado</h3>
-                <p class="fs-5 text-secondary">Información equipos que el entrenador ha entrenado</p>
+                <h3 class="h4 text-foot-green fw-bold mb-2">{% trans "Equipos a los que ha entrenado" %}</h3>
+                <p class="fs-5 text-secondary">{% trans "Información equipos que el entrenador ha entrenado" %}</p>
             </div>
             {% if usuario_perfil.tiene_equipo %}
             <!-- Sección Estadisticas Equipo Actual -->
             <div class="mb-5">
-                <h3 class="h4 text-foot-green fw-bold mb-2">Estadísticas del equipo actual</h3>
-                <p class="fs-5 text-secondary">Estadisticas del equipo actual del entrenador</p>
+                <h3 class="h4 text-foot-green fw-bold mb-2">{% trans "Estadísticas del equipo actual" %}</h3>
+                <p class="fs-5 text-secondary">{% trans "Estadisticas del equipo actual del entrenador" %}</p>
             </div>
             {% endif %}
 
@@ -374,13 +380,13 @@ FutDataManager - {{ usuario_perfil.get_full_name }}
                 <!-- Botón Cerrar Sesión (Gris Oscuro) -->
                 <a href="{% url 'usuarios:logout' %}" class="btn text-white px-4 py-2 rounded-3 border-0"
                     style="background-color: #504847;">
-                    <i class="bi bi-box-arrow-in-left"></i> Cerrar sesión
+                    <i class="bi bi-box-arrow-in-left"></i> {% trans "Cerrar sesión" %}
                 </a>
 
                 <!-- Botón Eliminar Cuenta (Gris Oscuro) -->
                 <button type="button" class="btn text-white px-4 py-2 rounded-3 border-0"
                     style="background-color: #504847;" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal">
-                    <i class="bi bi-person-fill-x"></i> Eliminar cuenta
+                    <i class="bi bi-person-fill-x"></i> {% trans "Eliminar cuenta" %}
                 </button>
 
                 <div class="modal fade" id="confirmDeleteModal" tabindex="-1">
@@ -388,24 +394,24 @@ FutDataManager - {{ usuario_perfil.get_full_name }}
                         <div class="modal-content rounded-4">
 
                             <div class="modal-header">
-                                <h5 class="modal-title text-danger"><i class="bi bi-person-fill-x"></i> Eliminar cuenta</h5>
+                                <h5 class="modal-title text-danger"><i class="bi bi-person-fill-x"></i> {% trans "Eliminar cuenta" %}</h5>
                             </div>
 
                             <div class="modal-body">
                                 <p>
-                                    ⚠️ Esta acción <strong>no se puede deshacer</strong>.<br>
-                                    ¿Estás seguro de que quieres eliminar tu cuenta?
+                                    ⚠️ {% trans "Esta acción" %} <strong>{% trans "no se puede deshacer" %}</strong>.<br>
+                                    {% trans "¿Estás seguro de que quieres eliminar tu cuenta?" %}
                                 </p>
                             </div>
 
                             <div class="modal-footer">
                                 <button class="btn btn-secondary" data-bs-dismiss="modal">
-                                    Cancelar
+                                    {% trans "Cancelar" %}
                                 </button>
 
                                 <button class="btn btn-danger" id="confirmDeleteBtn"
                                     data-url="{% url 'usuarios:eliminar_cuenta' %}">
-                                    Sí, eliminar cuenta
+                                    {% trans "Sí, eliminar cuenta" %}
                                 </button>
                             </div>
 
@@ -417,8 +423,8 @@ FutDataManager - {{ usuario_perfil.get_full_name }}
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content rounded-4 text-center p-4">
 
-                            <h5 class="text-success mb-3">Cuenta eliminada</h5>
-                            <p>Tu cuenta ha sido eliminada correctamente.</p>
+                            <h5 class="text-success mb-3">{% trans "Cuenta eliminada" %}</h5>
+                            <p>{% trans "Tu cuenta ha sido eliminada correctamente." %}</p>
 
                         </div>
                     </div>

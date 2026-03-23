@@ -1,16 +1,17 @@
 {% extends "includes/base.html" %}
 {% load static %}
-{% block title %}FutDataManager - Inicio{% endblock %}
+{% load i18n %}
+{% block title %}FutDataManager - {% trans "Inicio" %}{% endblock %}
 {% block content %}
 <div class="container my-5">
 
   <!-- Sección Título -->
   <section class="text-center col-lg-8 mx-auto mb-5 py-5">
-    <h1 class="display-4 fw-bold text-foot-darkgray mb-3">¡Bienvenid@ {{ user.first_name }}!</h1>
+    <h1 class="display-4 fw-bold text-foot-darkgray mb-3">¡{% trans "Bienvenid@" %} {{ user.first_name }}!</h1>
     <p class="fs-5 text-secondary">
-      Actualmente no perteneces a ningún equipo.
+      {% trans "Actualmente no perteneces a ningún equipo." %}
     </p>
-    <p class="fs-5 text-secondary">Para poder pertenecer a un equipo registrado necesitas que un entrenador te añada a su equipo.</p>
+    <p class="fs-5 text-secondary">{% trans "Para poder pertenecer a un equipo registrado necesitas que un entrenador te añada a su equipo." %}</p>
   </section>
 
   <!-- Contenido -->
@@ -20,16 +21,16 @@
 
         <!-- Historial -->
         <div>
-          <h2 class="h4 text-foot-green mb-2">Equipos donde ha jugado</h2>
+          <h2 class="h4 text-foot-green mb-2">{% trans "Equipos donde ha jugado" %}</h2>
           {% if equipos_historico %}
             <table id="tablaEquiposHistorico" class="table text-center table-bordered shadow-sm">
               <thead>
                 <tr>
-                  <th class="bg-success text-white text-center">Escudo</th>
-                  <th class="bg-success text-white text-center">Nombre</th>
-                  <th class="bg-success text-white text-center">Año de fundación</th>
-                  <th class="bg-success text-white text-center">Inicio</th>
-                  <th class="bg-success text-white text-center">Fin</th>
+                  <th class="bg-success text-white text-center">{% trans "Escudo" %}</th>
+                  <th class="bg-success text-white text-center">{% trans "Nombre" %}</th>
+                  <th class="bg-success text-white text-center">{% trans "Año de fundación" %}</th>
+                  <th class="bg-success text-white text-center">{% trans "Inicio" %}</th>
+                  <th class="bg-success text-white text-center">{% trans "Fin" %}</th>
                   <th class="bg-success"></th>
                 </tr>
               </thead>
@@ -53,39 +54,39 @@
                   </td>
                   <td><a class="nav-link text-decoration-none text-secondary"
                       href="{% url 'equipos:informacion_equipo' equipo_jugador.equipo.slug %}"><i class="bi bi-eye-fill"></i>
-                      Ver equipo</a></td>
+                      {% trans "Ver equipo" %}</a></td>
                 </tr>
                 {% endfor %}
               </tbody>
             </table>
           {% else %}
-            <p class="fs-5 text-secondary text-muted">No has jugado en ningún equipo aún.</p>
+            <p class="fs-5 text-secondary text-muted">{% trans "No has jugado en ningún equipo aún." %}</p>
           {% endif %}
         </div>
 
         <!-- Estadísticas -->
         <div>
-          <h2 class="h4 text-foot-green mb-2">Estadísticas generales</h2>
-          <p class="fs-5 text-secondary mb-0">Listado de estadísticas del jugador</p>
+          <h2 class="h4 text-foot-green mb-2">{% trans "Estadísticas generales" %}</h2>
+          <p class="fs-5 text-secondary mb-0">{% trans "Listado de estadísticas del jugador" %}</p>
         </div>
 
         <!-- Equipos registrados -->
         <div>
-          <h2 class="h4 text-foot-green mb-2">Equipos registrados</h2>
+          <h2 class="h4 text-foot-green mb-2">{% trans "Equipos registrados" %}</h2>
           <div class="d-flex justify-content-end mb-3">
             <div class="input-group w-50">
               <span class="input-group-text bg-light">
                 <i class="bi bi-search"></i>
               </span>
-              <input type="text" id="buscadorEquipos" class="form-control" placeholder="Buscar equipo">
+              <input type="text" id="buscadorEquipos" class="form-control" placeholder="{% trans 'Buscar equipo' %}">
             </div>
           </div>
           <table id="tablaEquipos" class="table text-center table-bordered shadow-sm">
             <thead>
               <tr>
-                <th class="bg-success text-white text-center">Escudo</th>
-                <th id="ordenarNombreEquipo" class="bg-success text-white text-center">Nombre</th>
-                <th id="ordenarAnioFundacion" class="bg-success text-white text-center">Año de fundación</th>
+                <th class="bg-success text-white text-center">{% trans "Escudo" %}</th>
+                <th id="ordenarNombreEquipo" class="bg-success text-white text-center">{% trans "Nombre" %}</th>
+                <th id="ordenarAnioFundacion" class="bg-success text-white text-center">{% trans "Año de fundación" %}</th>
                 <th class="bg-success"></th>
               </tr>
             </thead>
@@ -102,7 +103,7 @@
                 <td>{{ equipo.anio_fundacion }}</td>
                 <td><a class="nav-link text-decoration-none text-secondary"
                     href="{% url 'equipos:informacion_equipo' equipo.slug %}"><i class="bi bi-eye-fill"></i>
-                    Ver equipo</a></td>
+                    {% trans "Ver equipo" %}</a></td>
               </tr>
               {% endfor %}
             </tbody>

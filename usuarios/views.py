@@ -10,6 +10,7 @@ from django.http import JsonResponse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import PasswordResetForm
+from django.utils.translation import gettext_lazy as _
 
 def login_view(request):
     if request.method == "GET":
@@ -24,10 +25,10 @@ def login_view(request):
 
     if user is not None:
         login(request, user)
-        messages.success(request, "Sesión inciada correctamente.")
+        messages.success(request, _("Sesión inciada correctamente."))
         return render(request, "usuarios/login.html")  # o dashboard
     else:
-        return render(request, 'usuarios/login.html', {'error': "El usuario no existe o la contraseña es incorrecta.", "email_value": email})
+        return render(request, 'usuarios/login.html', {'error': _("El usuario no existe o la contraseña es incorrecta."), "email_value": email})
 
 def signin(request):
     if request.method == "GET":
@@ -46,10 +47,10 @@ def signin(request):
         foto = request.FILES.get('foto') 
 
         if password_1 != password_2:
-            return render(request, 'usuarios/signin.html', {'error': "Las contraseñas no coinciden.", 'nombre_value': nombre, 'apellidos_value': apellidos, 'telefono_value': telefono, 'email_value': email, 'fechanacimiento_value': fechanacimiento, 'es_entrenador_value': es_entrenador, 'foto_value': foto})
+            return render(request, 'usuarios/signin.html', {'error': _("Las contraseñas no coinciden."), 'nombre_value': nombre, 'apellidos_value': apellidos, 'telefono_value': telefono, 'email_value': email, 'fechanacimiento_value': fechanacimiento, 'es_entrenador_value': es_entrenador, 'foto_value': foto})
         
         if Usuario.objects.filter(email=email).exists():
-            return render(request, 'usuarios/signin.html', {'error': "Este correo electrónico ya está registrado.", 'nombre_value': nombre, 'apellidos_value': apellidos, 'telefono_value': telefono, 'email_value': email, 'fechanacimiento_value': fechanacimiento, 'es_entrenador_value': es_entrenador, 'foto_value': foto})
+            return render(request, 'usuarios/signin.html', {'error': _("Este correo electrónico ya está registrado."), 'nombre_value': nombre, 'apellidos_value': apellidos, 'telefono_value': telefono, 'email_value': email, 'fechanacimiento_value': fechanacimiento, 'es_entrenador_value': es_entrenador, 'foto_value': foto})
 
         # Crear el Usuario
         try:
@@ -79,13 +80,13 @@ def signin(request):
 
             # Iniciar sesión automáticamente y redirigir
             login(request, user)
-            messages.success(request, "Te has registrado correctamente")
+            messages.success(request, _("Te has registrado correctamente"))
             # Redirigir a la página de inicio
             return redirect('landing')
 
         except Exception as e:
             # Si pasa algo raro, mostramos el error
-            return render(request, 'usuarios/signin.html', {'error': f"Error al registrar: {str(e)}"})
+            return render(request, 'usuarios/signin.html', {'error': _("Error al registrar: {}").format(str(e))})
 
 @login_required
 def logout_view(request):
@@ -108,7 +109,7 @@ def miperfil(request):
                 user.foto = request.FILES["foto"]
 
             user.save()
-            messages.success(request, "Perfil actualizado correctamente")
+            messages.success(request, _("Perfil actualizado correctamente"))
             return redirect("usuarios:miperfil")
 
         context = {
@@ -117,7 +118,7 @@ def miperfil(request):
         }
         return render(request, "usuarios/miperfil.html", context)
     except Exception as e:
-        return render(request, 'usuarios/miperfil.html', {'error': f"Error al actualizar: {str(e)}"})
+        return render(request, 'usuarios/miperfil.html', {'error': _("Error al actualizar: {}").format(str(e))})
 
 @login_required
 def ver_perfil_usuario(request, slug):
@@ -159,7 +160,7 @@ class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
     html_email_template_name = 'usuarios/password_forget_email.html'
 
     def dispatch(self, request, *args, **kwargs):
-        # 👉 Si el usuario YA está logueado, enviamos el correo directamente
+        # Si el usuario YA está logueado, enviamos el correo directamente
         if request.user.is_authenticated:
             form = PasswordResetForm({'email': request.user.email})
 
@@ -174,12 +175,12 @@ class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
 
                 messages.success(
                     request,
-                    "Te hemos enviado un correo para cambiar tu contraseña."
+                    _("Te hemos enviado un correo para cambiar tu contraseña.")
                 )
 
                 return redirect("usuarios:miperfil")
 
-        # 👉 Si NO está logueado, seguimos el flujo normal de Django
+        # Si NO está logueado, seguimos el flujo normal de Django
         return super().dispatch(request, *args, **kwargs)
 
 

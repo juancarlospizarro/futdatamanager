@@ -1,18 +1,18 @@
 {% extends "includes/base.html" %}
 {% load static %}
-{% block title %}FutDataManager - Inicio{% endblock %}
+{% load i18n %}
+{% block title %}FutDataManager - {% trans "Inicio" %}{% endblock %}
 {% block content %}
 <div class="container my-5">
 
     <!-- Sección Título -->
     <section class="text-center col-lg-8 mx-auto mb-5 py-5">
-        <h1 class="display-4 fw-bold text-foot-darkgray mb-3">¡Bienvenid@ {{ user.first_name }}!</h1>
+        <h1 class="display-4 fw-bold text-foot-darkgray mb-3">¡{% trans "Bienvenid@" %} {{ user.first_name }}!</h1>
         <p class="fs-5 text-secondary">
             Actualmente no perteneces a ningún equipo.
         </p>
-        <p class="fs-5 text-secondary">Puedes <a href="#crearEquipo"
-                class="d-inline nav-link text-decoration-underline">crear un equipo</a> y convertirte en su entrenador/a
-            de forma sencilla.</p>
+        <p class="fs-5 text-secondary">{% trans "Puedes" %} <a href="#crearEquipo"
+                class="d-inline nav-link text-decoration-underline">{% trans "crear un equipo" %}</a>  {% trans "y convertirte en su entrenador/a de forma sencilla." %}</p>
     </section>
 
     <!-- Contenido -->
@@ -22,16 +22,16 @@
 
                 <!-- Historial -->
                 <div>
-                    <h2 class="h4 text-foot-green mb-2">Equipos donde ha entrenado</h2>
+                    <h2 class="h4 text-foot-green mb-2">{% trans "Equipos donde ha entrenado" %}</h2>
                     {% if equipos_historico %}
                         <table id="tablaEquiposHistorico" class="table text-center table-bordered shadow-sm">
                             <thead>
                                 <tr>
-                                    <th class="bg-success text-white text-center">Escudo</th>
-                                    <th class="bg-success text-white text-center">Nombre</th>
-                                    <th class="bg-success text-white text-center">Año de fundación</th>
-                                    <th class="bg-success text-white text-center">Inicio</th>
-                                    <th class="bg-success text-white text-center">Fin</th>
+                                    <th class="bg-success text-white text-center">{% trans "Escudo" %}</th>
+                                    <th class="bg-success text-white text-center">{% trans "Nombre" %}</th>
+                                    <th class="bg-success text-white text-center">{% trans "Año de fundación" %}</th>
+                                    <th class="bg-success text-white text-center">{% trans "Inicio" %}</th>
+                                    <th class="bg-success text-white text-center">{% trans "Fin" %}</th>
                                     <th class="bg-success"></th>
                                 </tr>
                             </thead>
@@ -55,34 +55,33 @@
                                     </td>
                                     <td><a class="nav-link text-decoration-none text-secondary"
                                             href="{% url 'equipos:informacion_equipo' equipo_entrenador.equipo.slug %}"><i class="bi bi-eye-fill"></i>
-                                            Ver equipo</a></td>
+                                            {% trans "Ver equipo" %}</a></td>
                                 </tr>
                                 {% endfor %}
                             </tbody>
                         </table>
                     {% else %}
-                        <p class="fs-5 text-secondary text-muted">No has entrenado en ningún equipo aún.</p>
+                        <p class="fs-5 text-secondary text-muted">{% trans "No has entrenado en ningún equipo aún." %}</p>
                     {% endif %}
                 </div>
 
                 <!-- Equipos registrados -->
                 <div>
-                    <h2 class="h4 text-foot-green mb-2">Equipos registrados</h2>
+                    <h2 class="h4 text-foot-green mb-2">{% trans "Equipos registrados" %}</h2>
                     <div class="d-flex justify-content-end mb-3">
                         <div class="input-group w-50">
                             <span class="input-group-text bg-light">
                                 <i class="bi bi-search"></i>
                             </span>
-                            <input type="text" id="buscadorEquipos" class="form-control" placeholder="Buscar equipo">
+                            <input type="text" id="buscadorEquipos" class="form-control" placeholder="{% trans 'Buscar equipo' %}">
                         </div>
                     </div>
                     <table id="tablaEquipos" class="table text-center table-bordered shadow-sm">
                         <thead>
                             <tr>
-                                <th class="bg-success text-white text-center">Escudo</th>
-                                <th id="ordenarNombreEquipo" class="bg-success text-white text-center">Nombre</th>
-                                <th id="ordenarAnioFundacion" class="bg-success text-white text-center">Año de fundación
-                                </th>
+                                <th class="bg-success text-white text-center">{% trans "Escudo" %}</th>
+                                <th id="ordenarNombreEquipo" class="bg-success text-white text-center">{% trans "Nombre" %}</th>
+                                <th id="ordenarAnioFundacion" class="bg-success text-white text-center">{% trans "Año de fundación" %}</th>
                                 <th class="bg-success"></th>
                             </tr>
                         </thead>
@@ -101,7 +100,7 @@
                                 <td><a class="nav-link text-decoration-none text-secondary"
                                         href="{% url 'equipos:informacion_equipo' equipo.slug %}"><i
                                             class="bi bi-eye-fill"></i>
-                                        Ver equipo</a></td>
+                                        {% trans "Ver equipo" %}</a></td>
                             </tr>
                             {% endfor %}
                         </tbody>
@@ -114,9 +113,9 @@
                     <div class="card-body p-4 p-md-5">
 
                         <div class="text-center mb-4">
-                            <h2 class="h3 fw-bold mb-2" style="color: #504847;">Crear nuevo equipo</h2>
+                            <h2 class="h3 fw-bold mb-2" style="color: #504847;">{% trans "Crear nuevo equipo" %}</h2>
                             <p class="text-secondary">
-                                Crea un nuevo club y conviértete en su entrenador automáticamente.
+                                {% trans "Crea un nuevo club y conviértete en su entrenador automáticamente." %}
                             </p>
                         </div>
 
@@ -125,14 +124,14 @@
 
                             <div class="row g-3 mb-3">
                                 <div class="col-md-6 mb-4">
-                                    <label for="nombreEquipo" class="form-label fw-medium">Nombre del equipo</label>
+                                    <label for="nombreEquipo" class="form-label fw-medium">{% trans "Nombre del equipo" %}</label>
                                     <input type="text" class="form-control form-control-lg rounded-3" id="nombreEquipo"
                                         name="nombre" required>
                                         <small id="errorNombre" class="help-text text-danger"
                                             aria-live="polite"></small>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="anioFundacion" class="form-label fw-medium">Año de fundación</label>
+                                    <label for="anioFundacion" class="form-label fw-medium">{% trans "Año de fundación" %}</label>
                                     <input type="number" class="form-control form-control-lg rounded-3"
                                         id="anioFundacion" name="anio_fundacion" required>
                                         <small id="errorAnioFundacion" class="help-text text-danger"
@@ -142,14 +141,14 @@
 
                             <div class="row g-3 mb-3">
                                 <div class="col-md-6">
-                                    <label for="direccionEquipo" class="form-label fw-medium">Dirección</label>
+                                    <label for="direccionEquipo" class="form-label fw-medium">{% trans "Dirección" %}</label>
                                     <input type="text" class="form-control form-control-lg rounded-3"
                                         id="direccionEquipo" name="direccion">
                                         <small id="errorDireccion" class="help-text text-danger"
                                             aria-live="polite"></small>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="telefonoEquipo" class="form-label fw-medium">Teléfono</label>
+                                    <label for="telefonoEquipo" class="form-label fw-medium">{% trans "Teléfono" %}</label>
                                     <input type="tel" class="form-control form-control-lg rounded-3" id="telefonoEquipo"
                                         name="telefono" placeholder="Número de 9 dígitos">
                                         <small id="errorTelefono" class="help-text text-danger"
@@ -159,11 +158,10 @@
 
                             <div class="row g-3 mb-4">
                                 <div class="col-md-6">
-                                    <label for="escudoEquipo" class="form-label fw-medium">Escudo</label>
+                                    <label for="escudoEquipo" class="form-label fw-medium">{% trans "Escudo" %}</label>
                                     <input type="file" class="form-control form-control-lg rounded-3" id="escudoEquipo"
                                         name="escudo" accept="image/*">
-                                    <div class="form-text">Si no quieres añadir un escudo se utilizará por defecto el
-                                        que se puede ver en el formulario.</div>
+                                    <div class="form-text">{% trans "Si no quieres añadir un escudo se utilizará por defecto el que se puede ver en el formulario." %}</div>
                                 </div>
                                 <!-- Vista previa -->
                                 <div class="col-md-6 mt-3 text-center">
@@ -176,32 +174,32 @@
                             </div>
                             <div class="row g-3 mb-4">
                                 <div class="col-6">
-                                    <label for="colorPrincipal" class="form-label fw-medium">Color principal</label>
+                                    <label for="colorPrincipal" class="form-label fw-medium">{% trans "Color principal" %}</label>
                                     <div class="d-flex align-items-center gap-2">
                                         <input type="color" class="form-control form-control-color w-100 rounded-3"
-                                            id="colorPrincipal" name="color_principal" title="Elige el color principal">
+                                            id="colorPrincipal" name="color_principal" title="{% trans 'Elige el color principal' %}">
                                             <small id="errorColorPrincipal" class="help-text text-danger"
                                             aria-live="polite"></small>
                                     </div>
                                 </div>
                                 <div class="col-6">
-                                    <label for="colorSecundario" class="form-label fw-medium">Color secundario</label>
+                                    <label for="colorSecundario" class="form-label fw-medium">{% trans "Color secundario" %}</label>
                                     <div class="d-flex align-items-center gap-2">
                                         <input type="color" class="form-control form-control-color w-100 rounded-3"
                                             id="colorSecundario" name="color_secundario"
-                                            title="Elige el color secundario" value="#FFFFFF">
+                                            title="{% trans 'Elige el color secundario' %}" value="#FFFFFF">
                                             <small id="errorColorSecundario" class="help-text text-danger"
                                             aria-live="polite"></small>
                                     </div>
                                 </div>
-                                <small class="text-secondary">En caso de no modificar los colores, se tomarán los seleccionados por defecto.</small>
+                                <small class="text-secondary">{% trans "En caso de no modificar los colores, se tomarán los seleccionados por defecto." %}</small>
                             </div>
 
                             <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
                                 <button type="reset"
-                                    class="btn btn-light text-secondary px-4 rounded-3">Reiniciar</button>
+                                    class="btn btn-light text-secondary px-4 rounded-3">{% trans "Reiniciar" %}</button>
                                 <button type="submit" class="btn btn-foot-form-enviar px-5 rounded-3">
-                                    Añadir equipo
+                                    {% trans "Añadir equipo" %}
                                 </button>
                             </div>
 
@@ -220,14 +218,14 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header bg-danger">
-                <h5 class="modal-title text-white">Error al crear equipo</h5>
+                <h5 class="modal-title text-white">{% trans "Error al crear equipo" %}</h5>
             </div>
             <div class="modal-body">
                 <p>{{ error }}</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                    Cerrar
+                    {% trans "Cerrar" %}
                 </button>
             </div>
         </div>
@@ -241,7 +239,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header bg-success">
-                <h5 class="modal-title text-white">Equipo creado</h5>
+                <h5 class="modal-title text-white">{% trans "Equipo creado" %}</h5>
             </div>
             <div class="modal-body">
                 <p>{{ message }}</p>

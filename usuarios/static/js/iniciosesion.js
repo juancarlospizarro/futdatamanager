@@ -1,3 +1,9 @@
+// Mensajes de validación para cada campo
+const validationMessages = {
+    email_requerido: document.getElementById('msg-email-requerido').textContent,
+    contraseña_requerida: document.getElementById('msg-password-requerida').textContent
+};
+
 // Función para dar estilo a la validacion
 function validarCampo(input, condicion, mensajeError) {
     const mensaje = input.nextElementSibling;
@@ -46,7 +52,7 @@ inicioSesionForm.addEventListener("submit", function(event) {
         validarCampo(
             emailInicioSesion,
             () => false,
-            "Introduce tu correo electrónico."
+            validationMessages.email_requerido
         );
         valido = false;
     }
@@ -55,7 +61,7 @@ inicioSesionForm.addEventListener("submit", function(event) {
         validarCampo(
             contrasenaInicioSesion,
             () => false,
-            "Introduce tu contraseña."
+            validationMessages.contraseña_requerida
         );
         valido = false;
     }
