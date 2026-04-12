@@ -650,22 +650,20 @@ msgid "No hay partidos anteriores."
 msgstr "No hay partidos anteriores."
 
 #: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:76
-#, fuzzy
-#| msgid "Estadísticas del equipo actual"
 msgid "Estadísticas del equipo"
-msgstr "Estadísticas del equipo actual"
+msgstr "Estadísticas del equipo"
 
 #: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:81
 msgid "Partidos jugados"
-msgstr ""
+msgstr "Partidos jugados"
 
 #: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:85
 msgid "Victorias"
-msgstr ""
+msgstr "Victorias"
 
 #: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:89
 msgid "Derrotas"
-msgstr ""
+msgstr "Derrotas"
 
 #: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:14
 msgid "Puedes"

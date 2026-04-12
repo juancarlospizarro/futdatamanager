@@ -142,7 +142,6 @@ let selectedPlayer = null;
     saveBtn.addEventListener('click', async () => {
         try {
             saveBtn.disabled = true;
-            saveBtn.innerHTML = '<i class="bi bi-hourglass-split"></i> Descargando...';
             
             const canvas = await html2canvas(board, {
                 backgroundColor: '#2d5016',
@@ -168,15 +167,10 @@ let selectedPlayer = null;
             });
             localStorage.setItem('tacticalPositions', JSON.stringify(positions));
             
-            saveBtn.innerHTML = '<i class="bi bi-download"></i> Descargado ✓';
-            setTimeout(() => {
-                saveBtn.innerHTML = '<i class="bi bi-download"></i> {% trans "Descargar Imagen" %}';
-                saveBtn.disabled = false;
-            }, 2000);
+            saveBtn.disabled = false;
         } catch (error) {
             console.error('Error al descargar:', error);
             alert('Error al descargar la imagen');
-            saveBtn.innerHTML = '<i class="bi bi-download"></i> {% trans "Descargar Imagen" %}';
             saveBtn.disabled = false;
         }
     });
