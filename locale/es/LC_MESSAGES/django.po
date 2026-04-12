@@ -504,14 +504,16 @@ msgid "Porcentaje de posesión del equipo local"
 msgstr "Porcentaje de posesión del equipo local"
 
 #: .\eventos\models.py:49
-msgid "Posesión local (%)"
-msgstr "Posesión local (%)"
+#, python-format
+msgid "Posesión local (%%)"
+msgstr "Posesión local (%%)"
 
 #: .\eventos\models.py:54
 msgid "Porcentaje de posesión del equipo visitante"
 msgstr "Porcentaje de posesión del equipo visitante"
 
 #: .\eventos\models.py:55
+#, python-format
 msgid "Posesión visitante (%)"
 msgstr "Posesión visitante (%)"
 
@@ -1010,12 +1012,9 @@ msgid "Nombre del equipo"
 msgstr "Nombre del equipo"
 
 #: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:207
-msgid "Posesión local (a%)"
-msgstr "Posesión local (%)"
-
-#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:211
-msgid "Posesión visitante (%)"
-msgstr "Posesión visitante (%)"
+#, python-format
+msgid "Posesión local (%%)"
+msgstr "Posesión local (%%)"
 
 #: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:234
 msgid "Selecciona el partido que deseas eliminar:"

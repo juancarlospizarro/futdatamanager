@@ -1009,12 +1009,12 @@ msgstr "Team name"
 #: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:207
 #, python-format
 msgid "Posesión local (%%)"
-msgstr "Home possession (%)"
+msgstr "Home possession (%%)"
 
 #: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:211
 #, python-format
 msgid "Posesión visitante (%%)"
-msgstr "Visiting possession (%)"
+msgstr "Visiting possession (%%)"
 
 #: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:234
 msgid "Selecciona el partido que deseas eliminar:"
