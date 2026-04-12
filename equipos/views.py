@@ -9,6 +9,10 @@ from .models import Equipo, EquipoEntrenador, EquipoJugador
 @login_required
 @entrenador_o_admin_required
 def crear_equipo(request):
+    """
+    Crea un nuevo equipo de fútbol.
+    Solo accesible para entrenadores y administradores.
+    """
 
     usuario = request.user
 
@@ -56,6 +60,10 @@ def crear_equipo(request):
 
 @login_required
 def informacion_equipo(request, slug):
+    """
+    Muestra la información detallada de un equipo incluyendo jugadores activos,
+    entrenamientos y opciones de edición para el entrenador del equipo.
+    """
     equipo = get_object_or_404(Equipo, slug=slug)
     
     # Verificar si el usuario actual es entrenador de este equipo
@@ -93,6 +101,10 @@ def informacion_equipo(request, slug):
 @login_required
 @entrenador_o_admin_required
 def editar_jugador(request, jugador_id):
+    """
+    Edita información de un jugador específico (dorsal y posición).
+    Solo el entrenador del equipo donde el jugador está activo puede editar.
+    """
     try:
         perfil_jugador = get_object_or_404(PerfilJugador, id=jugador_id)
         
@@ -144,6 +156,10 @@ def editar_jugador(request, jugador_id):
 
 @login_required
 def eliminar_jugador_equipo(request, equipo_id, jugador_id):
+    """
+    Desactiva a un jugador de un equipo sin eliminar su perfil.
+    Solo el entrenador del equipo puede ejecutar esta acción.
+    """
     """
     Marca un jugador como inactivo en el equipo (mantiene histórico).
     Solo el entrenador del equipo puede hacerlo.
@@ -206,6 +222,10 @@ def eliminar_jugador_equipo(request, equipo_id, jugador_id):
 # Vista AJAX para añadir jugador al equipo
 @login_required
 def agregar_jugador_equipo(request, equipo_id, jugador_id):
+    """
+    Agrega un jugador a un equipo.
+    Solo el entrenador del equipo puede agregar jugadores.
+    """
     if request.method == 'POST':
         equipo = get_object_or_404(Equipo, id=equipo_id)
         perfil_jugador = get_object_or_404(PerfilJugador, id=jugador_id)
@@ -253,11 +273,18 @@ def agregar_jugador_equipo(request, equipo_id, jugador_id):
 
 @login_required
 def listado_equipos(request):
+    """
+    Muestra el listado de todos los equipos disponibles en la plataforma.
+    """
     equipos = Equipo.objects.all()
     return render(request, "equipos/listado.html", {"equipos": equipos})
 
 @login_required
 def editar_datos_equipo(request, equipo_id):
+    """
+    Edita los datos básicos de un equipo (nombre, colors, dirección, teléfono, escudo).
+    Solo el entrenador o administrador del equipo puede editar.
+    """
     equipo = get_object_or_404(Equipo, id=equipo_id)
 
     if request.method == "POST":
@@ -283,6 +310,9 @@ def editar_datos_equipo(request, equipo_id):
 
 @login_required
 def abandonar_equipo(request, equipo_id):
+    """
+    Permite a un jugador abandonar un equipo desactivando su relación con el equipo.
+    """
     # Obtener el equipo y verificar que el usuario es el dueño (entrenador vinculado)
     equipo = get_object_or_404(Equipo, id=equipo_id)
     
@@ -290,3 +320,39 @@ def abandonar_equipo(request, equipo_id):
     if request.user.perfil_entrenador.equipo != equipo:
         messages.error(request, "No tienes permiso para abandonar este equipo.")
         return redirect('landing')
+
+
+@login_required
+def pizarra_tactica(request, slug):
+    """
+    Vista para la pizarra táctica del equipo.
+    Solo los entrenadores activos del equipo pueden acceder.
+    """
+    equipo = get_object_or_404(Equipo, slug=slug)
+    
+    # Verificar si el usuario es entrenador del equipo
+    if request.user.rol != "entrenador":
+        messages.error(request, "Solo los entrenadores pueden acceder a la pizarra táctica.")
+        return redirect('landing')
+    
+    is_trainer = EquipoEntrenador.objects.filter(
+        perfil_entrenador=request.user.perfil_entrenador,
+        equipo=equipo,
+        es_activo=True
+    ).exists()
+    
+    if not is_trainer:
+        messages.error(request, "No tienes permiso para acceder a la pizarra táctica de este equipo.")
+        return redirect('landing')
+    
+    # Obtener jugadores del equipo (activos)
+    jugadores_equipo = equipo.jugadores.filter(es_activo=True).select_related(
+        'perfil_jugador__usuario'
+    ).order_by('perfil_jugador__usuario__first_name')
+    
+    context = {
+        'equipo': equipo,
+        'jugadores': jugadores_equipo,
+    }
+    
+    return render(request, 'equipos/pizarra_tactica.html', context)

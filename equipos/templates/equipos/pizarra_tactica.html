@@ -1,0 +1,340 @@
+{% extends "includes/base.html" %}
+{% load static %}
+{% load i18n %}
+{% block title %}FutDataManager - {% trans "Pizarra Táctica" %}{% endblock %}
+{% block content %}
+<div class="container my-5">
+<div class="container-fluid my-4">
+    <!-- PANEL DE CONTROL Y LEYENDA ARRIBA -->
+    <div class="row mb-4 gy-3">
+        <!-- CONTROLES -->
+        <div class="col-12 col-md-6">
+            <div class="card shadow-sm bg-card-dark rounded-4 p-4">
+                <h5 class="text-foot-green fw-bold mb-3">{% trans "Controles" %}</h5>
+                <div class="d-flex gap-2">
+                    <button class="btn btn-foot-form-enviar flex-grow-1" id="resetBtn">
+                        <i class="bi bi-arrow-clockwise"></i> {% trans "Reiniciar" %}
+                    </button>
+                    <button class="btn btn-primary flex-grow-1" id="saveBtn">
+                        <i class="bi bi-download"></i> {% trans "Descargar Imagen" %}
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- LEYENDA -->
+        <div class="col-12 col-md-6">
+            <div class="card shadow-sm bg-card-dark rounded-4 p-4">
+                <h5 class="text-foot-green fw-bold mb-3">{% trans "Leyenda" %}</h5>
+                <div class="d-flex gap-4">
+                    <div class="d-flex align-items-center">
+                        <div class="player-legend player-team1"></div>
+                        <span class="ms-2 text-secondary">{% trans "Equipo 1" %}</span>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <div class="player-legend player-team2"></div>
+                        <span class="ms-2 text-secondary">{% trans "Equipo 2" %}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PIZARRA TÁCTICA -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card shadow-sm bg-card-dark rounded-4 p-4">
+                <div id="tacticalBoard" class="tactical-board">
+                    <!-- SVG DEL CAMPO DE FÚTBOL -->
+                    <svg width="100%" viewBox="0 0 650 1000" class="football-field" id="footballField">
+                        <!-- Fondo verde -->
+                        <rect width="650" height="1000" fill="#2d5016" stroke="#fff" stroke-width="3"/>
+                        
+                        <!-- Línea central -->
+                        <line x1="0" y1="500" x2="650" y2="500" stroke="#fff" stroke-width="2"/>
+                        
+                        <!-- Círculo central -->
+                        <circle cx="325" cy="500" r="80" fill="none" stroke="#fff" stroke-width="2"/>
+                        <circle cx="325" cy="500" r="5" fill="#fff"/>
+                        
+                        <!-- Área superior (equipo 1) -->
+                        <rect x="162.5" y="0" width="325" height="150" fill="none" stroke="#fff" stroke-width="2"/>
+                        <rect x="225" y="0" width="200" height="50" fill="none" stroke="#fff" stroke-width="2"/>
+                        <!-- Punto de penalti superior -->
+                        <circle cx="325" cy="120" r="3" fill="#fff"/>
+                        <!-- Media luna del área superior -->
+                        <path d="M 240 150 A 70 70 0 0 0 410 150" fill="none" stroke="#fff" stroke-width="2"/>
+                        
+                        <!-- Área inferior (equipo 2) -->
+                        <rect x="162.5" y="850" width="325" height="150" fill="none" stroke="#fff" stroke-width="2"/>
+                        <rect x="225" y="950" width="200" height="50" fill="none" stroke="#fff" stroke-width="2"/>
+                        <!-- Punto de penalti inferior -->
+                        <circle cx="325" cy="880" r="3" fill="#fff"/>
+                        <!-- Media luna del área inferior -->
+                        <path d="M 240 850 A 70 70 0 0 1 410 850" fill="none" stroke="#fff" stroke-width="2"/>
+                        
+                        <!-- Esquinas -->
+                        <circle cx="0" cy="0" r="40" fill="none" stroke="#fff" stroke-width="2"/>
+                        <circle cx="650" cy="0" r="40" fill="none" stroke="#fff" stroke-width="2"/>
+                        <circle cx="0" cy="1000" r="40" fill="none" stroke="#fff" stroke-width="2"/>
+                        <circle cx="650" cy="1000" r="40" fill="none" stroke="#fff" stroke-width="2"/>
+                    </svg>
+                    
+                    <!-- CONTENEDOR DE JUGADORES -->
+                    <div id="playersContainer" class="players-container">
+                        <!-- Jugadores del equipo 1 (1-11) -->
+                        <div class="player player-team1" data-number="1" draggable="true">
+                            <span>1</span>
+                        </div>
+                        <div class="player player-team1" data-number="2" draggable="true">
+                            <span>2</span>
+                        </div>
+                        <div class="player player-team1" data-number="3" draggable="true">
+                            <span>3</span>
+                        </div>
+                        <div class="player player-team1" data-number="4" draggable="true">
+                            <span>4</span>
+                        </div>
+                        <div class="player player-team1" data-number="5" draggable="true">
+                            <span>5</span>
+                        </div>
+                        <div class="player player-team1" data-number="6" draggable="true">
+                            <span>6</span>
+                        </div>
+                        <div class="player player-team1" data-number="7" draggable="true">
+                            <span>7</span>
+                        </div>
+                        <div class="player player-team1" data-number="8" draggable="true">
+                            <span>8</span>
+                        </div>
+                        <div class="player player-team1" data-number="9" draggable="true">
+                            <span>9</span>
+                        </div>
+                        <div class="player player-team1" data-number="10" draggable="true">
+                            <span>10</span>
+                        </div>
+                        <div class="player player-team1" data-number="11" draggable="true">
+                            <span>11</span>
+                        </div>
+                        
+                        <!-- Jugadores del equipo 2 (1-11) -->
+                        <div class="player player-team2" data-number="1" draggable="true">
+                            <span>1</span>
+                        </div>
+                        <div class="player player-team2" data-number="2" draggable="true">
+                            <span>2</span>
+                        </div>
+                        <div class="player player-team2" data-number="3" draggable="true">
+                            <span>3</span>
+                        </div>
+                        <div class="player player-team2" data-number="4" draggable="true">
+                            <span>4</span>
+                        </div>
+                        <div class="player player-team2" data-number="5" draggable="true">
+                            <span>5</span>
+                        </div>
+                        <div class="player player-team2" data-number="6" draggable="true">
+                            <span>6</span>
+                        </div>
+                        <div class="player player-team2" data-number="7" draggable="true">
+                            <span>7</span>
+                        </div>
+                        <div class="player player-team2" data-number="8" draggable="true">
+                            <span>8</span>
+                        </div>
+                        <div class="player player-team2" data-number="9" draggable="true">
+                            <span>9</span>
+                        </div>
+                        <div class="player player-team2" data-number="10" draggable="true">
+                            <span>10</span>
+                        </div>
+                        <div class="player player-team2" data-number="11" draggable="true">
+                            <span>11</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<style>
+    .tactical-board {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 650 / 1000;
+    background: #2d5016;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.football-field {
+    width: 100%;
+    height: 100%;
+    display: block;
+    pointer-events: none;
+}
+
+.players-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.player {
+    position: absolute;
+    width: clamp(30px, 5vw, 50px);
+    height: clamp(30px, 5vw, 50px);
+    border-radius: 50%;
+    border: clamp(1px, 0.3vw, 3px) solid #fff;
+    cursor: grab;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: clamp(10px, 1.5vw, 14px);
+    color: #fff;
+    transition: transform 0.2s;
+    transform: translate(-50%, -50%);;
+}
+
+.player:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+.player:active {
+    cursor: grabbing;
+    transform: translate(-50%, -50%) scale(1.15);
+}
+
+.player-team1 {
+    background: linear-gradient(135deg, #27a770 0%, #1e7f52 100%);
+    border-color: #1e7f52;
+}
+
+.player-team2 {
+    background: linear-gradient(135deg, #ff6b6b 0%, #cc5555 100%);
+    border-color: #cc5555;
+}
+
+.player.dragging {
+    opacity: 0.7;
+    transform: translate(-50%, -50%) scale(1.2);
+}
+
+.player-legend {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+
+/* Posiciones iniciales de los jugadores - Formación 4-3-3 VERTICAL */
+/* EQUIPO 1 (Arriba) */
+.player-team1[data-number="1"] { left: 50%; top: 3%; }      /* Portero */
+.player-team1[data-number="2"] { left: 15%; top: 17%; }     /* Defensa izquierda */
+.player-team1[data-number="3"] { left: 35%; top: 17%; }     /* Defensa */
+.player-team1[data-number="4"] { left: 65%; top: 17%; }     /* Defensa */
+.player-team1[data-number="5"] { left: 85%; top: 17%; }     /* Defensa derecha */
+.player-team1[data-number="6"] { left: 23%; top: 37%; }     /* Centrocampista izquierdo */
+.player-team1[data-number="7"] { left: 50%; top: 37%; }     /* Centrocampista central */
+.player-team1[data-number="8"] { left: 77%; top: 37%; }     /* Centrocampista derecho */
+.player-team1[data-number="9"] { left: 23%; top: 57%; }     /* Delantero izquierdo */
+.player-team1[data-number="10"] { left: 50%; top: 57%; }    /* Delantero central */
+.player-team1[data-number="11"] { left: 77%; top: 57%; }    /* Delantero derecho */
+
+/* EQUIPO 2 (Abajo) */
+.player-team2[data-number="1"] { left: 50%; bottom: 3%; }   /* Portero */
+.player-team2[data-number="2"] { left: 85%; bottom: 17%; }  /* Defensa derecha */
+.player-team2[data-number="3"] { left: 65%; bottom: 17%; }  /* Defensa */
+.player-team2[data-number="4"] { left: 35%; bottom: 17%; }  /* Defensa */
+.player-team2[data-number="5"] { left: 15%; bottom: 17%; }  /* Defensa izquierda */
+.player-team2[data-number="6"] { left: 77%; bottom: 37%; }  /* Centrocampista derecho */
+.player-team2[data-number="7"] { left: 50%; bottom: 37%; }  /* Centrocampista central */
+.player-team2[data-number="8"] { left: 23%; bottom: 37%; }  /* Centrocampista izquierdo */
+.player-team2[data-number="9"] { left: 77%; bottom: 57%; }  /* Delantero derecho */
+.player-team2[data-number="10"] { left: 50%; bottom: 57%; } /* Delantero central */
+.player-team2[data-number="11"] { left: 23%; bottom: 57%; } /* Delantero izquierdo */
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .tactical-board {
+        aspect-ratio: 650 / 1000;
+    }
+    
+    .player {
+        width: clamp(25px, 6vw, 45px);
+        height: clamp(25px, 6vw, 45px);
+        font-size: clamp(8px, 1.5vw, 12px);
+    }
+    
+    /* EQUIPO 1 (Arriba) */
+    .player-team1[data-number="1"] { top: 2%; }      /* Portero */
+    .player-team1[data-number="2"] { top: 14%; }     /* Defensa */
+    .player-team1[data-number="3"] { top: 14%; }     /* Defensa */
+    .player-team1[data-number="4"] { top: 14%; }     /* Defensa */
+    .player-team1[data-number="5"] { top: 14%; }     /* Defensa */
+    .player-team1[data-number="6"] { top: 32%; }     /* Centrocampista */
+    .player-team1[data-number="7"] { top: 32%; }     /* Centrocampista */
+    .player-team1[data-number="8"] { top: 32%; }     /* Centrocampista */
+    .player-team1[data-number="9"] { top: 50%; }     /* Delantero */
+    .player-team1[data-number="10"] { top: 50%; }    /* Delantero */
+    .player-team1[data-number="11"] { top: 50%; }    /* Delantero */
+
+    /* EQUIPO 2 (Abajo) */
+    .player-team2[data-number="1"] { bottom: 2%; }   /* Portero */
+    .player-team2[data-number="2"] { bottom: 14%; }  /* Defensa */
+    .player-team2[data-number="3"] { bottom: 14%; }  /* Defensa */
+    .player-team2[data-number="4"] { bottom: 14%; }  /* Defensa */
+    .player-team2[data-number="5"] { bottom: 14%; }  /* Defensa */
+    .player-team2[data-number="6"] { bottom: 32%; }  /* Centrocampista */
+    .player-team2[data-number="7"] { bottom: 32%; }  /* Centrocampista */
+    .player-team2[data-number="8"] { bottom: 32%; }  /* Centrocampista */
+    .player-team2[data-number="9"] { bottom: 50%; }  /* Delantero */
+    .player-team2[data-number="10"] { bottom: 50%; } /* Delantero */
+    .player-team2[data-number="11"] { bottom: 50%; } /* Delantero */
+}
+
+@media (max-width: 480px) {
+    .player {
+        width: clamp(18px, 5vw, 30px);
+        height: clamp(18px, 5vw, 30px);
+        font-size: clamp(6px, 1.2vw, 9px);
+    }
+    
+    /* EQUIPO 1 (Arriba) */
+    .player-team1[data-number="1"] { top: 1%; }      /* Portero */
+    .player-team1[data-number="2"] { top: 12%; }     /* Defensa */
+    .player-team1[data-number="3"] { top: 12%; }     /* Defensa */
+    .player-team1[data-number="4"] { top: 12%; }     /* Defensa */
+    .player-team1[data-number="5"] { top: 12%; }     /* Defensa */
+    .player-team1[data-number="6"] { top: 29%; }     /* Centrocampista */
+    .player-team1[data-number="7"] { top: 29%; }     /* Centrocampista */
+    .player-team1[data-number="8"] { top: 29%; }     /* Centrocampista */
+    .player-team1[data-number="9"] { top: 46%; }     /* Delantero */
+    .player-team1[data-number="10"] { top: 46%; }    /* Delantero */
+    .player-team1[data-number="11"] { top: 46%; }    /* Delantero */
+
+    /* EQUIPO 2 (Abajo) */
+    .player-team2[data-number="1"] { bottom: 1%; }   /* Portero */
+    .player-team2[data-number="2"] { bottom: 12%; }  /* Defensa */
+    .player-team2[data-number="3"] { bottom: 12%; }  /* Defensa */
+    .player-team2[data-number="4"] { bottom: 12%; }  /* Defensa */
+    .player-team2[data-number="5"] { bottom: 12%; }  /* Defensa */
+    .player-team2[data-number="6"] { bottom: 29%; }  /* Centrocampista */
+    .player-team2[data-number="7"] { bottom: 29%; }  /* Centrocampista */
+    .player-team2[data-number="8"] { bottom: 29%; }  /* Centrocampista */
+    .player-team2[data-number="9"] { bottom: 46%; }  /* Delantero */
+    .player-team2[data-number="10"] { bottom: 46%; } /* Delantero */
+    .player-team2[data-number="11"] { bottom: 46%; } /* Delantero */
+}
+
+</style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="{% static 'js/pizarraTactica.js' %}"></script>
+{% endblock %}

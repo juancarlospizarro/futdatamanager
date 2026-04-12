@@ -10,5 +10,6 @@ urlpatterns = [
     path('api/editar-jugador/<int:jugador_id>/', views.editar_jugador, name='editar_jugador'),
     path('api/eliminar-jugador/<int:equipo_id>/<int:jugador_id>/', views.eliminar_jugador_equipo, name='eliminar_jugador_equipo'),
     path('miperfil/abandonar-equipo/', views.abandonar_equipo, name="abandonar_equipo"),
+    path('<slug:slug>/pizarra/', views.pizarra_tactica, name='pizarra_tactica'),
     path('<slug:slug>/', views.informacion_equipo, name='informacion_equipo'),
 ]
