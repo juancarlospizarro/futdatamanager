@@ -30,6 +30,7 @@ nav:
   - Inicio: index.md
   - Equipos: equipos.md
   - Usuarios: usuarios.md
+  - Eventos: eventos.md
   
 plugins:
   - search
