@@ -1,7 +1,8 @@
 {% extends "includes/base.html" %}
 {% load static %}
+{% load i18n %}
 
-{% block title %}Equipo {{ equipo.nombre }} - Información{% endblock %}
+{% block title %}{% trans "Equipo" %} {{ equipo.nombre }} - {% trans "Información" %}{% endblock %}
 
 {% block content %}
 <div class="container my-5">
@@ -11,14 +12,14 @@
         <!-- COLUMNA IZQUIERDA -->
         <div class="col-md-8 order-2 order-md-1">
 
-            <!-- Cabecera del Equipo (Ficha Técnica Mejorada) -->
+            <!-- Cabecera del Equipo -->
             <div class="mb-4">
                 <div class="d-flex align-items-center justify-content-between mb-3">
                     <h2 class="h3 text-foot-green fw-bold mb-0">
-                        Información general
+                        {% trans "Información general" %}
                     </h2>
                     <span class="badge rounded-pill bg-light text-dark border"><i class="bi bi-check-circle-fill"></i>
-                        Activo</span>
+                        {% trans "Activo" %}</span>
                 </div>
 
                 <div class="card shadow-sm bg-card-dark mb-4 rounded-4 overflow-hidden">
@@ -33,7 +34,7 @@
                                     </div>
                                     <div>
                                         <small class="text-secondary d-block text-uppercase fw-bold"
-                                            style="font-size: 0.75rem; letter-spacing: 0.5px;">Club</small>
+                                            style="font-size: 0.75rem; letter-spacing: 0.5px;">{% trans "Club" %}</small>
                                         <span class="fw-bold text-color-card">{{ equipo.nombre }}</span>
                                     </div>
                                 </div>
@@ -48,7 +49,7 @@
                                     </div>
                                     <div>
                                         <small class="text-secondary d-block text-uppercase fw-bold"
-                                            style="font-size: 0.75rem; letter-spacing: 0.5px;">Fundación</small>
+                                            style="font-size: 0.75rem; letter-spacing: 0.5px;">{% trans "Fundación" %}</small>
                                         <span class="fw-bold text-color-card">{{ equipo.anio_fundacion }}</span>
                                     </div>
                                 </div>
@@ -63,7 +64,7 @@
                                     </div>
                                     <div>
                                         <small class="text-secondary d-block text-uppercase fw-bold"
-                                            style="font-size: 0.75rem; letter-spacing: 0.5px;">Alta en App</small>
+                                            style="font-size: 0.75rem; letter-spacing: 0.5px;">{% trans "Alta en App" %}</small>
                                         <span class="fw-bold text-color-card">{{ equipo.fecha_creacion|date:"d M Y" }}</span>
                                     </div>
                                 </div>
@@ -99,7 +100,7 @@
                                 <div class="row g-3">
 
                                     <div class="col-md-6">
-                                        <label for="nombreEquipo" class="form-label fw-medium">Nombre</label>
+                                        <label for="nombreEquipo" class="form-label fw-medium">{% trans "Nombre" %}</label>
                                         <input type="text" class="form-control rounded-3" id="nombreEquipo" name="first_name"
                                             value="{{ equipo.nombre }}">
                                         <small id="errorNombre" class="help-text text-danger"
@@ -107,8 +108,7 @@
                                     </div>
 
                                     <div class="col-md-6">
-                                        <label for="anioFundacion" class="form-label fw-medium">Año de
-                                            fundación</label>
+                                        <label for="anioFundacion" class="form-label fw-medium">{% trans "Año de fundación" %}</label>
                                         <input type="number" class="form-control rounded-3" id="anioFundacion"
                                             name="anio_fundacion" value="{{ equipo.anio_fundacion }}">
                                         <small id="errorAnioFundacion" class="help-text text-danger"
@@ -116,14 +116,14 @@
                                     </div>
 
                                     <div class="col-md-6">
-                                        <label for="direccionEquipo" class="form-label fw-medium">Dirección</label>
+                                        <label for="direccionEquipo" class="form-label fw-medium">{% trans "Dirección" %}</label>
                                         <input type="text" class="form-control rounded-3" id="direccionEquipo"
                                             name="direccion" value="{{ equipo.direccion }}">
                                         <small id="errorDireccion" class="help-text text-danger"
                                             aria-live="polite"></small>
                                     </div>
                                     <div class="col-md-6">
-                                        <label for="telefonoEquipo" class="form-label fw-medium">Teléfono</label>
+                                        <label for="telefonoEquipo" class="form-label fw-medium">{% trans "Teléfono" %}</label>
                                         <input type="tel" class="form-control rounded-3"
                                             id="telefonoEquipo" name="telefono" value="{{ equipo.telefono }}">
                                             <small id="errorTelefono" class="help-text text-danger"
@@ -131,8 +131,7 @@
                                     </div>
 
                                     <div class="col-md-6">
-                                        <label for="color_principal" class="form-label fw-medium">Color
-                                            principal</label>
+                                        <label for="color_principal" class="form-label fw-medium">{% trans "Color principal" %}</label>
                                         <input type="color" class="form-control rounded-3" id="color_principal"
                                             name="color_principal" value="{{ equipo.color_principal }}">
                                         <small id="errorColorPrincipal" class="help-text text-danger"
@@ -140,8 +139,7 @@
                                     </div>
 
                                     <div class="col-md-6">
-                                        <label for="color_secundario" class="form-label fw-medium">Color
-                                            secundario</label>
+                                        <label for="color_secundario" class="form-label fw-medium">{% trans "Color secundario" %}</label>
                                         <input type="color" class="form-control rounded-3" id="color_secundario"
                                             name="color_secundario" value="{{ equipo.color_secundario }}">
                                         <small id="errorColorSecundario" class="help-text text-danger"
@@ -149,10 +147,10 @@
                                     </div>
 
                                     <div class="col-md-6">
-                                        <label for="escudo" class="form-label fw-medium">Escudo</label>
+                                        <label for="escudo" class="form-label fw-medium">{% trans "Escudo" %}</label>
                                         <input type="file" class="form-control rounded-3" id="escudo" name="escudo"
                                             accept="image/*">
-                                        <div class="form-text">Sube una nueva imagen solo si quieres cambiar el escudo
+                                        <div class="form-text">{% trans "Sube una nueva imagen solo si quieres cambiar el escudo" %}
                                             actual.
                                         </div>
                                     </div>
@@ -172,7 +170,7 @@
                                     <button type="button" class="btn btn-light text-secondary px-4 rounded-3"
                                         data-bs-dismiss="modal">Cancelar</button>
                                     <button type="submit" class="btn text-white px-4 rounded-3"
-                                        style="background-color: #27a770;">Guardar cambios</button>
+                                        style="background-color: #27a770;">{% trans "Guardar cambios" %}</button>
                                 </div>
                             </form>
                         </div>
@@ -187,7 +185,7 @@
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header bg-success">
-                            <h5 class="modal-title text-white">Información del equipo actualizada</h5>
+                            <h5 class="modal-title text-white">{% trans "Información del equipo actualizada" %}</h5>
                         </div>
                         <div class="modal-body">
                             <p>{{ message }}</p>
@@ -203,14 +201,14 @@
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header bg-danger">
-                            <h5 class="modal-title text-white">Error al actualizar información</h5>
+                            <h5 class="modal-title text-white">{% trans "Error al actualizar información" %}</h5>
                         </div>
                         <div class="modal-body">
                             <p>{{ error }}</p>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                                Cerrar
+                                {% trans "Cerrar" %}
                             </button>
                         </div>
                     </div>
@@ -220,7 +218,7 @@
 
             <!-- Sección Entrenador -->
 <div class="mb-5">
-    <h3 class="h4 text-foot-green fw-bold mb-2">Entrenador</h3>
+    <h3 class="h4 text-foot-green fw-bold mb-2">{% trans "Entrenador" %}</h3>
     {% if entrenador %}
     <a href="{% url 'usuarios:ver_perfil_usuario' entrenador.perfil_entrenador.usuario.slug %}" class="text-decoration-none">
         <div class="card shadow-sm bg-card-dark rounded-4" style="cursor: pointer; transition: all 0.3s ease;">
@@ -252,7 +250,7 @@
 
 <!-- Sección Plantilla -->
 <div class="mb-5">
-    <h3 class="h4 text-foot-green fw-bold mb-2">Plantilla</h3>
+    <h3 class="h4 text-foot-green fw-bold mb-2">{% trans "Plantilla" %}</h3>
     {% if jugadores_equipo %}
     <!-- Buscador -->
     <div class="d-flex justify-content-end mb-3">
@@ -260,7 +258,7 @@
             <span class="input-group-text bg-light">
                 <i class="bi bi-search"></i>
             </span>
-            <input type="text" id="buscadorJugadores" class="form-control" placeholder="Buscar jugador">
+            <input type="text" id="buscadorJugadores" class="form-control" placeholder="{% trans 'Buscar jugador' %}">
         </div>
     </div>
 
@@ -269,15 +267,15 @@
         <table id="tablaJugadores" class="table text-center table-bordered shadow-sm">
             <thead>
                 <tr>
-                    <th id="ordenarDorsal" class="bg-success text-white text-center">Dorsal</th>
-                    <th id="ordenarPosicion" class="bg-success text-white text-center">Posición</th>
-                    <th id="ordenarJugador" class="bg-success text-white text-center">Jugador</th>
-                    <th class="bg-success text-white text-center">Pierna</th>
-                    <th id="ordenarAltura" class="bg-success text-white text-center">Altura (cm)</th>
-                    <th id="ordenarPeso" class="bg-success text-white text-center">Peso (kg)</th>
-                    <th class="bg-success text-white text-center">Capitán</th>
+                    <th id="ordenarDorsal" class="bg-success text-white text-center">{% trans "Dorsal" %}</th>
+                    <th id="ordenarPosicion" class="bg-success text-white text-center">{% trans "Posición" %}</th>
+                    <th id="ordenarJugador" class="bg-success text-white text-center">{% trans "Jugador" %}</th>
+                    <th class="bg-success text-white text-center">{% trans "Pierna" %}</th>
+                    <th id="ordenarAltura" class="bg-success text-white text-center">{% trans "Altura (cm)" %}</th>
+                    <th id="ordenarPeso" class="bg-success text-white text-center">{% trans "Peso (kg)" %}</th>
+                    <th class="bg-success text-white text-center">{% trans "Capitán" %}</th>
                     {% if is_trainer %}
-                    <th class="bg-success text-white text-center">Acciones</th>
+                    <th class="bg-success text-white text-center">{% trans "Acciones" %}</th>
                     {% endif %}
                 </tr>
             </thead>
@@ -354,7 +352,7 @@
                                 data-posicion="{{ relacion.perfil_jugador.posicion|default:'' }}"
                                 data-es-capitan="{{ relacion.perfil_jugador.es_capitan }}"
                                 data-jugador-nombre="{{ relacion.perfil_jugador.usuario.get_full_name }}">
-                                <i class="bi bi-pencil-fill"></i> Editar
+                                <i class="bi bi-pencil-fill"></i> {% trans "Editar" %}
                             </button>
                             <button type="button" class="btn btn-sm btn-outline-danger" 
                                 data-bs-toggle="modal" 
@@ -362,7 +360,7 @@
                                 data-equipo-id="{{ equipo.id }}"
                                 data-jugador-id="{{ relacion.perfil_jugador.id }}"
                                 data-jugador-nombre="{{ relacion.perfil_jugador.usuario.get_full_name }}">
-                                <i class="bi bi-trash-fill"></i> Eliminar
+                                <i class="bi bi-trash-fill"></i> {% trans "Eliminar" %}
                             </button>
                         </div>
                     </td>
@@ -385,12 +383,12 @@
         <!-- BOTÓN AÑADIR JUGADOR -->
         <button type="button" class="btn btn-foot-form-enviar" data-bs-toggle="modal"
             data-bs-target="#addPlayerModal">
-            <i class="bi bi-person-plus-fill"></i> Añadir jugador
+            <i class="bi bi-person-plus-fill"></i> {% trans "Añadir jugador" %}
         </button>
 
         <button type="button" class="btn text-white px-4 py-2 rounded-3 border-0"
             style="background-color: #504847;" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal">
-            <i class="bi bi-shield-slash-fill"></i> Abandonar equipo
+            <i class="bi bi-shield-slash-fill"></i> {% trans "Abandonar equipo" %}
         </button>
     </div>
     {% endif %}
@@ -401,7 +399,7 @@
         <div class="modal-content rounded-4 border-0 shadow">
             <div class="modal-header border-bottom">
                 <h5 class="modal-title fw-bold" id="editPlayerLabel" style="color: #27a770;">
-                    <i class="bi bi-pencil-fill"></i> Editar información del jugador
+                    <i class="bi bi-pencil-fill"></i>  {% trans "Editar información del jugador" %}
                 </h5>
             </div>
 
@@ -413,7 +411,7 @@
                     <div class="row g-3">
                         <!-- Dorsal -->
                         <div class="col-md-6">
-                            <label for="dorsalInput" class="form-label fw-medium">Dorsal</label>
+                            <label for="dorsalInput" class="form-label fw-medium">{% trans "Dorsal" %}</label>
                             <input type="number" class="form-control rounded-3" id="dorsalInput" 
                                 name="dorsal" min="1" max="99">
                             <small id="errorDorsal" class="help-text text-danger" aria-live="polite"></small>
@@ -421,41 +419,41 @@
 
                         <!-- Pierna Hábil -->
                         <div class="col-md-6">
-                            <label for="piernaHabilInput" class="form-label fw-medium">Pierna Hábil</label>
+                            <label for="piernaHabilInput" class="form-label fw-medium">{% trans "Pierna Hábil" %}</label>
                             <select class="form-select rounded-3" id="piernaHabilInput" name="pierna_habil">
-                                <option value="">-- Seleccionar --</option>
-                                <option value="derecha">Derecha</option>
-                                <option value="izquierda">Izquierda</option>
-                                <option value="ambas">Ambas</option>
+                                <option value="">-- {% trans "Seleccionar" %} --</option>
+                                <option value="derecha">{% trans "Derecha" %}</option>
+                                <option value="izquierda">{% trans "Izquierda" %}</option>
+                                <option value="ambas">{% trans "Ambas" %}</option>
                             </select>
                             <small id="errorPiernaHabil" class="help-text text-danger" aria-live="polite"></small>
                         </div>
 
                         <!-- Posición -->
                         <div class="col-md-6">
-                            <label for="posicionInput" class="form-label fw-medium">Posición</label>
+                            <label for="posicionInput" class="form-label fw-medium">{% trans "Posición" %}</label>
                             <select class="form-select rounded-3" id="posicionInput" name="posicion">
-                                <option value="">No tiene posición</option>
-                                <option value="portero">Portero</option>
-                                <option value="lateral_derecho">Lateral Derecho</option>
-                                <option value="defensa_central">Defensa Central</option>
-                                <option value="lateral_izquierdo">Lateral Izquierdo</option>
-                                <option value="mediocentro_defensivo">Mediocentro Defensivo</option>
-                                <option value="mediocentro">Mediocentro</option>
-                                <option value="mediocentro_ofensivo">Mediocentro Ofensivo</option>
-                                <option value="interior_izquierda">Interior Izquierda</option>
-                                <option value="interior_derecha">Interior Derecha</option>
-                                <option value="extremo_derecho">Extremo Derecho</option>
-                                <option value="extremo_izquierdo">Extremo Izquierdo</option>
-                                <option value="delantero_centro">Delantero Centro</option>
-                                <option value="segundo_delantero">Segundo Delantero</option>
+                                <option value="">-- {% trans "Seleccionar" %} --</option>
+                                <option value="portero">{% trans "Portero" %}</option>
+                                <option value="lateral_derecho">{% trans "Lateral Derecho" %}</option>
+                                <option value="defensa_central">{% trans "Defensa Central" %}</option>
+                                <option value="lateral_izquierdo">{% trans "Lateral Izquierdo" %}</option>
+                                <option value="mediocentro_defensivo">{% trans "Mediocentro Defensivo" %}</option>
+                                <option value="mediocentro">{% trans "Mediocentro" %}</option>
+                                <option value="mediocentro_ofensivo">{% trans "Mediocentro Ofensivo" %}</option>
+                                <option value="interior_izquierda">{% trans "Interior Izquierda" %}</option>
+                                <option value="interior_derecha">{% trans "Interior Derecha" %}</option>
+                                <option value="extremo_derecho">{% trans "Extremo Derecho" %}</option>
+                                <option value="extremo_izquierdo">{% trans "Extremo Izquierdo" %}</option>
+                                <option value="delantero_centro">{% trans "Delantero Centro" %}</option>
+                                <option value="segundo_delantero">{% trans "Segundo Delantero" %}</option>
                             </select>
                             <small id="errorPosicion" class="help-text text-danger" aria-live="polite"></small>
                         </div>
 
                         <!-- Altura -->
                         <div class="col-md-6">
-                            <label for="alturaInput" class="form-label fw-medium">Altura (cm)</label>
+                            <label for="alturaInput" class="form-label fw-medium">{% trans "Altura" %} (cm)</label>
                             <input type="number" class="form-control rounded-3" id="alturaInput" 
                                 name="altura" min="100" max="250">
                             <small id="errorAltura" class="help-text text-danger" aria-live="polite"></small>
@@ -463,7 +461,7 @@
 
                         <!-- Peso -->
                         <div class="col-md-6">
-                            <label for="pesoInput" class="form-label fw-medium">Peso (kg)</label>
+                            <label for="pesoInput" class="form-label fw-medium">{% trans "Peso" %} (kg)</label>
                             <input type="number" class="form-control rounded-3" id="pesoInput" 
                                 name="peso" min="30" max="150" step="0.1">
                             <small id="errorPeso" class="help-text text-danger" aria-live="polite"></small>
@@ -475,7 +473,7 @@
                                 <input class="form-check-input" type="checkbox" id="esCapitanInput" 
                                     name="es_capitan">
                                 <label class="form-check-label fw-medium" for="esCapitanInput">
-                                    Es capitán del equipo
+                                    {% trans "Es capitán del equipo" %}
                                 </label>
                             </div>
                         </div>
@@ -483,9 +481,9 @@
 
                     <div class="d-flex justify-content-end gap-2 mt-4">
                         <button type="button" class="btn btn-light text-secondary px-4 rounded-3"
-                            data-bs-dismiss="modal">Cancelar</button>
+                            data-bs-dismiss="modal">{% trans "Cancelar" %}</button>
                         <button type="submit" class="btn text-white px-4 rounded-3"
-                            style="background-color: #27a770;">Guardar cambios</button>
+                            style="background-color: #27a770;">{% trans "Guardar cambios" %}</button>
                     </div>
                 </form>
             </div>
@@ -499,20 +497,20 @@
         <div class="modal-content rounded-4 border-0 shadow">
             <div class="modal-header border-bottom border-danger">
                 <h5 class="modal-title fw-bold text-danger" id="confirmRemovePlayerLabel">
-                    <i class="bi bi-exclamation-triangle-fill"></i> Confirmación
+                    <i class="bi bi-exclamation-triangle-fill"></i> {% trans "Confirmación" %}
                 </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
 
             <div class="modal-body p-4">
-                <p class="mb-0">Esta acción <strong>no se puede deshacer</strong>. ¿Estás seguro de que quieres eliminar al jugador?</p>
+                <p class="mb-0">{% trans "Esta acción" %} <strong>{% trans "no se puede deshacer" %}</strong>. {% trans "¿Estás seguro de que quieres eliminar al jugador?" %}</p>
             </div>
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-light text-secondary px-4 rounded-3"
-                    data-bs-dismiss="modal">Cancelar</button>
+                    data-bs-dismiss="modal">{% trans "Cancelar" %}</button>
                 <button type="button" class="btn btn-danger px-4 rounded-3" id="confirmRemovePlayerBtn">
-                    <i class="bi bi-trash-fill"></i> Sí, eliminar jugador
+                    <i class="bi bi-trash-fill"></i> {% trans "Sí, eliminar jugador" %}
                 </button>
             </div>
         </div>
@@ -525,7 +523,7 @@
         <div class="modal-content rounded-4 border-0 shadow">
             <div class="modal-header border-bottom">
                 <h5 class="modal-title fw-bold" id="addPlayerLabel" style="color: #27a770;">
-                    <i class="bi bi-person-plus-fill"></i> Añadir jugador al equipo
+                    <i class="bi bi-person-plus-fill"></i> {% trans "Añadir jugador al equipo" %}
                 </h5>
             </div>
 
@@ -555,21 +553,21 @@
                                 data-equipo-id="{{ equipo.id }}" 
                                 data-jugador-id="{{ jugador.id }}"
                                 data-jugador-nombre="{{ jugador.usuario.get_full_name }}">
-                                <i class="bi bi-plus-lg"></i> Añadir
+                                <i class="bi bi-plus-lg"></i> {% trans "Añadir" %}
                             </button>
                         </div>
                         {% endfor %}
                     </div>
                 {% else %}
                     <div class="alert alert-info">
-                        <i class="bi bi-info-circle"></i> No hay jugadores disponibles sin equipo.
+                        <i class="bi bi-info-circle"></i> {% trans "No hay jugadores disponibles sin equipo." %}
                     </div>
                 {% endif %}
             </div>
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-light text-secondary px-4 rounded-3" data-bs-dismiss="modal">
-                    Cerrar
+                    {% trans "Cerrar" %}
                 </button>
             </div>
         </div>
@@ -581,26 +579,25 @@
                             <div class="modal-content rounded-4">
 
                                 <div class="modal-header">
-                                    <h5 class="modal-title text-danger"><i class="bi bi-shield-slash-fill"></i> Abandonar
-                                        equipo</h5>
+                                    <h5 class="modal-title text-danger"><i class="bi bi-shield-slash-fill"></i> {% trans "Abandonar equipo" %}</h5>
                                 </div>
 
                                 <div class="modal-body">
                                     <p>
-                                        ⚠️ Esta acción <strong>no se puede deshacer</strong>.<br>
-                                        ¿Estás seguro de que quieres abandonar el equipo actual?
-                                        Quedarás sin equipo y el capitán más antiguo será asignado automáticamente como entrenador interino.
+                                        ⚠️ {% trans "Esta acción" %} <strong>{% trans "no se puede deshacer" %}</strong>.<br>
+                                        {% trans "¿Estás seguro de que quieres abandonar el equipo actual?" %}
+                                        {% trans "Quedarás sin equipo y el capitán más antiguo será asignado automáticamente como entrenador interino." %}
                                     </p>
                                 </div>
 
                                 <div class="modal-footer">
                                     <button class="btn btn-secondary" data-bs-dismiss="modal">
-                                        Cancelar
+                                        {% trans "Cancelar" %}
                                     </button>
 
                                     <button class="btn btn-danger" id="confirmDeleteBtn"
                                         data-url="{% url 'equipos:abandonar_equipo' %}">
-                                        Sí, abandonar equipo
+                                        {% trans "Sí, abandonar equipo" %}
                                     </button>
                                 </div>
 
@@ -612,8 +609,8 @@
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content rounded-4 text-center p-4">
 
-                                <h5 class="text-success mb-3">Equipo abandonado</h5>
-                                <p>Has abandonado el equipo correctamente.</p>
+                                <h5 class="text-success mb-3">{% trans "Equipo abandonado" %}</h5>
+                                <p>{% trans "Has abandonado el equipo correctamente." %}</p>
 
                             </div>
                         </div>
@@ -639,8 +636,7 @@
                 class="bg-shield-dark border-0 shadow-sm rounded-4"
                 style="width: 350px; height: 350px; object-fit: cover;">
             {% else %}
-            <!-- Placeholder si no tiene foto (Imagen genérica o iniciales) -->
-            <!-- Usamos placehold.co con tus colores: fondo verde, texto blanco -->
+            <!-- Placeholder si no tiene foto (Imagen genérica) -->
             <img src="{% static 'img/default_shield.png' %}" alt="Sin escudo"
                 class="bg-shield-dark border-0 shadow-sm rounded-4"
                 style="width: 350px; height: 350px; object-fit: cover;">
@@ -648,12 +644,12 @@
             <div class="w-100 card shadow-sm bg-card-dark">
                 <!-- Sección Lesiones -->
                 <div class="card-body text-center">
-                    <h3 class="h4 text-foot-green fw-bold mb-2">Últimos resultados</h3>
-                    <p class="fs-5 text-secondary">Últimos partidos del equipo</p>
+                    <h3 class="h4 text-foot-green fw-bold mb-2">{% trans "Últimos resultados" %}</h3>
+                    <p class="fs-5 text-secondary">{% trans "Últimos partidos del equipo" %}</p>
 
                     <!-- Sección Sanciones -->
-                    <h3 class="h4 text-foot-green fw-bold mb-2">Próximos partidos</h3>
-                    <p class="fs-5 text-secondary">Próximos partidos del equipo</p>
+                    <h3 class="h4 text-foot-green fw-bold mb-2">{% trans "Próximos partidos" %}</h3>
+                    <p class="fs-5 text-secondary">{% trans "Próximos partidos del equipo" %}</p>
                 </div>
 
 
@@ -663,15 +659,15 @@
 
                 <div class="card-body">
                     <h3 class="h5 text-foot-green fw-bold mb-3">
-                        Información de contacto
+                        {% trans "Información de contacto" %}
                     </h3>
                     <ul class="list-unstyled mb-0">
                         <li class="mb-2 text-secondary">
-                            <strong>Teléfono:</strong>
+                            <strong>{% trans "Teléfono" %}:</strong>
                             {{ equipo.telefono }}
                         </li>
                         <li class="mb-2 text-secondary">
-                            <strong>Dirección:</strong>
+                            <strong>{% trans "Dirección" %}:</strong>
                             {{ equipo.direccion }}
                             <br>
                             <br>

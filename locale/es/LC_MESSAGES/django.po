@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-28 11:05+0100\n"
+"POT-Creation-Date: 2026-04-12 12:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,6 +18,398 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? "
 "1 : 2;\n"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:5 .\eventos\models.py:99
+#: .\football_stats_app\templates\includes\header.html:83
+#: .\football_stats_app\templates\includes\header.html:99
+#: .\usuarios\templates\usuarios\miperfil.html:166
+msgid "Equipo"
+msgstr "Equipo"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:5 .\eventos\admin.py:72
+msgid "Información"
+msgstr "Información"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:19
+#: .\usuarios\templates\usuarios\miperfil.html:25
+msgid "Información general"
+msgstr "Información general"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:22
+msgid "Activo"
+msgstr "Activo"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:37
+msgid "Club"
+msgstr "Club"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:52
+msgid "Fundación"
+msgstr "Fundación"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:67
+msgid "Alta en App"
+msgstr "Alta en App"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:103
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:31
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:83
+#: .\usuarios\templates\usuarios\inicio_jugador_sin_equipo.html:30
+#: .\usuarios\templates\usuarios\inicio_jugador_sin_equipo.html:88
+#: .\usuarios\templates\usuarios\miperfil.html:223
+#: .\usuarios\templates\usuarios\signin.html:73
+msgid "Nombre"
+msgstr "Nombre"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:111
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:32
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:84
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:134
+#: .\usuarios\templates\usuarios\inicio_jugador_sin_equipo.html:31
+#: .\usuarios\templates\usuarios\inicio_jugador_sin_equipo.html:89
+msgid "Año de fundación"
+msgstr "Año de fundación"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:119
+#: .\equipos\templates\equipos\informacion_equipo.html:670
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:202
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:144
+msgid "Dirección"
+msgstr "Dirección"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:126
+#: .\equipos\templates\equipos\informacion_equipo.html:666
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:151
+#: .\usuarios\templates\usuarios\miperfil.html:66
+#: .\usuarios\templates\usuarios\miperfil.html:249
+#: .\usuarios\templates\usuarios\signin.html:85
+msgid "Teléfono"
+msgstr "Teléfono"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:134
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:177
+msgid "Color principal"
+msgstr "Color principal"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:142
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:186
+msgid "Color secundario"
+msgstr "Color secundario"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:150
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:30
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:82
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:161
+#: .\usuarios\templates\usuarios\inicio_jugador_sin_equipo.html:29
+#: .\usuarios\templates\usuarios\inicio_jugador_sin_equipo.html:87
+msgid "Escudo"
+msgstr "Escudo"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:153
+msgid "Sube una nueva imagen solo si quieres cambiar el escudo"
+msgstr "Sube una nueva imagen solo si quieres cambiar el escudo."
+
+#: .\equipos\templates\equipos\informacion_equipo.html:173
+#: .\equipos\templates\equipos\informacion_equipo.html:486
+#: .\usuarios\templates\usuarios\miperfil.html:303
+msgid "Guardar cambios"
+msgstr "Guardar cambios"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:188
+msgid "Información del equipo actualizada"
+msgstr "Información del equipo actualizada"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:204
+#: .\usuarios\templates\usuarios\miperfil.html:334
+msgid "Error al actualizar información"
+msgstr "Error al actualizar información"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:211
+#: .\equipos\templates\equipos\informacion_equipo.html:570
+#: .\football_stats_app\templates\includes\footer.html:126
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:282
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:228
+#: .\usuarios\templates\usuarios\login.html:33
+#: .\usuarios\templates\usuarios\miperfil.html:341
+#: .\usuarios\templates\usuarios\signin.html:33
+#: .\usuarios\templates\usuarios\signin.html:175
+msgid "Cerrar"
+msgstr "Cerrar"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:221
+#: .\usuarios\models.py:14 .\usuarios\templates\usuarios\signin.html:130
+msgid "Entrenador"
+msgstr "Entrenador"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:253
+msgid "Plantilla"
+msgstr "Plantilla"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:261
+msgid "Buscar jugador"
+msgstr "Buscar jugador"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:270
+#: .\equipos\templates\equipos\informacion_equipo.html:414
+#: .\usuarios\templates\usuarios\miperfil.html:147
+msgid "Dorsal"
+msgstr "Dorsal"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:271
+#: .\equipos\templates\equipos\informacion_equipo.html:434
+#: .\usuarios\templates\usuarios\miperfil.html:139
+msgid "Posición"
+msgstr "Posición"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:272
+#: .\usuarios\models.py:15
+msgid "Jugador"
+msgstr "Jugador"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:273
+#: .\usuarios\templates\usuarios\miperfil.html:155
+msgid "Pierna"
+msgstr "Pierna"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:274
+msgid "Altura (cm)"
+msgstr "Altura (cm)"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:275
+msgid "Peso (kg)"
+msgstr "Peso (kg)"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:276
+#: .\usuarios\templates\usuarios\miperfil.html:179
+msgid "Capitán"
+msgstr "Capitán"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:278
+msgid "Acciones"
+msgstr "Acciones"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:355
+msgid "Editar"
+msgstr "Editar"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:363
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:167
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:264
+msgid "Eliminar"
+msgstr "Eliminar"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:386
+msgid "Añadir jugador"
+msgstr "Añadir jugador"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:391
+#: .\equipos\templates\equipos\informacion_equipo.html:582
+msgid "Abandonar equipo"
+msgstr "Abandonar equipo"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:402
+msgid "Editar información del jugador"
+msgstr "Editar información del jugador"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:422
+msgid "Pierna Hábil"
+msgstr "Pierna Hábil"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:424
+#: .\equipos\templates\equipos\informacion_equipo.html:436
+msgid "Seleccionar"
+msgstr "Seleccionar"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:425
+#: .\usuarios\models.py:58
+msgid "Derecha"
+msgstr "Derecha"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:426
+#: .\usuarios\models.py:59
+msgid "Izquierda"
+msgstr "Izquierda"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:427
+#: .\usuarios\models.py:60
+msgid "Ambas"
+msgstr "Ambas"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:437
+#: .\usuarios\models.py:69
+msgid "Portero"
+msgstr "Portero"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:438
+#: .\usuarios\models.py:70
+msgid "Lateral Derecho"
+msgstr "Lateral Derecho"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:439
+#: .\usuarios\models.py:71
+msgid "Defensa Central"
+msgstr "Defensa Central"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:440
+#: .\usuarios\models.py:72
+msgid "Lateral Izquierdo"
+msgstr "Lateral Izquierdo"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:441
+#: .\usuarios\models.py:73
+msgid "Mediocentro Defensivo"
+msgstr "Mediocentro Defensivo"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:442
+#: .\usuarios\models.py:74
+msgid "Mediocentro"
+msgstr "Mediocentro"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:443
+#: .\usuarios\models.py:75
+msgid "Mediocentro Ofensivo"
+msgstr "Mediocentro Ofensivo"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:444
+#: .\usuarios\models.py:76
+msgid "Interior Izquierda"
+msgstr "Interior Izquierda"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:445
+#: .\usuarios\models.py:77
+msgid "Interior Derecha"
+msgstr "Interior Derecha"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:446
+#: .\usuarios\models.py:78
+msgid "Extremo Derecho"
+msgstr "Extremo Derecho"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:447
+#: .\usuarios\models.py:79
+msgid "Extremo Izquierdo"
+msgstr "Extremo Izquierdo"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:448
+#: .\usuarios\models.py:81
+msgid "Delantero Centro"
+msgstr "Delantero Centro"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:449
+#: .\usuarios\models.py:80
+msgid "Segundo Delantero"
+msgstr "Segundo Delantero"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:456
+#: .\usuarios\templates\usuarios\miperfil.html:123
+msgid "Altura"
+msgstr "Altura"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:464
+#: .\usuarios\templates\usuarios\miperfil.html:131
+msgid "Peso"
+msgstr "Peso"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:476
+msgid "Es capitán del equipo"
+msgstr "Es capitán del equipo"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:484
+#: .\equipos\templates\equipos\informacion_equipo.html:511
+#: .\equipos\templates\equipos\informacion_equipo.html:595
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:122
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:144
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:166
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:218
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:240
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:263
+#: .\usuarios\templates\usuarios\miperfil.html:301
+#: .\usuarios\templates\usuarios\miperfil.html:409
+#: .\usuarios\templates\usuarios\password_forget.html:33
+msgid "Cancelar"
+msgstr "Cancelar"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:500
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:155
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:251
+msgid "Confirmación"
+msgstr "Confirmación"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:506
+#: .\equipos\templates\equipos\informacion_equipo.html:587
+#: .\usuarios\templates\usuarios\miperfil.html:402
+msgid "Esta acción"
+msgstr "Esta acción"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:506
+#: .\equipos\templates\equipos\informacion_equipo.html:587
+#: .\usuarios\templates\usuarios\miperfil.html:402
+msgid "no se puede deshacer"
+msgstr "no se puede deshacer"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:506
+msgid "¿Estás seguro de que quieres eliminar al jugador?"
+msgstr "¿Estás seguro de que quieres eliminar al jugador?"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:513
+msgid "Sí, eliminar jugador"
+msgstr "Sí, eliminar jugador"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:526
+msgid "Añadir jugador al equipo"
+msgstr "Añadir jugador al equipo"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:556
+msgid "Añadir"
+msgstr "Añadir"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:563
+msgid "No hay jugadores disponibles sin equipo."
+msgstr "No hay jugadores disponibles sin equipo."
+
+#: .\equipos\templates\equipos\informacion_equipo.html:588
+msgid "¿Estás seguro de que quieres abandonar el equipo actual?"
+msgstr "¿Estás seguro de que quieres abandonar el equipo actual?"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:589
+msgid ""
+"Quedarás sin equipo y el capitán más antiguo será asignado automáticamente "
+"como entrenador interino."
+msgstr ""
+"Quedarás sin equipo y el capitán más antiguo será asignado automáticamente "
+"como entrenador interino."
+
+#: .\equipos\templates\equipos\informacion_equipo.html:600
+msgid "Sí, abandonar equipo"
+msgstr "Sí, abandonar equipo"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:612
+msgid "Equipo abandonado"
+msgstr "Equipo abandonado"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:613
+msgid "Has abandonado el equipo correctamente."
+msgstr "Has abandonado el equipo correctamente."
+
+#: .\equipos\templates\equipos\informacion_equipo.html:647
+msgid "Últimos resultados"
+msgstr "Últimos resultados"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:648
+msgid "Últimos partidos del equipo"
+msgstr "Últimos partidos del equipo"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:651
+msgid "Próximos partidos"
+msgstr "Próximos partidos"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:652
+msgid "Próximos partidos del equipo"
+msgstr "Próximos partidos del equipo"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:662
+msgid "Información de contacto"
+msgstr "Información de contacto"
 
 #: .\equipos\templates\equipos\pizarra_tactica.html:4
 #: .\usuarios\context_processors.py:107
@@ -34,8 +426,6 @@ msgid "Reiniciar"
 msgstr "Reiniciar"
 
 #: .\equipos\templates\equipos\pizarra_tactica.html:19
-#: .\equipos\templates\equipos\pizarra_tactica.html:384
-#: .\equipos\templates\equipos\pizarra_tactica.html:390
 msgid "Descargar Imagen"
 msgstr "Descargar Imagen"
 
@@ -64,6 +454,7 @@ msgid "Selecciona un equipo de la BD o introduce su nombre manualmente"
 msgstr "Selecciona un equipo de la BD o introduce su nombre manualmente"
 
 #: .\eventos\admin.py:36
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:198
 msgid "Estadio"
 msgstr "Estadio"
 
@@ -75,16 +466,12 @@ msgstr "Estadísticas"
 msgid "Metadata"
 msgstr "Metadata"
 
-#: .\eventos\admin.py:72
-msgid "Información"
-msgstr "Información"
-
 #: .\eventos\admin.py:75 .\eventos\models.py:114
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:116
 msgid "Descripción"
 msgstr "Descripción"
 
 #: .\eventos\apps.py:8
-#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:43
 msgid "Eventos"
 msgstr "Eventos"
 
@@ -141,33 +528,32 @@ msgid "Partidos"
 msgstr "Partidos"
 
 #: .\eventos\models.py:88
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:108
 msgid "Fuerza"
 msgstr "Fuerza"
 
 #: .\eventos\models.py:89
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:109
 msgid "Táctico"
 msgstr "Táctico"
 
 #: .\eventos\models.py:90
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:110
 msgid "Ataque"
 msgstr "Ataque"
 
 #: .\eventos\models.py:91
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:111
 msgid "Defensa"
 msgstr "Defensa"
 
 #: .\eventos\models.py:92
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:112
 msgid "Recuperación"
 msgstr "Recuperación"
 
-#: .\eventos\models.py:99
-#: .\football_stats_app\templates\includes\header.html:83
-#: .\football_stats_app\templates\includes\header.html:99
-#: .\usuarios\templates\usuarios\miperfil.html:166
-msgid "Equipo"
-msgstr "Equipo"
-
 #: .\eventos\models.py:109
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:105
 msgid "Tipo de entrenamiento"
 msgstr "Tipo de entrenamiento"
 
@@ -350,15 +736,6 @@ msgstr "¿Puedo borrar mi cuenta?"
 msgid "Sí, desde “Mi perfil” → “Eliminar cuenta”."
 msgstr "Sí, desde “Mi perfil” → “Eliminar cuenta”."
 
-#: .\football_stats_app\templates\includes\footer.html:126
-#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:228
-#: .\usuarios\templates\usuarios\login.html:33
-#: .\usuarios\templates\usuarios\miperfil.html:341
-#: .\usuarios\templates\usuarios\signin.html:33
-#: .\usuarios\templates\usuarios\signin.html:175
-msgid "Cerrar"
-msgstr "Cerrar"
-
 #: .\football_stats_app\templates\includes\header.html:75
 #: .\football_stats_app\templates\landing.html:4
 #: .\usuarios\context_processors.py:11
@@ -486,14 +863,6 @@ msgstr "Equipos"
 msgid "Administrador"
 msgstr "Administrador"
 
-#: .\usuarios\models.py:14 .\usuarios\templates\usuarios\signin.html:130
-msgid "Entrenador"
-msgstr "Entrenador"
-
-#: .\usuarios\models.py:15
-msgid "Jugador"
-msgstr "Jugador"
-
 #: .\usuarios\models.py:16
 msgid "Invitado"
 msgstr "Invitado"
@@ -526,70 +895,6 @@ msgstr "peso (kg)"
 msgid "dorsal"
 msgstr "dorsal"
 
-#: .\usuarios\models.py:58
-msgid "Derecha"
-msgstr "Derecha"
-
-#: .\usuarios\models.py:59
-msgid "Izquierda"
-msgstr "Izquierda"
-
-#: .\usuarios\models.py:60
-msgid "Ambas"
-msgstr "Ambas"
-
-#: .\usuarios\models.py:69
-msgid "Portero"
-msgstr "Portero"
-
-#: .\usuarios\models.py:70
-msgid "Lateral Derecho"
-msgstr "Lateral Derecho"
-
-#: .\usuarios\models.py:71
-msgid "Defensa Central"
-msgstr "Defensa Central"
-
-#: .\usuarios\models.py:72
-msgid "Lateral Izquierdo"
-msgstr "Lateral Izquierdo"
-
-#: .\usuarios\models.py:73
-msgid "Mediocentro Defensivo"
-msgstr "Mediocentro Defensivo"
-
-#: .\usuarios\models.py:74
-msgid "Mediocentro"
-msgstr "Mediocentro"
-
-#: .\usuarios\models.py:75
-msgid "Mediocentro Ofensivo"
-msgstr "Mediocentro Ofensivo"
-
-#: .\usuarios\models.py:76
-msgid "Interior Izquierda"
-msgstr "Interior Izquierda"
-
-#: .\usuarios\models.py:77
-msgid "Interior Derecha"
-msgstr "Interior Derecha"
-
-#: .\usuarios\models.py:78
-msgid "Extremo Derecho"
-msgstr "Extremo Derecho"
-
-#: .\usuarios\models.py:79
-msgid "Extremo Izquierdo"
-msgstr "Extremo Izquierdo"
-
-#: .\usuarios\models.py:80
-msgid "Segundo Delantero"
-msgstr "Segundo Delantero"
-
-#: .\usuarios\models.py:81
-msgid "Delantero Centro"
-msgstr "Delantero Centro"
-
 #: .\usuarios\models.py:91
 msgid "es capitán"
 msgstr "es capitán"
@@ -610,60 +915,127 @@ msgid "Bienvenid@"
 msgstr "Bienvenid@"
 
 #: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:22
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:178
 msgid "Añadir partido"
 msgstr "Añadir partido"
 
 #: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:25
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:230
 msgid "Eliminar partido"
 msgstr "Eliminar partido"
 
 #: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:28
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:95
 msgid "Añadir entrenamiento"
 msgstr "Añadir entrenamiento"
 
 #: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:31
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:134
 msgid "Eliminar entrenamiento"
 msgstr "Eliminar entrenamiento"
 
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:43
+msgid "Próximos eventos"
+msgstr "Próximos eventos"
+
 #: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:46
-msgid "No hay eventos próximos."
-msgstr "No hay eventos próximos."
+msgid "Cargando eventos..."
+msgstr "Cargando eventos..."
 
 #: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:53
 msgid "Partidos anteriores"
 msgstr "Partidos anteriores"
 
-#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:59
-msgid "Fecha"
-msgstr "Fecha"
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:56
+msgid "Cargando partidos anteriores..."
+msgstr "Cargando partidos anteriores..."
 
-#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:60
-msgid "Rival"
-msgstr "Rival"
-
-#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:61
-msgid "Resultado"
-msgstr "Resultado"
-
-#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:66
-msgid "No hay partidos anteriores."
-msgstr "No hay partidos anteriores."
-
-#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:76
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:63
 msgid "Estadísticas del equipo"
 msgstr "Estadísticas del equipo"
 
-#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:81
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:68
 msgid "Partidos jugados"
 msgstr "Partidos jugados"
 
-#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:85
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:72
 msgid "Victorias"
 msgstr "Victorias"
 
-#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:89
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:76
 msgid "Derrotas"
 msgstr "Derrotas"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:101
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:184
+msgid "Fecha y hora"
+msgstr "Fecha y hora"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:107
+msgid "Selecciona un tipo"
+msgstr "Selecciona tu equipo"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:123
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:219
+msgid "Guardar"
+msgstr "Guardar"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:138
+msgid "Selecciona el entrenamiento que deseas eliminar:"
+msgstr "Selecciona el entrenamiento que deseas eliminar:"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:140
+msgid "Cargando entrenamientos..."
+msgstr "Cargando entrenamientos..."
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:159
+msgid "¿Estás seguro de que deseas eliminar este entrenamiento?"
+msgstr "¿Estás seguro de que deseas eliminar este entrenamiento?"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:188
+msgid "Equipo rival"
+msgstr "Equipo rival"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:191
+msgid "Selecciona un equipo (opcional)"
+msgstr "Selecciona un equipo (opcional)"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:194
+msgid "O escribe el nombre si no usa la app"
+msgstr "O escribe el nombre si no usa la app"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:195
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:127
+msgid "Nombre del equipo"
+msgstr "Nombre del equipo"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:207
+msgid "Posesión local (a%)"
+msgstr "Posesión local (%)"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:211
+msgid "Posesión visitante (%)"
+msgstr "Posesión visitante (%)"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:234
+msgid "Selecciona el partido que deseas eliminar:"
+msgstr "Selecciona el partido que deseas eliminar:"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:236
+msgid "Cargando partidos..."
+msgstr "Cargando partidos..."
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:255
+msgid "¿Estás seguro de que deseas eliminar este partido?"
+msgstr "¿Estás seguro de que quieres eliminar este partido?"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:275
+msgid "Información del evento"
+msgstr "Información del evento"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:283
+msgid "Marcar como finalizado"
+msgstr "Marcar como finalizado"
 
 #: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:14
 msgid "Puedes"
@@ -680,31 +1052,6 @@ msgstr "y convertirte en su entrenador/a de forma sencilla."
 #: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:25
 msgid "Equipos donde ha entrenado"
 msgstr "Equipos donde ha entrenado"
-
-#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:30
-#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:82
-#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:161
-#: .\usuarios\templates\usuarios\inicio_jugador_sin_equipo.html:29
-#: .\usuarios\templates\usuarios\inicio_jugador_sin_equipo.html:87
-msgid "Escudo"
-msgstr "Escudo"
-
-#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:31
-#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:83
-#: .\usuarios\templates\usuarios\inicio_jugador_sin_equipo.html:30
-#: .\usuarios\templates\usuarios\inicio_jugador_sin_equipo.html:88
-#: .\usuarios\templates\usuarios\miperfil.html:223
-#: .\usuarios\templates\usuarios\signin.html:73
-msgid "Nombre"
-msgstr "Nombre"
-
-#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:32
-#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:84
-#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:134
-#: .\usuarios\templates\usuarios\inicio_jugador_sin_equipo.html:31
-#: .\usuarios\templates\usuarios\inicio_jugador_sin_equipo.html:89
-msgid "Año de fundación"
-msgstr "Año de fundación"
 
 #: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:34
 #: .\usuarios\templates\usuarios\inicio_jugador_sin_equipo.html:33
@@ -740,21 +1087,6 @@ msgstr "Crear nuevo equipo"
 msgid "Crea un nuevo club y conviértete en su entrenador automáticamente."
 msgstr "Crea un nuevo club y conviértete en su entrenador automáticamente."
 
-#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:127
-msgid "Nombre del equipo"
-msgstr "Nombre del equipo"
-
-#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:144
-msgid "Dirección"
-msgstr "Dirección"
-
-#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:151
-#: .\usuarios\templates\usuarios\miperfil.html:66
-#: .\usuarios\templates\usuarios\miperfil.html:249
-#: .\usuarios\templates\usuarios\signin.html:85
-msgid "Teléfono"
-msgstr "Teléfono"
-
 #: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:164
 msgid ""
 "Si no quieres añadir un escudo se utilizará por defecto el que se puede ver "
@@ -763,17 +1095,9 @@ msgstr ""
 "Si no quieres añadir un escudo se utilizará por defecto el que se puede ver "
 "en el formulario."
 
-#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:177
-msgid "Color principal"
-msgstr "Color principal"
-
 #: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:180
 msgid "Elige el color principal"
 msgstr "Elige el color principal"
-
-#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:186
-msgid "Color secundario"
-msgstr "Color secundario"
 
 #: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:190
 msgid "Elige el color secundario"
@@ -863,10 +1187,6 @@ msgstr "Contraseña"
 msgid "¿No recuerdas tu contraseña?"
 msgstr "¿No recuerdas tu contraseña?"
 
-#: .\usuarios\templates\usuarios\miperfil.html:25
-msgid "Información general"
-msgstr "Información general"
-
 #: .\usuarios\templates\usuarios\miperfil.html:40
 msgid "Nombre Completo"
 msgstr "Nombre Completo"
@@ -884,33 +1204,9 @@ msgstr "Rol"
 msgid "Miembro desde"
 msgstr "Miembro desde"
 
-#: .\usuarios\templates\usuarios\miperfil.html:123
-msgid "Altura"
-msgstr "Altura"
-
-#: .\usuarios\templates\usuarios\miperfil.html:131
-msgid "Peso"
-msgstr "Peso"
-
-#: .\usuarios\templates\usuarios\miperfil.html:139
-msgid "Posición"
-msgstr "Posición"
-
-#: .\usuarios\templates\usuarios\miperfil.html:147
-msgid "Dorsal"
-msgstr "Dorsal"
-
-#: .\usuarios\templates\usuarios\miperfil.html:155
-msgid "Pierna"
-msgstr "Pierna"
-
 #: .\usuarios\templates\usuarios\miperfil.html:179
 msgid "Este jugador es"
 msgstr "Este jugador es"
-
-#: .\usuarios\templates\usuarios\miperfil.html:179
-msgid "Capitán"
-msgstr "Capitán"
 
 #: .\usuarios\templates\usuarios\miperfil.html:179
 msgid "del equipo."
@@ -997,23 +1293,9 @@ msgstr ""
 "Por seguridad, el cambio de contraseña se realiza mediante correo "
 "electrónico."
 
-#: .\usuarios\templates\usuarios\miperfil.html:301
-#: .\usuarios\templates\usuarios\miperfil.html:409
-#: .\usuarios\templates\usuarios\password_forget.html:33
-msgid "Cancelar"
-msgstr "Cancelar"
-
-#: .\usuarios\templates\usuarios\miperfil.html:303
-msgid "Guardar cambios"
-msgstr "Guardar cambios"
-
 #: .\usuarios\templates\usuarios\miperfil.html:318
 msgid "Información personal actualizada"
 msgstr "Información personal actualizada"
-
-#: .\usuarios\templates\usuarios\miperfil.html:334
-msgid "Error al actualizar información"
-msgstr "Error al actualizar información"
 
 #: .\usuarios\templates\usuarios\miperfil.html:352
 msgid "Lesiones"
@@ -1047,14 +1329,6 @@ msgstr "Estadísticas del equipo actual"
 msgid "Estadisticas del equipo actual del entrenador"
 msgstr "Estadisticas del equipo actual del entrenador"
 
-#: .\usuarios\templates\usuarios\miperfil.html:402
-msgid "Esta acción"
-msgstr "Esta acción"
-
-#: .\usuarios\templates\usuarios\miperfil.html:402
-msgid "no se puede deshacer"
-msgstr "no se puede deshacer"
-
 #: .\usuarios\templates\usuarios\miperfil.html:403
 msgid "¿Estás seguro de que quieres eliminar tu cuenta?"
 msgstr "¿Estás seguro de que quieres eliminar tu cuenta?"
@@ -1082,7 +1356,7 @@ msgid "La contraseña no cumple los requisitos."
 msgstr "La contraseña no cumple los requisitos."
 
 #: .\usuarios\templates\usuarios\new_password.html:21
-#: .\usuarios\templates\usuarios\signin.html:65 .\usuarios\views.py:50
+#: .\usuarios\templates\usuarios\signin.html:65 .\usuarios\views.py:58
 msgid "Las contraseñas no coinciden."
 msgstr "Las contraseñas no coinciden."
 
@@ -1302,36 +1576,48 @@ msgstr ""
 msgid "Acepto"
 msgstr "Acepto"
 
-#: .\usuarios\views.py:28
+#: .\usuarios\views.py:32
 msgid "Sesión inciada correctamente."
 msgstr "Sesión inciada correctamente."
 
-#: .\usuarios\views.py:31
+#: .\usuarios\views.py:35
 msgid "El usuario no existe o la contraseña es incorrecta."
 msgstr "El usuario no existe o la contraseña es incorrecta."
 
-#: .\usuarios\views.py:53
+#: .\usuarios\views.py:61
 msgid "Este correo electrónico ya está registrado."
 msgstr "Este correo electrónico ya está registrado."
 
-#: .\usuarios\views.py:83
+#: .\usuarios\views.py:91
 msgid "Te has registrado correctamente"
 msgstr "Te has registrado correctamente"
 
-#: .\usuarios\views.py:89
+#: .\usuarios\views.py:97
 #, python-brace-format
 msgid "Error al registrar: {}"
 msgstr "Error al registrar: {}"
 
-#: .\usuarios\views.py:112
+#: .\usuarios\views.py:123
 msgid "Perfil actualizado correctamente"
 msgstr "Perfil actualizado correctamente"
 
-#: .\usuarios\views.py:121
+#: .\usuarios\views.py:132
 #, python-brace-format
 msgid "Error al actualizar: {}"
 msgstr "Error al actualizar: {}"
 
-#: .\usuarios\views.py:178
+#: .\usuarios\views.py:198
 msgid "Te hemos enviado un correo para cambiar tu contraseña."
 msgstr "Te hemos enviado un correo para cambiar tu contraseña."
+
+#~ msgid "No hay eventos próximos."
+#~ msgstr "No hay eventos próximos."
+
+#~ msgid "Fecha"
+#~ msgstr "Fecha"
+
+#~ msgid "Rival"
+#~ msgstr "Rival"
+
+#~ msgid "Resultado"
+#~ msgstr "Resultado"
