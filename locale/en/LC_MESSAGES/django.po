@@ -502,17 +502,9 @@ msgstr "Start date and time"
 msgid "Porcentaje de posesión del equipo local"
 msgstr "Home team possession percentage"
 
-#: .\eventos\models.py:49
-msgid "Posesión local (%)"
-msgstr "Home possession (%)"
-
 #: .\eventos\models.py:54
 msgid "Porcentaje de posesión del equipo visitante"
 msgstr "Visiting team possession percentage"
-
-#: .\eventos\models.py:55
-msgid "Posesión visitante (%)"
-msgstr "Visiting possession (%)"
 
 #: .\eventos\models.py:60
 msgid "Partido finalizado"

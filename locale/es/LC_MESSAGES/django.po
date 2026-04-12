@@ -504,6 +504,7 @@ msgid "Porcentaje de posesión del equipo local"
 msgstr "Porcentaje de posesión del equipo local"
 
 #: .\eventos\models.py:49
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:207
 #, python-format
 msgid "Posesión local (%%)"
 msgstr "Posesión local (%%)"
@@ -513,9 +514,10 @@ msgid "Porcentaje de posesión del equipo visitante"
 msgstr "Porcentaje de posesión del equipo visitante"
 
 #: .\eventos\models.py:55
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:211
 #, python-format
-msgid "Posesión visitante (%)"
-msgstr "Posesión visitante (%)"
+msgid "Posesión visitante (%%)"
+msgstr "Posesión visitante (%%)"
 
 #: .\eventos\models.py:60
 msgid "Partido finalizado"
@@ -1010,11 +1012,6 @@ msgstr "O escribe el nombre si no usa la app"
 #: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:127
 msgid "Nombre del equipo"
 msgstr "Nombre del equipo"
-
-#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:207
-#, python-format
-msgid "Posesión local (%%)"
-msgstr "Posesión local (%%)"
 
 #: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:234
 msgid "Selecciona el partido que deseas eliminar:"
