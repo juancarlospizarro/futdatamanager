@@ -88,6 +88,26 @@ def breadcrumbs(request):
                     "url": reverse("equipos:informacion_equipo", args=[slug])
                 })
 
+        elif view_name == "pizarra_tactica":
+            slug = kwargs.get("slug")
+
+            if slug:
+                equipo = Equipo.objects.get(slug=slug)
+
+                crumbs.append({
+                    "name": _("Equipos"),
+                })
+
+                crumbs.append({
+                    "name": equipo.nombre,   
+                    "url": reverse("equipos:informacion_equipo", args=[slug])
+                })
+
+                crumbs.append({
+                    "name": _("Pizarra Táctica"),
+                    "url": reverse("equipos:pizarra_tactica", args=[slug])
+                })
+
     except:
         # Si la URL no se resuelve correctamente, mostrar solo Inicio
         pass

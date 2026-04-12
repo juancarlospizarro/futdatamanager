@@ -87,7 +87,7 @@
                             <a class="nav-link" href=""><i class="bi bi-pie-chart-fill"></i> {% trans "Análisis" %}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href=""><i class="bi bi-clipboard2-fill"></i> {% trans "Pizarra" %}</a>
+                            <a class="nav-link" href="{% url 'equipos:pizarra_tactica' slug=user.perfil_entrenador.get_equipos_activos.0.equipo.slug %}"><i class="bi bi-clipboard2-fill"></i> {% trans "Pizarra" %}</a>
                         </li>
                         {% endif %}
 

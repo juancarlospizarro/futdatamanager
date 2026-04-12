@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-23 21:26+0100\n"
+"POT-Creation-Date: 2026-03-28 11:05+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,12 +19,224 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? "
 "1 : 2;\n"
 
-#: .\football_stats_app\settings.py:135
+#: .\equipos\templates\equipos\pizarra_tactica.html:4
+#: .\usuarios\context_processors.py:107
+msgid "Pizarra Táctica"
+msgstr "Pizarra Táctica"
+
+#: .\equipos\templates\equipos\pizarra_tactica.html:13
+msgid "Controles"
+msgstr "Controles"
+
+#: .\equipos\templates\equipos\pizarra_tactica.html:16
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:200
+msgid "Reiniciar"
+msgstr "Reiniciar"
+
+#: .\equipos\templates\equipos\pizarra_tactica.html:19
+#: .\equipos\templates\equipos\pizarra_tactica.html:384
+#: .\equipos\templates\equipos\pizarra_tactica.html:390
+msgid "Descargar Imagen"
+msgstr "Descargar Imagen"
+
+#: .\equipos\templates\equipos\pizarra_tactica.html:28
+msgid "Leyenda"
+msgstr "Leyenda"
+
+#: .\equipos\templates\equipos\pizarra_tactica.html:32
+msgid "Equipo 1"
+msgstr "Equipo 1"
+
+#: .\equipos\templates\equipos\pizarra_tactica.html:36
+msgid "Equipo 2"
+msgstr "Equipo 2"
+
+#: .\eventos\admin.py:29
+msgid "Información del Partido"
+msgstr "Información del Partido"
+
+#: .\eventos\admin.py:32 .\eventos\admin.py:50
+msgid "Equipo Visitante"
+msgstr "Equipos Visitante"
+
+#: .\eventos\admin.py:34
+msgid "Selecciona un equipo de la BD o introduce su nombre manualmente"
+msgstr "Selecciona un equipo de la BD o introduce su nombre manualmente"
+
+#: .\eventos\admin.py:36
+msgid "Estadio"
+msgstr "Estadio"
+
+#: .\eventos\admin.py:39
+msgid "Estadísticas"
+msgstr "Estadísticas"
+
+#: .\eventos\admin.py:42 .\eventos\admin.py:78
+msgid "Metadata"
+msgstr "Metadata"
+
+#: .\eventos\admin.py:72
+msgid "Información"
+msgstr "Información"
+
+#: .\eventos\admin.py:75 .\eventos\models.py:114
+msgid "Descripción"
+msgstr "Descripción"
+
+#: .\eventos\apps.py:8
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:43
+msgid "Eventos"
+msgstr "Eventos"
+
+#: .\eventos\models.py:13
+msgid "Equipo local"
+msgstr "Equipo local"
+
+#: .\eventos\models.py:22
+msgid "Equipo visitante (BD)"
+msgstr "Equipo visitante (BD)"
+
+#: .\eventos\models.py:28
+msgid "Nombre equipo visitante (manual)"
+msgstr "Nombre equipo visitante (manual)"
+
+#: .\eventos\models.py:33
+msgid "Nombre del estadio"
+msgstr "Nombre del estadio"
+
+#: .\eventos\models.py:39
+msgid "Dirección del estadio"
+msgstr "Dirección del estadio"
+
+#: .\eventos\models.py:43 .\eventos\models.py:103
+msgid "Fecha y hora de inicio"
+msgstr "Fecha y hora de inicio"
+
+#: .\eventos\models.py:48
+msgid "Porcentaje de posesión del equipo local"
+msgstr "Porcentaje de posesión del equipo local"
+
+#: .\eventos\models.py:49
+msgid "Posesión local (%)"
+msgstr "Posesión local (%)"
+
+#: .\eventos\models.py:54
+msgid "Porcentaje de posesión del equipo visitante"
+msgstr "Porcentaje de posesión del equipo visitante"
+
+#: .\eventos\models.py:55
+msgid "Posesión visitante (%)"
+msgstr "Posesión visitante (%)"
+
+#: .\eventos\models.py:60
+msgid "Partido finalizado"
+msgstr "Partido finalizado"
+
+#: .\eventos\models.py:68
+msgid "Partido"
+msgstr "Partido"
+
+#: .\eventos\models.py:69
+msgid "Partidos"
+msgstr "Partidos"
+
+#: .\eventos\models.py:88
+msgid "Fuerza"
+msgstr "Fuerza"
+
+#: .\eventos\models.py:89
+msgid "Táctico"
+msgstr "Táctico"
+
+#: .\eventos\models.py:90
+msgid "Ataque"
+msgstr "Ataque"
+
+#: .\eventos\models.py:91
+msgid "Defensa"
+msgstr "Defensa"
+
+#: .\eventos\models.py:92
+msgid "Recuperación"
+msgstr "Recuperación"
+
+#: .\eventos\models.py:99
+#: .\football_stats_app\templates\includes\header.html:83
+#: .\football_stats_app\templates\includes\header.html:99
+#: .\usuarios\templates\usuarios\miperfil.html:166
+msgid "Equipo"
+msgstr "Equipo"
+
+#: .\eventos\models.py:109
+msgid "Tipo de entrenamiento"
+msgstr "Tipo de entrenamiento"
+
+#: .\eventos\models.py:122
+msgid "Entrenamiento"
+msgstr "Entrenamiento"
+
+#: .\eventos\models.py:123
+msgid "Entrenamientos"
+msgstr "Entrenamientos"
+
+#: .\eventos\views.py:32
+msgid "No tienes permiso para crear partidos en este equipo"
+msgstr "No tienes permiso para crear partidos en este equipo"
+
+#: .\eventos\views.py:44 .\eventos\views.py:91
+msgid "Debes seleccionar un equipo o introducir un nombre"
+msgstr "Debes seleccionar un equipo o introducir un nombre"
+
+#: .\eventos\views.py:61
+msgid "Partido creado correctamente"
+msgstr "Partido creado correctamente"
+
+#: .\eventos\views.py:80
+msgid "No tienes permiso para editar este partido"
+msgstr "No tienes permiso para editar este partido"
+
+#: .\eventos\views.py:109
+msgid "Partido actualizado correctamente"
+msgstr "Partido actualizado correctamente"
+
+#: .\eventos\views.py:129
+msgid "No tienes permiso para eliminar este partido"
+msgstr "No tienes permiso para eliminar este partido"
+
+#: .\eventos\views.py:134
+msgid "Partido eliminado correctamente"
+msgstr "Partido eliminado correctamente"
+
+#: .\eventos\views.py:161
+msgid "No tienes permiso para crear entrenamientos en este equipo"
+msgstr "No tienes permiso para crear entrenamientos en este equipo"
+
+#: .\eventos\views.py:172
+msgid "Entrenamiento creado correctamente"
+msgstr "Entrenamiento creado correctamente"
+
+#: .\eventos\views.py:191
+msgid "No tienes permiso para editar este entrenamiento"
+msgstr "No tienes permiso para editar este entrenamiento"
+
+#: .\eventos\views.py:200
+msgid "Entrenamiento actualizado correctamente"
+msgstr "Entrenamiento actualizado correctamente"
+
+#: .\eventos\views.py:220
+msgid "No tienes permiso para eliminar este entrenamiento"
+msgstr "No tienes permiso para eliminar este entrenamiento"
+
+#: .\eventos\views.py:225
+msgid "Entrenamiento eliminado correctamente"
+msgstr "Entrenamiento eliminado correctamente"
+
+#: .\football_stats_app\settings.py:136
 #: .\football_stats_app\templates\includes\header.html:50
 msgid "Spanish"
 msgstr "Español"
 
-#: .\football_stats_app\settings.py:136
+#: .\football_stats_app\settings.py:137
 #: .\football_stats_app\templates\includes\header.html:61
 msgid "English"
 msgstr "Inglés"
@@ -159,12 +371,6 @@ msgstr "Cerrar"
 msgid "Inicio"
 msgstr "Inicio"
 
-#: .\football_stats_app\templates\includes\header.html:83
-#: .\football_stats_app\templates\includes\header.html:99
-#: .\usuarios\templates\usuarios\miperfil.html:166
-msgid "Equipo"
-msgstr "Equipo"
-
 #: .\football_stats_app\templates\includes\header.html:87
 msgid "Análisis"
 msgstr "Análisis"
@@ -272,7 +478,7 @@ msgstr "Nueva contraseña"
 msgid "Usuarios"
 msgstr "Usuarios"
 
-#: .\usuarios\context_processors.py:83
+#: .\usuarios\context_processors.py:83 .\usuarios\context_processors.py:98
 msgid "Equipos"
 msgstr "Equipos"
 
@@ -403,6 +609,64 @@ msgstr "años de experiencia"
 msgid "Bienvenid@"
 msgstr "Bienvenid@"
 
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:22
+msgid "Añadir partido"
+msgstr "Añadir partido"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:25
+msgid "Eliminar partido"
+msgstr "Eliminar partido"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:28
+msgid "Añadir entrenamiento"
+msgstr "Añadir entrenamiento"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:31
+msgid "Eliminar entrenamiento"
+msgstr "Eliminar entrenamiento"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:46
+msgid "No hay eventos próximos."
+msgstr "No hay eventos próximos."
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:53
+msgid "Partidos anteriores"
+msgstr "Partidos anteriores"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:59
+msgid "Fecha"
+msgstr "Fecha"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:60
+msgid "Rival"
+msgstr "Rival"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:61
+msgid "Resultado"
+msgstr "Resultado"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:66
+msgid "No hay partidos anteriores."
+msgstr "No hay partidos anteriores."
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:76
+#, fuzzy
+#| msgid "Estadísticas del equipo actual"
+msgid "Estadísticas del equipo"
+msgstr "Estadísticas del equipo actual"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:81
+msgid "Partidos jugados"
+msgstr ""
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:85
+msgid "Victorias"
+msgstr ""
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:89
+msgid "Derrotas"
+msgstr ""
+
 #: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:14
 msgid "Puedes"
 msgstr "Puedes"
@@ -524,10 +788,6 @@ msgid ""
 msgstr ""
 "En caso de no modificar los colores, se tomarán los seleccionados por "
 "defecto."
-
-#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:200
-msgid "Reiniciar"
-msgstr "Reiniciar"
 
 #: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:202
 msgid "Añadir equipo"

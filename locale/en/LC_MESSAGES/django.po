@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-23 21:26+0100\n"
+"POT-Creation-Date: 2026-03-28 11:05+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,12 +18,284 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\football_stats_app\settings.py:135
+#: .\equipos\templates\equipos\pizarra_tactica.html:4
+#: .\usuarios\context_processors.py:107
+#, fuzzy
+#| msgid "Pizarra"
+msgid "Pizarra Táctica"
+msgstr "Tactic board"
+
+#: .\equipos\templates\equipos\pizarra_tactica.html:13
+#, fuzzy
+#| msgid "Contraseña"
+msgid "Controles"
+msgstr "Password"
+
+#: .\equipos\templates\equipos\pizarra_tactica.html:16
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:200
+msgid "Reiniciar"
+msgstr "Reset"
+
+#: .\equipos\templates\equipos\pizarra_tactica.html:19
+#: .\equipos\templates\equipos\pizarra_tactica.html:384
+#: .\equipos\templates\equipos\pizarra_tactica.html:390
+msgid "Descargar Imagen"
+msgstr ""
+
+#: .\equipos\templates\equipos\pizarra_tactica.html:28
+msgid "Leyenda"
+msgstr ""
+
+#: .\equipos\templates\equipos\pizarra_tactica.html:32
+#, fuzzy
+#| msgid "Equipo"
+msgid "Equipo 1"
+msgstr "Team"
+
+#: .\equipos\templates\equipos\pizarra_tactica.html:36
+#, fuzzy
+#| msgid "Equipo"
+msgid "Equipo 2"
+msgstr "Team"
+
+#: .\eventos\admin.py:29
+#, fuzzy
+#| msgid "Recoge información de los partidos"
+msgid "Información del Partido"
+msgstr "Collect match information"
+
+#: .\eventos\admin.py:32 .\eventos\admin.py:50
+#, fuzzy
+#| msgid "Equipos registrados"
+msgid "Equipo Visitante"
+msgstr "Registered teams"
+
+#: .\eventos\admin.py:34
+msgid "Selecciona un equipo de la BD o introduce su nombre manualmente"
+msgstr ""
+
+#: .\eventos\admin.py:36
+msgid "Estadio"
+msgstr ""
+
+#: .\eventos\admin.py:39
+#, fuzzy
+#| msgid "Estadísticas generales"
+msgid "Estadísticas"
+msgstr "General statistics"
+
+#: .\eventos\admin.py:42 .\eventos\admin.py:78
+msgid "Metadata"
+msgstr ""
+
+#: .\eventos\admin.py:72
+#, fuzzy
+#| msgid "Información general"
+msgid "Información"
+msgstr "General information"
+
+#: .\eventos\admin.py:75 .\eventos\models.py:114
+#, fuzzy
+#| msgid "Dirección"
+msgid "Descripción"
+msgstr "Address"
+
+#: .\eventos\apps.py:8
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:43
+msgid "Eventos"
+msgstr ""
+
+#: .\eventos\models.py:13
+#, fuzzy
+#| msgid "Equipo creado"
+msgid "Equipo local"
+msgstr "Team created"
+
+#: .\eventos\models.py:22
+msgid "Equipo visitante (BD)"
+msgstr ""
+
+#: .\eventos\models.py:28
+msgid "Nombre equipo visitante (manual)"
+msgstr ""
+
+#: .\eventos\models.py:33
+#, fuzzy
+#| msgid "Nombre del equipo"
+msgid "Nombre del estadio"
+msgstr "Team name"
+
+#: .\eventos\models.py:39
+#, fuzzy
+#| msgid "Dirección"
+msgid "Dirección del estadio"
+msgstr "Address"
+
+#: .\eventos\models.py:43 .\eventos\models.py:103
+#, fuzzy
+#| msgid "Fecha de nacimiento"
+msgid "Fecha y hora de inicio"
+msgstr "Birthday"
+
+#: .\eventos\models.py:48
+msgid "Porcentaje de posesión del equipo local"
+msgstr ""
+
+#: .\eventos\models.py:49
+msgid "Posesión local (%)"
+msgstr ""
+
+#: .\eventos\models.py:54
+msgid "Porcentaje de posesión del equipo visitante"
+msgstr ""
+
+#: .\eventos\models.py:55
+msgid "Posesión visitante (%)"
+msgstr ""
+
+#: .\eventos\models.py:60
+msgid "Partido finalizado"
+msgstr ""
+
+#: .\eventos\models.py:68
+msgid "Partido"
+msgstr ""
+
+#: .\eventos\models.py:69
+msgid "Partidos"
+msgstr ""
+
+#: .\eventos\models.py:88
+msgid "Fuerza"
+msgstr ""
+
+#: .\eventos\models.py:89
+msgid "Táctico"
+msgstr ""
+
+#: .\eventos\models.py:90
+msgid "Ataque"
+msgstr ""
+
+#: .\eventos\models.py:91
+#, fuzzy
+#| msgid "Defensa Central"
+msgid "Defensa"
+msgstr "Center Back"
+
+#: .\eventos\models.py:92
+#, fuzzy
+#| msgid "Dirección"
+msgid "Recuperación"
+msgstr "Address"
+
+#: .\eventos\models.py:99
+#: .\football_stats_app\templates\includes\header.html:83
+#: .\football_stats_app\templates\includes\header.html:99
+#: .\usuarios\templates\usuarios\miperfil.html:166
+msgid "Equipo"
+msgstr "Team"
+
+#: .\eventos\models.py:109
+#, fuzzy
+#| msgid "Equipos donde ha entrenado"
+msgid "Tipo de entrenamiento"
+msgstr "Teams where you have coached"
+
+#: .\eventos\models.py:122
+#, fuzzy
+#| msgid "Entrenador"
+msgid "Entrenamiento"
+msgstr "Coach"
+
+#: .\eventos\models.py:123
+#, fuzzy
+#| msgid "Entrenador"
+msgid "Entrenamientos"
+msgstr "Coach"
+
+#: .\eventos\views.py:32
+#, fuzzy
+#| msgid "No tienes permiso para acceder a este recurso."
+msgid "No tienes permiso para crear partidos en este equipo"
+msgstr "You don't have permission to access this resource."
+
+#: .\eventos\views.py:44 .\eventos\views.py:91
+msgid "Debes seleccionar un equipo o introducir un nombre"
+msgstr ""
+
+#: .\eventos\views.py:61
+#, fuzzy
+#| msgid "Perfil actualizado correctamente"
+msgid "Partido creado correctamente"
+msgstr "Profile updated successfully"
+
+#: .\eventos\views.py:80
+#, fuzzy
+#| msgid "No tienes permiso para acceder a este recurso."
+msgid "No tienes permiso para editar este partido"
+msgstr "You don't have permission to access this resource."
+
+#: .\eventos\views.py:109
+#, fuzzy
+#| msgid "Perfil actualizado correctamente"
+msgid "Partido actualizado correctamente"
+msgstr "Profile updated successfully"
+
+#: .\eventos\views.py:129
+#, fuzzy
+#| msgid "No tienes permiso para acceder a este recurso."
+msgid "No tienes permiso para eliminar este partido"
+msgstr "You don't have permission to access this resource."
+
+#: .\eventos\views.py:134
+#, fuzzy
+#| msgid "Tu cuenta ha sido eliminada correctamente."
+msgid "Partido eliminado correctamente"
+msgstr "Your account has been successfully deleted."
+
+#: .\eventos\views.py:161
+#, fuzzy
+#| msgid "No tienes permiso para acceder a este recurso."
+msgid "No tienes permiso para crear entrenamientos en este equipo"
+msgstr "You don't have permission to access this resource."
+
+#: .\eventos\views.py:172
+#, fuzzy
+#| msgid "Te has registrado correctamente"
+msgid "Entrenamiento creado correctamente"
+msgstr "You have registered successfully"
+
+#: .\eventos\views.py:191
+#, fuzzy
+#| msgid "No tienes permiso para acceder a este recurso."
+msgid "No tienes permiso para editar este entrenamiento"
+msgstr "You don't have permission to access this resource."
+
+#: .\eventos\views.py:200
+#, fuzzy
+#| msgid "Perfil actualizado correctamente"
+msgid "Entrenamiento actualizado correctamente"
+msgstr "Profile updated successfully"
+
+#: .\eventos\views.py:220
+#, fuzzy
+#| msgid "No tienes permiso para acceder a este recurso."
+msgid "No tienes permiso para eliminar este entrenamiento"
+msgstr "You don't have permission to access this resource."
+
+#: .\eventos\views.py:225
+#, fuzzy
+#| msgid "Tu cuenta ha sido eliminada correctamente."
+msgid "Entrenamiento eliminado correctamente"
+msgstr "Your account has been successfully deleted."
+
+#: .\football_stats_app\settings.py:136
 #: .\football_stats_app\templates\includes\header.html:50
 msgid "Spanish"
 msgstr "Spanish"
 
-#: .\football_stats_app\settings.py:136
+#: .\football_stats_app\settings.py:137
 #: .\football_stats_app\templates\includes\header.html:61
 msgid "English"
 msgstr "English"
@@ -158,12 +430,6 @@ msgstr "Close"
 msgid "Inicio"
 msgstr "Home"
 
-#: .\football_stats_app\templates\includes\header.html:83
-#: .\football_stats_app\templates\includes\header.html:99
-#: .\usuarios\templates\usuarios\miperfil.html:166
-msgid "Equipo"
-msgstr "Team"
-
 #: .\football_stats_app\templates\includes\header.html:87
 msgid "Análisis"
 msgstr "Analysis"
@@ -269,7 +535,7 @@ msgstr "New password"
 msgid "Usuarios"
 msgstr "User"
 
-#: .\usuarios\context_processors.py:83
+#: .\usuarios\context_processors.py:83 .\usuarios\context_processors.py:98
 msgid "Equipos"
 msgstr "Teams"
 
@@ -400,6 +666,74 @@ msgstr "years of experience"
 msgid "Bienvenid@"
 msgstr "Welcome"
 
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:22
+#, fuzzy
+#| msgid "Añadir equipo"
+msgid "Añadir partido"
+msgstr "Add team"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:25
+#, fuzzy
+#| msgid "Eliminar cuenta"
+msgid "Eliminar partido"
+msgstr "Delete account"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:28
+#, fuzzy
+#| msgid "Añadir equipo"
+msgid "Añadir entrenamiento"
+msgstr "Add team"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:31
+#, fuzzy
+#| msgid "Eliminar cuenta"
+msgid "Eliminar entrenamiento"
+msgstr "Delete account"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:46
+msgid "No hay eventos próximos."
+msgstr ""
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:53
+msgid "Partidos anteriores"
+msgstr ""
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:59
+#, fuzzy
+#| msgid "Derecha"
+msgid "Fecha"
+msgstr "Right"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:60
+msgid "Rival"
+msgstr ""
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:61
+msgid "Resultado"
+msgstr ""
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:66
+msgid "No hay partidos anteriores."
+msgstr ""
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:76
+#, fuzzy
+#| msgid "Estadísticas del equipo actual"
+msgid "Estadísticas del equipo"
+msgstr "Current team statistics"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:81
+msgid "Partidos jugados"
+msgstr ""
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:85
+msgid "Victorias"
+msgstr ""
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:89
+msgid "Derrotas"
+msgstr ""
+
 #: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:14
 msgid "Puedes"
 msgstr "You can"
@@ -520,10 +854,6 @@ msgid ""
 "defecto."
 msgstr ""
 "If you don't change the colors, the default selected ones will be used."
-
-#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:200
-msgid "Reiniciar"
-msgstr "Reset"
 
 #: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:202
 msgid "Añadir equipo"

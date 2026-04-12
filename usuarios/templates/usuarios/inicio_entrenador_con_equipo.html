@@ -14,7 +14,279 @@
             <section class="col-lg-10 mx-auto">
                 <div id="calendario"></div>
             </section>
+
+            <!-- BOTONES DE ACCIONES -->
+            <section class="col-lg-10 mx-auto mt-5">
+                <div class="row g-3">
+                    <div class="col-6 col-md-3">
+                        <button class="btn btn-primary w-100" id="btn-anadirPartido">{% trans "Añadir partido" %}</button>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <button class="btn btn-danger w-100" id="btn-eliminarPartido">{% trans "Eliminar partido" %}</button>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <button class="btn btn-primary w-100" id="btn-anadirEntrenamiento">{% trans "Añadir entrenamiento" %}</button>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <button class="btn btn-danger w-100" id="btn-eliminarEntrenamiento">{% trans "Eliminar entrenamiento" %}</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIONES DE CONTENIDO -->
+            <section class="row justify-content-center mt-5">
+                <div class="col-lg-10">
+                    <div class="d-flex flex-column gap-5">
+
+                        <!-- Eventos -->
+                        <div>
+                            <h2 class="h4 text-foot-green mb-3">{% trans "Próximos eventos" %}</h2>
+                            <div class="card shadow-sm">
+                                <div class="card-body" id="listaEventosProximos">
+                                    <p class="text-secondary text-muted">{% trans "Cargando eventos..." %}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Partidos anteriores -->
+                        <div>
+                            <h2 class="h4 text-foot-green mb-3">{% trans "Partidos anteriores" %}</h2>
+                            <div class="card shadow-sm">
+                                <div class="card-body" id="listaPartidosAnteriores">
+                                    <p class="text-secondary text-muted">{% trans "Cargando partidos anteriores..." %}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Estadísticas del equipo -->
+                        <div>
+                            <h2 class="h4 text-foot-green mb-3">{% trans "Estadísticas del equipo" %}</h2>
+                            <div class="card shadow-sm">
+                                <div class="card-body">
+                                    <div class="row text-center">
+                                        <div class="col-md-4">
+                                            <h5 class="text-muted">{% trans "Partidos jugados" %}</h5>
+                                            <p class="fs-3 fw-bold text-foot-green">0</p>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <h5 class="text-muted">{% trans "Victorias" %}</h5>
+                                            <p class="fs-3 fw-bold text-success">0</p>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <h5 class="text-muted">{% trans "Derrotas" %}</h5>
+                                            <p class="fs-3 fw-bold text-danger">0</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
             
 </div>
+
+<!-- MODAL AÑADIR ENTRENAMIENTO -->
+<div class="modal fade" id="modalAnadirEntrenamiento" tabindex="-1" aria-labelledby="modalAnadirEntrenamientoLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modalAnadirEntrenamientoLabel">{% trans "Añadir entrenamiento" %}</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="formAnadirEntrenamiento">
+                    <div class="mb-3">
+                        <label for="fechaHoraEntrenamiento" class="form-label">{% trans "Fecha y hora" %}</label>
+                        <input type="datetime-local" class="form-control" id="fechaHoraEntrenamiento" name="fecha_hora" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="tipoEntrenamiento" class="form-label">{% trans "Tipo de entrenamiento" %}</label>
+                        <select class="form-select" id="tipoEntrenamiento" name="tipo" required>
+                            <option value="">{% trans "Selecciona un tipo" %}</option>
+                            <option value="fuerza">{% trans "Fuerza" %}</option>
+                            <option value="tactico">{% trans "Táctico" %}</option>
+                            <option value="ataque">{% trans "Ataque" %}</option>
+                            <option value="defensa">{% trans "Defensa" %}</option>
+                            <option value="recuperacion">{% trans "Recuperación" %}</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="descripcionEntrenamiento" class="form-label">{% trans "Descripción" %}</label>
+                        <textarea class="form-control" id="descripcionEntrenamiento" name="descripcion" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% trans "Cancelar" %}</button>
+                <button type="button" class="btn btn-primary" id="btnGuardarEntrenamiento">{% trans "Guardar" %}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL ELIMINAR ENTRENAMIENTO -->
+<div class="modal fade" id="modalEliminarEntrenamiento" tabindex="-1" aria-labelledby="modalEliminarEntrenamientoLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modalEliminarEntrenamientoLabel">{% trans "Eliminar entrenamiento" %}</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>{% trans "Selecciona el entrenamiento que deseas eliminar:" %}</p>
+                <div id="listaEntrenamientos" class="list-group">
+                    <p class="text-muted">{% trans "Cargando entrenamientos..." %}</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% trans "Cancelar" %}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL CONFIRMACIÓN ELIMINAR ENTRENAMIENTO -->
+<div class="modal fade" id="modalConfirmarEliminar" tabindex="-1" aria-labelledby="modalConfirmarEliminarLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-white">
+                <h1 class="modal-title fs-5" id="modalConfirmarEliminarLabel">{% trans "Confirmación" %}</h1>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>{% trans "¿Estás seguro de que deseas eliminar este entrenamiento?" %}</p>
+                <div id="infoEliminar" class="alert alert-warning">
+                    <strong id="tipoEliminar"></strong><br>
+                    <small id="fechaEliminar"></small>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% trans "Cancelar" %}</button>
+                <button type="button" class="btn btn-danger" id="btnConfirmarEliminar">{% trans "Eliminar" %}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL AÑADIR PARTIDO -->
+<div class="modal fade" id="modalAnadirPartido" tabindex="-1" aria-labelledby="modalAnadirPartidoLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modalAnadirPartidoLabel">{% trans "Añadir partido" %}</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="formAnadirPartido">
+                    <div class="mb-3">
+                        <label for="fechaHoraPartido" class="form-label">{% trans "Fecha y hora" %}</label>
+                        <input type="datetime-local" class="form-control" id="fechaHoraPartido" name="fecha_hora" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">{% trans "Equipo rival" %}</label>
+                        <div class="input-group mb-2">
+                            <select class="form-select" id="equipoVisitantePartido" name="equipo_visitante_id">
+                                <option value="">{% trans "Selecciona un equipo (opcional)" %}</option>
+                            </select>
+                        </div>
+                        <small class="form-text text-muted">{% trans "O escribe el nombre si no usa la app" %}</small>
+                        <input type="text" class="form-control mt-2" id="nombreEquipoPartido" name="nombre_equipo_visitante" placeholder="{% trans 'Nombre del equipo' %}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="estadioPartido" class="form-label">{% trans "Estadio" %}</label>
+                        <input type="text" class="form-control" id="estadioPartido" name="estadio_nombre" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="direccionPartido" class="form-label">{% trans "Dirección" %}</label>
+                        <input type="text" class="form-control" id="direccionPartido" name="estadio_direccion">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="posesionLocalPartido" class="form-label">{% trans "Posesión local (%)" %}</label>
+                            <input type="number" class="form-control" id="posesionLocalPartido" name="posesion_local" min="0" max="100">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="posesionVisitantePartido" class="form-label">{% trans "Posesión visitante (%)" %}</label>
+                            <input type="number" class="form-control" id="posesionVisitantePartido" name="posesion_visitante" min="0" max="100">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% trans "Cancelar" %}</button>
+                <button type="button" class="btn btn-primary" id="btnGuardarPartido">{% trans "Guardar" %}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL ELIMINAR PARTIDO -->
+<div class="modal fade" id="modalEliminarPartido" tabindex="-1" aria-labelledby="modalEliminarPartidoLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modalEliminarPartidoLabel">{% trans "Eliminar partido" %}</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>{% trans "Selecciona el partido que deseas eliminar:" %}</p>
+                <div id="listaPartidos" class="list-group">
+                    <p class="text-muted">{% trans "Cargando partidos..." %}</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% trans "Cancelar" %}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL CONFIRMACIÓN ELIMINAR PARTIDO -->
+<div class="modal fade" id="modalConfirmarEliminarPartido" tabindex="-1" aria-labelledby="modalConfirmarEliminarPartidoLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-white">
+                <h1 class="modal-title fs-5" id="modalConfirmarEliminarPartidoLabel">{% trans "Confirmación" %}</h1>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>{% trans "¿Estás seguro de que deseas eliminar este partido?" %}</p>
+                <div id="infoEliminarPartido" class="alert alert-warning">
+                    <strong id="rivalEliminar"></strong><br>
+                    <small id="fechaEliminarPartido" class="d-block"></small>
+                    <small id="estadioEliminarPartido" class="text-secondary d-block"><i class="bi bi-geo-alt"></i></small>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% trans "Cancelar" %}</button>
+                <button type="button" class="btn btn-danger" id="btnConfirmarEliminarPartido">{% trans "Eliminar" %}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL VER INFORMACIÓN DEL EVENTO -->
+<div class="modal fade" id="modalInfoEvento" tabindex="-1" aria-labelledby="modalInfoEventoLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h1 class="modal-title fs-5" id="modalInfoEventoLabel">{% trans "Información del evento" %}</h1>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="contenidoEvento"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% trans "Cerrar" %}</button>
+                <button type="button" class="btn btn-success" id="btnFinalizarPartido" style="display: none;">{% trans "Marcar como finalizado" %}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script src="{% static 'js/calendario.js' %}"></script>
+<script src="{% static 'js/entrenamientos.js' %}"></script>
+<script src="{% static 'js/partidos.js' %}"></script>
 {% endblock %}

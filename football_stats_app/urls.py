@@ -30,6 +30,7 @@ urlpatterns += i18n_patterns(
     path('', views.landing, name="landing"),
     path('auth/', include('usuarios.urls')),
     path('teams/', include('equipos.urls')),
+    path('events/', include('eventos.urls')),
     path("test-400/", views.error_400_test),
     path("test-403/", views.error_403_test),
     path("test-500/", views.error_500_test),

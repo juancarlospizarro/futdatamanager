@@ -13,6 +13,10 @@ from django.contrib.auth.forms import PasswordResetForm
 from django.utils.translation import gettext_lazy as _
 
 def login_view(request):
+    """
+    Autentica a un usuario con email y contraseña.
+    Inicia sesión y redirige a la página principal si tiene éxito.
+    """
     if request.method == "GET":
         return render(request, 'usuarios/login.html')
 
@@ -31,6 +35,10 @@ def login_view(request):
         return render(request, 'usuarios/login.html', {'error': _("El usuario no existe o la contraseña es incorrecta."), "email_value": email})
 
 def signin(request):
+    """
+    Registra un nuevo usuario en la plataforma.
+    Crea el usuario y sus perfiles asociados (jugador o entrenador) según el tipo seleccionado.
+    """
     if request.method == "GET":
         return render(request, 'usuarios/signin.html')
     else:
@@ -90,6 +98,9 @@ def signin(request):
 
 @login_required
 def logout_view(request):
+    """
+    Cierra la sesión del usuario autenticado y redirige a la página de inicio.
+    """
     logout(request)
     return redirect('landing')
 
@@ -144,6 +155,10 @@ def ver_perfil_usuario(request, slug):
     
 @login_required
 def eliminar_cuenta(request):
+    """
+    Elimina la cuenta del usuario autenticado de manera permanente.
+    Cierra la sesión antes de eliminar el usuario de la base de datos.
+    """
     if request.method == "POST":
         user = request.user
         logout(request)          # cerrar sesión primero
@@ -153,6 +168,11 @@ def eliminar_cuenta(request):
     return JsonResponse({"success": False}, status=400)
 
 class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
+    """
+    Vista personalizada para solicitar reinicio de contraseña.
+    Si el usuario está autenticado, envía el correo directamente.
+    Si no, muestra el formulario para ingresar el email.
+    """
     template_name = 'usuarios/password_forget.html'
     email_template_name = 'usuarios/password_forget_email.html'
     subject_template_name = 'usuarios/password_forget_subject.txt'
@@ -185,5 +205,9 @@ class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
 
 
 class CustomPasswordResetConfirmView(PasswordResetConfirmView):
+    """
+    Vista personalizada para confirmar y establecer una nueva contraseña.
+    Usa templates personalizados según la interfaz de la aplicación.
+    """
     template_name = "usuarios/new_password.html"
     success_url = reverse_lazy("usuarios:new_password_done")

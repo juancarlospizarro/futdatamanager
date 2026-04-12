@@ -13,6 +13,10 @@ def error_500(request):
     return render(request, 'errors/500.html', status=500)
 
 def error_500_test(request):
+    """
+    Función de prueba que dispara un error 500.
+    Solo para testing en ambiente de desarrollo.
+    """
     1 / 0  # ZeroDivisionError
 
 
@@ -21,6 +25,10 @@ def error_403(request, exception):
     return render(request, 'errors/403.html', status=403)
 
 def error_403_test(request):
+    """
+    Función de prueba que dispara un error 403.
+    Solo para testing en ambiente de desarrollo.
+    """
     raise PermissionDenied
 
 
@@ -29,10 +37,21 @@ def error_400(request, exception):
     return render(request, 'errors/400.html', status=400)
 
 def error_400_test(request):
+    """
+    Función de prueba que dispara un error 400.
+    Solo para testing en ambiente de desarrollo.
+    """
     raise SuspiciousOperation("Algo huele mal")
 
 
 def landing(request):
+    """
+    Vista principal que redirige al usuario según su rol y estado de autenticación.
+    - Si no está logueado: muestra página de inicio
+    - Si es entrenador sin equipo: redirige a crear/seleccionar equipo
+    - Si es entrenador con equipo: redirige a su equipo
+    - Si es jugador: muestra dashboard de jugador
+    """
     # 1. Si el usuario NO está logueado
     if not request.user.is_authenticated:
         return render(request, 'landing.html')
