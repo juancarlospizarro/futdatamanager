@@ -1,6 +1,6 @@
 """
 Signals para control_jugadores
-Automáticamente crea avisos y envía emails cuando se registra una sanción
+Envio de emails automáticos a jugadores cuando se registran sanciones.
 """
 
 from django.db.models.signals import post_save
@@ -22,13 +22,10 @@ def crear_aviso_sancion(sender, instance, created, **kwargs):
     """
     if created and instance.activa:
         try:
-            # Mapear tipo de sanción a tipo de aviso
             tipo_aviso = instance.tipo
             
-            # Generar asunto y mensaje según el tipo de sanción
             asunto, mensaje = generar_contenido_aviso(instance)
             
-            # Crear el aviso
             aviso = Aviso.objects.create(
                 jugador=instance.jugador,
                 sancion=instance,
@@ -198,7 +195,7 @@ def enviar_email_aviso(aviso):
         aviso.enviado_email = True
         aviso.save()
         
-        print(f"Email de sanción enviado a {email_jugador} (Token: {token[:10]}...)")
+        print(f"Email de sanción enviado a {email_jugador}")
         return True
         
     except Exception as e:

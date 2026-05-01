@@ -1,11 +1,52 @@
 from django.contrib import admin
 from django.utils.translation import gettext_lazy as _
-from .models import Partido, Entrenamiento
+from .models import Partido, Entrenamiento, Competicion
+
+
+@admin.register(Competicion)
+class CompeticionAdmin(admin.ModelAdmin):
+    list_display = [
+        'nombre',
+        'ano',
+        'tipo',
+        'activa',
+        'get_num_partidos',
+    ]
+    list_filter = [
+        'tipo',
+        'ano',
+        'activa',
+    ]
+    search_fields = [
+        'nombre',
+    ]
+    readonly_fields = ['created_at', 'updated_at']
+    
+    fieldsets = (
+        (_("Información básica"), {
+            'fields': ('nombre', 'ano', 'tipo', 'activa')
+        }),
+        (_("Descripción"), {
+            'fields': ('descripcion',),
+        }),
+        (_("Fechas"), {
+            'fields': ('fecha_inicio', 'fecha_fin'),
+        }),
+        (_("Metadata"), {
+            'fields': ('created_at', 'updated_at'),
+            'classes': ('collapse',)
+        }),
+    )
+    
+    def get_num_partidos(self, obj):
+        return obj.partidos.count()
+    get_num_partidos.short_description = _("Nº Partidos")
 
 
 @admin.register(Partido)
 class PartidoAdmin(admin.ModelAdmin):
     list_display = [
+        'competicion',
         'equipo_local',
         'get_equipo_visitante',
         'estadio_nombre',
@@ -13,6 +54,7 @@ class PartidoAdmin(admin.ModelAdmin):
         'finalizado',
     ]
     list_filter = [
+        'competicion',
         'finalizado',
         'fecha_hora',
         'equipo_local',
@@ -22,10 +64,18 @@ class PartidoAdmin(admin.ModelAdmin):
         'equipo_visitante__nombre',
         'nombre_equipo_visitante',
         'estadio_nombre',
+        'competicion__nombre',
     ]
     readonly_fields = ['created_at', 'updated_at']
     
+    # Usar autocomplete_fields para competicion (dropdown más eficiente)
+    autocomplete_fields = ['competicion']
+    
     fieldsets = (
+        (_("Competición (OBLIGATORIO)"), {
+            'fields': ('competicion',),
+            'description': _("Selecciona la competición a la que pertenece este partido")
+        }),
         (_("Información del Partido"), {
             'fields': ('equipo_local', 'fecha_hora', 'finalizado')
         }),

@@ -290,20 +290,29 @@ def crear_entrenamiento_ajax(request):
 def obtener_entrenamientos_ajax(request):
     """Obtener entrenamientos del equipo actual del usuario (para el calendario)."""
     try:
-        # Verificar que el usuario es entrenador
-        if request.user.rol != 'entrenador':
+        equipo = None
+        
+        # Si es entrenador, obtener equipo desde EquipoEntrenador
+        if request.user.rol == 'entrenador':
+            equipo_entrenador = EquipoEntrenador.objects.filter(
+                perfil_entrenador=request.user.perfil_entrenador,
+                es_activo=True
+            ).first()
+            if equipo_entrenador:
+                equipo = equipo_entrenador.equipo
+        
+        # Si es jugador, obtener equipo desde EquipoJugador
+        elif request.user.rol == 'jugador':
+            equipo_jugador = request.user.perfil_jugador.equipos.filter(
+                fecha_salida__isnull=True
+            ).first()
+            if equipo_jugador:
+                equipo = equipo_jugador.equipo
+        
+        # Si no hay equipo, devolver lista vacía
+        if not equipo:
             return JsonResponse([], safe=False)
         
-        # Obtener el equipo activo
-        equipo_entrenador = EquipoEntrenador.objects.filter(
-            perfil_entrenador=request.user.perfil_entrenador,
-            es_activo=True
-        ).first()
-        
-        if not equipo_entrenador:
-            return JsonResponse([], safe=False)
-        
-        equipo = equipo_entrenador.equipo
         entrenamientos = Entrenamiento.objects.filter(equipo=equipo).order_by('fecha_hora')
         
         eventos = []
@@ -467,23 +476,56 @@ def obtener_equipos_ajax(request):
 
 
 @login_required
+def obtener_competiciones_ajax(request):
+    """Obtener lista de competiciones activas."""
+    try:
+        from .models import Competicion
+        
+        # Obtener competiciones activas ordenadas por año descendente
+        competiciones = Competicion.objects.filter(
+            activa=True
+        ).values('id', 'nombre', 'ano', 'tipo').order_by('-ano', 'nombre')
+        
+        # Formatear la respuesta
+        resultado = []
+        for comp in competiciones:
+            resultado.append({
+                'id': comp['id'],
+                'nombre': f"{comp['nombre']} ({comp['ano']})"
+            })
+        
+        return JsonResponse(resultado, safe=False)
+    except Exception as e:
+        return JsonResponse([], safe=False)
+
+
+@login_required
 def obtener_partidos_ajax(request):
     """Obtener partidos del equipo actual del usuario (para el calendario)."""
     try:
-        # Verificar que el usuario es entrenador
-        if request.user.rol != 'entrenador':
+        equipo = None
+        
+        # Si es entrenador, obtener equipo desde EquipoEntrenador
+        if request.user.rol == 'entrenador':
+            equipo_entrenador = EquipoEntrenador.objects.filter(
+                perfil_entrenador=request.user.perfil_entrenador,
+                es_activo=True
+            ).first()
+            if equipo_entrenador:
+                equipo = equipo_entrenador.equipo
+        
+        # Si es jugador, obtener equipo desde EquipoJugador
+        elif request.user.rol == 'jugador':
+            equipo_jugador = request.user.perfil_jugador.equipos.filter(
+                fecha_salida__isnull=True
+            ).first()
+            if equipo_jugador:
+                equipo = equipo_jugador.equipo
+        
+        # Si no hay equipo, devolver lista vacía
+        if not equipo:
             return JsonResponse([], safe=False)
         
-        # Obtener el equipo activo
-        equipo_entrenador = EquipoEntrenador.objects.filter(
-            perfil_entrenador=request.user.perfil_entrenador,
-            es_activo=True
-        ).first()
-        
-        if not equipo_entrenador:
-            return JsonResponse([], safe=False)
-        
-        equipo = equipo_entrenador.equipo
         partidos = Partido.objects.filter(
             equipo_local=equipo
         ).order_by('fecha_hora')
@@ -498,6 +540,11 @@ def obtener_partidos_ajax(request):
             if partido.finalizado:
                 titulo = f"✓ {titulo}"
             
+            # Obtener competición si existe
+            competicion_nombre = None
+            if partido.competicion:
+                competicion_nombre = f"{partido.competicion.nombre} ({partido.competicion.ano})"
+            
             eventos.append({
                 'id': partido.id,
                 'title': titulo,
@@ -508,7 +555,8 @@ def obtener_partidos_ajax(request):
                 'estadio': partido.estadio_nombre,
                 'estadio_direccion': partido.estadio_direccion,
                 'fecha_hora': partido.fecha_hora.strftime('%d/%m/%Y %H:%M'),
-                'finalizado': partido.finalizado
+                'finalizado': partido.finalizado,
+                'competicion': competicion_nombre
             })
         
         return JsonResponse(eventos, safe=False)
@@ -596,20 +644,29 @@ def finalizar_partido_ajax(request, partido_id):
 def obtener_partidos_finalizados_ajax(request):
     """Obtener partidos finalizados del equipo actual (para partidos anteriores)."""
     try:
-        # Verificar que el usuario es entrenador
-        if request.user.rol != 'entrenador':
+        equipo = None
+        
+        # Si es entrenador, obtener equipo desde EquipoEntrenador
+        if request.user.rol == 'entrenador':
+            equipo_entrenador = EquipoEntrenador.objects.filter(
+                perfil_entrenador=request.user.perfil_entrenador,
+                es_activo=True
+            ).first()
+            if equipo_entrenador:
+                equipo = equipo_entrenador.equipo
+        
+        # Si es jugador, obtener equipo desde EquipoJugador
+        elif request.user.rol == 'jugador':
+            equipo_jugador = request.user.perfil_jugador.equipos.filter(
+                fecha_salida__isnull=True
+            ).first()
+            if equipo_jugador:
+                equipo = equipo_jugador.equipo
+        
+        # Si no hay equipo, devolver lista vacía
+        if not equipo:
             return JsonResponse([], safe=False)
         
-        # Obtener el equipo activo
-        equipo_entrenador = EquipoEntrenador.objects.filter(
-            perfil_entrenador=request.user.perfil_entrenador,
-            es_activo=True
-        ).first()
-        
-        if not equipo_entrenador:
-            return JsonResponse([], safe=False)
-        
-        equipo = equipo_entrenador.equipo
         partidos = Partido.objects.filter(
             equipo_local=equipo,
             finalizado=True
@@ -618,11 +675,16 @@ def obtener_partidos_finalizados_ajax(request):
         datos = []
         for partido in partidos:
             rival = partido.equipo_visitante.nombre if partido.equipo_visitante else partido.nombre_equipo_visitante
+            competicion_nombre = None
+            if partido.competicion:
+                competicion_nombre = f"{partido.competicion.nombre} ({partido.competicion.ano})"
+            
             datos.append({
                 'id': partido.id,
                 'rival': rival,
                 'fecha_hora': partido.fecha_hora.strftime('%d/%m/%Y %H:%M'),
                 'estadio': partido.estadio_nombre,
+                'competicion': competicion_nombre
             })
         
         return JsonResponse(datos, safe=False)

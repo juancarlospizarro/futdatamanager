@@ -18,6 +18,7 @@ urlpatterns = [
     path('ajax/finalizar_partido/<int:partido_id>/', views.finalizar_partido_ajax, name='finalizar_partido_ajax'),
     path('ajax/obtener_partidos_finalizados/', views.obtener_partidos_finalizados_ajax, name='obtener_partidos_finalizados_ajax'),
     path('ajax/obtener_equipos/', views.obtener_equipos_ajax, name='obtener_equipos_ajax'),
+    path('ajax/obtener_competiciones/', views.obtener_competiciones_ajax, name='obtener_competiciones_ajax'),
     
     # Partidos
     path('<slug:slug>/crear_partido/', views.crear_partido, name='crear_partido'),

@@ -3,8 +3,83 @@ from django.utils.translation import gettext_lazy as _
 from equipos.models import Equipo
 
 
+class Competicion(models.Model):
+    """Modelo para representar competiciones (ligas, copas, torneos, etc.)"""
+    
+    class TipoCompeticion(models.TextChoices):
+        LIGA = 'liga', _('Liga')
+        COPA = 'copa', _('Copa')
+        AMISTOSO = 'amistoso', _('Amistoso')
+        TORNEO = 'torneo', _('Torneo')
+        SUPERCOPA = 'supercopa', _('Supercopa')
+    
+    nombre = models.CharField(
+        max_length=200,
+        verbose_name=_('Nombre de la competición'),
+        help_text=_('Ej: Liga Local 2024-2025')
+    )
+    
+    ano = models.PositiveIntegerField(
+        verbose_name=_('Año/Temporada'),
+        help_text=_('Año de inicio de la temporada')
+    )
+    
+    tipo = models.CharField(
+        max_length=15,
+        choices=TipoCompeticion.choices,
+        default=TipoCompeticion.LIGA,
+        verbose_name=_('Tipo de competición')
+    )
+    
+    descripcion = models.TextField(
+        blank=True,
+        verbose_name=_('Descripción')
+    )
+    
+    fecha_inicio = models.DateField(
+        verbose_name=_('Fecha de inicio'),
+        null=True,
+        blank=True
+    )
+    
+    fecha_fin = models.DateField(
+        verbose_name=_('Fecha de fin'),
+        null=True,
+        blank=True
+    )
+    
+    activa = models.BooleanField(
+        default=True,
+        verbose_name=_('Competición activa')
+    )
+    
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+    class Meta:
+        verbose_name = _('Competición')
+        verbose_name_plural = _('Competiciones')
+        ordering = ['-ano', 'nombre']
+        indexes = [
+            models.Index(fields=['ano', 'tipo']),
+        ]
+        unique_together = ['nombre', 'ano', 'tipo']
+    
+    def __str__(self):
+        return f"{self.nombre} ({self.ano})"
+
+
 class Partido(models.Model):
     """Modelo para registrar partidos de fútbol."""
+    
+    competicion = models.ForeignKey(
+        Competicion,
+        on_delete=models.CASCADE,
+        related_name='partidos',
+        verbose_name=_("Competición"),
+        null=True,
+        blank=True
+    )
     
     equipo_local = models.ForeignKey(
         Equipo,

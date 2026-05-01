@@ -16,7 +16,8 @@ document.addEventListener('DOMContentLoaded', function () {
         obtener_partidos: `${langPrefix}/events/ajax/obtener_partidos/`,
         listar_partidos: `${langPrefix}/events/ajax/listar_partidos/`,
         eliminar_partido: (id) => `${langPrefix}/events/ajax/eliminar_partido/${id}/`,
-        obtener_equipos: `${langPrefix}/events/ajax/obtener_equipos/`
+        obtener_equipos: `${langPrefix}/events/ajax/obtener_equipos/`,
+        obtener_competiciones: `${langPrefix}/events/ajax/obtener_competiciones/`
     };
 
     // Inicializar Modals
@@ -43,6 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Botón Añadir Partido
     document.getElementById('btn-anadirPartido').addEventListener('click', function () {
         document.getElementById('formAnadirPartido').reset();
+        cargarCompeticiones();
         cargarEquiposDispositivos();
         modalAnadirPartido.show();
     });
@@ -86,6 +88,33 @@ document.addEventListener('DOMContentLoaded', function () {
             selectEquipo.disabled = false;
         }
     });
+
+    // Función: Cargar competiciones disponibles
+    function cargarCompeticiones() {
+        const selectCompeticion = document.getElementById('competicionPartido');
+        selectCompeticion.innerHTML = '<option value="">Selecciona una competición</option>';
+
+        fetch(URLS.obtener_competiciones, {
+            method: 'GET',
+            headers: {
+                'X-CSRFToken': getCookie('csrftoken'),
+            }
+        })
+        .then(response => response.json())
+        .then(competiciones => {
+            if (Array.isArray(competiciones)) {
+                competiciones.forEach(competicion => {
+                    const option = document.createElement('option');
+                    option.value = competicion.id;
+                    option.textContent = competicion.nombre;
+                    selectCompeticion.appendChild(option);
+                });
+            }
+        })
+        .catch(error => {
+            console.error('Error cargando competiciones:', error);
+        });
+    }
 
     // Función: Cargar equipos disponibles
     function cargarEquiposDispositivos() {
