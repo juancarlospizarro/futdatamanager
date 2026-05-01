@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.utils.translation import gettext_lazy as _
+from django.utils.text import slugify
 
 class Usuario(AbstractUser):
     """
@@ -38,6 +39,23 @@ class Usuario(AbstractUser):
 
     def __str__(self):
         return f"{self.get_full_name()} ({self.get_rol_display()})"
+
+    def save(self, *args, **kwargs):
+        """
+        Genera automáticamente un slug único basado en nombre y apellidos.
+        """
+        if not self.slug:
+            base_slug = slugify(f"{self.first_name}-{self.last_name}")
+            slug = base_slug
+            counter = 1
+            
+            while Usuario.objects.filter(slug=slug).exclude(pk=self.pk).exists():
+                slug = f"{base_slug}-{counter}"
+                counter += 1
+            
+            self.slug = slug
+        
+        super().save(*args, **kwargs)
 
 
 class PerfilJugador(models.Model):
