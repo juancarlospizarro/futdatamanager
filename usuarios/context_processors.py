@@ -62,16 +62,19 @@ def breadcrumbs(request):
             slug = kwargs.get("slug")
 
             if slug:
-                usuario = Usuario.objects.get(slug=slug)
+                try:
+                    usuario = Usuario.objects.get(slug=slug)
 
-                crumbs.append({
-                    "name": _("Usuarios"),
-                })
+                    crumbs.append({
+                        "name": _("Usuarios"),
+                    })
 
-                crumbs.append({
-                    "name": usuario.get_full_name(),
-                    "url": reverse("usuarios:ver_perfil_usuario", args=[slug])
-                })
+                    crumbs.append({
+                        "name": usuario.get_full_name(),
+                        "url": reverse("usuarios:ver_perfil_usuario", args=[slug])
+                    })
+                except Usuario.DoesNotExist:
+                    pass
 
         elif view_name == "informacion_equipo":
             slug = kwargs.get("slug")

@@ -181,6 +181,12 @@
             <div class="modal-body">
                 <form id="formAnadirPartido">
                     <div class="mb-3">
+                        <label for="competicionPartido" class="form-label">{% trans "Competición" %} <span class="text-danger">*</span></label>
+                        <select class="form-select" id="competicionPartido" name="competicion_id" required>
+                            <option value="">{% trans "Selecciona una competición" %}</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
                         <label for="fechaHoraPartido" class="form-label">{% trans "Fecha y hora" %}</label>
                         <input type="datetime-local" class="form-control" id="fechaHoraPartido" name="fecha_hora" required>
                     </div>

@@ -99,7 +99,9 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function cargarEntrenamientosEnCalendario(calendar, langPrefix) {
-    const url = `${langPrefix}/events/ajax/obtener_entrenamientos/`;
+    const currentLang = document.documentElement.lang || 'es';
+    const langPrefixActual = currentLang === 'es' ? '/es' : currentLang === 'en' ? '/en' : '';
+    const url = `${langPrefixActual}/events/ajax/obtener_entrenamientos/`;
     
     fetch(url, {
         method: 'GET',
@@ -121,7 +123,9 @@ function cargarEntrenamientosEnCalendario(calendar, langPrefix) {
 }
 
 function cargarPartidosEnCalendario(calendar, langPrefix) {
-    const url = `${langPrefix}/events/ajax/obtener_partidos/`;
+    const currentLang = document.documentElement.lang || 'es';
+    const langPrefixActual = currentLang === 'es' ? '/es' : currentLang === 'en' ? '/en' : '';
+    const url = `${langPrefixActual}/events/ajax/obtener_partidos/`;
     
     fetch(url, {
         method: 'GET',
@@ -185,11 +189,17 @@ function mostrarInfoEvento(event) {
             ? '<span class="badge bg-success"><i class="bi bi-check-circle"></i> Finalizado</span>'
             : '';
         
+        // Mostrar competición si existe
+        let competicionHtml = event.extendedProps.competicion 
+            ? `<strong>Competición:</strong> ${event.extendedProps.competicion}<br>`
+            : '';
+        
         html = `
             <div class="card border-start border-4 ${event.extendedProps.finalizado ? 'border-success' : 'border-danger'}">
                 <div class="card-body">
                     <h5 class="card-title"><i class="bi ${event.extendedProps.finalizado ? 'bi-check-circle text-success' : 'bi-play-fill text-danger'}"></i> vs ${rivalHtml} ${estadoHtml}</h5>
                     <p class="card-text small">
+                        ${competicionHtml}
                         <strong>Fecha:</strong> ${event.extendedProps.fecha_hora || event.start.toLocaleString()}<br>
                         <strong>Estadio:</strong> ${event.extendedProps.estadio}<br>
                         ${direccionHtml ? `<strong>Dirección:</strong> ${direccionHtml}<br>` : ''}
@@ -295,6 +305,9 @@ function cargarEventosProximos() {
     const urlEntrenamientos = `${langPrefix}/events/ajax/obtener_entrenamientos/`;
     const urlPartidos = `${langPrefix}/events/ajax/obtener_partidos/`;
     
+    console.log('cargarEventosProximos - URL Entrenamientos:', urlEntrenamientos);
+    console.log('cargarEventosProximos - URL Partidos:', urlPartidos);
+    
     Promise.all([
         fetch(urlEntrenamientos, {
             method: 'GET',
@@ -306,6 +319,9 @@ function cargarEventosProximos() {
         }).then(r => r.json())
     ])
     .then(([entrenamientos, partidos]) => {
+        console.log('Entrenamientos recibidos:', entrenamientos);
+        console.log('Partidos recibidos:', partidos);
+        
         // Combinar eventos
         const eventos = [...(Array.isArray(entrenamientos) ? entrenamientos : []), 
                          ...(Array.isArray(partidos) ? partidos : [])];
@@ -317,11 +333,18 @@ function cargarEventosProximos() {
             .sort((a, b) => new Date(a.start) - new Date(b.start))
             .slice(0, 5);
         
+        console.log('Eventos futuros:', eventosFuturos);
+        
         // Renderizar
         const contenedor = document.getElementById('listaEventosProximos');
         
+        if (!contenedor) {
+            console.warn('No se encontró el contenedor listaEventosProximos');
+            return;
+        }
+        
         if (eventosFuturos.length === 0) {
-            contenedor.innerHTML = '<p class="text-secondary text-muted">No hay eventos próximos.</p>';
+            contenedor.innerHTML = '<p class="text-secondary text-muted">{% trans "No hay eventos próximos." %}</p>';
             return;
         }
         
@@ -330,7 +353,7 @@ function cargarEventosProximos() {
             const fecha = evento.fecha_hora || new Date(evento.start).toLocaleString();
             let titulo = '';
             let detalles = '';
-            let borderClass = '';
+            let borderClass = 'border-secondary';
             
             if (evento.type === 'entrenamiento') {
                 titulo = `<i class="bi bi-dribbble text-info"></i> ${evento.tipo}`;
@@ -344,6 +367,12 @@ function cargarEventosProximos() {
                 
                 titulo = `<i class="bi bi-play-fill text-danger"></i> vs ${rivalHtml}`;
                 
+                // Mostrar competición si existe
+                let competicionHtml = '';
+                if (evento.competicion) {
+                    competicionHtml = `<small class="text-muted d-block"><i class="bi bi-cup"></i> ${evento.competicion}</small>`;
+                }
+                
                 // Crear enlace a Google Maps para la dirección
                 let direccionHtml = '';
                 if (evento.estadio_direccion) {
@@ -351,12 +380,12 @@ function cargarEventosProximos() {
                     direccionHtml = `<a href="${mapsUrl}" target="_blank" class="text-decoration-none text-muted"><i class="bi bi-geo-alt"></i> ${evento.estadio_direccion}</a><br>`;
                 }
                 
-                detalles = `<small class="d-block">${direccionHtml}<small class="text-muted">🏟️ ${evento.estadio || 'Estadio por confirmar'}</small></small>`;
+                detalles = `${competicionHtml}<small class="d-block">${direccionHtml}<small class="text-muted">🏟️ ${evento.estadio || 'Estadio por confirmar'}</small></small>`;
                 borderClass = 'border-danger';
             }
             
             html += `
-                <li class="list-group-item border-start border-3 border-${borderClass}">
+                <li class="list-group-item border-start border-3 ${borderClass}">
                     <strong>${titulo}</strong>
                     <br>
                     <small class="text-muted"><i class="bi bi-calendar"></i> ${fecha}</small>
@@ -371,8 +400,10 @@ function cargarEventosProximos() {
     })
     .catch(error => {
         console.error('Error al cargar eventos próximos:', error);
-        document.getElementById('listaEventosProximos').innerHTML = 
-            '<p class="text-danger">Error al cargar eventos</p>';
+        const contenedor = document.getElementById('listaEventosProximos');
+        if (contenedor) {
+            contenedor.innerHTML = '<p class="text-danger">{% trans "Error al cargar eventos" %}</p>';
+        }
     });
 }
 
@@ -383,7 +414,13 @@ function cargarPartidosAnteriores() {
     const url = `${langPrefix}/events/ajax/obtener_partidos_finalizados/`;
     const contenedor = document.getElementById('listaPartidosAnteriores');
     
-    if (!contenedor) return;
+    console.log('cargarPartidosAnteriores - URL:', url);
+    console.log('cargarPartidosAnteriores - Contenedor encontrado:', !!contenedor);
+    
+    if (!contenedor) {
+        console.warn('No se encontró el contenedor listaPartidosAnteriores');
+        return;
+    }
     
     fetch(url, {
         method: 'GET',
@@ -391,16 +428,20 @@ function cargarPartidosAnteriores() {
     })
     .then(response => response.json())
     .then(partidos => {
+        console.log('Partidos anteriores recibidos:', partidos);
+        
         if (!Array.isArray(partidos) || partidos.length === 0) {
-            contenedor.innerHTML = '<p class="text-secondary text-muted text-center">No hay partidos anteriores.</p>';
+            contenedor.innerHTML = '<p class="text-secondary text-muted text-center">{% trans "No hay partidos anteriores." %}</p>';
             return;
         }
         
-        let html = '<table class="table table-striped mb-0"><thead><tr><th>Fecha</th><th>Rival</th><th>Estadio</th></tr></thead><tbody>';
+        let html = '<table class="table table-striped mb-0"><thead><tr><th>{% trans "Fecha" %}</th><th>{% trans "Competición" %}</th><th>{% trans "Rival" %}</th><th>{% trans "Estadio" %}</th></tr></thead><tbody>';
         partidos.forEach(partido => {
+            const competicion = partido.competicion ? `<small>${partido.competicion}</small>` : '<small class="text-muted">-</small>';
             html += `
                 <tr>
                     <td><small>${partido.fecha_hora}</small></td>
+                    <td>${competicion}</td>
                     <td><strong>${partido.rival}</strong></td>
                     <td><small class="text-muted">${partido.estadio}</small></td>
                 </tr>
@@ -412,13 +453,16 @@ function cargarPartidosAnteriores() {
     })
     .catch(error => {
         console.error('Error al cargar partidos anteriores:', error);
-        contenedor.innerHTML = '<p class="text-danger">Error al cargar partidos anteriores</p>';
+        contenedor.innerHTML = '<p class="text-danger">{% trans "Error al cargar partidos anteriores" %}</p>';
     });
 }
 
 // Cargar eventos próximos cuando el DOM esté listo
-setTimeout(() => {
-    cargarEventosProximos();
-    cargarPartidosAnteriores();
-}, 500);
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+        console.log('Ejecutando cargarEventosProximos y cargarPartidosAnteriores');
+        cargarEventosProximos();
+        cargarPartidosAnteriores();
+    }, 500);
+});
 

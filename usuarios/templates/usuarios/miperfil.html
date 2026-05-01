@@ -349,22 +349,98 @@ FutDataManager - {{ usuario_perfil.get_full_name }}
             {% if usuario_perfil.rol == "jugador" %}
             <!-- Sección Lesiones -->
             <div class="mb-5">
-                <h3 class="h4 text-foot-green fw-bold mb-2">{% trans "Lesiones" %}</h3>
-                <p class="fs-5 text-secondary">{% trans "Información lesiones del jugador" %}</p>
+                <h3 class="h4 text-foot-green fw-bold mb-3">
+                    <i class="bi bi-heart-pulse"></i> {% trans "Lesiones" %}
+                </h3>
+                
+                {% if usuario_perfil.perfil_jugador.lesiones.all %}
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            {% for lesion in usuario_perfil.perfil_jugador.lesiones.all %}
+                                <div class="alert {% if lesion.activa %}alert-warning{% else %}alert-success{% endif %} mb-2">
+                                    <div class="d-flex justify-content-between align-items-start">
+                                        <div>
+                                            <h6 class="mb-1">
+                                                <i class="bi bi-exclamation-circle"></i> 
+                                                {{ lesion.get_tipo_display }}
+                                                {% if lesion.activa %}
+                                                    <span class="badge bg-warning text-dark">Activa</span>
+                                                {% else %}
+                                                    <span class="badge bg-success">Recuperada</span>
+                                                {% endif %}
+                                            </h6>
+                                            <small class="text-muted d-block">
+                                                📅 {{ lesion.fecha_inicio|date:"d/m/Y" }} 
+                                                - {% trans "Duración estimada" %}: {{ lesion.dias_duracion }} {% trans "días" %}
+                                            </small>
+                                            {% if lesion.descripcion %}
+                                                <small class="text-muted d-block mt-2">{{ lesion.descripcion }}</small>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="alert alert-info">
+                        <i class="bi bi-check-circle"></i> {% trans "No hay lesiones registradas" %}
+                    </div>
+                {% endif %}
             </div>
 
             <!-- Sección Sanciones -->
             <div class="mb-5">
-                <h3 class="h4 text-foot-green fw-bold mb-2">{% trans "Sanciones" %}</h3>
-                <p class="fs-5 text-secondary">{% trans "Información sanciones del jugador" %}</p>
+                <h3 class="h4 text-foot-green fw-bold mb-3">
+                    <i class="bi bi-shield-exclamation"></i> {% trans "Sanciones" %}
+                </h3>
+                
+                {% if usuario_perfil.perfil_jugador.sanciones.all %}
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            {% for sancion in usuario_perfil.perfil_jugador.sanciones.all %}
+                                <div class="alert {% if sancion.activa %}alert-danger{% else %}alert-secondary{% endif %} mb-2">
+                                    <div class="d-flex justify-content-between align-items-start">
+                                        <div>
+                                            <h6 class="mb-1">
+                                                <i class="bi bi-exclamation-triangle"></i> 
+                                                {{ sancion.get_tipo_display }}
+                                                {% if sancion.activa %}
+                                                    <span class="badge bg-danger">Activa</span>
+                                                {% else %}
+                                                    <span class="badge bg-secondary">Cumplida</span>
+                                                {% endif %}
+                                            </h6>
+                                            <small class="text-muted d-block">
+                                                📅 {{ sancion.fecha|date:"d/m/Y" }}
+                                                {% if sancion.partidos_duracion > 0 %}
+                                                    - {% trans "Suspensión" %}: {{ sancion.partidos_duracion }} {% trans "partidos" %}
+                                                {% endif %}
+                                            </small>
+                                            {% if sancion.razon %}
+                                                <small class="text-muted d-block mt-2">
+                                                    <strong>{% trans "Razón" %}:</strong> {{ sancion.razon }}
+                                                </small>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="alert alert-info">
+                        <i class="bi bi-check-circle"></i> {% trans "No hay sanciones registradas" %}
+                    </div>
+                {% endif %}
             </div>
 
             {% elif usuario_perfil.rol == "entrenador" %}
             <!-- Sección Equipos -->
-            <div class="mb-5">
+            <!-- <div class="mb-5">
                 <h3 class="h4 text-foot-green fw-bold mb-2">{% trans "Equipos a los que ha entrenado" %}</h3>
                 <p class="fs-5 text-secondary">{% trans "Información equipos que el entrenador ha entrenado" %}</p>
-            </div>
+            </div> -->
             {% if usuario_perfil.tiene_equipo %}
             <!-- Sección Estadisticas Equipo Actual -->
             <div class="mb-5">

@@ -15,6 +15,58 @@
                 <div id="calendario"></div>
             </section>
 
+            <!-- SECCIONES DE CONTENIDO -->
+            <section class="row justify-content-center mt-5">
+                <div class="col-lg-10">
+                    <div class="d-flex flex-column gap-5">
+
+                        <!-- Próximos eventos -->
+                        <div>
+                            <h2 class="h4 text-foot-green mb-3">{% trans "Próximos eventos" %}</h2>
+                            <div class="card shadow-sm">
+                                <div class="card-body" id="listaEventosProximos">
+                                    <p class="text-secondary text-muted">{% trans "Cargando eventos..." %}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Partidos anteriores -->
+                        <div>
+                            <h2 class="h4 text-foot-green mb-3">{% trans "Partidos anteriores" %}</h2>
+                            <div class="card shadow-sm">
+                                <div class="card-body" id="listaPartidosAnteriores">
+                                    <p class="text-secondary text-muted">{% trans "Cargando partidos anteriores..." %}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Estadísticas del equipo -->
+                        <div>
+                            <h2 class="h4 text-foot-green mb-3">{% trans "Estadísticas del equipo" %}</h2>
+                            <div class="card shadow-sm">
+                                <div class="card-body">
+                                    <div class="row text-center">
+                                        <div class="col-md-4">
+                                            <h5 class="text-muted">{% trans "Partidos jugados" %}</h5>
+                                            <p class="fs-3 fw-bold text-foot-green">0</p>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <h5 class="text-muted">{% trans "Victorias" %}</h5>
+                                            <p class="fs-3 fw-bold text-success">0</p>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <h5 class="text-muted">{% trans "Derrotas" %}</h5>
+                                            <p class="fs-3 fw-bold text-danger">0</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
 </div>
 <script src="{% static 'js/calendario.js' %}"></script>
 {% endblock %}
