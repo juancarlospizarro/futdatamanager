@@ -1,10 +1,10 @@
 $(document).ready(function() {
-    // Verificación 1: Existe el elemento
+    // Existe el elemento
     if (document.getElementById('tablaJugadores') === null) {
         return;
     }
 
-    // Verificación 2: jQuery lo encuentra
+    // jQuery lo encuentra
     const $tabla = $('#tablaJugadores');
     if ($tabla.length === 0) {
         return;

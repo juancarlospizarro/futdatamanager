@@ -10,7 +10,7 @@
     <div class="row gy-5">
 
         <!-- COLUMNA IZQUIERDA -->
-        <div class="col-md-8 order-2 order-md-1">
+        <div class="col-md-8 order-1 order-md-1">
 
             <!-- Cabecera del Equipo -->
             <div class="mb-4">
@@ -230,9 +230,6 @@
                                     class="rounded-circle me-3" width="70" height="70" style="object-fit: cover;">
                                 <div>
                                     <h5 class="mb-1 fw-bold text-color-card">{{ entrenador.perfil_entrenador.usuario.get_full_name }}</h5>
-                                    <p class="mb-1 text-secondary">
-                                        <small><i class="bi bi-briefcase-fill"></i> Experiencia: {{ entrenador.perfil_entrenador.experiencia_anos }} años</small>
-                                    </p>
                                     {% if entrenador.perfil_entrenador.licencia %}
                                     <p class="mb-0 text-secondary">
                                         <small><i class="bi bi-award-fill"></i> Licencia: {{ entrenador.perfil_entrenador.licencia }}</small>
@@ -908,33 +905,11 @@
                 </div>
             </div>
 
-            <!-- Estadísticas del equipo -->
-                        <div>
-                            <h2 class="h4 text-foot-green mb-3">{% trans "Estadísticas del equipo" %}</h2>
-                            <div class="card shadow-sm">
-                                <div class="card-body">
-                                    <div class="row text-center">
-                                        <div class="col-md-4">
-                                            <h5 class="text-muted">{% trans "Partidos jugados" %}</h5>
-                                            <p class="fs-3 fw-bold text-foot-green">0</p>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <h5 class="text-muted">{% trans "Victorias" %}</h5>
-                                            <p class="fs-3 fw-bold text-success">0</p>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <h5 class="text-muted">{% trans "Derrotas" %}</h5>
-                                            <p class="fs-3 fw-bold text-danger">0</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
         </div>
 
         <!-- COLUMNA DERECHA: Foto de Perfil (Orden 1 en móvil, 2 en escritorio) -->
-        <div class="col-md-4 order-1 order-md-2 d-flex flex-column align-items-center gap-4">
+        <div class="col-md-4 order-2 order-md-2 d-flex flex-column align-items-center gap-4">
 
             <!-- Lógica para mostrar la foto -->
             {% if equipo.escudo %}
@@ -949,17 +924,144 @@
                 style="width: 350px; height: 350px; object-fit: cover;">
             {% endif %}
             <div class="w-100 card shadow-sm bg-card-dark">
-                <!-- Sección Lesiones -->
-                <div class="card-body text-center">
-                    <h3 class="h4 text-foot-green fw-bold mb-2">{% trans "Últimos resultados" %}</h3>
-                    <p class="fs-5 text-secondary">{% trans "Últimos partidos del equipo" %}</p>
-
-                    <!-- Sección Sanciones -->
-                    <h3 class="h4 text-foot-green fw-bold mb-2">{% trans "Próximos partidos" %}</h3>
-                    <p class="fs-5 text-secondary">{% trans "Próximos partidos del equipo" %}</p>
+                <!-- Sección Últimos Resultados -->
+                <div class="card-body">
+                    <h3 class="h4 text-foot-green fw-bold mb-3">{% trans "Últimos resultados" %}</h3>
+                    
+                    {% if ultimo_partido_finalizado %}
+                        <div class="match-card p-3 rounded-3" style="background: linear-gradient(135deg, rgba(39, 167, 112, 0.1), rgba(39, 167, 112, 0.05));">
+                            <!-- Fecha y Hora -->
+                            <div class="text-center mb-2">
+                                <small class="text-secondary">
+                                    <i class="bi bi-calendar-event"></i>
+                                    {{ ultimo_partido_finalizado.fecha_hora|date:"d \\d\\e M" }} 
+                                    a las <i class="bi bi-clock"></i> {{ ultimo_partido_finalizado.fecha_hora|time:"H:i" }}
+                                </small>
+                            </div>
+                            
+                            <!-- Equipos y Resultado -->
+                            <div class="row align-items-center g-2 mb-2">
+                                <!-- Equipo Local -->
+                                <div class="col">
+                                    <div class="text-center">
+                                        <small class="text-secondary d-block">{% trans "Local" %}</small>
+                                        <p class="mb-0 fw-bold text-color-card" style="font-size: 0.95rem;">
+                                            {{ ultimo_partido_finalizado.equipo_local.nombre }}
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                                <!-- Resultado -->
+                                <div class="col-auto">
+                                    <div class="text-center">
+                                        <div class="badge bg-foot-green text-white p-2" style="font-size: 1.1rem;">
+                                            {{ ultimo_partido_finalizado.goles_local }} - {{ ultimo_partido_finalizado.goles_visitante }}
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Equipo Visitante -->
+                                <div class="col">
+                                    <div class="text-center">
+                                        <small class="text-secondary d-block">{% trans "Visitante" %}</small>
+                                        <p class="mb-0 fw-bold text-color-card" style="font-size: 0.95rem;">
+                                            {% if ultimo_partido_finalizado.equipo_visitante %}
+                                                {{ ultimo_partido_finalizado.equipo_visitante.nombre }}
+                                            {% else %}
+                                                {{ ultimo_partido_finalizado.nombre_equipo_visitante }}
+                                            {% endif %}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Estadio -->
+                            <div class="text-center">
+                                <small class="text-secondary">
+                                    <i class="bi bi-building"></i> {{ ultimo_partido_finalizado.estadio_nombre }}
+                                </small>
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="alert alert-info alert-dismissible fade show" role="alert">
+                            <i class="bi bi-info-circle"></i> {% trans "No hay partidos finalizados registrados aún." %}
+                        </div>
+                    {% endif %}
                 </div>
+            </div>
 
-
+            <!-- Sección Próximos Partidos -->
+            <div class="w-100 card shadow-sm bg-card-dark">
+                <div class="card-body">
+                    <h3 class="h4 text-foot-green fw-bold mb-3">{% trans "Próximos partidos" %}</h3>
+                    
+                    {% if proximo_partido %}
+                        <div class="match-card p-3 rounded-3" style="background: linear-gradient(135deg, rgba(39, 167, 112, 0.15), rgba(39, 167, 112, 0.08));">
+                            <!-- Fecha y Hora -->
+                            <div class="text-center mb-2">
+                                <small class="text-secondary">
+                                    <i class="bi bi-calendar-event"></i>
+                                    {{ proximo_partido.fecha_hora|date:"d \\d\\e M" }} 
+                                    a las <i class="bi bi-clock"></i> {{ proximo_partido.fecha_hora|time:"H:i" }}
+                                </small>
+                            </div>
+                            
+                            <!-- Equipos -->
+                            <div class="row align-items-center g-2 mb-2">
+                                <!-- Equipo Local -->
+                                <div class="col">
+                                    <div class="text-center">
+                                        <small class="text-secondary d-block">{% trans "Local" %}</small>
+                                        <p class="mb-0 fw-bold text-color-card" style="font-size: 0.95rem;">
+                                            {{ proximo_partido.equipo_local.nombre }}
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                                <!-- VS -->
+                                <div class="col-auto">
+                                    <div class="text-center">
+                                        <span class="badge bg-light text-dark">VS</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- Equipo Visitante -->
+                                <div class="col">
+                                    <div class="text-center">
+                                        <small class="text-secondary d-block">{% trans "Visitante" %}</small>
+                                        <p class="mb-0 fw-bold text-color-card" style="font-size: 0.95rem;">
+                                            {% if proximo_partido.equipo_visitante %}
+                                                {{ proximo_partido.equipo_visitante.nombre }}
+                                            {% else %}
+                                                {{ proximo_partido.nombre_equipo_visitante }}
+                                            {% endif %}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Estadio -->
+                            <div class="text-center mb-2">
+                                <small class="text-secondary">
+                                    <i class="bi bi-building"></i> {{ proximo_partido.estadio_nombre }}
+                                </small>
+                            </div>
+                            
+                            <!-- Competición -->
+                            {% if proximo_partido.competicion %}
+                            <div class="text-center">
+                                <small class="badge bg-light text-dark">
+                                    {{ proximo_partido.competicion.nombre }}
+                                </small>
+                            </div>
+                            {% endif %}
+                        </div>
+                    {% else %}
+                        <div class="alert alert-info alert-dismissible fade show" role="alert">
+                            <i class="bi bi-info-circle"></i> {% trans "No hay próximos partidos programados." %}
+                        </div>
+                    {% endif %}
+                </div>
             </div>
 
             <div class="w-100 card shadow-sm bg-card-dark">

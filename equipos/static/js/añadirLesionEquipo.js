@@ -59,7 +59,7 @@ function enviarLesion(datos) {
             mostrarExito('Lesión registrada correctamente');
             document.getElementById('formulario_añadir_lesion').reset();
             
-            // Cerrar modal después de 1.5 segundos
+            // Cerrar modal después de unos segundos
             setTimeout(() => {
                 const modal = bootstrap.Modal.getInstance(document.getElementById('addLesionModal'));
                 if (modal) {

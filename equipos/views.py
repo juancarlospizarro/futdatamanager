@@ -2,14 +2,16 @@ from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.db import transaction
+from django.db import transaction, models
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
+from django.utils import timezone
 from usuarios.decorators import entrenador_o_admin_required
 from usuarios.models import PerfilJugador, Usuario, PerfilEntrenador
 from .models import Equipo, EquipoEntrenador, EquipoJugador
 from control_jugadores.models import Lesion, Sancion
+from eventos.models import Partido
 
 @login_required
 @entrenador_o_admin_required
@@ -94,12 +96,27 @@ def informacion_equipo(request, slug):
         'perfil_jugador__usuario'
     ).order_by('perfil_jugador__usuario__first_name')
     
+    # Obtener último partido finalizado
+    ultimo_partido_finalizado = Partido.objects.filter(
+        models.Q(equipo_local=equipo) | models.Q(equipo_visitante=equipo),
+        finalizado=True
+    ).order_by('-fecha_hora').first()
+    
+    # Obtener próximo partido (no finalizado, más próximo en tiempo)
+    proximo_partido = Partido.objects.filter(
+        models.Q(equipo_local=equipo) | models.Q(equipo_visitante=equipo),
+        finalizado=False,
+        fecha_hora__gte=timezone.now()
+    ).order_by('fecha_hora').first()
+    
     context = {
         'equipo': equipo,
         'is_trainer': is_trainer,
         'jugadores_sin_equipo': jugadores_sin_equipo,
         'entrenador': entrenador,
         'jugadores_equipo': jugadores_equipo,
+        'ultimo_partido_finalizado': ultimo_partido_finalizado,
+        'proximo_partido': proximo_partido,
     }
     return render(request, 'equipos/informacion_equipo.html', context)
 
