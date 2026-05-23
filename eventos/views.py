@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.utils.translation import gettext as _
 from django.http import JsonResponse
+from django.db.models import Q
 from equipos.models import Equipo, EquipoEntrenador
 from usuarios.decorators import entrenador_o_admin_required
 from .models import Partido, Entrenamiento
@@ -34,12 +35,13 @@ def crear_partido(request, slug):
     
     if request.method == 'POST':
         # Crear el partido desde el formulario POST
+        posicion_equipo = request.POST.get('posicion_equipo', 'local')  # 'local' o 'visitante'
         equipo_visitante_id = request.POST.get('equipo_visitante_id')
         nombre_equipo_visitante = request.POST.get('nombre_equipo_visitante', '').strip()
         
-        equipo_visitante = None
+        equipo_rival = None
         if equipo_visitante_id:
-            equipo_visitante = get_object_or_404(Equipo, id=equipo_visitante_id)
+            equipo_rival = get_object_or_404(Equipo, id=equipo_visitante_id)
         elif not nombre_equipo_visitante:
             messages.error(request, _("Debes seleccionar un equipo o introducir un nombre"))
             return render(request, 'eventos/crear_partido.html', {
@@ -47,15 +49,23 @@ def crear_partido(request, slug):
                 'equipos': Equipo.objects.exclude(id=equipo.id)
             })
         
+        # Asignar equipos según la posición elegida
+        if posicion_equipo == 'local':
+            equipo_local = equipo
+            equipo_visitante = equipo_rival
+            nombre_visitante = nombre_equipo_visitante
+        else:  # visitante
+            equipo_local = equipo_rival
+            equipo_visitante = equipo
+            nombre_visitante = '' if equipo_rival else nombre_equipo_visitante
+        
         partido = Partido.objects.create(
-            equipo_local=equipo,
+            equipo_local=equipo_local,
             equipo_visitante=equipo_visitante,
-            nombre_equipo_visitante=nombre_equipo_visitante,
+            nombre_equipo_visitante=nombre_visitante,
             estadio_nombre=request.POST.get('estadio_nombre', ''),
             estadio_direccion=request.POST.get('estadio_direccion', ''),
             fecha_hora=request.POST.get('fecha_hora'),
-            posesion_local=int(request.POST.get('posesion_local', 0)),
-            posesion_visitante=int(request.POST.get('posesion_visitante', 0)),
         )
         
         messages.success(request, _("Partido creado correctamente"))
@@ -81,12 +91,13 @@ def editar_partido(request, partido_id):
         return redirect('landing')
     
     if request.method == 'POST':
+        posicion_equipo = request.POST.get('posicion_equipo', 'local')
         equipo_visitante_id = request.POST.get('equipo_visitante_id')
         nombre_equipo_visitante = request.POST.get('nombre_equipo_visitante', '').strip()
         
-        equipo_visitante = None
+        equipo_rival = None
         if equipo_visitante_id:
-            equipo_visitante = get_object_or_404(Equipo, id=equipo_visitante_id)
+            equipo_rival = get_object_or_404(Equipo, id=equipo_visitante_id)
         elif not nombre_equipo_visitante:
             messages.error(request, _("Debes seleccionar un equipo o introducir un nombre"))
             return render(request, 'eventos/crear_partido.html', {
@@ -96,13 +107,19 @@ def editar_partido(request, partido_id):
                 'action': 'editar'
             })
         
-        partido.equipo_visitante = equipo_visitante
-        partido.nombre_equipo_visitante = nombre_equipo_visitante
+        # Asignar equipos según la posición elegida
+        if posicion_equipo == 'local':
+            partido.equipo_local = equipo
+            partido.equipo_visitante = equipo_rival
+            partido.nombre_equipo_visitante = nombre_equipo_visitante
+        else:  # visitante
+            partido.equipo_local = equipo_rival
+            partido.equipo_visitante = equipo
+            partido.nombre_equipo_visitante = '' if equipo_rival else nombre_equipo_visitante
+        
         partido.estadio_nombre = request.POST.get('estadio_nombre', '')
         partido.estadio_direccion = request.POST.get('estadio_direccion', '')
         partido.fecha_hora = request.POST.get('fecha_hora')
-        partido.posesion_local = int(request.POST.get('posesion_local', 0))
-        partido.posesion_visitante = int(request.POST.get('posesion_visitante', 0))
         partido.finalizado = request.POST.get('finalizado') == 'on'
         partido.save()
         
@@ -408,36 +425,56 @@ def crear_partido_ajax(request):
         if not equipo_entrenador:
             return JsonResponse({'error': 'No tienes equipo asignado'}, status=403)
         
-        equipo = equipo_entrenador.equipo
+        equipo_entrenador_obj = equipo_entrenador.equipo
         
         fecha_hora = request.POST.get('fecha_hora')
+        posicion_equipo = request.POST.get('posicion_equipo', 'local')  # 'local' o 'visitante'
         equipo_visitante_id = request.POST.get('equipo_visitante_id')
         nombre_equipo_visitante = request.POST.get('nombre_equipo_visitante', '').strip()
         estadio_nombre = request.POST.get('estadio_nombre', '')
         estadio_direccion = request.POST.get('estadio_direccion', '')
-        posesion_local = request.POST.get('posesion_local', 0)
-        posesion_visitante = request.POST.get('posesion_visitante', 0)
+        competicion_id = request.POST.get('competicion_id')
         
         if not fecha_hora or not estadio_nombre:
             return JsonResponse({'error': 'Faltan campos requeridos'}, status=400)
+        
+        if posicion_equipo not in ['local', 'visitante']:
+            return JsonResponse({'error': 'Posición de equipo inválida'}, status=400)
         
         # Validar que hay equipo visitante (BD o manual)
         if not equipo_visitante_id and not nombre_equipo_visitante:
             return JsonResponse({'error': 'Debes seleccionar un equipo o escribir uno'}, status=400)
         
-        equipo_visitante = None
+        equipo_rival = None
         if equipo_visitante_id:
-            equipo_visitante = get_object_or_404(Equipo, id=equipo_visitante_id)
+            equipo_rival = get_object_or_404(Equipo, id=equipo_visitante_id)
+        
+        # Asignar equipos según la posición elegida
+        if posicion_equipo == 'local':
+            equipo_local = equipo_entrenador_obj
+            equipo_visitante = equipo_rival
+            nombre_visitante = nombre_equipo_visitante
+        else:  # visitante
+            equipo_local = equipo_rival
+            equipo_visitante = equipo_entrenador_obj
+            nombre_visitante = '' if equipo_rival else nombre_equipo_visitante
+        
+        from .models import Competicion
+        competicion = None
+        if competicion_id:
+            try:
+                competicion = Competicion.objects.get(id=competicion_id)
+            except Competicion.DoesNotExist:
+                pass
         
         partido = Partido.objects.create(
-            equipo_local=equipo,
+            competicion=competicion,
+            equipo_local=equipo_local,
             equipo_visitante=equipo_visitante,
-            nombre_equipo_visitante=nombre_equipo_visitante,
+            nombre_equipo_visitante=nombre_visitante,
             estadio_nombre=estadio_nombre,
             estadio_direccion=estadio_direccion,
             fecha_hora=fecha_hora,
-            posesion_local=int(posesion_local) if posesion_local else 0,
-            posesion_visitante=int(posesion_visitante) if posesion_visitante else 0,
         )
         
         return JsonResponse({
@@ -526,14 +563,26 @@ def obtener_partidos_ajax(request):
         if not equipo:
             return JsonResponse([], safe=False)
         
+        # Obtener partidos donde el equipo es local o visitante
         partidos = Partido.objects.filter(
-            equipo_local=equipo
+            Q(equipo_local=equipo) | Q(equipo_visitante=equipo)
         ).order_by('fecha_hora')
         
         eventos = []
         for partido in partidos:
-            rival = partido.equipo_visitante.nombre if partido.equipo_visitante else partido.nombre_equipo_visitante
-            rival_slug = partido.equipo_visitante.slug if partido.equipo_visitante else None
+            # Determinar equipo local y visitante con nombres
+            equipo_local_nombre = partido.equipo_local.nombre if partido.equipo_local else 'Local'
+            equipo_visitante_nombre = partido.equipo_visitante.nombre if partido.equipo_visitante else partido.nombre_equipo_visitante
+            
+            # Determinar el rival (equipo contrario al nuestro)
+            if partido.equipo_local == equipo:
+                rival = equipo_visitante_nombre
+                rival_slug = partido.equipo_visitante.slug if partido.equipo_visitante else None
+                mi_posicion = 'local'
+            else:  # partido.equipo_visitante == equipo
+                rival = equipo_local_nombre
+                rival_slug = partido.equipo_local.slug if partido.equipo_local else None
+                mi_posicion = 'visitante'
             
             # Si está finalizado, añadir indicator visual
             titulo = f"Partido vs {rival}"
@@ -556,7 +605,12 @@ def obtener_partidos_ajax(request):
                 'estadio_direccion': partido.estadio_direccion,
                 'fecha_hora': partido.fecha_hora.strftime('%d/%m/%Y %H:%M'),
                 'finalizado': partido.finalizado,
-                'competicion': competicion_nombre
+                'competicion': competicion_nombre,
+                'goles_local': partido.goles_local,
+                'goles_visitante': partido.goles_visitante,
+                'equipo_local_nombre': equipo_local_nombre,
+                'equipo_visitante_nombre': equipo_visitante_nombre,
+                'mi_posicion': mi_posicion
             })
         
         return JsonResponse(eventos, safe=False)
@@ -582,11 +636,19 @@ def listar_partidos_ajax(request):
             return JsonResponse([], safe=False)
         
         equipo = equipo_entrenador.equipo
-        partidos = Partido.objects.filter(equipo_local=equipo).order_by('-fecha_hora')
+        # Obtener partidos donde el equipo es local O visitante
+        partidos = Partido.objects.filter(
+            Q(equipo_local=equipo) | Q(equipo_visitante=equipo)
+        ).order_by('-fecha_hora')
         
         datos = []
         for partido in partidos:
-            rival = partido.equipo_visitante.nombre if partido.equipo_visitante else partido.nombre_equipo_visitante
+            # Determinar el rival (equipo contrario al nuestro)
+            if partido.equipo_local == equipo:
+                rival = partido.equipo_visitante.nombre if partido.equipo_visitante else partido.nombre_equipo_visitante
+            else:
+                rival = partido.equipo_local.nombre if partido.equipo_local else 'Local'
+            
             datos.append({
                 'id': partido.id,
                 'rival': rival,
@@ -607,7 +669,9 @@ def eliminar_partido_ajax(request, partido_id):
     
     try:
         partido = get_object_or_404(Partido, id=partido_id)
-        equipo = partido.equipo_local
+        
+        # Determinar el equipo del partido (puede ser local o visitante)
+        equipo = partido.equipo_local if partido.equipo_local else partido.equipo_visitante
         
         # Verificar que el usuario es entrenador activo del equipo
         if not verificar_entrenador_equipo(request.user, equipo):
@@ -626,6 +690,8 @@ def finalizar_partido_ajax(request, partido_id):
         return JsonResponse({'error': 'Método no permitido'}, status=405)
     
     try:
+        import json
+        
         partido = get_object_or_404(Partido, id=partido_id)
         equipo = partido.equipo_local
         
@@ -633,9 +699,24 @@ def finalizar_partido_ajax(request, partido_id):
         if not verificar_entrenador_equipo(request.user, equipo):
             return JsonResponse({'error': 'No tienes permiso'}, status=403)
         
+        # Procesar goles si vienen en el body JSON
+        try:
+            body = json.loads(request.body)
+            if 'goles_local' in body and body['goles_local'] is not None:
+                partido.goles_local = body['goles_local']
+            if 'goles_visitante' in body and body['goles_visitante'] is not None:
+                partido.goles_visitante = body['goles_visitante']
+        except (json.JSONDecodeError, ValueError):
+            pass  # Si no hay goles en el body, solo marcar como finalizado
+        
         partido.finalizado = True
         partido.save()
-        return JsonResponse({'success': True, 'mensaje': 'Partido marcado como finalizado'})
+        
+        mensaje = 'Partido marcado como finalizado'
+        if partido.goles_local is not None and partido.goles_visitante is not None:
+            mensaje = f'Resultado guardado: {partido.goles_local} - {partido.goles_visitante}'
+        
+        return JsonResponse({'success': True, 'mensaje': mensaje})
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=500)
 
@@ -684,7 +765,9 @@ def obtener_partidos_finalizados_ajax(request):
                 'rival': rival,
                 'fecha_hora': partido.fecha_hora.strftime('%d/%m/%Y %H:%M'),
                 'estadio': partido.estadio_nombre,
-                'competicion': competicion_nombre
+                'competicion': competicion_nombre,
+                'goles_local': partido.goles_local,
+                'goles_visitante': partido.goles_visitante
             })
         
         return JsonResponse(datos, safe=False)

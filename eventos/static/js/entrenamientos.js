@@ -84,6 +84,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 // Recargar lista de eventos próximos
                 setTimeout(() => {
                     cargarEventosProximos();
+                    // Recargar el calendario si existe
+                    if (window.calendarInstance) {
+                        cargarEntrenamientosEnCalendario(window.calendarInstance);
+                    }
                 }, 500);
             } else {
                 showAlert('error', data.error || 'Error al crear');

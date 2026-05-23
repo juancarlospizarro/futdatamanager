@@ -164,7 +164,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 modalAnadirPartido.hide();
                 form.reset();
                 setTimeout(() => {
+                    // Recargar los próximos eventos en el template
                     cargarEventosProximos();
+                    // Recargar el calendario si existe
+                    if (window.calendarInstance) {
+                        cargarPartidosEnCalendario(window.calendarInstance);
+                    }
                 }, 500);
             } else {
                 showAlert('error', data.error || 'Error al crear');

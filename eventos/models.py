@@ -135,6 +135,18 @@ class Partido(models.Model):
         verbose_name=_("Partido finalizado")
     )
     
+    goles_local = models.PositiveIntegerField(
+        null=True,
+        blank=True,
+        verbose_name=_("Goles equipo local")
+    )
+    
+    goles_visitante = models.PositiveIntegerField(
+        null=True,
+        blank=True,
+        verbose_name=_("Goles equipo visitante")
+    )
+    
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     
