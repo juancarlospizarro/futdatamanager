@@ -32,6 +32,7 @@ nav:
   - Usuarios: usuarios.md
   - Eventos: eventos.md
   - Control de Jugadores: control_jugadores.md
+  - Estadísticas: estadisticas.md
   
 plugins:
   - search
