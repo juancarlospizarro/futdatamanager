@@ -19,13 +19,13 @@
             <section class="col-lg-10 mx-auto mt-5">
                 <div class="row g-3">
                     <div class="col-6 col-md-3">
-                        <button class="btn btn-primary w-100" id="btn-anadirPartido">{% trans "Añadir partido" %}</button>
+                        <button class="btn btn-success w-100" id="btn-anadirPartido">{% trans "Añadir partido" %}</button>
                     </div>
                     <div class="col-6 col-md-3">
                         <button class="btn btn-danger w-100" id="btn-eliminarPartido">{% trans "Eliminar partido" %}</button>
                     </div>
                     <div class="col-6 col-md-3">
-                        <button class="btn btn-primary w-100" id="btn-anadirEntrenamiento">{% trans "Añadir entrenamiento" %}</button>
+                        <button class="btn btn-success w-100" id="btn-anadirEntrenamiento">{% trans "Añadir entrenamiento" %}</button>
                     </div>
                     <div class="col-6 col-md-3">
                         <button class="btn btn-danger w-100" id="btn-eliminarEntrenamiento">{% trans "Eliminar entrenamiento" %}</button>
@@ -41,20 +41,16 @@
                         <!-- Eventos -->
                         <div>
                             <h2 class="h4 text-foot-green mb-3">{% trans "Próximos eventos" %}</h2>
-                            <div class="card shadow-sm">
-                                <div class="card-body" id="listaEventosProximos">
-                                    <p class="text-secondary text-muted">{% trans "Cargando eventos..." %}</p>
-                                </div>
+                            <div id="listaEventosProximos">
+                                <p class="text-secondary text-muted">{% trans "Cargando eventos..." %}</p>
                             </div>
                         </div>
 
                         <!-- Partidos anteriores -->
                         <div>
                             <h2 class="h4 text-foot-green mb-3">{% trans "Partidos anteriores" %}</h2>
-                            <div class="card shadow-sm">
-                                <div class="card-body" id="listaPartidosAnteriores">
-                                    <p class="text-secondary text-muted">{% trans "Cargando partidos anteriores..." %}</p>
-                                </div>
+                            <div id="listaPartidosAnteriores">
+                                <p class="text-secondary text-muted">{% trans "Cargando partidos anteriores..." %}</p>
                             </div>
                         </div>
 
@@ -64,17 +60,21 @@
                             <div class="card shadow-sm">
                                 <div class="card-body">
                                     <div class="row text-center">
-                                        <div class="col-md-4">
-                                            <h5 class="text-muted">{% trans "Partidos jugados" %}</h5>
-                                            <p class="fs-3 fw-bold text-foot-green">0</p>
+                                        <div class="col-md-3">
+                                            <h5 class="text-muted small">{% trans "Partidos jugados" %}</h5>
+                                            <p class="fs-3 fw-bold text-foot-green" id="totalPartidos">0</p>
                                         </div>
-                                        <div class="col-md-4">
-                                            <h5 class="text-muted">{% trans "Victorias" %}</h5>
-                                            <p class="fs-3 fw-bold text-success">0</p>
+                                        <div class="col-md-3">
+                                            <h5 class="text-muted small">{% trans "Victorias" %}</h5>
+                                            <p class="fs-3 fw-bold text-success" id="totalVictorias">0</p>
                                         </div>
-                                        <div class="col-md-4">
-                                            <h5 class="text-muted">{% trans "Derrotas" %}</h5>
-                                            <p class="fs-3 fw-bold text-danger">0</p>
+                                        <div class="col-md-3">
+                                            <h5 class="text-muted small">{% trans "Empates" %}</h5>
+                                            <p class="fs-3 fw-bold text-info" id="totalEmpates">0</p>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <h5 class="text-muted small">{% trans "Derrotas" %}</h5>
+                                            <p class="fs-3 fw-bold text-danger" id="totalDerrotas">0</p>
                                         </div>
                                     </div>
                                 </div>
@@ -191,6 +191,14 @@
                         <input type="datetime-local" class="form-control" id="fechaHoraPartido" name="fecha_hora" required>
                     </div>
                     <div class="mb-3">
+                        <label class="form-label">{% trans "Posición de tu equipo" %} <span class="text-danger">*</span></label>
+                        <select class="form-select" id="posicionEquipoPartido" name="posicion_equipo" required>
+                            <option value="">{% trans "Selecciona una opción" %}</option>
+                            <option value="local">{% trans "Local" %}</option>
+                            <option value="visitante">{% trans "Visitante" %}</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
                         <label class="form-label">{% trans "Equipo rival" %}</label>
                         <div class="input-group mb-2">
                             <select class="form-select" id="equipoVisitantePartido" name="equipo_visitante_id">
@@ -207,16 +215,6 @@
                     <div class="mb-3">
                         <label for="direccionPartido" class="form-label">{% trans "Dirección" %}</label>
                         <input type="text" class="form-control" id="direccionPartido" name="estadio_direccion">
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label for="posesionLocalPartido" class="form-label">{% trans "Posesión local (%)" %}</label>
-                            <input type="number" class="form-control" id="posesionLocalPartido" name="posesion_local" min="0" max="100">
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label for="posesionVisitantePartido" class="form-label">{% trans "Posesión visitante (%)" %}</label>
-                            <input type="number" class="form-control" id="posesionVisitantePartido" name="posesion_visitante" min="0" max="100">
-                        </div>
                     </div>
                 </form>
             </div>
@@ -275,18 +273,47 @@
 
 <!-- MODAL VER INFORMACIÓN DEL EVENTO -->
 <div class="modal fade" id="modalInfoEvento" tabindex="-1" aria-labelledby="modalInfoEventoLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header bg-primary text-white">
-                <h1 class="modal-title fs-5" id="modalInfoEventoLabel">{% trans "Información del evento" %}</h1>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0">
+            <div class="modal-header border-0 pb-0">
+                <h1 class="modal-title fs-5 fw-bold" id="modalInfoEventoLabel">{% trans "Información del evento" %}</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div id="contenidoEvento"></div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% trans "Cerrar" %}</button>
-                <button type="button" class="btn btn-success" id="btnFinalizarPartido" style="display: none;">{% trans "Marcar como finalizado" %}</button>
+            <div class="modal-footer border-0 pt-0 gap-2">
+                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">{% trans "Cerrar" %}</button>
+                <button type="button" class="btn btn-success btn-sm" id="btnFinalizarPartido" style="display: none;">{% trans "Marcar como finalizado" %}</button>
+                <button type="button" class="btn btn-primary btn-sm" id="btnAnadirResultado" style="display: none;">{% trans "Añadir resultado" %}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL AÑADIR RESULTADO -->
+<div class="modal fade" id="modalAnadirResultado" tabindex="-1" aria-labelledby="modalAnadirResultadoLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0">
+            <div class="modal-header border-0 pb-0">
+                <h1 class="modal-title fs-5 fw-bold" id="modalAnadirResultadoLabel">{% trans "Marcar resultado" %}</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="formAnadirResultado" class="row g-2">
+                    <div class="col-6">
+                        <label for="golesLocal" class="form-label small">{% trans "Goles Local" %}</label>
+                        <input type="number" class="form-control form-control-sm" id="golesLocal" min="0" value="0" required>
+                    </div>
+                    <div class="col-6">
+                        <label for="golesVisitante" class="form-label small">{% trans "Goles Visitante" %}</label>
+                        <input type="number" class="form-control form-control-sm" id="golesVisitante" min="0" value="0" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer border-0 pt-0 gap-2">
+                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">{% trans "Cancelar" %}</button>
+                <button type="button" class="btn btn-primary btn-sm" id="btnGuardarResultado">{% trans "Guardar" %}</button>
             </div>
         </div>
     </div>
@@ -295,4 +322,5 @@
 <script src="{% static 'js/calendario.js' %}"></script>
 <script src="{% static 'js/entrenamientos.js' %}"></script>
 <script src="{% static 'js/partidos.js' %}"></script>
+<script src="{% static 'js/inicioEntrenadorEquipo.js' %}"></script>
 {% endblock %}
