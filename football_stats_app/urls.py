@@ -42,6 +42,7 @@ urlpatterns += i18n_patterns(
     path('teams/', include('equipos.urls')),
     path('events/', include('eventos.urls')),
     path('control-jugadores/', include('control_jugadores.urls')),
+    path('estadisticas/', include('estadisticas.urls')),
     path("test-400/", views.error_400_test),
     path("test-403/", views.error_403_test),
     path("test-500/", views.error_500_test),

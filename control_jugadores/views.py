@@ -1,5 +1,5 @@
 """
-Views para control_jugadores
+Views (Controladores) para control_jugadores
 """
 
 from django.http import HttpResponse, JsonResponse

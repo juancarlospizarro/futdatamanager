@@ -153,10 +153,23 @@ function mostrarInfoEvento(event) {
     const modalInfoEvento = new bootstrap.Modal(document.getElementById('modalInfoEvento'));
     const contenidoEvento = document.getElementById('contenidoEvento');
     const btnFinalizar = document.getElementById('btnFinalizarPartido');
+    const btnAnadirResultado = document.getElementById('btnAnadirResultado');
     
-    // Limpiar evento anterior del botón
-    btnFinalizar.replaceWith(btnFinalizar.cloneNode(true));
+    // Si ambos botones no existen, usar versión de solo lectura (para jugadores)
+    if (btnFinalizar === null && btnAnadirResultado === null) {
+        mostrarInfoEventoJugador(event);
+        return;
+    }
+    
+    // Limpiar eventos anteriores de los botones (solo si existen)
+    if (btnFinalizar) {
+        btnFinalizar.replaceWith(btnFinalizar.cloneNode(true));
+    }
+    if (btnAnadirResultado) {
+        btnAnadirResultado.replaceWith(btnAnadirResultado.cloneNode(true));
+    }
     const btnFinalizarNuevo = document.getElementById('btnFinalizarPartido');
+    const btnAnadirResultadoNuevo = document.getElementById('btnAnadirResultado');
     
     let html = '';
     
@@ -173,6 +186,7 @@ function mostrarInfoEvento(event) {
             </div>
         `;
         btnFinalizarNuevo.style.display = 'none';
+        btnAnadirResultadoNuevo.style.display = 'none';
     } else if (event.extendedProps.type === 'partido') {
         // Crear enlace al equipo si existe slug
         let rivalHtml = event.extendedProps.rival_slug 
@@ -183,6 +197,12 @@ function mostrarInfoEvento(event) {
         let direccionHtml = event.extendedProps.estadio_direccion
             ? `<a href="https://www.google.com/maps/search/${encodeURIComponent(event.extendedProps.estadio_direccion)}" target="_blank" class="text-decoration-none"><i class="bi bi-geo-alt"></i> ${event.extendedProps.estadio_direccion}</a>`
             : '';
+        
+        // Mostrar resultado si existe
+        let resultadoHtml = '';
+        if (event.extendedProps.goles_local !== null && event.extendedProps.goles_visitante !== null) {
+            resultadoHtml = `<div class="mb-2"><span class="badge bg-success fs-6">${event.extendedProps.goles_local} - ${event.extendedProps.goles_visitante}</span></div>`;
+        }
         
         // Mostrar estado si está finalizado
         let estadoHtml = event.extendedProps.finalizado 
@@ -195,27 +215,60 @@ function mostrarInfoEvento(event) {
             : '';
         
         html = `
-            <div class="card border-start border-4 ${event.extendedProps.finalizado ? 'border-success' : 'border-danger'}">
-                <div class="card-body">
-                    <h5 class="card-title"><i class="bi ${event.extendedProps.finalizado ? 'bi-check-circle text-success' : 'bi-play-fill text-danger'}"></i> vs ${rivalHtml} ${estadoHtml}</h5>
-                    <p class="card-text small">
-                        ${competicionHtml}
-                        <strong>Fecha:</strong> ${event.extendedProps.fecha_hora || event.start.toLocaleString()}<br>
-                        <strong>Estadio:</strong> ${event.extendedProps.estadio}<br>
-                        ${direccionHtml ? `<strong>Dirección:</strong> ${direccionHtml}<br>` : ''}
-                    </p>
-                </div>
+            <div class="border-start border-4 ${event.extendedProps.finalizado ? 'border-success' : 'border-danger'} ps-3">
+                <h5 class="mb-2"><i class="bi ${event.extendedProps.finalizado ? 'bi-check-circle text-success' : 'bi-play-fill text-danger'}"></i> vs ${rivalHtml} ${estadoHtml}</h5>
+                ${resultadoHtml}
+                <p class="text-muted small">
+                    ${competicionHtml}
+                    <strong>Fecha:</strong> ${event.extendedProps.fecha_hora || event.start.toLocaleString()}<br>
+                    <strong>Estadio:</strong> ${event.extendedProps.estadio}<br>
+                    ${direccionHtml ? `<strong>Dirección:</strong> ${direccionHtml}<br>` : ''}
+                </p>
             </div>
         `;
         
+        // Guardar partido ID en dataset
+        if (btnFinalizarNuevo) btnFinalizarNuevo.dataset.partidoId = event.id;
+        if (btnAnadirResultadoNuevo) btnAnadirResultadoNuevo.dataset.partidoId = event.id;
+        
+        // Determinar estado de finalización de forma segura
+        const esFinalizado = event.extendedProps.finalizado === true;
+        
         // Mostrar botón de finalizar solo si NO está finalizado
-        if (!event.extendedProps.finalizado) {
-            btnFinalizarNuevo.style.display = 'block';
-            btnFinalizarNuevo.onclick = function() {
-                finalizarPartidoDesdeModal(event.id);
-            };
+        if (!esFinalizado) {
+            if (btnFinalizarNuevo) {
+                btnFinalizarNuevo.style.display = 'block';
+                btnFinalizarNuevo.onclick = function() {
+                    // Abre modal para entrada de resultado
+                    const modalAnadirResultado = new bootstrap.Modal(document.getElementById('modalAnadirResultado'));
+                    document.getElementById('golesLocal').value = 0;
+                    document.getElementById('golesVisitante').value = 0;
+                    modalAnadirResultado.show();
+                };
+            }
+            if (btnAnadirResultadoNuevo) {
+                btnAnadirResultadoNuevo.style.display = 'none';
+            }
         } else {
-            btnFinalizarNuevo.style.display = 'none';
+            if (btnFinalizarNuevo) {
+                btnFinalizarNuevo.style.display = 'none';
+            }
+            // Mostrar botón "Añadir resultado" si está finalizado pero no tiene resultado
+            if (event.extendedProps.goles_local === null || event.extendedProps.goles_visitante === null) {
+                if (btnAnadirResultadoNuevo) {
+                    btnAnadirResultadoNuevo.style.display = 'block';
+                    btnAnadirResultadoNuevo.onclick = function() {
+                        const modalAnadirResultado = new bootstrap.Modal(document.getElementById('modalAnadirResultado'));
+                        document.getElementById('golesLocal').value = 0;
+                        document.getElementById('golesVisitante').value = 0;
+                        modalAnadirResultado.show();
+                    };
+                }
+            } else {
+                if (btnAnadirResultadoNuevo) {
+                    btnAnadirResultadoNuevo.style.display = 'none';
+                }
+            }
         }
     }
     
@@ -326,14 +379,19 @@ function cargarEventosProximos() {
         const eventos = [...(Array.isArray(entrenamientos) ? entrenamientos : []), 
                          ...(Array.isArray(partidos) ? partidos : [])];
         
-        // Filtrar eventos futuros, excluir partidos finalizados, y ordenar
+        // Filtrar eventos futuros y ordenar
         const ahora = new Date();
-        const eventosFuturos = eventos
-            .filter(evt => new Date(evt.start) > ahora && !evt.finalizado)
+        console.log('Hora actual para comparación:', ahora.toISOString());
+        
+        const eventosFuturos = eventos.filter(evt => {
+            const startDate = new Date(evt.start);
+            console.log(`Evento: ${evt.title}, fecha: ${evt.start}, parseado: ${startDate.toISOString()}, es futuro: ${startDate > ahora}`);
+            return startDate > ahora;
+        })
             .sort((a, b) => new Date(a.start) - new Date(b.start))
             .slice(0, 5);
         
-        console.log('Eventos futuros:', eventosFuturos);
+        console.log('Eventos futuros después del filtro:', eventosFuturos);
         
         // Renderizar
         const contenedor = document.getElementById('listaEventosProximos');
@@ -411,14 +469,14 @@ function cargarPartidosAnteriores() {
     const currentLang = document.documentElement.lang || 'es';
     const langPrefix = currentLang === 'es' ? '/es' : currentLang === 'en' ? '/en' : '';
     
-    const url = `${langPrefix}/events/ajax/obtener_partidos_finalizados/`;
+    const url = `${langPrefix}/events/ajax/obtener_partidos/`;
     const contenedor = document.getElementById('listaPartidosAnteriores');
     
     console.log('cargarPartidosAnteriores - URL:', url);
     console.log('cargarPartidosAnteriores - Contenedor encontrado:', !!contenedor);
     
     if (!contenedor) {
-        console.warn('No se encontró el contenedor listaPartidosAnteriores');
+        console.warn('No se encontré el contenedor listaPartidosAnteriores');
         return;
     }
     
@@ -427,29 +485,51 @@ function cargarPartidosAnteriores() {
         headers: { 'X-CSRFToken': getCookie('csrftoken') }
     })
     .then(response => response.json())
-    .then(partidos => {
-        console.log('Partidos anteriores recibidos:', partidos);
+    .then(todosLosPartidos => {
+        console.log('Todos los partidos recibidos:', todosLosPartidos);
         
-        if (!Array.isArray(partidos) || partidos.length === 0) {
+        // Filtrar partidos anteriores a la fecha/hora actual
+        const ahora = new Date();
+        const partidos = Array.isArray(todosLosPartidos) 
+            ? todosLosPartidos.filter(p => new Date(p.start) < ahora)
+            : [];
+        
+        console.log('Partidos anteriores después del filtro:', partidos);
+        
+        if (partidos.length === 0) {
             contenedor.innerHTML = '<p class="text-secondary text-muted text-center">{% trans "No hay partidos anteriores." %}</p>';
             return;
         }
         
-        let html = '<table class="table table-striped mb-0"><thead><tr><th>{% trans "Fecha" %}</th><th>{% trans "Competición" %}</th><th>{% trans "Rival" %}</th><th>{% trans "Estadio" %}</th></tr></thead><tbody>';
+        // Renderizar como lista clickeable
+        let html = '<ul class="list-group list-group-flush">';
         partidos.forEach(partido => {
-            const competicion = partido.competicion ? `<small>${partido.competicion}</small>` : '<small class="text-muted">-</small>';
+            const competicion = partido.competicion ? `<small class="text-muted d-block"><i class="bi bi-cup"></i> ${partido.competicion}</small>` : '';
+            const estadio = partido.estadio ? `<small class="text-muted"><i class="bi bi-geo-alt"></i> ${partido.estadio}</small>` : '';
+            
             html += `
-                <tr>
-                    <td><small>${partido.fecha_hora}</small></td>
-                    <td>${competicion}</td>
-                    <td><strong>${partido.rival}</strong></td>
-                    <td><small class="text-muted">${partido.estadio}</small></td>
-                </tr>
+                <li class="list-group-item border-start border-3 border-secondary partido-anterior" style="cursor: pointer;" data-partido-id="${partido.id}">
+                    <strong><i class="bi bi-play-fill text-danger"></i> vs ${partido.rival}</strong>
+                    <br>
+                    <small class="text-muted"><i class="bi bi-calendar"></i> ${partido.fecha_hora}</small>
+                    <br>
+                    ${competicion}
+                    ${estadio}
+                </li>
             `;
         });
-        html += '</tbody></table>';
+        html += '</ul>';
         
         contenedor.innerHTML = html;
+        
+        // Agregar listeners a los partidos anteriores
+        document.querySelectorAll('.partido-anterior').forEach(item => {
+            item.addEventListener('click', function() {
+                const partidoId = parseInt(this.dataset.partidoId);
+                console.log('Clic en partido anterior:', partidoId);
+                abrirModalEvento(partidoId, 'partido', partidos);
+            });
+        });
     })
     .catch(error => {
         console.error('Error al cargar partidos anteriores:', error);
@@ -465,4 +545,71 @@ document.addEventListener('DOMContentLoaded', () => {
         cargarPartidosAnteriores();
     }, 500);
 });
+
+// Versión de solo lectura de mostrarInfoEvento para jugadores
+function mostrarInfoEventoJugador(event) {
+    const currentLang = document.documentElement.lang || 'es';
+    const langPrefix = currentLang === 'es' ? '/es' : currentLang === 'en' ? '/en' : '';
+    
+    const modalInfoEvento = new bootstrap.Modal(document.getElementById('modalInfoEvento'));
+    const contenidoEvento = document.getElementById('contenidoEvento');
+    
+    let html = '';
+    
+    if (event.extendedProps.type === 'entrenamiento') {
+        html = `
+            <div class="card border-start border-4 border-info">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="bi bi-dribbble text-info"></i> ${event.extendedProps.tipo}</h5>
+                    <p class="card-text small">
+                        <strong>Fecha:</strong> ${event.extendedProps.fecha_hora || event.start.toLocaleString()}<br>
+                        ${event.extendedProps.descripcion ? `<strong>Descripción:</strong> ${event.extendedProps.descripcion}<br>` : ''}
+                    </p>
+                </div>
+            </div>
+        `;
+    } else if (event.extendedProps.type === 'partido') {
+        // Crear enlace al equipo si existe slug
+        let rivalHtml = event.extendedProps.rival_slug 
+            ? `<a href="${langPrefix}/teams/${event.extendedProps.rival_slug}/" class="text-decoration-none">${event.extendedProps.rival}</a>`
+            : event.extendedProps.rival;
+        
+        // Crear enlace a Google Maps para la dirección
+        let direccionHtml = event.extendedProps.estadio_direccion
+            ? `<a href="https://www.google.com/maps/search/${encodeURIComponent(event.extendedProps.estadio_direccion)}" target="_blank" class="text-decoration-none"><i class="bi bi-geo-alt"></i> ${event.extendedProps.estadio_direccion}</a>`
+            : '';
+        
+        // Mostrar resultado si existe
+        let resultadoHtml = '';
+        if (event.extendedProps.goles_local !== null && event.extendedProps.goles_visitante !== null) {
+            resultadoHtml = `<div class="mb-2"><span class="badge bg-success fs-6">${event.extendedProps.goles_local} - ${event.extendedProps.goles_visitante}</span></div>`;
+        }
+        
+        // Mostrar estado si está finalizado
+        let estadoHtml = event.extendedProps.finalizado 
+            ? '<span class="badge bg-success"><i class="bi bi-check-circle"></i> Finalizado</span>'
+            : '';
+        
+        // Mostrar competición si existe
+        let competicionHtml = event.extendedProps.competicion 
+            ? `<strong>Competición:</strong> ${event.extendedProps.competicion}<br>`
+            : '';
+        
+        html = `
+            <div class="border-start border-4 ${event.extendedProps.finalizado ? 'border-success' : 'border-danger'} ps-3">
+                <h5 class="mb-2"><i class="bi ${event.extendedProps.finalizado ? 'bi-check-circle text-success' : 'bi-play-fill text-danger'}"></i> vs ${rivalHtml} ${estadoHtml}</h5>
+                ${resultadoHtml}
+                <p class="text-muted small">
+                    ${competicionHtml}
+                    <strong>Fecha:</strong> ${event.extendedProps.fecha_hora || event.start.toLocaleString()}<br>
+                    <strong>Estadio:</strong> ${event.extendedProps.estadio}<br>
+                    ${direccionHtml ? `<strong>Dirección:</strong> ${direccionHtml}<br>` : ''}
+                </p>
+            </div>
+        `;
+    }
+    
+    contenidoEvento.innerHTML = html;
+    modalInfoEvento.show();
+}
 
