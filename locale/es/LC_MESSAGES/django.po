@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-23 17:54+0200\n"
+"POT-Creation-Date: 2026-05-24 10:45+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1106,10 +1106,6 @@ msgstr "Información del Partido"
 msgid "Titular"
 msgstr "Titular"
 
-#: .\estadisticas\templates\estadisticas\analisis.html:1013
-msgid "No hay jugadores disponibles"
-msgstr "No hay jugadores disponibles"
-
 #: .\eventos\admin.py:26
 msgid "Información básica"
 msgstr "Información básica"
@@ -1271,30 +1267,35 @@ msgstr "Partidos"
 #: .\eventos\models.py:175
 #: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:108
 #: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:349
+#: .\usuarios\templates\usuarios\inicio_jugador_con_equipo.html:116
 msgid "Fuerza"
 msgstr "Fuerza"
 
 #: .\eventos\models.py:176
 #: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:109
 #: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:350
+#: .\usuarios\templates\usuarios\inicio_jugador_con_equipo.html:117
 msgid "Táctico"
 msgstr "Táctico"
 
 #: .\eventos\models.py:177
 #: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:110
 #: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:351
+#: .\usuarios\templates\usuarios\inicio_jugador_con_equipo.html:118
 msgid "Ataque"
 msgstr "Ataque"
 
 #: .\eventos\models.py:178
 #: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:111
 #: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:352
+#: .\usuarios\templates\usuarios\inicio_jugador_con_equipo.html:119
 msgid "Defensa"
 msgstr "Defensa"
 
 #: .\eventos\models.py:179
 #: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:112
 #: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:353
+#: .\usuarios\templates\usuarios\inicio_jugador_con_equipo.html:120
 msgid "Recuperación"
 msgstr "Recuperación"
 
@@ -1305,6 +1306,7 @@ msgstr "Tipo de entrenamiento"
 
 #: .\eventos\models.py:209
 #: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:365
+#: .\usuarios\templates\usuarios\inicio_jugador_con_equipo.html:132
 msgid "Entrenamiento"
 msgstr "Entrenamiento"
 
@@ -1806,12 +1808,12 @@ msgid "Goles Visitante"
 msgstr "Goles Visitante"
 
 #: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:336
-#: .\usuarios\templates\usuarios\inicio_jugador_con_equipo.html:102
+#: .\usuarios\templates\usuarios\inicio_jugador_con_equipo.html:103
 msgid "Sin próximos eventos"
 msgstr "Sin próximos eventos"
 
 #: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:413
-#: .\usuarios\templates\usuarios\inicio_jugador_con_equipo.html:147
+#: .\usuarios\templates\usuarios\inicio_jugador_con_equipo.html:180
 msgid "Sin partidos anteriores"
 msgstr "Sin partidos anteriores"
 
@@ -2395,6 +2397,9 @@ msgstr "Error al actualizar: {}"
 #: .\usuarios\views.py:198
 msgid "Te hemos enviado un correo para cambiar tu contraseña."
 msgstr "Te hemos enviado un correo para cambiar tu contraseña."
+
+#~ msgid "No hay jugadores disponibles"
+#~ msgstr "No hay jugadores disponibles"
 
 #~ msgid "Últimos partidos del equipo"
 #~ msgstr "Últimos partidos del equipo"

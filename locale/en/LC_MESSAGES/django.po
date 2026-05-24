@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-23 17:54+0200\n"
+"POT-Creation-Date: 2026-05-24 10:45+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -926,8 +926,8 @@ msgid ""
 "Once con los jugadores más en forma. Haz clic en un jugador para ver sus "
 "estadísticas. Filtra por posición para ver solo jugadores de esa posición"
 msgstr ""
-"Lineup with the players in best shape. Click hover a player to "
-"see his statistics. Filter by position to see only players from an exact position"
+"Lineup with the players in best shape. Click hover a player to see his "
+"statistics. Filter by position to see only players from an exact position"
 
 #: .\estadisticas\templates\estadisticas\analisis.html:183
 msgid "Jugador lesionado"
@@ -1105,10 +1105,6 @@ msgstr "Match Information"
 msgid "Titular"
 msgstr "Starter"
 
-#: .\estadisticas\templates\estadisticas\analisis.html:1013
-msgid "No hay jugadores disponibles"
-msgstr "There are no available players"
-
 #: .\eventos\admin.py:26
 msgid "Información básica"
 msgstr "Basic information"
@@ -1270,30 +1266,35 @@ msgstr "Matches"
 #: .\eventos\models.py:175
 #: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:108
 #: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:349
+#: .\usuarios\templates\usuarios\inicio_jugador_con_equipo.html:116
 msgid "Fuerza"
 msgstr "Strength"
 
 #: .\eventos\models.py:176
 #: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:109
 #: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:350
+#: .\usuarios\templates\usuarios\inicio_jugador_con_equipo.html:117
 msgid "Táctico"
 msgstr "Tactical"
 
 #: .\eventos\models.py:177
 #: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:110
 #: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:351
+#: .\usuarios\templates\usuarios\inicio_jugador_con_equipo.html:118
 msgid "Ataque"
 msgstr "Attack"
 
 #: .\eventos\models.py:178
 #: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:111
 #: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:352
+#: .\usuarios\templates\usuarios\inicio_jugador_con_equipo.html:119
 msgid "Defensa"
 msgstr "Defense"
 
 #: .\eventos\models.py:179
 #: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:112
 #: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:353
+#: .\usuarios\templates\usuarios\inicio_jugador_con_equipo.html:120
 msgid "Recuperación"
 msgstr "Recovery"
 
@@ -1304,6 +1305,7 @@ msgstr "Training type"
 
 #: .\eventos\models.py:209
 #: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:365
+#: .\usuarios\templates\usuarios\inicio_jugador_con_equipo.html:132
 msgid "Entrenamiento"
 msgstr "Training"
 
@@ -1803,12 +1805,12 @@ msgid "Goles Visitante"
 msgstr "Away Goals"
 
 #: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:336
-#: .\usuarios\templates\usuarios\inicio_jugador_con_equipo.html:102
+#: .\usuarios\templates\usuarios\inicio_jugador_con_equipo.html:103
 msgid "Sin próximos eventos"
 msgstr "No upcoming events"
 
 #: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:413
-#: .\usuarios\templates\usuarios\inicio_jugador_con_equipo.html:147
+#: .\usuarios\templates\usuarios\inicio_jugador_con_equipo.html:180
 msgid "Sin partidos anteriores"
 msgstr "No previous matches"
 
@@ -2385,6 +2387,9 @@ msgstr "Error updating: {}"
 #: .\usuarios\views.py:198
 msgid "Te hemos enviado un correo para cambiar tu contraseña."
 msgstr "We have sent you an email to change your password."
+
+#~ msgid "No hay jugadores disponibles"
+#~ msgstr "There are no available players"
 
 #~ msgid "Últimos partidos del equipo"
 #~ msgstr "Latest team matches"
