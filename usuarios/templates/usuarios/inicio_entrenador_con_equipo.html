@@ -453,13 +453,31 @@ function calcularEstadisticas(partidos) {
     let victorias = 0, empates = 0, derrotas = 0;
     
     partidos.forEach(partido => {
-        const golesLocal = partido.goles_local !== null && partido.goles_local !== undefined ? partido.goles_local : null;
-        const golesVisitante = partido.goles_visitante !== null && partido.goles_visitante !== undefined ? partido.goles_visitante : null;
+        // Asegurarnos de que los goles son números
+        const golesLocal = partido.goles_local !== null && partido.goles_local !== undefined ? parseInt(partido.goles_local) : null;
+        const golesVisitante = partido.goles_visitante !== null && partido.goles_visitante !== undefined ? parseInt(partido.goles_visitante) : null;
         
         if (golesLocal !== null && golesVisitante !== null) {
-            if (golesLocal > golesVisitante) victorias++;
-            else if (golesLocal === golesVisitante) empates++;
-            else derrotas++;
+            // El empate es igual para ambos
+            if (golesLocal === golesVisitante) {
+                empates++;
+            } 
+            // Si el equipo juega de Local
+            else if (partido.condicion === 'Local') {
+                if (golesLocal > golesVisitante) {
+                    victorias++;
+                } else {
+                    derrotas++;
+                }
+            } 
+            // Si el equipo juega de Visitante
+            else if (partido.condicion === 'Visitante') {
+                if (golesVisitante > golesLocal) {
+                    victorias++;
+                } else {
+                    derrotas++;
+                }
+            }
         }
     });
     

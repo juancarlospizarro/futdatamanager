@@ -751,14 +751,22 @@ def obtener_partidos_finalizados_ajax(request):
         if not equipo:
             return JsonResponse([], safe=False)
         
+        # Buscar partidos donde el equipo sea local O visitante
         partidos = Partido.objects.filter(
-            equipo_local=equipo,
+            Q(equipo_local=equipo) | Q(equipo_visitante=equipo),
             finalizado=True
         ).order_by('-fecha_hora')[:10]  # Últimos 10 partidos finalizados
         
         datos = []
         for partido in partidos:
-            rival = partido.equipo_visitante.nombre if partido.equipo_visitante else partido.nombre_equipo_visitante
+            # Determinar quién es el rival dependiendo de si juega de local o visitante
+            if partido.equipo_local == equipo:
+                rival = partido.equipo_visitante.nombre if partido.equipo_visitante else getattr(partido, 'nombre_equipo_visitante', 'Desconocido')
+                condicion = 'Local'
+            else:
+                rival = partido.equipo_local.nombre if partido.equipo_local else getattr(partido, 'nombre_equipo_local', 'Desconocido')
+                condicion = 'Visitante'
+
             competicion_nombre = None
             if partido.competicion:
                 competicion_nombre = f"{partido.competicion.nombre} ({partido.competicion.ano})"
@@ -766,6 +774,7 @@ def obtener_partidos_finalizados_ajax(request):
             datos.append({
                 'id': partido.id,
                 'rival': rival,
+                'condicion': condicion,  # He añadido esto por si te es útil en el frontend
                 'fecha_hora': partido.fecha_hora.strftime('%d/%m/%Y %H:%M'),
                 'estadio': partido.estadio_nombre,
                 'competicion': competicion_nombre,
