@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-24 10:45+0200\n"
+"POT-Creation-Date: 2026-05-24 13:09+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -342,6 +342,7 @@ msgstr "Error al actualizar información"
 #: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:286
 #: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:228
 #: .\usuarios\templates\usuarios\inicio_jugador_con_equipo.html:84
+#: .\usuarios\templates\usuarios\inicio_jugador_sin_equipo.html:129
 #: .\usuarios\templates\usuarios\login.html:33
 #: .\usuarios\templates\usuarios\miperfil.html:341
 #: .\usuarios\templates\usuarios\signin.html:33
@@ -1314,55 +1315,55 @@ msgstr "Entrenamiento"
 msgid "Entrenamientos"
 msgstr "Entrenamientos"
 
-#: .\eventos\views.py:33
+#: .\eventos\views.py:34
 msgid "No tienes permiso para crear partidos en este equipo"
 msgstr "No tienes permiso para crear partidos en este equipo"
 
-#: .\eventos\views.py:46 .\eventos\views.py:102
+#: .\eventos\views.py:47 .\eventos\views.py:103
 msgid "Debes seleccionar un equipo o introducir un nombre"
 msgstr "Debes seleccionar un equipo o introducir un nombre"
 
-#: .\eventos\views.py:71
+#: .\eventos\views.py:72
 msgid "Partido creado correctamente"
 msgstr "Partido creado correctamente"
 
-#: .\eventos\views.py:90
+#: .\eventos\views.py:91
 msgid "No tienes permiso para editar este partido"
 msgstr "No tienes permiso para editar este partido"
 
-#: .\eventos\views.py:126
+#: .\eventos\views.py:127
 msgid "Partido actualizado correctamente"
 msgstr "Partido actualizado correctamente"
 
-#: .\eventos\views.py:146
+#: .\eventos\views.py:147
 msgid "No tienes permiso para eliminar este partido"
 msgstr "No tienes permiso para eliminar este partido"
 
-#: .\eventos\views.py:151
+#: .\eventos\views.py:152
 msgid "Partido eliminado correctamente"
 msgstr "Partido eliminado correctamente"
 
-#: .\eventos\views.py:178
+#: .\eventos\views.py:179
 msgid "No tienes permiso para crear entrenamientos en este equipo"
 msgstr "No tienes permiso para crear entrenamientos en este equipo"
 
-#: .\eventos\views.py:189
+#: .\eventos\views.py:190
 msgid "Entrenamiento creado correctamente"
 msgstr "Entrenamiento creado correctamente"
 
-#: .\eventos\views.py:208
+#: .\eventos\views.py:209
 msgid "No tienes permiso para editar este entrenamiento"
 msgstr "No tienes permiso para editar este entrenamiento"
 
-#: .\eventos\views.py:217
+#: .\eventos\views.py:218
 msgid "Entrenamiento actualizado correctamente"
 msgstr "Entrenamiento actualizado correctamente"
 
-#: .\eventos\views.py:237
+#: .\eventos\views.py:238
 msgid "No tienes permiso para eliminar este entrenamiento"
 msgstr "No tienes permiso para eliminar este entrenamiento"
 
-#: .\eventos\views.py:242
+#: .\eventos\views.py:243
 msgid "Entrenamiento eliminado correctamente"
 msgstr "Entrenamiento eliminado correctamente"
 
@@ -1896,12 +1897,15 @@ msgid "Añadir equipo"
 msgstr "Añadir equipo"
 
 #: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:221
+#: .\usuarios\templates\usuarios\inicio_jugador_sin_equipo.html:122
 msgid "Error al crear equipo"
 msgstr "Error al crear equipo"
 
 #: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:242
-msgid "Equipo creado"
-msgstr "Equipo creado"
+#: .\usuarios\templates\usuarios\inicio_jugador_sin_equipo.html:143
+#: .\usuarios\templates\usuarios\signin.html:47
+msgid "Registro completado"
+msgstr "Registro completado"
 
 #: .\usuarios\templates\usuarios\inicio_jugador_sin_equipo.html:12
 msgid "Actualmente no perteneces a ningún equipo."
@@ -2280,10 +2284,6 @@ msgstr "Introduzca la información para registrarse"
 msgid "Error en el registro"
 msgstr "Error del servidor"
 
-#: .\usuarios\templates\usuarios\signin.html:47
-msgid "Registro completado"
-msgstr "Registro completado"
-
 #: .\usuarios\templates\usuarios\signin.html:62
 msgid "Solo se permiten números y como máximo 9 dígitos."
 msgstr "Solo se permiten números y como máximo 9 dígitos."
@@ -2397,6 +2397,9 @@ msgstr "Error al actualizar: {}"
 #: .\usuarios\views.py:198
 msgid "Te hemos enviado un correo para cambiar tu contraseña."
 msgstr "Te hemos enviado un correo para cambiar tu contraseña."
+
+#~ msgid "Equipo creado"
+#~ msgstr "Equipo creado"
 
 #~ msgid "No hay jugadores disponibles"
 #~ msgstr "No hay jugadores disponibles"

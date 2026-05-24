@@ -7,6 +7,7 @@ from django.db.models import Q
 from equipos.models import Equipo, EquipoEntrenador
 from usuarios.decorators import entrenador_o_admin_required
 from .models import Partido, Entrenamiento
+import json
 
 
 def verificar_entrenador_equipo(user, equipo):
@@ -670,11 +671,12 @@ def eliminar_partido_ajax(request, partido_id):
     try:
         partido = get_object_or_404(Partido, id=partido_id)
         
-        # Determinar el equipo del partido (puede ser local o visitante)
-        equipo = partido.equipo_local if partido.equipo_local else partido.equipo_visitante
+        # Comprobar si el usuario es entrenador de alguno de los dos equipos
+        es_entrenador_local = partido.equipo_local and verificar_entrenador_equipo(request.user, partido.equipo_local)
+        es_entrenador_visitante = partido.equipo_visitante and verificar_entrenador_equipo(request.user, partido.equipo_visitante)
         
-        # Verificar que el usuario es entrenador activo del equipo
-        if not verificar_entrenador_equipo(request.user, equipo):
+        # Si no es entrenador ni del local ni del visitante, denegar acceso
+        if not (es_entrenador_local or es_entrenador_visitante):
             return JsonResponse({'error': 'No tienes permiso'}, status=403)
         
         partido.delete()
@@ -690,13 +692,14 @@ def finalizar_partido_ajax(request, partido_id):
         return JsonResponse({'error': 'Método no permitido'}, status=405)
     
     try:
-        import json
-        
         partido = get_object_or_404(Partido, id=partido_id)
-        equipo = partido.equipo_local
         
-        # Verificar que el usuario es entrenador activo del equipo
-        if not verificar_entrenador_equipo(request.user, equipo):
+        # Comprobar si el usuario es entrenador de alguno de los dos equipos
+        es_entrenador_local = partido.equipo_local and verificar_entrenador_equipo(request.user, partido.equipo_local)
+        es_entrenador_visitante = partido.equipo_visitante and verificar_entrenador_equipo(request.user, partido.equipo_visitante)
+        
+        # Si no es entrenador ni del local ni del visitante, denegar acceso
+        if not (es_entrenador_local or es_entrenador_visitante):
             return JsonResponse({'error': 'No tienes permiso'}, status=403)
         
         # Procesar goles si vienen en el body JSON
