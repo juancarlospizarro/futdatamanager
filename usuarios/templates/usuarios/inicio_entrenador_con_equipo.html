@@ -453,30 +453,19 @@ function calcularEstadisticas(partidos) {
     let victorias = 0, empates = 0, derrotas = 0;
     
     partidos.forEach(partido => {
-        // Asegurarnos de que los goles son números
-        const golesLocal = partido.goles_local !== null && partido.goles_local !== undefined ? parseInt(partido.goles_local) : null;
-        const golesVisitante = partido.goles_visitante !== null && partido.goles_visitante !== undefined ? parseInt(partido.goles_visitante) : null;
+        const golesLocal = partido.goles_local !== null && partido.goles_local !== undefined ? partido.goles_local : null;
+        const golesVisitante = partido.goles_visitante !== null && partido.goles_visitante !== undefined ? partido.goles_visitante : null;
         
         if (golesLocal !== null && golesVisitante !== null) {
-            // El empate es igual para ambos
-            if (golesLocal === golesVisitante) {
-                empates++;
-            } 
-            // Si el equipo juega de Local
-            else if (partido.condicion === 'Local') {
-                if (golesLocal > golesVisitante) {
-                    victorias++;
-                } else {
-                    derrotas++;
-                }
-            } 
-            // Si el equipo juega de Visitante
-            else if (partido.condicion === 'Visitante') {
-                if (golesVisitante > golesLocal) {
-                    victorias++;
-                } else {
-                    derrotas++;
-                }
+            if(partido.mi_posicion === 'visitante') {
+                // Si jugamos de visitante, invertimos el resultado para calcular estadísticas
+                if (golesVisitante > golesLocal) victorias++;
+                else if (golesVisitante === golesLocal) empates++;
+                else derrotas++;
+            } else {
+                if (golesLocal > golesVisitante) victorias++;
+                else if (golesLocal === golesVisitante) empates++;
+                else derrotas++;
             }
         }
     });

@@ -71,7 +71,7 @@ def analisis(request):
         
         # Obtener partidos finalizados del equipo
         partidos_finalizados = Partido.objects.filter(
-            equipo_local=equipo,
+            Q(equipo_local=equipo) | Q(equipo_visitante=equipo),
             finalizado=True
         ).order_by('-fecha_hora')
         
