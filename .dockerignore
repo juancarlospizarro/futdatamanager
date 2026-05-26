@@ -56,3 +56,6 @@ Dockerfile
 tests/
 test_*.py
 *_test.py
+
+# Locale (Traducciones)
+*.mo

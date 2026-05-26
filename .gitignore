@@ -159,3 +159,6 @@ postgres_data/
 
 # Traducciones
 *.mo
+
+# Reuirements Dev
+requirements-dev.txt
