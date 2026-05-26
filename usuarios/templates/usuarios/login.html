@@ -1,6 +1,7 @@
 {% extends "includes/base.html" %}
 {% load static %}
-{% block title %}FutDataManager - Iniciar sesión{% endblock %}
+{% load i18n %}
+{% block title %}FutDataManager - {% trans "Iniciar sesión" %}{% endblock %}
 {% block content %}
 <main class="d-flex align-items-center py-5">
         <div class="container">
@@ -10,7 +11,7 @@
                     <!-- Títulos -->
                     <div class="text-center mb-4">
                         <h1 class="h2 fw-bold text-foot-darkgray">FutDataManager</h1>
-                        <p class="text-secondary">Introduzca la información para iniciar sesión</p>
+                        <p class="text-secondary">{% trans "Introduzca la información para iniciar sesión" %}</p>
                     </div>
 
                     <!-- Formulario -->
@@ -22,14 +23,14 @@
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
                                 <div class="modal-header bg-danger">
-                                    <h5 class="modal-title text-white">Error en el inicio de sesión</h5>
+                                    <h5 class="modal-title text-white">{% trans "Error en el inicio de sesión" %}</h5>
                                 </div>
                                 <div class="modal-body">
                                     <p>{{ error }}</p>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                                    Cerrar
+                                    {% trans "Cerrar" %}
                                     </button>
                                 </div>
                                 </div>
@@ -43,7 +44,7 @@
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
                                     <div class="modal-header bg-success">
-                                        <h5 class="modal-title text-white">Inicio de sesión completado</h5>
+                                        <h5 class="modal-title text-white">{% trans "Inicio de sesión completado" %}</h5>
                                     </div>
                                     <div class="modal-body">
                                         <p>{{ message }}</p>
@@ -54,28 +55,31 @@
                             {% endfor %}
                         {% endif %}                        
                         
+                        <!-- Mensajes de validación para traducción -->
+                        <div id="msg-email-requerido" style="display:none;">{% trans "Introduce tu correo electrónico." %}</div>
+                        <div id="msg-password-requerida" style="display:none;">{% trans "Introduce tu contraseña." %}</div>
 
                             <form id="formulario_inicioSesion" method="POST">
                                 {% csrf_token %}
 
                                 <div class="mb-3">
-                                    <label for="emailInput" class="form-label fw-medium">Email</label>
+                                    <label for="emailInput" class="form-label fw-medium">{% trans "Email" %}</label>
                                     <input type="email" class="form-control form-control-lg rounded-3" id="emailInput" name="email" value="{{ email_value|default:'' }}" required>
                                     <small class="help-text text-danger"></small>
                                 </div>
                                 
                                 <div class="mb-4">
-                                    <label for="passwordInput" class="form-label fw-medium">Contraseña</label>
+                                    <label for="passwordInput" class="form-label fw-medium">{% trans "Contraseña" %}</label>
                                     <input type="password" class="form-control form-control-lg rounded-3" id="passwordInput" name="password" required>
                                     <small class="help-text text-danger"></small>
                                 </div>
                                 
                                 <div class="d-grid mb-3">
-                                    <button type="submit" class="btn btn-foot-form-enviar btn-lg w-100 rounded-3">Iniciar sesión</button>
+                                    <button type="submit" class="btn btn-foot-form-enviar btn-lg w-100 rounded-3">{% trans "Iniciar sesión" %}</button>
                                 </div>
                                 
                                 <div class="text-center">
-                                    <a href="{% url 'usuarios:password_forget' %}" class="text-decoration-none text-secondary small">¿No recuerdas tu contraseña?</a>
+                                    <a href="{% url 'usuarios:password_forget' %}" class="text-decoration-none text-secondary small">{% trans "¿No recuerdas tu contraseña?" %}</a>
                                 </div>
                             </form>
                         </div>

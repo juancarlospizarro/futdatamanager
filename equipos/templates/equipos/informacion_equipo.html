@@ -1,7 +1,8 @@
 {% extends "includes/base.html" %}
 {% load static %}
+{% load i18n %}
 
-{% block title %}Equipo {{ equipo.nombre }} - Información{% endblock %}
+{% block title %}{% trans "Equipo" %} {{ equipo.nombre }} - {% trans "Información" %}{% endblock %}
 
 {% block content %}
 <div class="container my-5">
@@ -9,16 +10,16 @@
     <div class="row gy-5">
 
         <!-- COLUMNA IZQUIERDA -->
-        <div class="col-md-8 order-2 order-md-1">
+        <div class="col-md-8 order-1 order-md-1">
 
-            <!-- Cabecera del Equipo (Ficha Técnica Mejorada) -->
+            <!-- Cabecera del Equipo -->
             <div class="mb-4">
                 <div class="d-flex align-items-center justify-content-between mb-3">
                     <h2 class="h3 text-foot-green fw-bold mb-0">
-                        Información general
+                        {% trans "Información general" %}
                     </h2>
                     <span class="badge rounded-pill bg-light text-dark border"><i class="bi bi-check-circle-fill"></i>
-                        Activo</span>
+                        {% trans "Activo" %}</span>
                 </div>
 
                 <div class="card shadow-sm bg-card-dark mb-4 rounded-4 overflow-hidden">
@@ -33,7 +34,7 @@
                                     </div>
                                     <div>
                                         <small class="text-secondary d-block text-uppercase fw-bold"
-                                            style="font-size: 0.75rem; letter-spacing: 0.5px;">Club</small>
+                                            style="font-size: 0.75rem; letter-spacing: 0.5px;">{% trans "Club" %}</small>
                                         <span class="fw-bold text-color-card">{{ equipo.nombre }}</span>
                                     </div>
                                 </div>
@@ -48,7 +49,7 @@
                                     </div>
                                     <div>
                                         <small class="text-secondary d-block text-uppercase fw-bold"
-                                            style="font-size: 0.75rem; letter-spacing: 0.5px;">Fundación</small>
+                                            style="font-size: 0.75rem; letter-spacing: 0.5px;">{% trans "Fundación" %}</small>
                                         <span class="fw-bold text-color-card">{{ equipo.anio_fundacion }}</span>
                                     </div>
                                 </div>
@@ -63,7 +64,7 @@
                                     </div>
                                     <div>
                                         <small class="text-secondary d-block text-uppercase fw-bold"
-                                            style="font-size: 0.75rem; letter-spacing: 0.5px;">Alta en App</small>
+                                            style="font-size: 0.75rem; letter-spacing: 0.5px;">{% trans "Alta en App" %}</small>
                                         <span class="fw-bold text-color-card">{{ equipo.fecha_creacion|date:"d M Y" }}</span>
                                     </div>
                                 </div>
@@ -99,7 +100,7 @@
                                 <div class="row g-3">
 
                                     <div class="col-md-6">
-                                        <label for="nombreEquipo" class="form-label fw-medium">Nombre</label>
+                                        <label for="nombreEquipo" class="form-label fw-medium">{% trans "Nombre" %}</label>
                                         <input type="text" class="form-control rounded-3" id="nombreEquipo" name="first_name"
                                             value="{{ equipo.nombre }}">
                                         <small id="errorNombre" class="help-text text-danger"
@@ -107,8 +108,7 @@
                                     </div>
 
                                     <div class="col-md-6">
-                                        <label for="anioFundacion" class="form-label fw-medium">Año de
-                                            fundación</label>
+                                        <label for="anioFundacion" class="form-label fw-medium">{% trans "Año de fundación" %}</label>
                                         <input type="number" class="form-control rounded-3" id="anioFundacion"
                                             name="anio_fundacion" value="{{ equipo.anio_fundacion }}">
                                         <small id="errorAnioFundacion" class="help-text text-danger"
@@ -116,14 +116,14 @@
                                     </div>
 
                                     <div class="col-md-6">
-                                        <label for="direccionEquipo" class="form-label fw-medium">Dirección</label>
+                                        <label for="direccionEquipo" class="form-label fw-medium">{% trans "Dirección" %}</label>
                                         <input type="text" class="form-control rounded-3" id="direccionEquipo"
                                             name="direccion" value="{{ equipo.direccion }}">
                                         <small id="errorDireccion" class="help-text text-danger"
                                             aria-live="polite"></small>
                                     </div>
                                     <div class="col-md-6">
-                                        <label for="telefonoEquipo" class="form-label fw-medium">Teléfono</label>
+                                        <label for="telefonoEquipo" class="form-label fw-medium">{% trans "Teléfono" %}</label>
                                         <input type="tel" class="form-control rounded-3"
                                             id="telefonoEquipo" name="telefono" value="{{ equipo.telefono }}">
                                             <small id="errorTelefono" class="help-text text-danger"
@@ -131,8 +131,7 @@
                                     </div>
 
                                     <div class="col-md-6">
-                                        <label for="color_principal" class="form-label fw-medium">Color
-                                            principal</label>
+                                        <label for="color_principal" class="form-label fw-medium">{% trans "Color principal" %}</label>
                                         <input type="color" class="form-control rounded-3" id="color_principal"
                                             name="color_principal" value="{{ equipo.color_principal }}">
                                         <small id="errorColorPrincipal" class="help-text text-danger"
@@ -140,8 +139,7 @@
                                     </div>
 
                                     <div class="col-md-6">
-                                        <label for="color_secundario" class="form-label fw-medium">Color
-                                            secundario</label>
+                                        <label for="color_secundario" class="form-label fw-medium">{% trans "Color secundario" %}</label>
                                         <input type="color" class="form-control rounded-3" id="color_secundario"
                                             name="color_secundario" value="{{ equipo.color_secundario }}">
                                         <small id="errorColorSecundario" class="help-text text-danger"
@@ -149,10 +147,10 @@
                                     </div>
 
                                     <div class="col-md-6">
-                                        <label for="escudo" class="form-label fw-medium">Escudo</label>
+                                        <label for="escudo" class="form-label fw-medium">{% trans "Escudo" %}</label>
                                         <input type="file" class="form-control rounded-3" id="escudo" name="escudo"
                                             accept="image/*">
-                                        <div class="form-text">Sube una nueva imagen solo si quieres cambiar el escudo
+                                        <div class="form-text">{% trans "Sube una nueva imagen solo si quieres cambiar el escudo" %}
                                             actual.
                                         </div>
                                     </div>
@@ -172,7 +170,7 @@
                                     <button type="button" class="btn btn-light text-secondary px-4 rounded-3"
                                         data-bs-dismiss="modal">Cancelar</button>
                                     <button type="submit" class="btn text-white px-4 rounded-3"
-                                        style="background-color: #27a770;">Guardar cambios</button>
+                                        style="background-color: #27a770;">{% trans "Guardar cambios" %}</button>
                                 </div>
                             </form>
                         </div>
@@ -187,7 +185,7 @@
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header bg-success">
-                            <h5 class="modal-title text-white">Información del equipo actualizada</h5>
+                            <h5 class="modal-title text-white">{% trans "Información del equipo actualizada" %}</h5>
                         </div>
                         <div class="modal-body">
                             <p>{{ message }}</p>
@@ -203,14 +201,14 @@
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header bg-danger">
-                            <h5 class="modal-title text-white">Error al actualizar información</h5>
+                            <h5 class="modal-title text-white">{% trans "Error al actualizar información" %}</h5>
                         </div>
                         <div class="modal-body">
                             <p>{{ error }}</p>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                                Cerrar
+                                {% trans "Cerrar" %}
                             </button>
                         </div>
                     </div>
@@ -219,388 +217,434 @@
             {% endif %}
 
             <!-- Sección Entrenador -->
-<div class="mb-5">
-    <h3 class="h4 text-foot-green fw-bold mb-2">Entrenador</h3>
-    {% if entrenador %}
-    <a href="{% url 'usuarios:ver_perfil_usuario' entrenador.perfil_entrenador.usuario.slug %}" class="text-decoration-none">
-        <div class="card shadow-sm bg-card-dark rounded-4" style="cursor: pointer; transition: all 0.3s ease;">
-            <div class="card-body p-4">
-                <div class="d-flex align-items-center">
-                    <img src="{% if entrenador.perfil_entrenador.usuario.foto %}{{ entrenador.perfil_entrenador.usuario.foto.url }}{% else %}{% static 'img/default_avatar.jpg' %}{% endif %}" 
-                        class="rounded-circle me-3" width="70" height="70" style="object-fit: cover;">
-                    <div>
-                        <h5 class="mb-1 fw-bold text-color-card">{{ entrenador.perfil_entrenador.usuario.get_full_name }}</h5>
-                        <p class="mb-1 text-secondary">
-                            <small><i class="bi bi-briefcase-fill"></i> Experiencia: {{ entrenador.perfil_entrenador.experiencia_anos }} años</small>
-                        </p>
-                        {% if entrenador.perfil_entrenador.licencia %}
-                        <p class="mb-0 text-secondary">
-                            <small><i class="bi bi-award-fill"></i> Licencia: {{ entrenador.perfil_entrenador.licencia }}</small>
-                        </p>
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </a>
-    {% else %}
-    <div class="alert alert-warning">
-        <i class="bi bi-exclamation-triangle-fill"></i> No hay entrenador asignado al equipo.
-    </div>
-    {% endif %}
-</div>
-
-<!-- Sección Plantilla -->
-<div class="mb-5">
-    <h3 class="h4 text-foot-green fw-bold mb-2">Plantilla</h3>
-    {% if jugadores_equipo %}
-    <!-- Buscador -->
-    <div class="d-flex justify-content-end mb-3">
-        <div class="input-group w-50">
-            <span class="input-group-text bg-light">
-                <i class="bi bi-search"></i>
-            </span>
-            <input type="text" id="buscadorJugadores" class="form-control" placeholder="Buscar jugador">
-        </div>
-    </div>
-
-    <!-- Tabla -->
-    <div class="table-responsive">
-        <table id="tablaJugadores" class="table text-center table-bordered shadow-sm">
-            <thead>
-                <tr>
-                    <th id="ordenarDorsal" class="bg-success text-white text-center">Dorsal</th>
-                    <th id="ordenarPosicion" class="bg-success text-white text-center">Posición</th>
-                    <th id="ordenarJugador" class="bg-success text-white text-center">Jugador</th>
-                    <th class="bg-success text-white text-center">Pierna</th>
-                    <th id="ordenarAltura" class="bg-success text-white text-center">Altura (cm)</th>
-                    <th id="ordenarPeso" class="bg-success text-white text-center">Peso (kg)</th>
-                    <th class="bg-success text-white text-center">Capitán</th>
-                    {% if is_trainer %}
-                    <th class="bg-success text-white text-center">Acciones</th>
-                    {% endif %}
-                </tr>
-            </thead>
-            <tbody>
-                {% for relacion in jugadores_equipo %}
-                <tr class="align-middle">
-                    <td class="text-center text-secondary fw-bold" data-dorsal="{% if relacion.perfil_jugador.dorsal %}{{ relacion.perfil_jugador.dorsal }}{% else %}0{% endif %}">
-                        {% if relacion.perfil_jugador.dorsal %}
-                            {{ relacion.perfil_jugador.dorsal }}
-                        {% else %}
-                            —
-                        {% endif %}
-                    </td>
-                    <td class="text-center text-secondary fw-bold" data-posicion="{% if relacion.perfil_jugador.get_posicion_display %}{{ relacion.perfil_jugador.get_posicion_display }}{% else %}--{% endif %}">
-                        {% if relacion.perfil_jugador.get_posicion_display %}
-                            {{ relacion.perfil_jugador.get_posicion_display }}
-                        {% else %}
-                            —
-                        {% endif %}
-                    </td>
-                    <td>
-                        <a href="{% url 'usuarios:ver_perfil_usuario' relacion.perfil_jugador.usuario.slug %}" class="text-decoration-none">
-                            <div class="d-flex align-items-center justify-content-center">
-                                <img src="{% if relacion.perfil_jugador.usuario.foto %}{{ relacion.perfil_jugador.usuario.foto.url }}{% else %}{% static 'img/default_avatar.jpg' %}{% endif %}" 
-                                    class="rounded-circle me-2" width="40" height="40" style="object-fit: cover;">
-                                <div class="text-start">
-                                    <h6 class="mb-0 fw-bold text-color-card">{{ relacion.perfil_jugador.usuario.get_full_name }}</h6>
-                                    <small class="text-secondary">{{ relacion.fecha_incorporacion|date:"d M Y" }}</small>
-                                </div>
-                            </div>
-                        </a>
-                    </td>
-                    <td class="text-center text-secondary">
-                        {% if relacion.perfil_jugador.pierna_habil %}
-                            <span class="badge rounded-pill" style="background-color: #27a770; color: white;">
-                                {{ relacion.perfil_jugador.get_pierna_habil_display }}
-                            </span>
-                        {% else %}
-                            —
-                        {% endif %}
-                    </td>
-                    <td class="text-center text-secondary" data-altura="{% if relacion.perfil_jugador.altura %}{{ relacion.perfil_jugador.altura }}{% else %}0{% endif %}">
-                        {% if relacion.perfil_jugador.altura %}
-                            {{ relacion.perfil_jugador.altura }}
-                        {% else %}
-                            —
-                        {% endif %}
-                    </td>
-                    <td class="text-center text-secondary" data-peso="{% if relacion.perfil_jugador.peso %}{{ relacion.perfil_jugador.peso }}{% else %}0{% endif %}">
-                        {% if relacion.perfil_jugador.peso %}
-                            {{ relacion.perfil_jugador.peso }}
-                        {% else %}
-                            —
-                        {% endif %}
-                    </td>
-                    <td class="text-center">
-                        {% if relacion.perfil_jugador.es_capitan %}
-                            <i class="bi bi-star-fill" style="color: #FFD700; font-size: 1.2em;"></i>
-                        {% else %}
-                            —
-                        {% endif %}
-                    </td>
-                    {% if is_trainer %}
-                    <td class="text-center">
-                        <div class="btn-group" role="group">
-                            <button type="button" class="btn btn-sm btn-outline-primary edit-player-btn" 
-                                data-bs-toggle="modal" 
-                                data-bs-target="#editPlayerModal"
-                                data-jugador-id="{{ relacion.perfil_jugador.id }}"
-                                data-dorsal="{% if relacion.perfil_jugador.dorsal %}{{ relacion.perfil_jugador.dorsal }}{% else %}0{% endif %}"
-                                data-altura="{{ relacion.perfil_jugador.altura|default:'' }}"
-                                data-peso="{{ relacion.perfil_jugador.peso|default:'' }}"
-                                data-pierna-habil="{{ relacion.perfil_jugador.pierna_habil|default:'' }}"
-                                data-posicion="{{ relacion.perfil_jugador.posicion|default:'' }}"
-                                data-es-capitan="{{ relacion.perfil_jugador.es_capitan }}"
-                                data-jugador-nombre="{{ relacion.perfil_jugador.usuario.get_full_name }}">
-                                <i class="bi bi-pencil-fill"></i> Editar
-                            </button>
-                            <button type="button" class="btn btn-sm btn-outline-danger" 
-                                data-bs-toggle="modal" 
-                                data-bs-target="#confirmRemovePlayerModal"
-                                data-equipo-id="{{ equipo.id }}"
-                                data-jugador-id="{{ relacion.perfil_jugador.id }}"
-                                data-jugador-nombre="{{ relacion.perfil_jugador.usuario.get_full_name }}">
-                                <i class="bi bi-trash-fill"></i> Eliminar
-                            </button>
-                        </div>
-                    </td>
-                    {% endif %}
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
-
-    {% else %}
-    <div class="alert alert-info">
-        <i class="bi bi-info-circle"></i> No hay jugadores en la plantilla aún.
-    </div>
-    {% endif %}
-
-    <!-- Botones de Acción (Solo para el entrenador del equipo) -->
-    {% if is_trainer %}
-    <div class="d-flex flex-wrap gap-3 mt-4 pt-3">
-        <!-- BOTÓN AÑADIR JUGADOR -->
-        <button type="button" class="btn btn-foot-form-enviar" data-bs-toggle="modal"
-            data-bs-target="#addPlayerModal">
-            <i class="bi bi-person-plus-fill"></i> Añadir jugador
-        </button>
-
-        <button type="button" class="btn text-white px-4 py-2 rounded-3 border-0"
-            style="background-color: #504847;" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal">
-            <i class="bi bi-shield-slash-fill"></i> Abandonar equipo
-        </button>
-    </div>
-    {% endif %}
-
-    <!-- MODAL PARA EDITAR JUGADOR -->
-<div class="modal fade" id="editPlayerModal" tabindex="-1" aria-labelledby="editPlayerLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content rounded-4 border-0 shadow">
-            <div class="modal-header border-bottom">
-                <h5 class="modal-title fw-bold" id="editPlayerLabel" style="color: #27a770;">
-                    <i class="bi bi-pencil-fill"></i> Editar información del jugador
-                </h5>
-            </div>
-
-            <div class="modal-body p-4">
-                <form id="formulario_editar_jugador" method="POST">
-                    {% csrf_token %}
-                    <input type="hidden" id="jugadorIdInput" name="jugador_id">
-                    
-                    <div class="row g-3">
-                        <!-- Dorsal -->
-                        <div class="col-md-6">
-                            <label for="dorsalInput" class="form-label fw-medium">Dorsal</label>
-                            <input type="number" class="form-control rounded-3" id="dorsalInput" 
-                                name="dorsal" min="1" max="99">
-                            <small id="errorDorsal" class="help-text text-danger" aria-live="polite"></small>
-                        </div>
-
-                        <!-- Pierna Hábil -->
-                        <div class="col-md-6">
-                            <label for="piernaHabilInput" class="form-label fw-medium">Pierna Hábil</label>
-                            <select class="form-select rounded-3" id="piernaHabilInput" name="pierna_habil">
-                                <option value="">-- Seleccionar --</option>
-                                <option value="derecha">Derecha</option>
-                                <option value="izquierda">Izquierda</option>
-                                <option value="ambas">Ambas</option>
-                            </select>
-                            <small id="errorPiernaHabil" class="help-text text-danger" aria-live="polite"></small>
-                        </div>
-
-                        <!-- Posición -->
-                        <div class="col-md-6">
-                            <label for="posicionInput" class="form-label fw-medium">Posición</label>
-                            <select class="form-select rounded-3" id="posicionInput" name="posicion">
-                                <option value="">No tiene posición</option>
-                                <option value="portero">Portero</option>
-                                <option value="lateral_derecho">Lateral Derecho</option>
-                                <option value="defensa_central">Defensa Central</option>
-                                <option value="lateral_izquierdo">Lateral Izquierdo</option>
-                                <option value="mediocentro_defensivo">Mediocentro Defensivo</option>
-                                <option value="mediocentro">Mediocentro</option>
-                                <option value="mediocentro_ofensivo">Mediocentro Ofensivo</option>
-                                <option value="interior_izquierda">Interior Izquierda</option>
-                                <option value="interior_derecha">Interior Derecha</option>
-                                <option value="extremo_derecho">Extremo Derecho</option>
-                                <option value="extremo_izquierdo">Extremo Izquierdo</option>
-                                <option value="delantero_centro">Delantero Centro</option>
-                                <option value="segundo_delantero">Segundo Delantero</option>
-                            </select>
-                            <small id="errorPosicion" class="help-text text-danger" aria-live="polite"></small>
-                        </div>
-
-                        <!-- Altura -->
-                        <div class="col-md-6">
-                            <label for="alturaInput" class="form-label fw-medium">Altura (cm)</label>
-                            <input type="number" class="form-control rounded-3" id="alturaInput" 
-                                name="altura" min="100" max="250">
-                            <small id="errorAltura" class="help-text text-danger" aria-live="polite"></small>
-                        </div>
-
-                        <!-- Peso -->
-                        <div class="col-md-6">
-                            <label for="pesoInput" class="form-label fw-medium">Peso (kg)</label>
-                            <input type="number" class="form-control rounded-3" id="pesoInput" 
-                                name="peso" min="30" max="150" step="0.1">
-                            <small id="errorPeso" class="help-text text-danger" aria-live="polite"></small>
-                        </div>
-
-                        <!-- Capitán -->
-                        <div class="col-md-6">
-                            <div class="form-check mt-4">
-                                <input class="form-check-input" type="checkbox" id="esCapitanInput" 
-                                    name="es_capitan">
-                                <label class="form-check-label fw-medium" for="esCapitanInput">
-                                    Es capitán del equipo
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="d-flex justify-content-end gap-2 mt-4">
-                        <button type="button" class="btn btn-light text-secondary px-4 rounded-3"
-                            data-bs-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn text-white px-4 rounded-3"
-                            style="background-color: #27a770;">Guardar cambios</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- MODAL DE CONFIRMACIÓN PARA ELIMINAR JUGADOR -->
-<div class="modal fade" id="confirmRemovePlayerModal" tabindex="-1" aria-labelledby="confirmRemovePlayerLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content rounded-4 border-0 shadow">
-            <div class="modal-header border-bottom border-danger">
-                <h5 class="modal-title fw-bold text-danger" id="confirmRemovePlayerLabel">
-                    <i class="bi bi-exclamation-triangle-fill"></i> Confirmación
-                </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-
-            <div class="modal-body p-4">
-                <p class="mb-0">Esta acción <strong>no se puede deshacer</strong>. ¿Estás seguro de que quieres eliminar al jugador?</p>
-            </div>
-
-            <div class="modal-footer">
-                <button type="button" class="btn btn-light text-secondary px-4 rounded-3"
-                    data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-danger px-4 rounded-3" id="confirmRemovePlayerBtn">
-                    <i class="bi bi-trash-fill"></i> Sí, eliminar jugador
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- MODAL PARA AÑADIR JUGADOR -->
-<div class="modal fade" id="addPlayerModal" tabindex="-1" aria-labelledby="addPlayerLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content rounded-4 border-0 shadow">
-            <div class="modal-header border-bottom">
-                <h5 class="modal-title fw-bold" id="addPlayerLabel" style="color: #27a770;">
-                    <i class="bi bi-person-plus-fill"></i> Añadir jugador al equipo
-                </h5>
-            </div>
-
-            <div class="modal-body p-4">
-                {% if jugadores_sin_equipo %}
-                    <div class="list-group">
-                        {% for jugador in jugadores_sin_equipo %}
-                        <div class="list-group-item list-group-item-action d-flex justify-content-between align-items-center rounded-3 mb-2">
+            <div class="mb-5">
+                <h3 class="h4 text-foot-green fw-bold mb-2">{% trans "Entrenador" %}</h3>
+                {% if entrenador %}
+                {% if entrenador.perfil_entrenador.usuario.slug %}
+                <a href="{% url 'usuarios:ver_perfil_usuario' entrenador.perfil_entrenador.usuario.slug %}" class="text-decoration-none">
+                {% endif %}
+                    <div class="card shadow-sm bg-card-dark rounded-4" style="cursor: pointer; transition: all 0.3s ease;">
+                        <div class="card-body p-4">
                             <div class="d-flex align-items-center">
-                                <img src="{% if jugador.usuario.foto %}{{ jugador.usuario.foto.url }}{% else %}{% static 'img/default_avatar.jpg' %}{% endif %}" 
-                                    class="rounded-circle me-3" width="50" height="50" style="object-fit: cover;">
+                                <img src="{% if entrenador.perfil_entrenador.usuario.foto %}{{ entrenador.perfil_entrenador.usuario.foto.url }}{% else %}{% static 'img/default_avatar.jpg' %}{% endif %}" 
+                                    class="rounded-circle me-3" width="70" height="70" style="object-fit: cover;">
                                 <div>
-                                    <h6 class="mb-0 fw-bold">{{ jugador.usuario.get_full_name }}</h6>
-                                    <small class="text-secondary">
-                                        {% if jugador.pierna_habil %}Pierna: {{ jugador.get_pierna_habil_display }}{% endif %}
-                                    </small>
-                                    {% if jugador.altura or jugador.peso %}
-                                    <br>
-                                    <small class="text-secondary">
-                                        {% if jugador.altura %}{{ jugador.altura }}cm{% endif %}
-                                        {% if jugador.peso %} • {{ jugador.peso }}kg{% endif %}
-                                    </small>
+                                    <h5 class="mb-1 fw-bold text-color-card">{{ entrenador.perfil_entrenador.usuario.get_full_name }}</h5>
+                                    {% if entrenador.perfil_entrenador.licencia %}
+                                    <p class="mb-0 text-secondary">
+                                        <small><i class="bi bi-award-fill"></i> Licencia: {{ entrenador.perfil_entrenador.licencia }}</small>
+                                    </p>
                                     {% endif %}
                                 </div>
                             </div>
-                            <button type="button" class="btn btn-sm btn-foot-form-enviar add-player-btn" 
-                                data-equipo-id="{{ equipo.id }}" 
-                                data-jugador-id="{{ jugador.id }}"
-                                data-jugador-nombre="{{ jugador.usuario.get_full_name }}">
-                                <i class="bi bi-plus-lg"></i> Añadir
-                            </button>
                         </div>
-                        {% endfor %}
                     </div>
+                {% if entrenador.perfil_entrenador.usuario.slug %}
+                </a>
+                {% endif %}
                 {% else %}
-                    <div class="alert alert-info">
-                        <i class="bi bi-info-circle"></i> No hay jugadores disponibles sin equipo.
-                    </div>
+                <div class="alert alert-warning">
+                    <i class="bi bi-exclamation-triangle-fill"></i> No hay entrenador asignado al equipo.
+                </div>
                 {% endif %}
             </div>
 
-            <div class="modal-footer">
-                <button type="button" class="btn btn-light text-secondary px-4 rounded-3" data-bs-dismiss="modal">
-                    Cerrar
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
+                    <!-- Sección Plantilla -->
+                    <div class="mb-5">
+                        <h3 class="h4 text-foot-green fw-bold mb-2">{% trans "Plantilla" %}</h3>
+                        {% if jugadores_equipo %}
+                        <!-- Buscador -->
+                        <div class="d-flex justify-content-end mb-3">
+                            <div class="input-group w-50">
+                                <span class="input-group-text bg-light">
+                                    <i class="bi bi-search"></i>
+                                </span>
+                                <input type="text" id="buscadorJugadores" class="form-control" placeholder="{% trans 'Buscar jugador' %}">
+                            </div>
+                        </div>
+
+                        <!-- Tabla -->
+                        <div class="table-responsive">
+                            <table id="tablaJugadores" class="table text-center table-bordered shadow-sm">
+                                <thead>
+                                    <tr>
+                                        <th id="ordenarDorsal" class="bg-success text-white text-center">{% trans "Dorsal" %}</th>
+                                        <th id="ordenarPosicion" class="bg-success text-white text-center">{% trans "Posición" %}</th>
+                                        <th id="ordenarJugador" class="bg-success text-white text-center">{% trans "Jugador" %}</th>
+                                        <th class="bg-success text-white text-center">{% trans "Pierna" %}</th>
+                                        <th id="ordenarAltura" class="bg-success text-white text-center">{% trans "Altura (cm)" %}</th>
+                                        <th id="ordenarPeso" class="bg-success text-white text-center">{% trans "Peso (kg)" %}</th>
+                                        <th class="bg-success text-white text-center">{% trans "Capitán" %}</th>
+                                        {% if is_trainer %}
+                                        <th class="bg-success text-white text-center">{% trans "Estado" %}</th>
+                                        <th class="bg-success text-white text-center">{% trans "Acciones" %}</th>
+                                        {% endif %}
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for relacion in jugadores_equipo %}
+                                    <tr class="align-middle">
+                                        <td class="text-center text-secondary fw-bold" data-dorsal="{% if relacion.perfil_jugador.dorsal %}{{ relacion.perfil_jugador.dorsal }}{% else %}0{% endif %}">
+                                            {% if relacion.perfil_jugador.dorsal %}
+                                                {{ relacion.perfil_jugador.dorsal }}
+                                            {% else %}
+                                                —
+                                            {% endif %}
+                                        </td>
+                                        <td class="text-center text-secondary fw-bold" data-posicion="{% if relacion.perfil_jugador.get_posicion_display %}{{ relacion.perfil_jugador.get_posicion_display }}{% else %}--{% endif %}">
+                                            {% if relacion.perfil_jugador.get_posicion_display %}
+                                                {{ relacion.perfil_jugador.get_posicion_display }}
+                                            {% else %}
+                                                —
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            {% if relacion.perfil_jugador.usuario.slug %}
+                                            <a href="{% url 'usuarios:ver_perfil_usuario' relacion.perfil_jugador.usuario.slug %}" class="text-decoration-none">
+                                            {% endif %}
+                                                <div class="d-flex align-items-center justify-content-center">
+                                                    <img src="{% if relacion.perfil_jugador.usuario.foto %}{{ relacion.perfil_jugador.usuario.foto.url }}{% else %}{% static 'img/default_avatar.jpg' %}{% endif %}" 
+                                                        class="rounded-circle me-2" width="40" height="40" style="object-fit: cover;">
+                                                    <div class="text-start">
+                                                        <h6 class="mb-0 fw-bold text-color-card">{{ relacion.perfil_jugador.usuario.get_full_name }}</h6>
+                                                        <small class="text-secondary">{{ relacion.fecha_incorporacion|date:"d M Y" }}</small>
+                                                    </div>
+                                                </div>
+                                            {% if relacion.perfil_jugador.usuario.slug %}
+                                            </a>
+                                            {% endif %}
+                                        </td>
+                                        <td class="text-center text-secondary">
+                                            {% if relacion.perfil_jugador.pierna_habil %}
+                                                <span class="badge rounded-pill" style="background-color: #27a770; color: white;">
+                                                    {{ relacion.perfil_jugador.get_pierna_habil_display }}
+                                                </span>
+                                            {% else %}
+                                                —
+                                            {% endif %}
+                                        </td>
+                                        <td class="text-center text-secondary" data-altura="{% if relacion.perfil_jugador.altura %}{{ relacion.perfil_jugador.altura }}{% else %}0{% endif %}">
+                                            {% if relacion.perfil_jugador.altura %}
+                                                {{ relacion.perfil_jugador.altura }}
+                                            {% else %}
+                                                —
+                                            {% endif %}
+                                        </td>
+                                        <td class="text-center text-secondary" data-peso="{% if relacion.perfil_jugador.peso %}{{ relacion.perfil_jugador.peso }}{% else %}0{% endif %}">
+                                            {% if relacion.perfil_jugador.peso %}
+                                                {{ relacion.perfil_jugador.peso }}
+                                            {% else %}
+                                                —
+                                            {% endif %}
+                                        </td>
+                                        <td class="text-center">
+                                            {% if relacion.perfil_jugador.es_capitan %}
+                                                <i class="bi bi-star-fill" style="color: #FFD700; font-size: 1.2em;"></i>
+                                            {% else %}
+                                                —
+                                            {% endif %}
+                                        </td>
+                                        {% if is_trainer %}
+                                        <!-- Columna de Estado: Lesiones y Sanciones -->
+                                        <td class="text-center">
+                                            <div class="d-flex flex-column gap-1 justify-content-center align-items-center">
+                                                {% if relacion.perfil_jugador.lesiones.all %}
+                                                    <span class="badge bg-warning text-dark" style="cursor: pointer;" 
+                                                        data-bs-toggle="modal" 
+                                                        data-bs-target="#gestionar_lesiones_modal"
+                                                        data-jugador-id="{{ relacion.perfil_jugador.id }}"
+                                                        data-jugador-nombre="{{ relacion.perfil_jugador.usuario.get_full_name }}">
+                                                        <i class="bi bi-heart-pulse"></i> {% trans "Lesión" %}
+                                                    </span>
+                                                {% endif %}
+                                                {% if relacion.perfil_jugador.sanciones.all %}
+                                                    <span class="badge bg-danger" style="cursor: pointer;" 
+                                                        data-bs-toggle="modal" 
+                                                        data-bs-target="#gestionar_sanciones_modal"
+                                                        data-jugador-id="{{ relacion.perfil_jugador.id }}"
+                                                        data-jugador-nombre="{{ relacion.perfil_jugador.usuario.get_full_name }}">
+                                                        <i class="bi bi-shield-exclamation"></i> {% trans "Sanción" %}
+                                                    </span>
+                                                {% endif %}
+                                                {% if not relacion.perfil_jugador.lesiones.all and not relacion.perfil_jugador.sanciones.all %}
+                                                    <span class="badge bg-success" style="opacity: 0.6;">
+                                                        {% trans "Sin sanciones" %}
+                                                    </span>
+                                                {% endif %}
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="btn-group" role="group">
+                                                <button type="button" class="btn btn-sm btn-outline-primary edit-player-btn" 
+                                                    data-bs-toggle="modal" 
+                                                    data-bs-target="#editPlayerModal"
+                                                    data-jugador-id="{{ relacion.perfil_jugador.id }}"
+                                                    data-dorsal="{% if relacion.perfil_jugador.dorsal %}{{ relacion.perfil_jugador.dorsal }}{% else %}0{% endif %}"
+                                                    data-altura="{{ relacion.perfil_jugador.altura|default:'' }}"
+                                                    data-peso="{{ relacion.perfil_jugador.peso|default:'' }}"
+                                                    data-pierna-habil="{{ relacion.perfil_jugador.pierna_habil|default:'' }}"
+                                                    data-posicion="{{ relacion.perfil_jugador.posicion|default:'' }}"
+                                                    data-es-capitan="{{ relacion.perfil_jugador.es_capitan }}"
+                                                    data-jugador-nombre="{{ relacion.perfil_jugador.usuario.get_full_name }}">
+                                                    <i class="bi bi-pencil-fill"></i> {% trans "Editar" %}
+                                                </button>
+                                                <button type="button" class="btn btn-sm btn-outline-danger" 
+                                                    data-bs-toggle="modal" 
+                                                    data-bs-target="#confirmRemovePlayerModal"
+                                                    data-equipo-id="{{ equipo.id }}"
+                                                    data-jugador-id="{{ relacion.perfil_jugador.id }}"
+                                                    data-jugador-nombre="{{ relacion.perfil_jugador.usuario.get_full_name }}">
+                                                    <i class="bi bi-trash-fill"></i> {% trans "Eliminar" %}
+                                                </button>
+                                            </div>
+                                        </td>
+                                        {% endif %}
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+
+                        {% else %}
+                        <div class="alert alert-info">
+                            <i class="bi bi-info-circle"></i> No hay jugadores en la plantilla aún.
+                        </div>
+                        {% endif %}
+
+                        <!-- Botones de Acción (Solo para el entrenador del equipo) -->
+                        {% if is_trainer %}
+                        <div class="d-flex flex-wrap gap-3 mt-4 pt-3">
+                            <!-- BOTÓN AÑADIR JUGADOR -->
+                            <button type="button" class="btn btn-foot-form-enviar" data-bs-toggle="modal"
+                                data-bs-target="#addPlayerModal">
+                                <i class="bi bi-person-plus-fill"></i> {% trans "Añadir jugador" %}
+                            </button>
+
+                            <!-- BOTÓN AÑADIR LESIÓN -->
+                            <button type="button" class="btn btn-warning text-dark px-4 py-2 rounded-3 border-0" 
+                                data-bs-toggle="modal" data-bs-target="#addLesionModal">
+                                <i class="bi bi-heart-pulse"></i> {% trans "Añadir lesión" %}
+                            </button>
+
+                            <!-- BOTÓN AÑADIR SANCIÓN -->
+                            <button type="button" class="btn btn-danger px-4 py-2 rounded-3 border-0" 
+                                data-bs-toggle="modal" data-bs-target="#addSancionModal">
+                                <i class="bi bi-shield-exclamation"></i> {% trans "Añadir sanción" %}
+                            </button>
+
+                            <button type="button" class="btn text-white px-4 py-2 rounded-3 border-0"
+                                style="background-color: #504847;" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal">
+                                <i class="bi bi-shield-slash-fill"></i> {% trans "Eliminar equipo" %}
+                            </button>
+                        </div>
+                        {% endif %}
+
+                        <!-- MODAL PARA EDITAR JUGADOR -->
+                    <div class="modal fade" id="editPlayerModal" tabindex="-1" aria-labelledby="editPlayerLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg">
+                            <div class="modal-content rounded-4 border-0 shadow">
+                                <div class="modal-header border-bottom">
+                                    <h5 class="modal-title fw-bold" id="editPlayerLabel" style="color: #27a770;">
+                                        <i class="bi bi-pencil-fill"></i>  {% trans "Editar información del jugador" %}
+                                    </h5>
+                                </div>
+
+                                <div class="modal-body p-4">
+                                    <form id="formulario_editar_jugador" method="POST">
+                                        {% csrf_token %}
+                                        <input type="hidden" id="jugadorIdInput" name="jugador_id">
+                                        
+                                        <div class="row g-3">
+                                            <!-- Dorsal -->
+                                            <div class="col-md-6">
+                                                <label for="dorsalInput" class="form-label fw-medium">{% trans "Dorsal" %}</label>
+                                                <input type="number" class="form-control rounded-3" id="dorsalInput" 
+                                                    name="dorsal" min="1" max="99">
+                                                <small id="errorDorsal" class="help-text text-danger" aria-live="polite"></small>
+                                            </div>
+
+                                            <!-- Pierna Hábil -->
+                                            <div class="col-md-6">
+                                                <label for="piernaHabilInput" class="form-label fw-medium">{% trans "Pierna Hábil" %}</label>
+                                                <select class="form-select rounded-3" id="piernaHabilInput" name="pierna_habil">
+                                                    <option value="">-- {% trans "Seleccionar" %} --</option>
+                                                    <option value="derecha">{% trans "Derecha" %}</option>
+                                                    <option value="izquierda">{% trans "Izquierda" %}</option>
+                                                    <option value="ambas">{% trans "Ambas" %}</option>
+                                                </select>
+                                                <small id="errorPiernaHabil" class="help-text text-danger" aria-live="polite"></small>
+                                            </div>
+
+                                            <!-- Posición -->
+                                            <div class="col-md-6">
+                                                <label for="posicionInput" class="form-label fw-medium">{% trans "Posición" %}</label>
+                                                <select class="form-select rounded-3" id="posicionInput" name="posicion">
+                                                    <option value="">-- {% trans "Seleccionar" %} --</option>
+                                                    <option value="portero">{% trans "Portero" %}</option>
+                                                    <option value="lateral_derecho">{% trans "Lateral Derecho" %}</option>
+                                                    <option value="defensa_central">{% trans "Defensa Central" %}</option>
+                                                    <option value="lateral_izquierdo">{% trans "Lateral Izquierdo" %}</option>
+                                                    <option value="mediocentro_defensivo">{% trans "Mediocentro Defensivo" %}</option>
+                                                    <option value="mediocentro">{% trans "Mediocentro" %}</option>
+                                                    <option value="mediocentro_ofensivo">{% trans "Mediocentro Ofensivo" %}</option>
+                                                    <option value="interior_izquierda">{% trans "Interior Izquierda" %}</option>
+                                                    <option value="interior_derecha">{% trans "Interior Derecha" %}</option>
+                                                    <option value="extremo_derecho">{% trans "Extremo Derecho" %}</option>
+                                                    <option value="extremo_izquierdo">{% trans "Extremo Izquierdo" %}</option>
+                                                    <option value="delantero_centro">{% trans "Delantero Centro" %}</option>
+                                                    <option value="segundo_delantero">{% trans "Segundo Delantero" %}</option>
+                                                </select>
+                                                <small id="errorPosicion" class="help-text text-danger" aria-live="polite"></small>
+                                            </div>
+
+                                            <!-- Altura -->
+                                            <div class="col-md-6">
+                                                <label for="alturaInput" class="form-label fw-medium">{% trans "Altura" %} (cm)</label>
+                                                <input type="number" class="form-control rounded-3" id="alturaInput" 
+                                                    name="altura" min="100" max="250">
+                                                <small id="errorAltura" class="help-text text-danger" aria-live="polite"></small>
+                                            </div>
+
+                                            <!-- Peso -->
+                                            <div class="col-md-6">
+                                                <label for="pesoInput" class="form-label fw-medium">{% trans "Peso" %} (kg)</label>
+                                                <input type="number" class="form-control rounded-3" id="pesoInput" 
+                                                    name="peso" min="30" max="150" step="0.1">
+                                                <small id="errorPeso" class="help-text text-danger" aria-live="polite"></small>
+                                            </div>
+
+                                            <!-- Capitán -->
+                                            <div class="col-md-6">
+                                                <div class="form-check mt-4">
+                                                    <input class="form-check-input" type="checkbox" id="esCapitanInput" 
+                                                        name="es_capitan">
+                                                    <label class="form-check-label fw-medium" for="esCapitanInput">
+                                                        {% trans "Es capitán del equipo" %}
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex justify-content-end gap-2 mt-4">
+                                            <button type="button" class="btn btn-light text-secondary px-4 rounded-3"
+                                                data-bs-dismiss="modal">{% trans "Cancelar" %}</button>
+                                            <button type="submit" class="btn text-white px-4 rounded-3"
+                                                style="background-color: #27a770;">{% trans "Guardar cambios" %}</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- MODAL DE CONFIRMACIÓN PARA ELIMINAR JUGADOR -->
+                    <div class="modal fade" id="confirmRemovePlayerModal" tabindex="-1" aria-labelledby="confirmRemovePlayerLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content rounded-4 border-0 shadow">
+                                <div class="modal-header border-bottom border-danger">
+                                    <h5 class="modal-title fw-bold text-danger" id="confirmRemovePlayerLabel">
+                                        <i class="bi bi-exclamation-triangle-fill"></i> {% trans "Confirmación" %}
+                                    </h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+
+                                <div class="modal-body p-4">
+                                    <p class="mb-0">{% trans "Esta acción" %} <strong>{% trans "no se puede deshacer" %}</strong>. {% trans "¿Estás seguro de que quieres eliminar al jugador?" %}</p>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-light text-secondary px-4 rounded-3"
+                                        data-bs-dismiss="modal">{% trans "Cancelar" %}</button>
+                                    <button type="button" class="btn btn-danger px-4 rounded-3" id="confirmRemovePlayerBtn">
+                                        <i class="bi bi-trash-fill"></i> {% trans "Sí, eliminar jugador" %}
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- MODAL PARA AÑADIR JUGADOR -->
+                    <div class="modal fade" id="addPlayerModal" tabindex="-1" aria-labelledby="addPlayerLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg">
+                            <div class="modal-content rounded-4 border-0 shadow">
+                                <div class="modal-header border-bottom">
+                                    <h5 class="modal-title fw-bold" id="addPlayerLabel" style="color: #27a770;">
+                                        <i class="bi bi-person-plus-fill"></i> {% trans "Añadir jugador al equipo" %}
+                                    </h5>
+                                </div>
+
+                                <div class="modal-body p-4">
+                                    {% if jugadores_sin_equipo %}
+                                        <div class="list-group">
+                                            {% for jugador in jugadores_sin_equipo %}
+                                            <div class="list-group-item list-group-item-action d-flex justify-content-between align-items-center rounded-3 mb-2">
+                                                <div class="d-flex align-items-center">
+                                                    <img src="{% if jugador.usuario.foto %}{{ jugador.usuario.foto.url }}{% else %}{% static 'img/default_avatar.jpg' %}{% endif %}" 
+                                                        class="rounded-circle me-3" width="50" height="50" style="object-fit: cover;">
+                                                    <div>
+                                                        <h6 class="mb-0 fw-bold">{{ jugador.usuario.get_full_name }}</h6>
+                                                        <small class="text-secondary">
+                                                            {% if jugador.pierna_habil %}Pierna: {{ jugador.get_pierna_habil_display }}{% endif %}
+                                                        </small>
+                                                        {% if jugador.altura or jugador.peso %}
+                                                        <br>
+                                                        <small class="text-secondary">
+                                                            {% if jugador.altura %}{{ jugador.altura }}cm{% endif %}
+                                                            {% if jugador.peso %} • {{ jugador.peso }}kg{% endif %}
+                                                        </small>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                                <button type="button" class="btn btn-sm btn-foot-form-enviar add-player-btn" 
+                                                    data-equipo-id="{{ equipo.id }}" 
+                                                    data-jugador-id="{{ jugador.id }}"
+                                                    data-jugador-nombre="{{ jugador.usuario.get_full_name }}">
+                                                    <i class="bi bi-plus-lg"></i> {% trans "Añadir" %}
+                                                </button>
+                                            </div>
+                                            {% endfor %}
+                                        </div>
+                                    {% else %}
+                                        <div class="alert alert-info">
+                                            <i class="bi bi-info-circle"></i> {% trans "No hay jugadores disponibles sin equipo." %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-light text-secondary px-4 rounded-3" data-bs-dismiss="modal">
+                                        {% trans "Cerrar" %}
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="modal fade" id="confirmDeleteModal" tabindex="-1">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content rounded-4">
 
                                 <div class="modal-header">
-                                    <h5 class="modal-title text-danger"><i class="bi bi-shield-slash-fill"></i> Abandonar
-                                        equipo</h5>
+                                    <h5 class="modal-title text-danger"><i class="bi bi-shield-slash-fill"></i> {% trans "Eliminar equipo" %}</h5>
                                 </div>
 
                                 <div class="modal-body">
                                     <p>
-                                        ⚠️ Esta acción <strong>no se puede deshacer</strong>.<br>
-                                        ¿Estás seguro de que quieres abandonar el equipo actual?
-                                        Quedarás sin equipo y el capitán más antiguo será asignado automáticamente como entrenador interino.
+                                        ⚠️ {% trans "Esta acción" %} <strong>{% trans "no se puede deshacer" %}</strong>.<br>
+                                        {% trans "¿Estás seguro de que quieres eliminar el equipo actual?" %}
+                                        {% trans "Tanto tu como los jugadores os quedaréis sin equipo. Los jugadores recibirán un email de información." %}
                                     </p>
                                 </div>
 
                                 <div class="modal-footer">
                                     <button class="btn btn-secondary" data-bs-dismiss="modal">
-                                        Cancelar
+                                        {% trans "Cancelar" %}
                                     </button>
 
                                     <button class="btn btn-danger" id="confirmDeleteBtn"
-                                        data-url="{% url 'equipos:abandonar_equipo' %}">
-                                        Sí, abandonar equipo
+                                        data-equipo-id="{{ equipo.id }}"
+                                        data-url="{% url 'equipos:abandonar_equipo' equipo.id %}">
+                                        {% trans "Sí, eliminar equipo" %}
                                     </button>
                                 </div>
 
@@ -612,25 +656,260 @@
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content rounded-4 text-center p-4">
 
-                                <h5 class="text-success mb-3">Equipo abandonado</h5>
-                                <p>Has abandonado el equipo correctamente.</p>
+                                <h5 class="text-success mb-3">{% trans "Equipo abandonado" %}</h5>
+                                <p>{% trans "Has abandonado el equipo correctamente." %}</p>
 
                             </div>
                         </div>
                     </div>
 
+            <!-- MODAL PARA AÑADIR LESIÓN A JUGADOR -->
+            <div class="modal fade" id="addLesionModal" tabindex="-1" aria-labelledby="addLesionLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content rounded-4 border-0 shadow">
+                        <div class="modal-header border-bottom">
+                            <h5 class="modal-title fw-bold" id="addLesionLabel" style="color: #27a770;">
+                                <i class="bi bi-heart-pulse"></i> {% trans "Añadir lesión a jugador" %}
+                            </h5>
+                        </div>
+
+                        <div class="modal-body p-4">
+                            <form id="formulario_añadir_lesion" method="POST">
+                                {% csrf_token %}
+                                
+                                <div class="row g-3">
+                                    <!-- Seleccionar Jugador -->
+                                    <div class="col-12">
+                                        <label for="jugadorLesionSelect" class="form-label fw-medium">
+                                            {% trans "Jugador" %} <span class="text-danger">*</span>
+                                        </label>
+                                        <select class="form-select rounded-3" id="jugadorLesionSelect" 
+                                            name="jugador_id" required>
+                                            <option value="">{% trans "Selecciona un jugador" %}</option>
+                                            {% for relacion in jugadores_equipo %}
+                                                <option value="{{ relacion.perfil_jugador.id }}">
+                                                    #{{ relacion.perfil_jugador.dorsal|default:'--' }} - {{ relacion.perfil_jugador.usuario.get_full_name }}
+                                                </option>
+                                            {% endfor %}
+                                        </select>
+                                        <small id="errorJugador" class="help-text text-danger" aria-live="polite"></small>
+                                    </div>
+
+                                    <!-- Tipo de Lesión -->
+                                    <div class="col-md-6">
+                                        <label for="tipoLesionSelect" class="form-label fw-medium">
+                                            {% trans "Tipo de lesión" %} <span class="text-danger">*</span>
+                                        </label>
+                                        <select class="form-select rounded-3" id="tipoLesionSelect" 
+                                            name="tipo" required>
+                                            <option value="">{% trans "Selecciona un tipo" %}</option>
+                                            <option value="muscular">{% trans "Lesión muscular" %}</option>
+                                            <option value="fractura">{% trans "Fractura" %}</option>
+                                            <option value="distension">{% trans "Distensión" %}</option>
+                                            <option value="contusion">{% trans "Contusión" %}</option>
+                                            <option value="esguince">{% trans "Esguince" %}</option>
+                                            <option value="otra">{% trans "Otra" %}</option>
+                                        </select>
+                                        <small id="errorTipo" class="help-text text-danger" aria-live="polite"></small>
+                                    </div>
+
+                                    <!-- Duración Estimada -->
+                                    <div class="col-md-6">
+                                        <label for="diasDuracionInput" class="form-label fw-medium">
+                                            {% trans "Duración estimada (días)" %} <span class="text-danger">*</span>
+                                        </label>
+                                        <input type="number" class="form-control rounded-3" id="diasDuracionInput" 
+                                            name="dias_duracion" min="1" max="365" required>
+                                        <small id="errorDias" class="help-text text-danger" aria-live="polite"></small>
+                                    </div>
+
+                                    <!-- Descripción -->
+                                    <div class="col-12">
+                                        <label for="descripcionLesionInput" class="form-label fw-medium">
+                                            {% trans "Descripción" %}
+                                        </label>
+                                        <textarea class="form-control rounded-3" id="descripcionLesionInput" 
+                                            name="descripcion" rows="3" placeholder="{% trans 'Detalles de la lesión (opcional)' %}"></textarea>
+                                        <small id="errorDescripcion" class="help-text text-danger" aria-live="polite"></small>
+                                    </div>
+
+                                    <!-- Estado -->
+                                    <div class="col-12">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="activaLesionCheck" 
+                                                name="activa" checked>
+                                            <label class="form-check-label fw-medium" for="activaLesionCheck">
+                                                {% trans "Lesión activa" %}
+                                            </label>
+                                            <small class="d-block text-secondary">{% trans "Marca si la lesión está vigente" %}</small>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex justify-content-end gap-2 mt-4">
+                                    <button type="button" class="btn btn-light text-secondary px-4 rounded-3"
+                                        data-bs-dismiss="modal">{% trans "Cancelar" %}</button>
+                                    <button type="submit" class="btn text-white px-4 rounded-3"
+                                        style="background-color: #27a770;">{% trans "Registrar lesión" %}</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <!-- Sección Estadísticas -->
-            <div class="mb-5">
-                <h3 class="h4 text-foot-green fw-bold mb-2">Estadísticas generales del equipo</h3>
-                <p class="fs-5 text-secondary">Listado de estadísticas generales del equipo</p>
+            <!-- MODAL PARA AÑADIR SANCIÓN A JUGADOR -->
+            <div class="modal fade" id="addSancionModal" tabindex="-1" aria-labelledby="addSancionLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content rounded-4 border-0 shadow">
+                        <div class="modal-header border-bottom">
+                            <h5 class="modal-title fw-bold" id="addSancionLabel" style="color: #27a770;">
+                                <i class="bi bi-shield-exclamation"></i> {% trans "Añadir sanción a jugador" %}
+                            </h5>
+                        </div>
+
+                        <div class="modal-body p-4">
+                            <form id="formulario_añadir_sancion" method="POST">
+                                {% csrf_token %}
+                                
+                                <div class="row g-3">
+                                    <!-- Seleccionar Jugador -->
+                                    <div class="col-12">
+                                        <label for="jugadorSancionSelect" class="form-label fw-medium">
+                                            {% trans "Jugador" %} <span class="text-danger">*</span>
+                                        </label>
+                                        <select class="form-select rounded-3" id="jugadorSancionSelect" 
+                                            name="jugador_id" required>
+                                            <option value="">{% trans "Selecciona un jugador" %}</option>
+                                            {% for relacion in jugadores_equipo %}
+                                                <option value="{{ relacion.perfil_jugador.id }}">
+                                                    #{{ relacion.perfil_jugador.dorsal|default:'--' }} - {{ relacion.perfil_jugador.usuario.get_full_name }}
+                                                </option>
+                                            {% endfor %}
+                                        </select>
+                                        <small id="errorJugadorSancion" class="help-text text-danger" aria-live="polite"></small>
+                                    </div>
+
+                                    <!-- Tipo de Sanción -->
+                                    <div class="col-md-6">
+                                        <label for="tipoSancionSelect" class="form-label fw-medium">
+                                            {% trans "Tipo de sanción" %} <span class="text-danger">*</span>
+                                        </label>
+                                        <select class="form-select rounded-3" id="tipoSancionSelect" 
+                                            name="tipo" required>
+                                            <option value="">{% trans "Selecciona un tipo" %}</option>
+                                            <option value="amarilla">{% trans "Tarjeta amarilla" %}</option>
+                                            <option value="roja">{% trans "Tarjeta roja" %}</option>
+                                            <option value="suspension">{% trans "Suspensión" %}</option>
+                                            <option value="amonestacion">{% trans "Amonestación" %}</option>
+                                        </select>
+                                        <small id="errorTipoSancion" class="help-text text-danger" aria-live="polite"></small>
+                                    </div>
+
+                                    <!-- Partidos de Duración -->
+                                    <div class="col-md-6">
+                                        <label for="partidosDuracionInput" class="form-label fw-medium">
+                                            {% trans "Partidos de suspensión" %}
+                                        </label>
+                                        <input type="number" class="form-control rounded-3" id="partidosDuracionInput" 
+                                            name="partidos_duracion" min="0" max="99">
+                                        <small class="text-secondary">{% trans "Solo si corresponde a suspensión" %}</small>
+                                    </div>
+
+                                    <!-- Razón -->
+                                    <div class="col-12">
+                                        <label for="razonSancionInput" class="form-label fw-medium">
+                                            {% trans "Razón de la sanción" %} <span class="text-danger">*</span>
+                                        </label>
+                                        <textarea class="form-control rounded-3" id="razonSancionInput" 
+                                            name="razon" rows="3" placeholder="{% trans 'Detalles de por qué se impone la sanción' %}" required></textarea>
+                                        <small id="errorRazonSancion" class="help-text text-danger" aria-live="polite"></small>
+                                    </div>
+
+                                    <!-- Estado -->
+                                    <div class="col-12">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="activaSancionCheck" 
+                                                name="activa" checked>
+                                            <label class="form-check-label fw-medium" for="activaSancionCheck">
+                                                {% trans "Sanción activa" %}
+                                            </label>
+                                            <small class="d-block text-secondary">{% trans "Marca si la sanción está vigente" %}</small>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex justify-content-end gap-2 mt-4">
+                                    <button type="button" class="btn btn-light text-secondary px-4 rounded-3"
+                                        data-bs-dismiss="modal">{% trans "Cancelar" %}</button>
+                                    <button type="submit" class="btn text-white px-4 rounded-3"
+                                        style="background-color: #27a770;">{% trans "Registrar sanción" %}</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
 
+            <!-- MODAL PARA GESTIONAR LESIONES DEL JUGADOR -->
+            <div class="modal fade" id="gestionar_lesiones_modal" tabindex="-1" aria-labelledby="gestionarLesionesLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content rounded-4 border-0 shadow">
+                        <div class="modal-header border-bottom">
+                            <h5 class="modal-title fw-bold" id="gestionarLesionesLabel" style="color: #27a770;">
+                                <i class="bi bi-heart-pulse"></i> {% trans "Gestionar lesiones" %}
+                            </h5>
+                        </div>
+
+                        <div class="modal-body p-4">
+                            <h6 class="mb-3">{% trans "Jugador" %}: <span id="jugadorNombreLesion" class="fw-bold"></span></h6>
+                            
+                            <div id="lesionesListContainer">
+                                <!-- Se llena dinámicamente con JavaScript -->
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-light text-secondary px-4 rounded-3" data-bs-dismiss="modal">
+                                {% trans "Cerrar" %}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODAL PARA GESTIONAR SANCIONES DEL JUGADOR -->
+            <div class="modal fade" id="gestionar_sanciones_modal" tabindex="-1" aria-labelledby="gestionarSancionesLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content rounded-4 border-0 shadow">
+                        <div class="modal-header border-bottom">
+                            <h5 class="modal-title fw-bold" id="gestionarSancionesLabel" style="color: #27a770;">
+                                <i class="bi bi-shield-exclamation"></i> {% trans "Gestionar sanciones" %}
+                            </h5>
+                        </div>
+
+                        <div class="modal-body p-4">
+                            <h6 class="mb-3">{% trans "Jugador" %}: <span id="jugadorNombreSancion" class="fw-bold"></span></h6>
+                            
+                            <div id="sancionesListContainer">
+                                <!-- Se llena dinámicamente con JavaScript -->
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-light text-secondary px-4 rounded-3" data-bs-dismiss="modal">
+                                {% trans "Cerrar" %}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+                    </div>
         </div>
 
         <!-- COLUMNA DERECHA: Foto de Perfil (Orden 1 en móvil, 2 en escritorio) -->
-        <div class="col-md-4 order-1 order-md-2 d-flex flex-column align-items-center gap-4">
+        <div class="col-md-4 order-2 order-md-2 d-flex flex-column align-items-center gap-4">
 
             <!-- Lógica para mostrar la foto -->
             {% if equipo.escudo %}
@@ -639,39 +918,165 @@
                 class="bg-shield-dark border-0 shadow-sm rounded-4"
                 style="width: 350px; height: 350px; object-fit: cover;">
             {% else %}
-            <!-- Placeholder si no tiene foto (Imagen genérica o iniciales) -->
-            <!-- Usamos placehold.co con tus colores: fondo verde, texto blanco -->
+            <!-- Placeholder si no tiene foto (Imagen genérica) -->
             <img src="{% static 'img/default_shield.png' %}" alt="Sin escudo"
                 class="bg-shield-dark border-0 shadow-sm rounded-4"
                 style="width: 350px; height: 350px; object-fit: cover;">
             {% endif %}
             <div class="w-100 card shadow-sm bg-card-dark">
-                <!-- Sección Lesiones -->
-                <div class="card-body text-center">
-                    <h3 class="h4 text-foot-green fw-bold mb-2">Últimos resultados</h3>
-                    <p class="fs-5 text-secondary">Últimos partidos del equipo</p>
-
-                    <!-- Sección Sanciones -->
-                    <h3 class="h4 text-foot-green fw-bold mb-2">Próximos partidos</h3>
-                    <p class="fs-5 text-secondary">Próximos partidos del equipo</p>
+                <!-- Sección Últimos Resultados -->
+                <div class="card-body">
+                    <h3 class="h4 text-foot-green fw-bold mb-3">{% trans "Últimos resultados" %}</h3>
+                    
+                    {% if ultimo_partido_finalizado %}
+                        <div class="match-card p-3 rounded-3" style="background: linear-gradient(135deg, rgba(39, 167, 112, 0.1), rgba(39, 167, 112, 0.05));">
+                            <!-- Fecha y Hora -->
+                            <div class="text-center mb-2">
+                                <small class="text-secondary">
+                                    <i class="bi bi-calendar-event"></i>
+                                    {{ ultimo_partido_finalizado.fecha_hora|date:"d \\d\\e M" }} 
+                                    a las <i class="bi bi-clock"></i> {{ ultimo_partido_finalizado.fecha_hora|time:"H:i" }}
+                                </small>
+                            </div>
+                            
+                            <!-- Equipos y Resultado -->
+                            <div class="row align-items-center g-2 mb-2">
+                                <!-- Equipo Local -->
+                                <div class="col">
+                                    <div class="text-center">
+                                        <small class="text-secondary d-block">{% trans "Local" %}</small>
+                                        <p class="mb-0 fw-bold text-color-card" style="font-size: 0.95rem;">
+                                            {{ ultimo_partido_finalizado.equipo_local.nombre }}
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                                <!-- Resultado -->
+                                <div class="col-auto">
+                                    <div class="text-center">
+                                        <div class="badge bg-foot-green text-white p-2" style="font-size: 1.1rem;">
+                                            {{ ultimo_partido_finalizado.goles_local }} - {{ ultimo_partido_finalizado.goles_visitante }}
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Equipo Visitante -->
+                                <div class="col">
+                                    <div class="text-center">
+                                        <small class="text-secondary d-block">{% trans "Visitante" %}</small>
+                                        <p class="mb-0 fw-bold text-color-card" style="font-size: 0.95rem;">
+                                            {% if ultimo_partido_finalizado.equipo_visitante %}
+                                                {{ ultimo_partido_finalizado.equipo_visitante.nombre }}
+                                            {% else %}
+                                                {{ ultimo_partido_finalizado.nombre_equipo_visitante }}
+                                            {% endif %}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Estadio -->
+                            <div class="text-center">
+                                <small class="text-secondary">
+                                    <i class="bi bi-building"></i> {{ ultimo_partido_finalizado.estadio_nombre }}
+                                </small>
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="alert alert-info alert-dismissible fade show" role="alert">
+                            <i class="bi bi-info-circle"></i> {% trans "No hay partidos finalizados registrados aún." %}
+                        </div>
+                    {% endif %}
                 </div>
+            </div>
 
-
+            <!-- Sección Próximos Partidos -->
+            <div class="w-100 card shadow-sm bg-card-dark">
+                <div class="card-body">
+                    <h3 class="h4 text-foot-green fw-bold mb-3">{% trans "Próximos partidos" %}</h3>
+                    
+                    {% if proximo_partido %}
+                        <div class="match-card p-3 rounded-3" style="background: linear-gradient(135deg, rgba(39, 167, 112, 0.15), rgba(39, 167, 112, 0.08));">
+                            <!-- Fecha y Hora -->
+                            <div class="text-center mb-2">
+                                <small class="text-secondary">
+                                    <i class="bi bi-calendar-event"></i>
+                                    {{ proximo_partido.fecha_hora|date:"d \\d\\e M" }} 
+                                    a las <i class="bi bi-clock"></i> {{ proximo_partido.fecha_hora|time:"H:i" }}
+                                </small>
+                            </div>
+                            
+                            <!-- Equipos -->
+                            <div class="row align-items-center g-2 mb-2">
+                                <!-- Equipo Local -->
+                                <div class="col">
+                                    <div class="text-center">
+                                        <small class="text-secondary d-block">{% trans "Local" %}</small>
+                                        <p class="mb-0 fw-bold text-color-card" style="font-size: 0.95rem;">
+                                            {{ proximo_partido.equipo_local.nombre }}
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                                <!-- VS -->
+                                <div class="col-auto">
+                                    <div class="text-center">
+                                        <span class="badge bg-light text-dark">VS</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- Equipo Visitante -->
+                                <div class="col">
+                                    <div class="text-center">
+                                        <small class="text-secondary d-block">{% trans "Visitante" %}</small>
+                                        <p class="mb-0 fw-bold text-color-card" style="font-size: 0.95rem;">
+                                            {% if proximo_partido.equipo_visitante %}
+                                                {{ proximo_partido.equipo_visitante.nombre }}
+                                            {% else %}
+                                                {{ proximo_partido.nombre_equipo_visitante }}
+                                            {% endif %}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Estadio -->
+                            <div class="text-center mb-2">
+                                <small class="text-secondary">
+                                    <i class="bi bi-building"></i> {{ proximo_partido.estadio_nombre }}
+                                </small>
+                            </div>
+                            
+                            <!-- Competición -->
+                            {% if proximo_partido.competicion %}
+                            <div class="text-center">
+                                <small class="badge bg-light text-dark">
+                                    {{ proximo_partido.competicion.nombre }}
+                                </small>
+                            </div>
+                            {% endif %}
+                        </div>
+                    {% else %}
+                        <div class="alert alert-info alert-dismissible fade show" role="alert">
+                            <i class="bi bi-info-circle"></i> {% trans "No hay próximos partidos programados." %}
+                        </div>
+                    {% endif %}
+                </div>
             </div>
 
             <div class="w-100 card shadow-sm bg-card-dark">
 
                 <div class="card-body">
                     <h3 class="h5 text-foot-green fw-bold mb-3">
-                        Información de contacto
+                        {% trans "Información de contacto" %}
                     </h3>
                     <ul class="list-unstyled mb-0">
                         <li class="mb-2 text-secondary">
-                            <strong>Teléfono:</strong>
+                            <strong>{% trans "Teléfono" %}:</strong>
                             {{ equipo.telefono }}
                         </li>
                         <li class="mb-2 text-secondary">
-                            <strong>Dirección:</strong>
+                            <strong>{% trans "Dirección" %}:</strong>
                             {{ equipo.direccion }}
                             <br>
                             <br>
@@ -693,10 +1098,21 @@
         const apiUrlAgregarJugador = "{% url 'equipos:agregar_jugador_equipo' 999 888 %}".replace('/999/888/', '/{equipo_id}/{jugador_id}/');
         const apiUrlEditarJugador = "{% url 'equipos:editar_jugador' 999 %}".replace('/999/', '/{jugador_id}/');
         const apiUrlEliminarJugador = "{% url 'equipos:eliminar_jugador_equipo' 999 888 %}".replace('/999/888/', '/{equipo_id}/{jugador_id}/');
+        
+        // URLs para control de jugadores (AJAX endpoints sin i18n)
+        const apiUrlObtenerLesiones = '/control-jugadores/ajax/obtener-lesiones/{jugador_id}/';
+        const apiUrlObtenerSanciones = '/control-jugadores/ajax/obtener-sanciones/{jugador_id}/';
+        const apiUrlEliminarLesion = '/control-jugadores/ajax/eliminar-lesion/{lesion_id}/';
+        const apiUrlEliminarSancion = '/control-jugadores/ajax/eliminar-sancion/{sancion_id}/';
     </script>
+    <script src="{% static 'js/abandonarEquipo.js' %}"></script>
     <script src="{% static 'js/editarDatosEquipo.js' %}"></script>
     <script src="{% static 'js/añadirJugadorEquipo.js' %}"></script>
     <script src="{% static 'js/listadoJugadoresPlantilla.js' %}"></script>
     <script src="{% static 'js/editarJugadorPlantilla.js' %}"></script>
     <script src="{% static 'js/eliminarJugadorEquipo.js' %}"></script>
+    <script src="{% static 'js/añadirLesionEquipo.js' %}"></script>
+    <script src="{% static 'js/añadirSancionEquipo.js' %}"></script>
+    <script src="{% static 'js/gestionarLesiones.js' %}"></script>
+    <script src="{% static 'js/gestionarSanciones.js' %}"></script>
     {% endblock %}

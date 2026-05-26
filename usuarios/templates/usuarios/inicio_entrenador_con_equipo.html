@@ -1,19 +1,673 @@
 {% extends "includes/base.html" %}
 {% load static %}
-{% block title %}FutDataManager - Inicio{% endblock %}
+{% load i18n %}
+{% block title %}FutDataManager - {% trans "Inicio" %}{% endblock %}
 {% block content %}
 <div class="container my-5">
 
             <!-- Sección Título -->
             <section class="text-center col-lg-8 mx-auto mb-5 py-5">
-                <h1 class="display-4 fw-bold text-foot-darkgray mb-3">¡Bienvenid@ {{ user.first_name }}!</h1>
+                <h1 class="display-4 fw-bold text-foot-darkgray mb-3">¡{% trans "Bienvenid@" %} {{ user.first_name }}!</h1>
             </section>
 
             <!-- CALENDARIO -->
             <section class="col-lg-10 mx-auto">
                 <div id="calendario"></div>
             </section>
+
+            <!-- BOTONES DE ACCIONES -->
+            <section class="col-lg-10 mx-auto mt-5">
+                <div class="row g-3">
+                    <div class="col-6 col-md-3">
+                        <button class="btn btn-success w-100" id="btn-anadirPartido">{% trans "Añadir partido" %}</button>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <button class="btn btn-danger w-100" id="btn-eliminarPartido">{% trans "Eliminar partido" %}</button>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <button class="btn btn-success w-100" id="btn-anadirEntrenamiento">{% trans "Añadir entrenamiento" %}</button>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <button class="btn btn-danger w-100" id="btn-eliminarEntrenamiento">{% trans "Eliminar entrenamiento" %}</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIONES DE CONTENIDO -->
+            <section class="row justify-content-center mt-5">
+                <div class="col-lg-10">
+                    <div class="d-flex flex-column gap-5">
+
+                        <!-- Eventos -->
+                        <div>
+                            <h2 class="h4 text-foot-green mb-3">{% trans "Próximos eventos" %}</h2>
+                            <div id="listaEventosProximos">
+                                <p class="text-secondary text-muted">{% trans "Cargando eventos..." %}</p>
+                            </div>
+                        </div>
+
+                        <!-- Partidos anteriores -->
+                        <div>
+                            <h2 class="h4 text-foot-green mb-3">{% trans "Partidos anteriores" %}</h2>
+                            <div id="listaPartidosAnteriores">
+                                <p class="text-secondary text-muted">{% trans "Cargando partidos anteriores..." %}</p>
+                            </div>
+                        </div>
+
+                        <!-- Estadísticas del equipo -->
+                        <div>
+                            <h2 class="h4 text-foot-green mb-3">{% trans "Estadísticas del equipo" %}</h2>
+                            <div class="card shadow-sm">
+                                <div class="card-body">
+                                    <div class="row text-center">
+                                        <div class="col-md-3">
+                                            <h5 class="text-muted small">{% trans "Partidos jugados" %}</h5>
+                                            <p class="fs-3 fw-bold text-foot-green" id="totalPartidos">0</p>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <h5 class="text-muted small">{% trans "Victorias" %}</h5>
+                                            <p class="fs-3 fw-bold text-success" id="totalVictorias">0</p>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <h5 class="text-muted small">{% trans "Empates" %}</h5>
+                                            <p class="fs-3 fw-bold text-info" id="totalEmpates">0</p>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <h5 class="text-muted small">{% trans "Derrotas" %}</h5>
+                                            <p class="fs-3 fw-bold text-danger" id="totalDerrotas">0</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
             
 </div>
+
+<!-- MODAL AÑADIR ENTRENAMIENTO -->
+<div class="modal fade" id="modalAnadirEntrenamiento" tabindex="-1" aria-labelledby="modalAnadirEntrenamientoLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modalAnadirEntrenamientoLabel">{% trans "Añadir entrenamiento" %}</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="formAnadirEntrenamiento">
+                    <div class="mb-3">
+                        <label for="fechaHoraEntrenamiento" class="form-label">{% trans "Fecha y hora" %}</label>
+                        <input type="datetime-local" class="form-control" id="fechaHoraEntrenamiento" name="fecha_hora" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="tipoEntrenamiento" class="form-label">{% trans "Tipo de entrenamiento" %}</label>
+                        <select class="form-select" id="tipoEntrenamiento" name="tipo" required>
+                            <option value="">{% trans "Selecciona un tipo" %}</option>
+                            <option value="fuerza">{% trans "Fuerza" %}</option>
+                            <option value="tactico">{% trans "Táctico" %}</option>
+                            <option value="ataque">{% trans "Ataque" %}</option>
+                            <option value="defensa">{% trans "Defensa" %}</option>
+                            <option value="recuperacion">{% trans "Recuperación" %}</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="descripcionEntrenamiento" class="form-label">{% trans "Descripción" %}</label>
+                        <textarea class="form-control" id="descripcionEntrenamiento" name="descripcion" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% trans "Cancelar" %}</button>
+                <button type="button" class="btn btn-primary" id="btnGuardarEntrenamiento">{% trans "Guardar" %}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL ELIMINAR ENTRENAMIENTO -->
+<div class="modal fade" id="modalEliminarEntrenamiento" tabindex="-1" aria-labelledby="modalEliminarEntrenamientoLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modalEliminarEntrenamientoLabel">{% trans "Eliminar entrenamiento" %}</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>{% trans "Selecciona el entrenamiento que deseas eliminar:" %}</p>
+                <div id="listaEntrenamientos" class="list-group">
+                    <p class="text-muted">{% trans "Cargando entrenamientos..." %}</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% trans "Cancelar" %}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL CONFIRMACIÓN ELIMINAR ENTRENAMIENTO -->
+<div class="modal fade" id="modalConfirmarEliminar" tabindex="-1" aria-labelledby="modalConfirmarEliminarLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-white">
+                <h1 class="modal-title fs-5" id="modalConfirmarEliminarLabel">{% trans "Confirmación" %}</h1>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>{% trans "¿Estás seguro de que deseas eliminar este entrenamiento?" %}</p>
+                <div id="infoEliminar" class="alert alert-warning">
+                    <strong id="tipoEliminar"></strong><br>
+                    <small id="fechaEliminar"></small>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% trans "Cancelar" %}</button>
+                <button type="button" class="btn btn-danger" id="btnConfirmarEliminar">{% trans "Eliminar" %}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL AÑADIR PARTIDO -->
+<div class="modal fade" id="modalAnadirPartido" tabindex="-1" aria-labelledby="modalAnadirPartidoLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modalAnadirPartidoLabel">{% trans "Añadir partido" %}</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="formAnadirPartido">
+                    <div class="mb-3">
+                        <label for="competicionPartido" class="form-label">{% trans "Competición" %} <span class="text-danger">*</span></label>
+                        <select class="form-select" id="competicionPartido" name="competicion_id" required>
+                            <option value="">{% trans "Selecciona una competición" %}</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="fechaHoraPartido" class="form-label">{% trans "Fecha y hora" %}</label>
+                        <input type="datetime-local" class="form-control" id="fechaHoraPartido" name="fecha_hora" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">{% trans "Posición de tu equipo" %} <span class="text-danger">*</span></label>
+                        <select class="form-select" id="posicionEquipoPartido" name="posicion_equipo" required>
+                            <option value="">{% trans "Selecciona una opción" %}</option>
+                            <option value="local">{% trans "Local" %}</option>
+                            <option value="visitante">{% trans "Visitante" %}</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">{% trans "Equipo rival" %}</label>
+                        <div class="input-group mb-2">
+                            <select class="form-select" id="equipoVisitantePartido" name="equipo_visitante_id">
+                                <option value="">{% trans "Selecciona un equipo (opcional)" %}</option>
+                            </select>
+                        </div>
+                        <small class="form-text text-muted">{% trans "O escribe el nombre si no usa la app" %}</small>
+                        <input type="text" class="form-control mt-2" id="nombreEquipoPartido" name="nombre_equipo_visitante" placeholder="{% trans 'Nombre del equipo' %}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="estadioPartido" class="form-label">{% trans "Estadio" %}</label>
+                        <input type="text" class="form-control" id="estadioPartido" name="estadio_nombre" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="direccionPartido" class="form-label">{% trans "Dirección" %}</label>
+                        <input type="text" class="form-control" id="direccionPartido" name="estadio_direccion">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% trans "Cancelar" %}</button>
+                <button type="button" class="btn btn-primary" id="btnGuardarPartido">{% trans "Guardar" %}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL ELIMINAR PARTIDO -->
+<div class="modal fade" id="modalEliminarPartido" tabindex="-1" aria-labelledby="modalEliminarPartidoLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modalEliminarPartidoLabel">{% trans "Eliminar partido" %}</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>{% trans "Selecciona el partido que deseas eliminar:" %}</p>
+                <div id="listaPartidos" class="list-group">
+                    <p class="text-muted">{% trans "Cargando partidos..." %}</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% trans "Cancelar" %}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL CONFIRMACIÓN ELIMINAR PARTIDO -->
+<div class="modal fade" id="modalConfirmarEliminarPartido" tabindex="-1" aria-labelledby="modalConfirmarEliminarPartidoLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-white">
+                <h1 class="modal-title fs-5" id="modalConfirmarEliminarPartidoLabel">{% trans "Confirmación" %}</h1>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>{% trans "¿Estás seguro de que deseas eliminar este partido?" %}</p>
+                <div id="infoEliminarPartido" class="alert alert-warning">
+                    <strong id="rivalEliminar"></strong><br>
+                    <small id="fechaEliminarPartido" class="d-block"></small>
+                    <small id="estadioEliminarPartido" class="text-secondary d-block"><i class="bi bi-geo-alt"></i></small>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% trans "Cancelar" %}</button>
+                <button type="button" class="btn btn-danger" id="btnConfirmarEliminarPartido">{% trans "Eliminar" %}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL VER INFORMACIÓN DEL EVENTO -->
+<div class="modal fade" id="modalInfoEvento" tabindex="-1" aria-labelledby="modalInfoEventoLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0">
+            <div class="modal-header border-0 pb-0">
+                <h1 class="modal-title fs-5 fw-bold" id="modalInfoEventoLabel">{% trans "Información del evento" %}</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="contenidoEvento"></div>
+            </div>
+            <div class="modal-footer border-0 pt-0 gap-2">
+                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">{% trans "Cerrar" %}</button>
+                <button type="button" class="btn btn-success btn-sm" id="btnFinalizarPartido" style="display: none;">{% trans "Marcar como finalizado" %}</button>
+                <button type="button" class="btn btn-primary btn-sm" id="btnAnadirResultado" style="display: none;">{% trans "Añadir resultado" %}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL AÑADIR RESULTADO -->
+<div class="modal fade" id="modalAnadirResultado" tabindex="-1" aria-labelledby="modalAnadirResultadoLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0">
+            <div class="modal-header border-0 pb-0">
+                <h1 class="modal-title fs-5 fw-bold" id="modalAnadirResultadoLabel">{% trans "Marcar resultado" %}</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="formAnadirResultado" class="row g-2">
+                    <div class="col-6">
+                        <label for="golesLocal" class="form-label small">{% trans "Goles Local" %}</label>
+                        <input type="number" class="form-control form-control-sm" id="golesLocal" min="0" value="0" required>
+                    </div>
+                    <div class="col-6">
+                        <label for="golesVisitante" class="form-label small">{% trans "Goles Visitante" %}</label>
+                        <input type="number" class="form-control form-control-sm" id="golesVisitante" min="0" value="0" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer border-0 pt-0 gap-2">
+                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">{% trans "Cancelar" %}</button>
+                <button type="button" class="btn btn-primary btn-sm" id="btnGuardarResultado">{% trans "Guardar" %}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script src="{% static 'js/calendario.js' %}"></script>
+<script src="{% static 'js/entrenamientos.js' %}"></script>
+<script src="{% static 'js/partidos.js' %}"></script>
+<!-- <script src="{% static 'js/inicioEntrenadorEquipo.js' %}"></script> -->
+<script>
+    // Cache global para eventos y partidos
+let eventosProximosCache = [];
+let partidosAnterioresCache = [];
+
+// Funciones para renderizar eventos y calcular estadísticas
+function renderizarEventosProximos(eventos) {
+    eventosProximosCache = eventos; // Guardar en cache
+    
+    if (!eventos || eventos.length === 0) {
+        document.getElementById('listaEventosProximos').innerHTML = '<p class="text-secondary text-muted">{% trans "Sin próximos eventos" %}</p>';
+        return;
+    }
+    
+    let html = '<div class="list-group list-group-flush">';
+    
+    eventos.forEach(evento => {
+        let html_item = '';
+        
+        // Diferenciar entre entrenamientos y partidos
+        if (evento.tipo) {
+            // Es un entrenamiento
+            const tipoTraducido = {
+                'fuerza': '{% trans "Fuerza" %}',
+                'tactico': '{% trans "Táctico" %}',
+                'ataque': '{% trans "Ataque" %}',
+                'defensa': '{% trans "Defensa" %}',
+                'recuperacion': '{% trans "Recuperación" %}'
+            };
+            
+            html_item = `
+                <a href="#" class="list-group-item list-group-item-action border-start border-4 border-warning ps-3 py-2 evento-item" 
+                   data-evento-id="${evento.id}" data-evento-type="entrenamiento">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div>
+                            <h6 class="mb-1 fw-bold"><i class="bi bi-person-arms-up"></i> ${tipoTraducido[evento.tipo] || evento.tipo}</h6>
+                            <small class="text-muted d-block">${evento.fecha_hora}</small>
+                            ${evento.descripcion ? `<small class="text-muted d-block">${evento.descripcion}</small>` : ''}
+                        </div>
+                        <span class="badge bg-warning text-dark">{% trans "Entrenamiento" %}</span>
+                    </div>
+                </a>
+            `;
+        } else {
+            // Es un partido
+            const resultadoBadge = (evento.goles_local !== null && evento.goles_local !== undefined && evento.goles_visitante !== null && evento.goles_visitante !== undefined)
+                ? `<span class="badge bg-success ms-2">${evento.goles_local} - ${evento.goles_visitante}</span>`
+                : evento.finalizado 
+                ? '<span class="badge bg-secondary ms-2">S/R</span>'
+                : '';
+            
+            html_item = `
+                <a href="#" class="list-group-item list-group-item-action border-start border-4 border-foot-green ps-3 py-2 evento-item" 
+                   data-evento-id="${evento.id}" data-evento-type="partido">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div>
+                            <h6 class="mb-1 fw-bold">Vs ${evento.rival}</h6>
+                            <small class="text-muted d-block">${evento.fecha_hora}</small>
+                            <small class="text-muted d-block"><i class="bi bi-geo-alt"></i> ${evento.estadio}</small>
+                        </div>
+                        <div>${resultadoBadge}</div>
+                    </div>
+                </a>
+            `;
+        }
+        
+        html += html_item;
+    });
+    
+    html += '</div>';
+    document.getElementById('listaEventosProximos').innerHTML = html;
+    
+    // Agregar event listeners
+    document.querySelectorAll('.evento-item').forEach(item => {
+        item.addEventListener('click', function(e) {
+            e.preventDefault();
+            const eventoId = parseInt(this.dataset.eventoId);
+            const eventoType = this.dataset.eventoType;
+            abrirModalEvento(eventoId, eventoType, eventosProximosCache);
+        });
+    });
+}
+
+function renderizarPartidosAnteriores(partidos) {
+    partidosAnterioresCache = partidos; // Guardar en cache
+    
+    if (!partidos || partidos.length === 0) {
+        document.getElementById('listaPartidosAnteriores').innerHTML = '<p class="text-secondary text-muted">{% trans "Sin partidos anteriores" %}</p>';
+        return;
+    }
+    
+    let html = '<div class="list-group list-group-flush">';
+    
+    partidos.forEach(partido => {
+        const resultado = (partido.goles_local !== null && partido.goles_local !== undefined && partido.goles_visitante !== null && partido.goles_visitante !== undefined)
+            ? `<span class="badge bg-success">${partido.goles_local} - ${partido.goles_visitante}</span>`
+            : '<span class="badge bg-secondary">S/R</span>';
+        
+        html += `
+            <a href="#" class="list-group-item list-group-item-action border-start border-4 border-foot-green ps-3 py-2 partido-anterior"
+               data-partido-id="${partido.id}">
+                <div class="d-flex justify-content-between align-items-start">
+                    <div>
+                        <h6 class="mb-1 fw-bold">Vs ${partido.rival}</h6>
+                        <small class="text-muted d-block">${partido.fecha_hora}</small>
+                        <small class="text-muted d-block"><i class="bi bi-geo-alt"></i> ${partido.estadio}</small>
+                    </div>
+                    <div>${resultado}</div>
+                </div>
+            </a>
+        `;
+    });
+    
+    html += '</div>';
+    document.getElementById('listaPartidosAnteriores').innerHTML = html;
+    
+    // Agregar event listeners
+    document.querySelectorAll('.partido-anterior').forEach(item => {
+        item.addEventListener('click', function(e) {
+            e.preventDefault();
+            const partidoId = parseInt(this.dataset.partidoId);
+            abrirModalEvento(partidoId, 'partido', partidosAnterioresCache);
+        });
+    });
+}
+
+function calcularEstadisticas(partidos) {
+    let victorias = 0, empates = 0, derrotas = 0;
+    
+    partidos.forEach(partido => {
+        const golesLocal = partido.goles_local !== null && partido.goles_local !== undefined ? partido.goles_local : null;
+        const golesVisitante = partido.goles_visitante !== null && partido.goles_visitante !== undefined ? partido.goles_visitante : null;
+        
+        if (golesLocal !== null && golesVisitante !== null) {
+            if(partido.mi_posicion === 'visitante') {
+                // Si jugamos de visitante, invertimos el resultado para calcular estadísticas
+                if (golesVisitante > golesLocal) victorias++;
+                else if (golesVisitante === golesLocal) empates++;
+                else derrotas++;
+            } else {
+                if (golesLocal > golesVisitante) victorias++;
+                else if (golesLocal === golesVisitante) empates++;
+                else derrotas++;
+            }
+        }
+    });
+    
+    const total = victorias + empates + derrotas;
+    document.getElementById('totalPartidos').textContent = total;
+    document.getElementById('totalVictorias').textContent = victorias;
+    document.getElementById('totalEmpates').textContent = empates;
+    document.getElementById('totalDerrotas').textContent = derrotas;
+}
+
+function cargarEventosProximos() {
+    const currentLang = document.documentElement.lang || 'es';
+    const langPrefix = currentLang === 'es' ? '/es' : currentLang === 'en' ? '/en' : '';
+    
+    const urlEntrenamientos = `${langPrefix}/events/ajax/obtener_entrenamientos/`;
+    const urlPartidos = `${langPrefix}/events/ajax/obtener_partidos/`;
+    
+    Promise.all([
+        fetch(urlEntrenamientos).then(r => r.json()),
+        fetch(urlPartidos).then(r => r.json())
+    ])
+    .then(([entrenamientos, partidos]) => {
+        // Combinar eventos
+        const eventos = [...(Array.isArray(entrenamientos) ? entrenamientos : []), 
+                         ...(Array.isArray(partidos) ? partidos : [])];
+        
+        // Filtrar solo eventos futuros
+        const ahora = new Date();
+        const eventosFuturos = eventos
+            .filter(evt => new Date(evt.start) > ahora)
+            .sort((a, b) => new Date(a.start) - new Date(b.start))
+            .slice(0, 5);
+        
+        renderizarEventosProximos(eventosFuturos);
+    })
+    .catch(error => console.error('Error cargando eventos:', error));
+}
+
+function cargarPartidosAnteriores() {
+    const currentLang = document.documentElement.lang || 'es';
+    const langPrefix = currentLang === 'es' ? '/es' : currentLang === 'en' ? '/en' : '';
+    
+    fetch(`${langPrefix}/events/ajax/obtener_partidos/`)
+        .then(response => response.json())
+        .then(todosLosPartidos => {
+            // Filtrar partidos anteriores a la fecha/hora actual
+            const ahora = new Date();
+            const partidos = Array.isArray(todosLosPartidos) 
+                ? todosLosPartidos.filter(p => new Date(p.start) < ahora)
+                : [];
+            renderizarPartidosAnteriores(partidos);
+            calcularEstadisticas(partidos);
+        })
+        .catch(error => console.error('Error cargando partidos:', error));
+}
+
+function abrirModalEvento(eventoId, tipo, datosCache) {
+    // Buscar el evento/partido en el cache
+    let evento = null;
+    if (datosCache && datosCache.length > 0) {
+        evento = datosCache.find(e => e.id === eventoId);
+    }
+    
+    if (!evento) {
+        console.error('No se encontró el evento con ID:', eventoId);
+        return;
+    }
+    
+    // Construir un objeto event compatible con mostrarInfoEvento()
+    if (tipo === 'entrenamiento') {
+        const eventObj = {
+            id: evento.id,
+            start: evento.start,
+            extendedProps: {
+                id: evento.id,
+                type: 'entrenamiento',
+                tipo: evento.tipo,
+                descripcion: evento.descripcion || '',
+                fecha_hora: evento.fecha_hora
+            }
+        };
+        mostrarInfoEvento(eventObj);
+    } else {
+        // Asegurar que los valores de goles existen y no son undefined
+        const golesLocal = evento.goles_local !== undefined ? evento.goles_local : null;
+        const golesVisitante = evento.goles_visitante !== undefined ? evento.goles_visitante : null;
+        
+        const eventObj = {
+            id: evento.id,
+            start: evento.start,
+            extendedProps: {
+                id: evento.id,
+                type: 'partido',
+                rival: evento.rival || 'Rival desconocido',
+                rival_slug: evento.rival_slug || null,
+                estadio: evento.estadio || 'Estadio desconocido',
+                estadio_direccion: evento.estadio_direccion || '',
+                fecha_hora: evento.fecha_hora,
+                finalizado: evento.finalizado === true,
+                competicion: evento.competicion || null,
+                goles_local: golesLocal,
+                goles_visitante: golesVisitante,
+                equipo_local_nombre: evento.equipo_local_nombre || 'Local',
+                equipo_visitante_nombre: evento.equipo_visitante_nombre || 'Visitante',
+                mi_posicion: evento.mi_posicion || 'local'
+            }
+        };
+        mostrarInfoEvento(eventObj);
+    }
+}
+
+// Event listener para guardar resultado
+document.addEventListener('DOMContentLoaded', () => {
+    const btnGuardarResultado = document.getElementById('btnGuardarResultado');
+    if (btnGuardarResultado) {
+        btnGuardarResultado.addEventListener('click', function() {
+            const golesLocal = document.getElementById('golesLocal').value;
+            const golesVisitante = document.getElementById('golesVisitante').value;
+            const btnFinalizarPartido = document.getElementById('btnFinalizarPartido');
+            const partidoId = btnFinalizarPartido.dataset.partidoId;
+            
+            if (!partidoId) {
+                showAlert('error', 'Error: No se pudo identificar el partido');
+                return;
+            }
+            
+            if (isNaN(golesLocal) || isNaN(golesVisitante) || golesLocal < 0 || golesVisitante < 0) {
+                showAlert('error', 'Los goles deben ser números no negativos');
+                return;
+            }
+            
+            finalizarPartidoDesdeModal(partidoId, golesLocal, golesVisitante);
+        });
+    }
+    
+    // Cargar eventos y partidos iniciales
+    setTimeout(() => {
+        cargarEventosProximos();
+        cargarPartidosAnteriores();
+    }, 500);
+});
+
+function finalizarPartidoDesdeModal(partidoId, golesLocal, golesVisitante) {
+    const currentLang = document.documentElement.lang || 'es';
+    const langPrefix = currentLang === 'es' ? '/es' : currentLang === 'en' ? '/en' : '';
+    const url = `${langPrefix}/events/ajax/finalizar_partido/${partidoId}/`;
+    
+    const body = {
+        goles_local: parseInt(golesLocal),
+        goles_visitante: parseInt(golesVisitante)
+    };
+    
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': getCookie('csrftoken'),
+        },
+        body: JSON.stringify(body)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Cerrar modales
+            const modalResultado = bootstrap.Modal.getInstance(document.getElementById('modalAnadirResultado'));
+            const modalInfoEvento = bootstrap.Modal.getInstance(document.getElementById('modalInfoEvento'));
+            
+            if (modalResultado) modalResultado.hide();
+            if (modalInfoEvento) modalInfoEvento.hide();
+            
+            showAlert('success', data.mensaje);
+            
+            // Recargar datos
+            setTimeout(() => {
+                cargarEventosProximos();
+                cargarPartidosAnteriores();
+                location.reload();
+            }, 1500);
+        } else {
+            showAlert('error', data.error || 'Error al finalizar partido');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        showAlert('error', 'Error de conexión');
+    });
+}
+
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+</script>
 {% endblock %}

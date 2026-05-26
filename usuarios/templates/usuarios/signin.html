@@ -1,6 +1,7 @@
 {% extends "includes/base.html" %}
-{% block title %}FutDataManager - Registrarse{% endblock %}
 {% load static %}
+{% load i18n %}
+{% block title %}FutDataManager - {% trans "Registrarse" %}{% endblock %}
 {% block content %}
 <main class="d-flex align-items-center py-5">
         <div class="container">
@@ -10,7 +11,7 @@
                     <!-- Títulos -->
                     <div class="text-center mb-4">
                         <h1 class="h2 fw-bold text-foot-darkgray">FutDataManager</h1>
-                        <p class="text-secondary">Introduzca la información para registrarse</p>
+                        <p class="text-secondary">{% trans "Introduzca la información para registrarse" %}</p>
                     </div>
 
                     <!-- Formulario -->
@@ -22,14 +23,14 @@
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
                                 <div class="modal-header bg-danger">
-                                    <h5 class="modal-title text-white">Error en el registro</h5>
+                                    <h5 class="modal-title text-white">{% trans "Error en el registro" %}</h5>
                                 </div>
                                 <div class="modal-body">
                                     <p>{{ error }}</p>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                                    Cerrar
+                                    {% trans "Cerrar" %}
                                     </button>
                                 </div>
                                 </div>
@@ -43,7 +44,7 @@
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
                                     <div class="modal-header bg-success">
-                                        <h5 class="modal-title text-white">Registro completado</h5>
+                                        <h5 class="modal-title text-white">{% trans "Registro completado" %}</h5>
                                     </div>
                                     <div class="modal-body">
                                         <p>{{ message }}</p>
@@ -52,64 +53,73 @@
                                 </div>
                                 </div>
                             {% endfor %}
-                        {% endif %}
-                        
-                        
+                        {% endif %}                        
+
+                            <!-- Mensajes de validación para traducción -->
+                            <div id="msg-nombre" style="display:none;">{% trans "El nombre debe tener al menos 2 caracteres. No puede contener números ni carácteres especiales." %}</div>
+                            <div id="msg-apellidos" style="display:none;">{% trans "Los apellidos deben tener al menos 2 caracteres. No puede contener números ni carácteres especiales." %}</div>
+                            <div id="msg-email" style="display:none;">{% trans "Debe introducir un email válido. Se permite números, letras y caracteres especiales como '.', '_' y '-'." %}</div>
+                            <div id="msg-telefono-rango" style="display:none;">{% trans "Solo se permiten números y como máximo 9 dígitos." %}</div>
+                            <div id="msg-telefono-exacto" style="display:none;">{% trans "El teléfono debe tener exactamente 9 números." %}</div>
+                            <div id="msg-contraseña-requisitos" style="display:none;">{% trans "La contraseña no cumple los requisitos." %}</div>
+                            <div id="msg-contraseña-coinciden" style="display:none;">{% trans "Las contraseñas no coinciden." %}</div>
+                            <div id="msg-fecha" style="display:none;">{% trans "Debes tener al menos 12 años. La fecha no puede ser anterior a 01/01/1900. El formato correcto es YYYY-MM-DD." %}</div>
+                            <div id="msg-terminos" style="display:none;">{% trans "Debes aceptar los términos y condiciones." %}</div>
 
                             <form id="formulario_registro" method="POST" enctype="multipart/form-data">
                                 {% csrf_token %}
 
                                 <div class="mb-3">
-                                    <label for="nombre" class="form-label fw-medium">Nombre*</label>
+                                    <label for="nombre" class="form-label fw-medium">{% trans "Nombre" %}*</label>
                                     <input type="text" class="form-control form-control-lg rounded-3" id="nombre" name="nombre" value="{{ nombre_value|default:'' }}" required>
                                     <small id="errorNombre" class="help-text text-danger" aria-live="polite"></small>
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="apellidos" class="form-label fw-medium">Apellidos*</label>
+                                    <label for="apellidos" class="form-label fw-medium">{% trans "Apellidos" %}*</label>
                                     <input type="text" class="form-control form-control-lg rounded-3" id="apellidos" name="apellidos" value="{{ apellidos_value|default:'' }}" required>
                                     <small id="errorApellidos" class="help-text text-danger" aria-live="polite"></small>
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="telefono" class="form-label fw-medium">Teléfono*</label>
-                                    <input type="text" class="form-control form-control-lg rounded-3" id="telefono" name="telefono" value="{{ telefono_value|default:'' }}" placeholder="Número de 9 dígitos" required>
+                                    <label for="telefono" class="form-label fw-medium">{% trans "Teléfono" %}*</label>
+                                    <input type="text" class="form-control form-control-lg rounded-3" id="telefono" name="telefono" value="{{ telefono_value|default:'' }}" placeholder="{% trans 'Número de 9 dígitos' %}" required>
                                     <small id="errorTelefono" class="help-text text-danger" aria-live="polite"></small>
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="fechanacimiento" class="form-label fw-medium">Fecha de Nacimiento*</label>
+                                    <label for="fechanacimiento" class="form-label fw-medium">{% trans "Fecha de Nacimiento" %}*</label>
                                     <input type="date" class="form-control form-control-lg rounded-3" id="fechanacimiento" name="fechanacimiento" value="{{ fechanacimiento_value|default:'' }}" required>
                                     <small id="errorFechaNacimiento" class="help-text text-danger" aria-live="polite"></small>
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="foto" class="form-label fw-medium">Foto de perfil</label>
+                                    <label for="foto" class="form-label fw-medium">{% trans "Foto de perfil" %}</label>
                                     <input type="file" class="form-control form-control-lg rounded-3" id="foto" name="foto" accept="image/*" value="{{ foto_value|default:'' }}">
                                     <small id="errorFoto" class="help-text text-danger" aria-live="polite"></small>
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="emailInput" class="form-label fw-medium">Correo electrónico*</label>
-                                    <input type="email" class="form-control form-control-lg rounded-3" id="emailInput" name="email" value="{{ email_value|default:'' }}" placeholder="nombre@dominio.com" required>
+                                    <label for="emailInput" class="form-label fw-medium">{% trans "Correo electrónico" %}*</label>
+                                    <input type="email" class="form-control form-control-lg rounded-3" id="emailInput" name="email" value="{{ email_value|default:'' }}" placeholder="{% trans 'nombre@dominio.com' %}" required>
                                     <small id="errorEmail" class="help-text text-danger" aria-live="polite"></small>
                                 </div>
                                 
                                 <div class="mb-3">
-                                    <label for="passwordInput" class="form-label fw-medium">Contraseña*</label>
+                                    <label for="passwordInput" class="form-label fw-medium">{% trans "Contraseña" %}*</label>
                                     <input type="password" class="form-control form-control-lg rounded-3" id="passwordInput1" name="password1" required>
                                     <small id="textoSubmit" class="help-text text-danger" aria-live="polite"></small>
                                     <!-- Contenedor de reglas -->
                                     <div id="reglasPassword" class="mt-1 d-none">
-                                        <small id="reglaLongitud" class="text-danger d-block" aria-live="polite">• Al menos 6 caracteres</small>
-                                        <small id="reglaMayuscula" class="text-danger d-block" aria-live="polite">• Al menos una mayúscula</small>
-                                        <small id="reglaNumero" class="text-danger d-block" aria-live="polite">• Al menos un número</small>
-                                        <small id="reglaEspecial" class="text-danger" aria-live="polite">• Al menos un carácter especial</small>
+                                        <small id="reglaLongitud" class="text-danger d-block" aria-live="polite">{% trans "• Al menos 6 caracteres" %}</small>
+                                        <small id="reglaMayuscula" class="text-danger d-block" aria-live="polite">{% trans "• Al menos una mayúscula" %}</small>
+                                        <small id="reglaNumero" class="text-danger d-block" aria-live="polite">{% trans "• Al menos un número" %}</small>
+                                        <small id="reglaEspecial" class="text-danger" aria-live="polite">{% trans "• Al menos un carácter especial" %}</small>
                                     </div>
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="passwordInput" class="form-label fw-medium">Repita su contraseña*</label>
+                                    <label for="passwordInput" class="form-label fw-medium">{% trans "Repita su contraseña" %}*</label>
                                     <input type="password" class="form-control form-control-lg rounded-3" id="passwordInput2" name="password2" required>
                                     <small id="errorRepetirContrasena" class="help-text text-danger" aria-live="polite"></small>
                                 </div>
@@ -117,10 +127,10 @@
                                 <div class="form-check mb-4">
                                     <input class="form-check-input" type="checkbox" id="checkEntrenador" name="es_entrenador" {% if es_entrenador_value %}checked{% endif %}>
                                     <label class="form-check-label" for="checkEntrenador">
-                                        Entrenador
+                                        {% trans "Entrenador" %}
                                     </label>
                                     <div class="form-text mt-1">
-                                        Marca esta casilla en caso de que quieras registrarte como entrenador
+                                        {% trans "Marca esta casilla en caso de que quieras registrarte como entrenador" %}
                                     </div>
                                 </div>
 
@@ -128,7 +138,7 @@
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="terminos" aria-describedby="errorTerminos" name="terminos" required>
                                     <label class="form-check-label" for="terminos">
-                                        Acepto los <a href="#" data-bs-toggle="modal" data-bs-target="#modalTerminos">términos y condiciones*</a>
+                                        {% trans "Acepto los " %}<a href="#" data-bs-toggle="modal" data-bs-target="#modalTerminos">{% trans "términos y condiciones*" %}</a>
                                     </label>
                                 </div>
                                 <small id="errorTerminos" class="text-danger" aria-live="polite"></small>
@@ -138,34 +148,34 @@
                                     <div class="modal-content">
 
                                     <div class="modal-header">
-                                        <h5 class="modal-title">Términos y condiciones</h5>
+                                        <h5 class="modal-title">{% trans "Términos y condiciones" %}</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                     </div>
 
                                     <div class="modal-body">
                                         <p>
-                                            Al registrarte en FutDataManager, aceptas que los datos proporcionados son veraces y que los utilizarás de forma responsable.
+                                            {% trans "Al registrarte en FutDataManager, aceptas que los datos proporcionados son veraces y que los utilizarás de forma responsable." %}
                                         </p>
                                         <br>
                                         <p>
-                                            Los datos personales recogidos se usarán únicamente para la gestión de la cuenta de usuario, el acceso a los servicios ofrecidos y la mejora de la experiencia en la plataforma. En ningún caso serán cedidos a terceros sin consentimiento expreso.
+                                            {% trans "Los datos personales recogidos se usarán únicamente para la gestión de la cuenta de usuario, el acceso a los servicios ofrecidos y la mejora de la experiencia en la plataforma. En ningún caso serán cedidos a terceros sin consentimiento expreso." %}
                                         </p>
                                         <br>
                                         <p>
-                                            El usuario se compromete a no realizar un uso indebido del sitio web, ni a introducir contenido malicioso o fraudulento. La empresa se reserva el derecho de modificar estos términos o suspender cuentas que incumplan las normas establecidas.
+                                            {% trans "El usuario se compromete a no realizar un uso indebido del sitio web, ni a introducir contenido malicioso o fraudulento. La empresa se reserva el derecho de modificar estos términos o suspender cuentas que incumplan las normas establecidas." %}
                                         </p>
                                         <br>
                                         <p>
-                                            Al hacer clic en “Acepto”, confirmas que has leído y aceptas estos términos y condiciones.
+                                            {% trans "Al hacer clic en “Acepto”, confirmas que has leído y aceptas estos términos y condiciones." %}
                                         </p>
                                     </div>
 
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                                            Cerrar
+                                            {% trans "Cerrar" %}
                                         </button>
                                         <button type="button" class="btn btn-success" id="aceptarTerminos">
-                                            Acepto
+                                            {% trans "Acepto" %}
                                         </button>
                                     </div>
 
@@ -174,7 +184,7 @@
                                 </div>
 
                                 <div class="d-grid">
-                                    <button type="submit" class="btn btn-foot-form-enviar btn-lg w-100 rounded-3">Registrarse</button>
+                                    <button type="submit" class="btn btn-foot-form-enviar btn-lg w-100 rounded-3">{% trans "Registrarse" %}</button>
                                 </div>
                                 
                             </form>

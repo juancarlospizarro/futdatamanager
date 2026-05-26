@@ -1,0 +1,626 @@
+{% extends "includes/base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}FutDataManager - {% trans "Análisis" %}{% endblock %}
+
+{% block content %}
+<div class="container-fluid my-5">
+    <div class="container">
+        <!-- Título Principal con Botones -->
+        <div class="d-flex justify-content-between align-items-center mb-5">
+            <h1 class="display-6 fw-bold" style="color: #27a770;">
+                {% trans "Análisis" %} - {{ equipo.nombre }}
+            </h1>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-success" id="btnAnadirEstadistica" data-bs-toggle="tooltip" title="{% trans 'Añadir estadísticas' %}">
+                    <i class="bi bi-plus-circle"></i> {% trans "Añadir Estadísticas" %}
+                </button>
+                <button type="button" class="btn btn-info" id="btnImportarCSV" data-bs-toggle="tooltip" title="{% trans 'Importar CSV' %}">
+                    <i class="bi bi-file-earmark-spreadsheet"></i> {% trans "Importar CSV" %}
+                </button>
+                <button type="button" class="btn btn-danger" id="btnEliminarEstadistica" data-bs-toggle="tooltip" title="{% trans 'Eliminar estadísticas' %}">
+                    <i class="bi bi-trash"></i> {% trans "Eliminar" %}
+                </button>
+            </div>
+        </div>
+
+        <!-- Grid de Tarjetas Principales -->
+        <div class="row g-4 mb-5">
+            <!-- Jugadores en forma -->
+            <div class="col-md-6">
+                <div class="card shadow-sm rounded-4 overflow-hidden bg-card-dark h-100">
+                    <div class="card-header bg-success p-3">
+                        <h5 class="card-title mb-0 text-white">
+                            <i class="bi bi-person-check-fill"></i> {% trans "Jugadores en forma" %}
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="text-secondary mb-3">
+                            {% trans "Listado de los jugadores en mejor forma" %}
+                        </p>
+                        <div class="list-group list-group-flush">
+                            {% if jugadores_en_forma %}
+                                {% for jugador in jugadores_en_forma %}
+                                    <div class="list-group-item bg-transparent border-secondary d-flex justify-content-between align-items-center" style="cursor: pointer;" onclick="abrirModalEstadisticasJugador({{ jugador.id }}, '{{ jugador.nombre }}')">
+                                        <div>
+                                            <strong>{{ jugador.nombre }}</strong>
+                                            <br>
+                                            <small class="text-secondary">
+                                                Dorsal: {{ jugador.dorsal|default:"-" }} | 
+                                                {{ jugador.posicion }}
+                                            </small>
+                                        </div>
+                                        <div class="text-end">
+                                            <div class="badge bg-success fs-6">{{ jugador.valoracion|floatformat:2 }}/10</div>
+                                            <br>
+                                            <small class="text-success">{% trans "Valoración" %}</small>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            {% else %}
+                                <p class="text-muted mb-0">{% trans "No hay jugadores en forma" %}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jugadores en pobre forma -->
+            <div class="col-md-6">
+                <div class="card shadow-sm rounded-4 overflow-hidden bg-card-dark h-100">
+                    <div class="card-header bg-danger p-3">
+                        <h5 class="card-title mb-0 text-white">
+                            <i class="bi bi-person-x-fill"></i> {% trans "Jugadores en peor forma" %}
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="text-secondary mb-3">
+                            {% trans "Listado de los jugadores en peor forma" %}
+                        </p>
+                        <div class="list-group list-group-flush">
+                            {% if jugadores_pobre_forma %}
+                                {% for jugador in jugadores_pobre_forma %}
+                                    <div class="list-group-item bg-transparent border-secondary d-flex justify-content-between align-items-center" style="cursor: pointer;" onclick="abrirModalEstadisticasJugador({{ jugador.id }}, '{{ jugador.nombre }}')">
+                                        <div>
+                                            <strong>{{ jugador.nombre }}</strong>
+                                            <br>
+                                            <small class="text-secondary">
+                                                Dorsal: {{ jugador.dorsal|default:"-" }} | 
+                                                {{ jugador.posicion }}
+                                            </small>
+                                        </div>
+                                        <div class="text-end">
+                                            <div class="badge bg-danger fs-6">{{ jugador.valoracion|floatformat:2 }}/10</div>
+                                            <br>
+                                            <small class="text-danger">{% trans "Valoración" %}</small>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            {% else %}
+                                <p class="text-muted mb-0">{% trans "Todos los jugadores están en forma" %}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gráficas Análisis -->
+        <div class="row g-4 mb-5">
+            <!-- Análisis Ofensivo -->
+            <div class="col-lg-6">
+                <div class="card shadow-sm rounded-4 overflow-hidden bg-card-dark">
+                    <div class="card-header bg-info p-3">
+                        <h5 class="card-title mb-0 text-white">
+                            <i class="bi bi-graph-up"></i> {% trans "Rendimiento Ofensivo" %}
+                        </h5>
+                    </div>
+                    <div class="card-body p-4">
+                        <p class="text-secondary mb-4">
+                            {% trans "Estadísticas acumuladas de ataque del equipo" %}
+                        </p>
+                        <canvas id="chartOfensivo" height="300"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Análisis Defensivo -->
+            <div class="col-lg-6">
+                <div class="card shadow-sm rounded-4 overflow-hidden bg-card-dark">
+                    <div class="card-header bg-warning p-3">
+                        <h5 class="card-title mb-0 text-white">
+                            <i class="bi bi-shield-check"></i> {% trans "Defensa vs Goles" %}
+                        </h5>
+                    </div>
+                    <div class="card-body p-4">
+                        <p class="text-secondary mb-4">
+                            {% trans "Promedio de goles encajados vs acciones defensivas por partido" %}
+                        </p>
+                        <canvas id="chartDefensivo" height="300"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Once Recomendado -->
+        <div class="row g-4">
+            <div class="col-12">
+                <div class="card shadow-sm rounded-4 overflow-hidden bg-card-dark">
+                    <div class="card-header bg-primary p-3 d-flex justify-content-between align-items-center">
+                        <h5 class="card-title mb-0 text-white">
+                            <i class="bi bi-people-fill"></i> {% trans "Once recomendado" %}
+                        </h5>
+                        <select id="filtroOnceposicion" class="form-select form-select-sm" style="width: 250px;">
+                            <option value="">{% trans "Todas las posiciones" %}</option>
+                            <option value="portero">{% trans "Portero" %}</option>
+                            <option value="lateral_derecho">{% trans "Lateral Derecho" %}</option>
+                            <option value="defensa_central">{% trans "Defensa Central" %}</option>
+                            <option value="lateral_izquierdo">{% trans "Lateral Izquierdo" %}</option>
+                            <option value="mediocentro_defensivo">{% trans "Mediocentro Defensivo" %}</option>
+                            <option value="mediocentro">{% trans "Mediocentro" %}</option>
+                            <option value="mediocentro_ofensivo">{% trans "Mediocentro Ofensivo" %}</option>
+                            <option value="interior_izquierda">{% trans "Interior Izquierda" %}</option>
+                            <option value="interior_derecha">{% trans "Interior Derecha" %}</option>
+                            <option value="extremo_derecho">{% trans "Extremo Derecho" %}</option>
+                            <option value="extremo_izquierdo">{% trans "Extremo Izquierdo" %}</option>
+                            <option value="segundo_delantero">{% trans "Segundo Delantero" %}</option>
+                            <option value="delantero_centro">{% trans "Delantero Centro" %}</option>
+                        </select>
+                    </div>
+                    <div class="card-body p-4">
+                        <p class="text-secondary mb-4">
+                            {% trans "Once con los jugadores más en forma. Haz clic en un jugador para ver sus estadísticas. Filtra por posición para ver solo jugadores de esa posición" %}
+                        </p>
+                        
+                        <div class="row g-3" id="contenedorOnce">
+                            {% for jugador in once_recomendado %}
+                                <div class="col-md-4 col-lg-3 jugador-once" data-posicion="{{ jugador.posicion_clave }}" data-jugador-id="{{ jugador.id }}" data-jugador-nombre="{{ jugador.nombre }}" style="cursor: pointer;">
+                                    <div class="card bg-light-dark text-center rounded-3 p-3 h-100 transition-hover position-relative" style="transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 0.5rem 1rem rgba(39, 167, 112, 0.3)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';">
+                                        <!-- Indicadores de lesión/sanción -->
+                                        <div style="position: absolute; top: 8px; right: 8px; display: flex; gap: 5px;">
+                                            {% if jugador.tiene_lesion %}
+                                                <span class="badge bg-warning" title="{% trans 'Jugador lesionado' %}" data-bs-toggle="tooltip">
+                                                    <i class="bi bi-bandaid"></i>
+                                                </span>
+                                            {% endif %}
+                                            {% if jugador.tiene_sancion %}
+                                                <span class="badge bg-danger" title="{% trans 'Jugador sancionado' %}" data-bs-toggle="tooltip">
+                                                    <i class="bi bi-exclamation-triangle"></i>
+                                                </span>
+                                            {% endif %}
+                                        </div>
+                                        <div class="mb-2">
+                                            <span class="display-6 fw-bold" style="color: #27a770;">
+                                                {{ jugador.dorsal|default:"-" }}
+                                            </span>
+                                        </div>
+                                        <h6 class="fw-bold mb-1">{{ jugador.nombre }}</h6>
+                                        <small class="text-secondary">{{ jugador.posicion }}</small>
+                                        <div class="mt-2">
+                                            <small class="badge bg-success">{% trans "Valoración" %}: {{ jugador.valoracion }}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% empty %}
+                                <div class="col-12">
+                                    <p class="text-muted text-center">{% trans "No hay suficientes jugadores en forma para formar un once" %}</p>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Estadísticas Generales -->
+        <div class="row g-4 mt-5">
+            <div class="col-md-3">
+                <div class="card bg-success bg-opacity-10 border-success rounded-4 text-center p-4">
+                    <h6 class="text-secondary mb-2">{% trans "Total Jugadores" %}</h6>
+                    <h3 class="fw-bold" style="color: #27a770;">{{ chart_data.total_jugadores }}</h3>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card bg-warning bg-opacity-10 border-warning rounded-4 text-center p-4">
+                    <h6 class="text-secondary mb-2">{% trans "Lesiones Activas" %}</h6>
+                    <h3 class="fw-bold text-warning">{{ chart_data.lesiones_total }}</h3>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card bg-danger bg-opacity-10 border-danger rounded-4 text-center p-4">
+                    <h6 class="text-secondary mb-2">{% trans "Sanciones Activas" %}</h6>
+                    <h3 class="fw-bold text-danger">{{ chart_data.sanciones_total }}</h3>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card bg-info bg-opacity-10 border-info rounded-4 text-center p-4">
+                    <h6 class="text-secondary mb-2">{% trans "Disponibles" %}</h6>
+                    <h3 class="fw-bold text-info">{{ chart_data.jugadores_en_forma }}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Añadir Estadística -->
+<div class="modal fade" id="modalAnadirEstadistica" tabindex="-1" aria-labelledby="modalAnadirEstadisticaLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalAnadirEstadisticaLabel">{% trans "Añadir Estadística" %}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="formAnadirEstadistica">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="estadistica_jugador" class="form-label">{% trans "Jugador" %}</label>
+                            <select class="form-select" id="estadistica_jugador" required>
+                                <option value="">{% trans "Selecciona un jugador" %}</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="estadistica_partido" class="form-label">{% trans "Partido" %}</label>
+                            <select class="form-select" id="estadistica_partido" required>
+                                <option value="">{% trans "Selecciona un partido" %}</option>
+                                {% for partido in partidos_finalizados %}
+                                    <option value="{{ partido.id }}">
+                                        {{ equipo.nombre }} vs {{ partido.get_equipo_visitante_nombre }} - {{ partido.fecha_hora|date:"d/m/Y H:i" }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="estadistica_titular">
+                                <label class="form-check-label" for="estadistica_titular">
+                                    {% trans "¿Fue titular?" %}
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="estadistica_minutos_jugados" class="form-label">{% trans "Minutos jugados" %}</label>
+                            <input type="number" class="form-control" id="estadistica_minutos_jugados" min="0" max="120" value="0">
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <h6 class="mb-3">{% trans "Estadísticas Ofensivas" %}</h6>
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <label for="estadistica_goles" class="form-label">{% trans "Goles" %}</label>
+                            <input type="number" class="form-control" id="estadistica_goles" min="0" value="0">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="estadistica_asistencias" class="form-label">{% trans "Asistencias" %}</label>
+                            <input type="number" class="form-control" id="estadistica_asistencias" min="0" value="0">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="estadistica_tiros" class="form-label">{% trans "Tiros a puerta" %}</label>
+                            <input type="number" class="form-control" id="estadistica_tiros" min="0" value="0">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <label for="estadistica_pases" class="form-label">{% trans "Pases completados" %}</label>
+                            <input type="number" class="form-control" id="estadistica_pases" min="0" value="0">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="estadistica_fueras_de_juego" class="form-label">{% trans "Fueras de juego" %}</label>
+                            <input type="number" class="form-control" id="estadistica_fueras_de_juego" min="0" value="0">
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <h6 class="mb-3">{% trans "Estadísticas Defensivas" %}</h6>
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <label for="estadistica_paradas" class="form-label">{% trans "Paradas (Portero)" %}</label>
+                            <input type="number" class="form-control" id="estadistica_paradas" min="0" value="0">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="estadistica_despejes" class="form-label">{% trans "Despejes" %}</label>
+                            <input type="number" class="form-control" id="estadistica_despejes" min="0" value="0">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="estadistica_faltas" class="form-label">{% trans "Faltas cometidas" %}</label>
+                            <input type="number" class="form-control" id="estadistica_faltas" min="0" value="0">
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <h6 class="mb-3">{% trans "Disciplina" %}</h6>
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <label for="estadistica_tarjetas_amarillas" class="form-label">{% trans "Tarjetas amarillas" %}</label>
+                            <input type="number" class="form-control" id="estadistica_tarjetas_amarillas" min="0" max="2" value="0">
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-check mt-4">
+                                <input class="form-check-input" type="checkbox" id="estadistica_tarjeta_roja">
+                                <label class="form-check-label" for="estadistica_tarjeta_roja">
+                                    {% trans "¿Tarjeta roja?" %}
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tabla de estadísticas del partido (si existen) -->
+                    <div id="contenedorTablaEstadisticas" style="display: none; margin-top: 20px;">
+                        <hr>
+                        <h6 class="mb-3">{% trans "Estadísticas registradas en este partido" %}</h6>
+                        <div class="table-responsive">
+                            <table class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>{% trans "Jugador" %}</th>
+                                        <th>{% trans "Goles" %}</th>
+                                        <th>{% trans "Asistencias" %}</th>
+                                        <th>{% trans "Despejes" %}</th>
+                                        <th>{% trans "Acción" %}</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tablaEstadisticasPartido">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% trans "Cancelar" %}</button>
+                <button type="button" class="btn btn-primary" id="btnGuardarEstadistica">{% trans "Guardar" %}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Eliminar Estadística -->
+<div class="modal fade" id="modalEliminarEstadistica" tabindex="-1" aria-labelledby="modalEliminarEstadisticaLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalEliminarEstadisticaLabel">{% trans "Eliminar Estadística" %}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="formEliminarEstadistica">
+                    <div class="mb-3">
+                        <label for="partido_eliminar" class="form-label">{% trans "Selecciona un partido" %}</label>
+                        <select class="form-select" id="partido_eliminar" required>
+                            <option value="">{% trans "Selecciona un partido" %}</option>
+                            {% for partido in partidos_finalizados %}
+                                <option value="{{ partido.id }}">
+                                    {{ equipo.nombre }} vs {{ partido.get_equipo_visitante_nombre }} - {{ partido.fecha_hora|date:"d/m/Y H:i" }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">{% trans "Estadísticas registradas" %}</label>
+                        <div id="listaEstadisticasEliminar" style="max-height: 300px; overflow-y: auto;">
+                            <p class="text-muted">{% trans "Selecciona un partido para ver las estadísticas" %}</p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% trans "Cancelar" %}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Importar CSV -->
+<div class="modal fade" id="modalImportarCSV" tabindex="-1" aria-labelledby="modalImportarCSVLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalImportarCSVLabel">{% trans "Importar Estadísticas desde CSV" %}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="formImportarCSV" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="partido_csv" class="form-label">{% trans "Selecciona el partido" %}</label>
+                        <select class="form-select" id="partido_csv" required>
+                            <option value="">{% trans "Selecciona un partido" %}</option>
+                            {% for partido in partidos_finalizados %}
+                                <option value="{{ partido.id }}">
+                                    {{ equipo.nombre }} vs {{ partido.get_equipo_visitante_nombre }} - {{ partido.fecha_hora|date:"d/m/Y H:i" }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="archivo_csv" class="form-label">{% trans "Archivo CSV" %}</label>
+                        <input type="file" class="form-control" id="archivo_csv" accept=".csv" required>
+                        <small class="form-text text-muted">
+                            {% trans "Formato esperado: nombre, apellido, dorsal, titular, minutos_jugados, goles, asistencias, tiros, pases, fueras_de_juego, paradas, despejes, faltas, tarjetas_amarillas, tarjeta_roja" %}
+                        </small>
+                    </div>
+
+                    <div class="alert alert-info" role="alert">
+                        <strong>{% trans "Instrucciones:" %}</strong>
+                        <ul class="mb-0 mt-2">
+                            <li>{% trans "El CSV debe tener encabezados en la primera fila" %}</li>
+                            <li>{% trans "Los jugadores se identifican por: dorsal, nombre+apellido o email" %}</li>
+                            <li>{% trans "Si hay errores, no se guardará nada" %}</li>
+                            <li>{% trans "Los valores numéricos deben ser números enteros" %}</li>
+                        </ul>
+                    </div>
+
+                    <div id="progreso_import" style="display: none;">
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%"></div>
+                        </div>
+                        <small class="text-muted">{% trans "Procesando..." %}</small>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% trans "Cancelar" %}</button>
+                <button type="button" class="btn btn-primary" id="btnCargarCSV">{% trans "Importar" %}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Estadísticas del Jugador -->
+<div class="modal fade" id="modalEstadisticasJugador" tabindex="-1" aria-labelledby="modalEstadisticasJugadorLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-info">
+                <h5 class="modal-title text-white" id="modalEstadisticasJugadorLabel">
+                    <i class="bi bi-bar-chart"></i> <span id="nombreJugadorModal"></span>
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body bg-light p-4">
+                <div class="row mb-4">
+                    <div class="col-md-4">
+                        <label class="form-label text-secondary fw-bold">{% trans "Dorsal" %}</label>
+                        <p class="text-dark fs-5 fw-bold" id="dorsalJugadorModal">-</p>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label text-secondary fw-bold">{% trans "Posición" %}</label>
+                        <p class="text-dark fs-5 fw-bold" id="posicionJugadorModal">-</p>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label text-secondary fw-bold">{% trans "Selecciona un partido" %}</label>
+                        <select id="selectPartidoEstadisticas" class="form-select form-select-sm">
+                            <option value="">{% trans "Ver totales" %} (per 90')</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Alerta sin estadísticas -->
+                <div id="alertaSinEstadisticas" class="alert alert-warning alert-dismissible fade d-none" role="alert">
+                    <div class="d-flex align-items-center">
+                        <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                        <div>
+                            <strong>{% trans "Sin estadísticas disponibles" %}</strong>
+                            <p class="mb-0">{% trans "El jugador no participó en este partido" %}</p>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-close" id="btnCerrarAlertaEstadisticas" aria-label="Close"></button>
+                </div>
+
+                <div class="row">
+                    <!-- Estadísticas Ofensivas -->
+                    <div class="col-md-6">
+                        <div class="card border-info mb-3">
+                            <div class="card-header bg-info">
+                                <h6 class="card-title text-white mb-0"><i class="bi bi-arrow-up-circle"></i> {% trans "Estadísticas Ofensivas" %} <small>(per 90')</small></h6>
+                            </div>
+                            <div class="card-body p-2">
+                                <table class="table table-sm table-borderless mb-0">
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-secondary fw-bold">{% trans "Goles" %}</td>
+                                            <td class="text-dark fw-bold text-end"><span id="golesJugadorModal">0</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-secondary fw-bold">{% trans "Asistencias" %}</td>
+                                            <td class="text-dark fw-bold text-end"><span id="asistenciasJugadorModal">0</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-secondary fw-bold">{% trans "Tiros" %}</td>
+                                            <td class="text-dark fw-bold text-end"><span id="tirosJugadorModal">0</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-secondary fw-bold">{% trans "Pases" %}</td>
+                                            <td class="text-dark fw-bold text-end"><span id="pasesJugadorModal">0</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-secondary fw-bold">{% trans "Fueras de juego" %}</td>
+                                            <td class="text-dark fw-bold text-end"><span id="fuersJugadorModal">0</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Estadísticas Defensivas -->
+                    <div class="col-md-6">
+                        <div class="card border-warning mb-3">
+                            <div class="card-header bg-warning">
+                                <h6 class="card-title text-white mb-0"><i class="bi bi-shield-lock"></i> {% trans "Estadísticas Defensivas" %} <small>(per 90')</small></h6>
+                            </div>
+                            <div class="card-body p-2">
+                                <table class="table table-sm table-borderless mb-0">
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-secondary fw-bold">{% trans "Despejes" %}</td>
+                                            <td class="text-dark fw-bold text-end"><span id="despejesJugadorModal">0</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-secondary fw-bold">{% trans "Faltas" %}</td>
+                                            <td class="text-dark fw-bold text-end"><span id="faltasJugadorModal">0</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-secondary fw-bold">{% trans "Paradas" %}</td>
+                                            <td class="text-dark fw-bold text-end"><span id="paradasJugadorModal">0</span></td>
+                                        </tr>
+                        <tr>
+                                            <td class="text-secondary fw-bold">{% trans "Tarjetas amarillas" %}</td>
+                                            <td class="text-dark fw-bold text-end"><span id="amarillasJugadorModal">0</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-secondary fw-bold">{% trans "Tarjetas rojas" %}</td>
+                                            <td class="text-dark fw-bold text-end"><span id="rojasJugadorModal">0</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <div class="card border-success">
+                            <div class="card-header bg-success">
+                                <h6 class="card-title text-white mb-0"><i class="bi bi-clock"></i> {% trans "Información del Partido" %}</h6>
+                            </div>
+                            <div class="card-body p-2">
+                                <table class="table table-sm table-borderless mb-0">
+                                    <tbody>
+                                        <tr id="filaPartidoInfo" style="display: none;">
+                                            <td class="text-secondary fw-bold">{% trans "Titular" %}</td>
+                                            <td class="text-dark fw-bold text-end"><span id="titularJugadorModal">-</span></td>
+                                        </tr>
+                                        <tr id="filaMinutosInfo" style="display: none;">
+                                            <td class="text-secondary fw-bold">{% trans "Minutos jugados" %}</td>
+                                            <td class="text-dark fw-bold text-end"><span id="minutosJugadorModal">0</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% trans "Cerrar" %}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{% static 'js/chart.js' %}"></script>
+<!-- Script para gestión de estadísticas -->
+<script src="{% static 'js/estadisticas.js' %}"></script>
+{% endblock %}

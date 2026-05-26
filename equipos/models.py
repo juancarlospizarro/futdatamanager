@@ -7,13 +7,9 @@ from usuarios.models import PerfilJugador, PerfilEntrenador
 class Equipo(models.Model):
     """
     Modelo que representa a un Equipo de Fútbol.
-    Atributos basados estrictamente en el diseño E/R proporcionado.
+    Contiene información de identificación, colores, ubicación y fundación del equipo.
     """
     
-    # 1. ID: Django crea automáticamente un campo 'id' (BigAuto) como clave primaria.
-    # No hace falta escribirlo explícitamente.
-
-    # 2. Nombre
     nombre = models.CharField(
         max_length=100, 
         unique=True, 
@@ -33,7 +29,6 @@ class Equipo(models.Model):
         message='Introduce un código de color Hexadecimal válido (ej: #27a770)',
     )
 
-    # 3. Color Principal
     color_principal = models.CharField(
         max_length=7, 
         default="#27a770", 
@@ -41,7 +36,6 @@ class Equipo(models.Model):
         verbose_name="Color Principal"
     )
     
-    # 4. Color Secundario
     color_secundario = models.CharField(
         max_length=7, 
         default="#504847", 
@@ -49,7 +43,6 @@ class Equipo(models.Model):
         verbose_name="Color Secundario"
     )
     
-    # 5. Dirección
     direccion = models.CharField(
         max_length=255, 
         blank=True, 
@@ -57,7 +50,6 @@ class Equipo(models.Model):
         verbose_name="Dirección completa"
     )
 
-    # 6. Teléfono
     telefono = models.CharField(
         max_length=15, 
         blank=True, 
@@ -65,7 +57,6 @@ class Equipo(models.Model):
         verbose_name="Teléfono de contacto"
     )
 
-    # 7. Escudo (Requiere Pillow)
     escudo = models.ImageField(
         upload_to='escudos_equipos/', 
         blank=True, 
@@ -73,7 +64,6 @@ class Equipo(models.Model):
         verbose_name="Escudo"
     )
     
-    # 8. Año de Fundación
     anio_fundacion = models.PositiveIntegerField(
         verbose_name="Año de fundación",
         validators=[

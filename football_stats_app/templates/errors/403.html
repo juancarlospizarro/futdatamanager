@@ -1,14 +1,15 @@
 {% extends 'includes/base.html' %}
-
+{% load i18n %}
+{% block title %}FutDataManager - {% trans "Error 403" %}{% endblock %}
 {% block content %}
 <div class="container mt-5">
     <div class="alert alert-warning" role="alert">
         <div class="text-center">
             <h1 class="display-1">403</h1>
-            <h2>Acceso denegado</h2>
-            <p class="lead">No tienes permiso para acceder a este recurso.</p>
+            <h2>{% trans "Acceso denegado" %}</h2>
+            <p class="lead">{% trans "No tienes permiso para acceder a este recurso." %}</p>
             <hr>
-            <a href="/" class="btn btn-primary btn-lg">Volver al inicio</a>
+            <a href="/" class="btn btn-primary btn-lg">{% trans "Volver al inicio" %}</a>
         </div>
     </div>
 </div>

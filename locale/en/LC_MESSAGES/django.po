@@ -1,0 +1,2455 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-05-24 13:09+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\control_jugadores\admin.py:27 .\control_jugadores\admin.py:69
+#: .\control_jugadores\admin.py:112
+msgid "Información del Jugador"
+msgstr "Player Information"
+
+#: .\control_jugadores\admin.py:30
+msgid "Datos de la Lesión"
+msgstr "Injury Data"
+
+#: .\control_jugadores\admin.py:33 .\control_jugadores\admin.py:75
+#: .\equipos\templates\equipos\informacion_equipo.html:279
+msgid "Estado"
+msgstr "Status"
+
+#: .\control_jugadores\admin.py:36 .\control_jugadores\admin.py:78
+#: .\control_jugadores\admin.py:121
+msgid "Metadatos"
+msgstr "Metadata"
+
+#: .\control_jugadores\admin.py:44 .\control_jugadores\admin.py:86
+#: .\control_jugadores\admin.py:129 .\control_jugadores\models.py:21
+#: .\control_jugadores\models.py:74 .\control_jugadores\models.py:128
+#: .\equipos\templates\equipos\informacion_equipo.html:273
+#: .\equipos\templates\equipos\informacion_equipo.html:684
+#: .\equipos\templates\equipos\informacion_equipo.html:779
+#: .\equipos\templates\equipos\informacion_equipo.html:865
+#: .\equipos\templates\equipos\informacion_equipo.html:892
+#: .\estadisticas\models.py:30
+#: .\estadisticas\templates\estadisticas\analisis.html:258
+#: .\estadisticas\templates\estadisticas\analisis.html:364
+#: .\usuarios\models.py:16
+msgid "Jugador"
+msgstr "Player"
+
+#: .\control_jugadores\admin.py:72
+msgid "Datos de la Sanción"
+msgstr "Sanction Data"
+
+#: .\control_jugadores\admin.py:115
+msgid "Contenido del Aviso"
+msgstr "Alert Content"
+
+#: .\control_jugadores\admin.py:118
+msgid "Estado de Envío"
+msgstr "Sending Status"
+
+#: .\control_jugadores\models.py:10
+#: .\equipos\templates\equipos\informacion_equipo.html:706
+msgid "Lesión muscular"
+msgstr "Muscle Injury"
+
+#: .\control_jugadores\models.py:11
+#: .\equipos\templates\equipos\informacion_equipo.html:707
+msgid "Fractura"
+msgstr "Fracture"
+
+#: .\control_jugadores\models.py:12
+#: .\equipos\templates\equipos\informacion_equipo.html:708
+msgid "Distensión"
+msgstr "Strain"
+
+#: .\control_jugadores\models.py:13
+#: .\equipos\templates\equipos\informacion_equipo.html:709
+msgid "Contusión"
+msgstr "Contusion"
+
+#: .\control_jugadores\models.py:14
+#: .\equipos\templates\equipos\informacion_equipo.html:710
+msgid "Esguince"
+msgstr "Sprain"
+
+#: .\control_jugadores\models.py:15
+#: .\equipos\templates\equipos\informacion_equipo.html:711
+msgid "Otra"
+msgstr "Other"
+
+#: .\control_jugadores\models.py:27
+#: .\equipos\templates\equipos\informacion_equipo.html:701
+msgid "Tipo de lesión"
+msgstr "Injury Type"
+
+#: .\control_jugadores\models.py:31
+#: .\equipos\templates\equipos\informacion_equipo.html:719
+msgid "Duración estimada (días)"
+msgstr "Estimated duration (days)"
+
+#: .\control_jugadores\models.py:36
+msgid "Fecha de lesión"
+msgstr "Injury Date"
+
+#: .\control_jugadores\models.py:41
+#: .\equipos\templates\equipos\informacion_equipo.html:729
+#: .\eventos\admin.py:29 .\eventos\admin.py:125 .\eventos\models.py:36
+#: .\eventos\models.py:201
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:116
+msgid "Descripción"
+msgstr "Description"
+
+#: .\control_jugadores\models.py:46
+#: .\equipos\templates\equipos\informacion_equipo.html:742
+msgid "Lesión activa"
+msgstr "Active Injury"
+
+#: .\control_jugadores\models.py:53
+#: .\equipos\templates\equipos\informacion_equipo.html:357
+msgid "Lesión"
+msgstr "Injury"
+
+#: .\control_jugadores\models.py:54
+#: .\usuarios\templates\usuarios\miperfil.html:353
+msgid "Lesiones"
+msgstr "Injuries"
+
+#: .\control_jugadores\models.py:65 .\control_jugadores\models.py:118
+#: .\equipos\templates\equipos\informacion_equipo.html:801
+msgid "Tarjeta amarilla"
+msgstr "Yellow Card"
+
+#: .\control_jugadores\models.py:66 .\control_jugadores\models.py:119
+#: .\equipos\templates\equipos\informacion_equipo.html:802
+msgid "Tarjeta roja"
+msgstr "Red Card"
+
+#: .\control_jugadores\models.py:67 .\control_jugadores\models.py:120
+#: .\equipos\templates\equipos\informacion_equipo.html:803
+#: .\usuarios\templates\usuarios\miperfil.html:417
+msgid "Suspensión"
+msgstr "Suspension"
+
+#: .\control_jugadores\models.py:68 .\control_jugadores\models.py:121
+#: .\equipos\templates\equipos\informacion_equipo.html:804
+msgid "Amonestación"
+msgstr "Warning"
+
+#: .\control_jugadores\models.py:80
+#: .\equipos\templates\equipos\informacion_equipo.html:796
+msgid "Tipo de sanción"
+msgstr "Sanction Type"
+
+#: .\control_jugadores\models.py:85
+#: .\equipos\templates\equipos\informacion_equipo.html:812
+msgid "Partidos de suspensión"
+msgstr "Suspension Matches"
+
+#: .\control_jugadores\models.py:89
+#: .\equipos\templates\equipos\informacion_equipo.html:822
+msgid "Razón de la sanción"
+msgstr "Reason for the sanction"
+
+#: .\control_jugadores\models.py:94
+msgid "Fecha de sanción"
+msgstr "Sanction Date"
+
+#: .\control_jugadores\models.py:99
+#: .\equipos\templates\equipos\informacion_equipo.html:835
+msgid "Sanción activa"
+msgstr "Active Sanction"
+
+#: .\control_jugadores\models.py:106
+#: .\equipos\templates\equipos\informacion_equipo.html:366
+msgid "Sanción"
+msgstr "Sanction"
+
+#: .\control_jugadores\models.py:107
+#: .\usuarios\templates\usuarios\miperfil.html:395
+msgid "Sanciones"
+msgstr "Sanctions"
+
+#: .\control_jugadores\models.py:122
+msgid "Acumulación de tarjetas"
+msgstr "Card Accumulation"
+
+#: .\control_jugadores\models.py:135
+msgid "Sanción asociada"
+msgstr "Associated Sanction"
+
+#: .\control_jugadores\models.py:143
+msgid "Tipo de aviso"
+msgstr "Alert Type"
+
+#: .\control_jugadores\models.py:148
+msgid "Asunto del aviso"
+msgstr "Alert Subject"
+
+#: .\control_jugadores\models.py:152
+msgid "Mensaje del aviso"
+msgstr "Alert Message"
+
+#: .\control_jugadores\models.py:157
+msgid "Fecha de envío"
+msgstr "Sending Date"
+
+#: .\control_jugadores\models.py:162
+msgid "Leído"
+msgstr "Read"
+
+#: .\control_jugadores\models.py:167
+msgid "Email enviado"
+msgstr "Email Sent"
+
+#: .\control_jugadores\models.py:174
+msgid "Aviso"
+msgstr "Alert"
+
+#: .\control_jugadores\models.py:175
+msgid "Avisos"
+msgstr "Alerts"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:5
+#: .\eventos\models.py:186
+#: .\football_stats_app\templates\includes\header.html:83
+#: .\football_stats_app\templates\includes\header.html:99
+#: .\usuarios\templates\usuarios\miperfil.html:166
+msgid "Equipo"
+msgstr "Team"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:5 .\eventos\admin.py:122
+msgid "Información"
+msgstr "Information"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:19
+#: .\usuarios\templates\usuarios\miperfil.html:25
+msgid "Información general"
+msgstr "General information"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:22
+msgid "Activo"
+msgstr "Active"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:37
+msgid "Club"
+msgstr "Club"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:52
+msgid "Fundación"
+msgstr "Foundation"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:67
+msgid "Alta en App"
+msgstr "Added to App"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:103
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:31
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:83
+#: .\usuarios\templates\usuarios\inicio_jugador_sin_equipo.html:30
+#: .\usuarios\templates\usuarios\inicio_jugador_sin_equipo.html:88
+#: .\usuarios\templates\usuarios\miperfil.html:223
+#: .\usuarios\templates\usuarios\signin.html:73
+msgid "Nombre"
+msgstr "Name"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:111
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:32
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:84
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:134
+#: .\usuarios\templates\usuarios\inicio_jugador_sin_equipo.html:31
+#: .\usuarios\templates\usuarios\inicio_jugador_sin_equipo.html:89
+msgid "Año de fundación"
+msgstr "Year of foundation"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:119
+#: .\equipos\templates\equipos\informacion_equipo.html:1079
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:216
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:144
+msgid "Dirección"
+msgstr "Address"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:126
+#: .\equipos\templates\equipos\informacion_equipo.html:1075
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:151
+#: .\usuarios\templates\usuarios\miperfil.html:66
+#: .\usuarios\templates\usuarios\miperfil.html:249
+#: .\usuarios\templates\usuarios\signin.html:85
+msgid "Teléfono"
+msgstr "Phone number"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:134
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:177
+msgid "Color principal"
+msgstr "Primary color"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:142
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:186
+msgid "Color secundario"
+msgstr "Secondary color"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:150
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:30
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:82
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:161
+#: .\usuarios\templates\usuarios\inicio_jugador_sin_equipo.html:29
+#: .\usuarios\templates\usuarios\inicio_jugador_sin_equipo.html:87
+msgid "Escudo"
+msgstr "Shield"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:153
+msgid "Sube una nueva imagen solo si quieres cambiar el escudo"
+msgstr "Upload a new image only if you want to change the shield."
+
+#: .\equipos\templates\equipos\informacion_equipo.html:173
+#: .\equipos\templates\equipos\informacion_equipo.html:532
+#: .\usuarios\templates\usuarios\miperfil.html:303
+msgid "Guardar cambios"
+msgstr "Save changes"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:188
+msgid "Información del equipo actualizada"
+msgstr "Team information updated"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:204
+#: .\usuarios\templates\usuarios\miperfil.html:334
+msgid "Error al actualizar información"
+msgstr "Error updating information"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:211
+#: .\equipos\templates\equipos\informacion_equipo.html:616
+#: .\equipos\templates\equipos\informacion_equipo.html:874
+#: .\equipos\templates\equipos\informacion_equipo.html:901
+#: .\estadisticas\templates\estadisticas\analisis.html:615
+#: .\football_stats_app\templates\includes\footer.html:126
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:286
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:228
+#: .\usuarios\templates\usuarios\inicio_jugador_con_equipo.html:84
+#: .\usuarios\templates\usuarios\inicio_jugador_sin_equipo.html:129
+#: .\usuarios\templates\usuarios\login.html:33
+#: .\usuarios\templates\usuarios\miperfil.html:341
+#: .\usuarios\templates\usuarios\signin.html:33
+#: .\usuarios\templates\usuarios\signin.html:175
+msgid "Cerrar"
+msgstr "Close"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:221
+#: .\usuarios\models.py:15 .\usuarios\templates\usuarios\signin.html:130
+msgid "Entrenador"
+msgstr "Coach"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:254
+msgid "Plantilla"
+msgstr "Squad"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:262
+msgid "Buscar jugador"
+msgstr "Search player"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:271
+#: .\equipos\templates\equipos\informacion_equipo.html:460
+#: .\estadisticas\templates\estadisticas\analisis.html:491
+#: .\usuarios\templates\usuarios\miperfil.html:147
+msgid "Dorsal"
+msgstr "Shirt number"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:272
+#: .\equipos\templates\equipos\informacion_equipo.html:480
+#: .\estadisticas\templates\estadisticas\analisis.html:495
+#: .\usuarios\templates\usuarios\miperfil.html:139
+msgid "Posición"
+msgstr "Position"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:274
+#: .\usuarios\templates\usuarios\miperfil.html:155
+msgid "Pierna"
+msgstr "Preferred foot"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:275
+msgid "Altura (cm)"
+msgstr "Height (cm)"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:276
+msgid "Peso (kg)"
+msgstr "Weight (kg)"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:277
+#: .\usuarios\templates\usuarios\miperfil.html:179
+msgid "Capitán"
+msgstr "Captain"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:280
+msgid "Acciones"
+msgstr "Actions"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:371
+msgid "Sin sanciones"
+msgstr "No sanctions"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:389
+msgid "Editar"
+msgstr "Edit"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:397
+#: .\estadisticas\templates\estadisticas\analisis.html:23
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:167
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:268
+msgid "Eliminar"
+msgstr "Delete"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:420
+msgid "Añadir jugador"
+msgstr "Add player"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:426
+msgid "Añadir lesión"
+msgstr "Add injury"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:432
+msgid "Añadir sanción"
+msgstr "Add sanction"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:437
+#: .\equipos\templates\equipos\informacion_equipo.html:628
+msgid "Eliminar equipo"
+msgstr "Delete team"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:448
+msgid "Editar información del jugador"
+msgstr "Edit player information"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:468
+msgid "Pierna Hábil"
+msgstr "Preferred Foot"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:470
+#: .\equipos\templates\equipos\informacion_equipo.html:482
+msgid "Seleccionar"
+msgstr "Select"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:471
+#: .\usuarios\models.py:76
+msgid "Derecha"
+msgstr "Right"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:472
+#: .\usuarios\models.py:77
+msgid "Izquierda"
+msgstr "Left"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:473
+#: .\usuarios\models.py:78
+msgid "Ambas"
+msgstr "Both"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:483
+#: .\estadisticas\templates\estadisticas\analisis.html:156
+#: .\usuarios\models.py:87
+msgid "Portero"
+msgstr "Goalkeeper"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:484
+#: .\estadisticas\templates\estadisticas\analisis.html:157
+#: .\usuarios\models.py:88
+msgid "Lateral Derecho"
+msgstr "Right Back"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:485
+#: .\estadisticas\templates\estadisticas\analisis.html:158
+#: .\usuarios\models.py:89
+msgid "Defensa Central"
+msgstr "Center Back"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:486
+#: .\estadisticas\templates\estadisticas\analisis.html:159
+#: .\usuarios\models.py:90
+msgid "Lateral Izquierdo"
+msgstr "Left Back"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:487
+#: .\estadisticas\templates\estadisticas\analisis.html:160
+#: .\usuarios\models.py:91
+msgid "Mediocentro Defensivo"
+msgstr "Defensive Midfielder"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:488
+#: .\estadisticas\templates\estadisticas\analisis.html:161
+#: .\usuarios\models.py:92
+msgid "Mediocentro"
+msgstr "Midfielder"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:489
+#: .\estadisticas\templates\estadisticas\analisis.html:162
+#: .\usuarios\models.py:93
+msgid "Mediocentro Ofensivo"
+msgstr "Attacking Midfielder"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:490
+#: .\estadisticas\templates\estadisticas\analisis.html:163
+#: .\usuarios\models.py:94
+msgid "Interior Izquierda"
+msgstr "Left Winger"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:491
+#: .\estadisticas\templates\estadisticas\analisis.html:164
+#: .\usuarios\models.py:95
+msgid "Interior Derecha"
+msgstr "Right Winger"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:492
+#: .\estadisticas\templates\estadisticas\analisis.html:165
+#: .\usuarios\models.py:96
+msgid "Extremo Derecho"
+msgstr "Right Winger"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:493
+#: .\estadisticas\templates\estadisticas\analisis.html:166
+#: .\usuarios\models.py:97
+msgid "Extremo Izquierdo"
+msgstr "Left Winger"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:494
+#: .\estadisticas\templates\estadisticas\analisis.html:168
+#: .\usuarios\models.py:99
+msgid "Delantero Centro"
+msgstr "Center Forward"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:495
+#: .\estadisticas\templates\estadisticas\analisis.html:167
+#: .\usuarios\models.py:98
+msgid "Segundo Delantero"
+msgstr "Second Striker"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:502
+#: .\usuarios\templates\usuarios\miperfil.html:123
+msgid "Altura"
+msgstr "Height"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:510
+#: .\usuarios\templates\usuarios\miperfil.html:131
+msgid "Peso"
+msgstr "Weight"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:522
+msgid "Es capitán del equipo"
+msgstr "Is team captain"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:530
+#: .\equipos\templates\equipos\informacion_equipo.html:557
+#: .\equipos\templates\equipos\informacion_equipo.html:641
+#: .\equipos\templates\equipos\informacion_equipo.html:751
+#: .\equipos\templates\equipos\informacion_equipo.html:844
+#: .\estadisticas\templates\estadisticas\analisis.html:379
+#: .\estadisticas\templates\estadisticas\analisis.html:416
+#: .\estadisticas\templates\estadisticas\analisis.html:471
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:122
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:144
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:166
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:222
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:244
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:267
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:315
+#: .\usuarios\templates\usuarios\miperfil.html:301
+#: .\usuarios\templates\usuarios\miperfil.html:485
+#: .\usuarios\templates\usuarios\password_forget.html:33
+msgid "Cancelar"
+msgstr "Cancel"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:546
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:155
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:255
+msgid "Confirmación"
+msgstr "Confirmation"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:552
+#: .\equipos\templates\equipos\informacion_equipo.html:633
+#: .\usuarios\templates\usuarios\miperfil.html:478
+msgid "Esta acción"
+msgstr "This action"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:552
+#: .\equipos\templates\equipos\informacion_equipo.html:633
+#: .\usuarios\templates\usuarios\miperfil.html:478
+msgid "no se puede deshacer"
+msgstr "cannot be undone"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:552
+msgid "¿Estás seguro de que quieres eliminar al jugador?"
+msgstr "Are you sure you want to delete this player?"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:559
+msgid "Sí, eliminar jugador"
+msgstr "Yes, delete player"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:572
+msgid "Añadir jugador al equipo"
+msgstr "Add player to team"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:602
+msgid "Añadir"
+msgstr "Add"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:609
+msgid "No hay jugadores disponibles sin equipo."
+msgstr "There are no available players without a team."
+
+#: .\equipos\templates\equipos\informacion_equipo.html:634
+msgid "¿Estás seguro de que quieres eliminar el equipo actual?"
+msgstr "Are you sure you want to delete the current team?"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:635
+msgid ""
+"Tanto tu como los jugadores os quedaréis sin equipo. Los jugadores recibirán "
+"un email de información."
+msgstr ""
+"Both you and the players will be left without a team. The players will "
+"receive an information email."
+
+#: .\equipos\templates\equipos\informacion_equipo.html:647
+msgid "Sí, eliminar equipo"
+msgstr "Yes, delete player"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:659
+msgid "Equipo abandonado"
+msgstr "Team left"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:660
+msgid "Has abandonado el equipo correctamente."
+msgstr "You have left the team successfully."
+
+#: .\equipos\templates\equipos\informacion_equipo.html:672
+msgid "Añadir lesión a jugador"
+msgstr "Add injury to player"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:688
+#: .\equipos\templates\equipos\informacion_equipo.html:783
+#: .\estadisticas\templates\estadisticas\analisis.html:260
+msgid "Selecciona un jugador"
+msgstr "Select a player"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:705
+#: .\equipos\templates\equipos\informacion_equipo.html:800
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:107
+msgid "Selecciona un tipo"
+msgstr "Select a type"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:732
+msgid "Detalles de la lesión (opcional)"
+msgstr "Injury details (optional)"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:744
+msgid "Marca si la lesión está vigente"
+msgstr "Mark if the injury is current"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:753
+msgid "Registrar lesión"
+msgstr "Register injury"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:767
+msgid "Añadir sanción a jugador"
+msgstr "Add sanction to player"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:816
+msgid "Solo si corresponde a suspensión"
+msgstr "Only if it corresponds to suspension"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:825
+msgid "Detalles de por qué se impone la sanción"
+msgstr "Details of why the sanction is imposed"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:837
+msgid "Marca si la sanción está vigente"
+msgstr "Mark if the sanction is current"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:846
+msgid "Registrar sanción"
+msgstr "Register sanction"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:860
+msgid "Gestionar lesiones"
+msgstr "Manage injuries"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:887
+msgid "Gestionar sanciones"
+msgstr "Manage sanctions"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:929
+msgid "Últimos resultados"
+msgstr "Latest results"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:947
+#: .\equipos\templates\equipos\informacion_equipo.html:1014
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:197
+msgid "Local"
+msgstr "Home"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:966
+#: .\equipos\templates\equipos\informacion_equipo.html:1031
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:198
+msgid "Visitante"
+msgstr "Away"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:987
+msgid "No hay partidos finalizados registrados aún."
+msgstr "No finished matches registered yet"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:996
+msgid "Próximos partidos"
+msgstr "Upcoming matches"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:1061
+msgid "No hay próximos partidos programados."
+msgstr "No upcoming matches registered yet"
+
+#: .\equipos\templates\equipos\informacion_equipo.html:1071
+msgid "Información de contacto"
+msgstr "Contact information"
+
+#: .\equipos\templates\equipos\pizarra_tactica.html:4
+#: .\usuarios\context_processors.py:110
+msgid "Pizarra Táctica"
+msgstr "Tactic board"
+
+#: .\equipos\templates\equipos\pizarra_tactica.html:13
+msgid "Controles"
+msgstr "Controls"
+
+#: .\equipos\templates\equipos\pizarra_tactica.html:16
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:200
+msgid "Reiniciar"
+msgstr "Reset"
+
+#: .\equipos\templates\equipos\pizarra_tactica.html:19
+msgid "Descargar Imagen"
+msgstr "Download image"
+
+#: .\equipos\templates\equipos\pizarra_tactica.html:28
+msgid "Leyenda"
+msgstr "Legend"
+
+#: .\equipos\templates\equipos\pizarra_tactica.html:32
+msgid "Equipo 1"
+msgstr "Team 1"
+
+#: .\equipos\templates\equipos\pizarra_tactica.html:36
+msgid "Equipo 2"
+msgstr "Team 2"
+
+#: .\estadisticas\models.py:23
+#: .\estadisticas\templates\estadisticas\analisis.html:264
+#: .\eventos\models.py:155
+msgid "Partido"
+msgstr "Match"
+
+#: .\estadisticas\models.py:36
+#: .\estadisticas\templates\estadisticas\analisis.html:281
+msgid "¿Fue titular?"
+msgstr "Was starter?"
+
+#: .\estadisticas\models.py:41
+#: .\estadisticas\templates\estadisticas\analisis.html:286
+#: .\estadisticas\templates\estadisticas\analisis.html:604
+msgid "Minutos jugados"
+msgstr "Minutes played"
+
+#: .\estadisticas\models.py:42
+msgid "Minutos que jugó en el partido"
+msgstr "Minutes played in the match"
+
+#: .\estadisticas\models.py:48
+#: .\estadisticas\templates\estadisticas\analisis.html:296
+#: .\estadisticas\templates\estadisticas\analisis.html:365
+#: .\estadisticas\templates\estadisticas\analisis.html:529
+msgid "Goles"
+msgstr "Goals"
+
+#: .\estadisticas\models.py:53
+#: .\estadisticas\templates\estadisticas\analisis.html:300
+#: .\estadisticas\templates\estadisticas\analisis.html:366
+#: .\estadisticas\templates\estadisticas\analisis.html:533
+msgid "Asistencias"
+msgstr "Assists"
+
+#: .\estadisticas\models.py:58
+#: .\estadisticas\templates\estadisticas\analisis.html:304
+msgid "Tiros a puerta"
+msgstr "Shots on goal"
+
+#: .\estadisticas\models.py:59
+msgid "Tiros que fueron a puerta"
+msgstr "Shots that were on goal"
+
+#: .\estadisticas\models.py:64
+#: .\estadisticas\templates\estadisticas\analisis.html:311
+msgid "Pases completados"
+msgstr "Completed passes"
+
+#: .\estadisticas\models.py:69
+#: .\estadisticas\templates\estadisticas\analisis.html:315
+#: .\estadisticas\templates\estadisticas\analisis.html:545
+msgid "Fueras de juego"
+msgstr "Offsides"
+
+#: .\estadisticas\models.py:75
+#: .\estadisticas\templates\estadisticas\analisis.html:572
+msgid "Paradas"
+msgstr "Saves"
+
+#: .\estadisticas\models.py:76
+msgid "Solo para porteros"
+msgstr "Goalkeepers only"
+
+#: .\estadisticas\models.py:81
+#: .\estadisticas\templates\estadisticas\analisis.html:329
+#: .\estadisticas\templates\estadisticas\analisis.html:367
+#: .\estadisticas\templates\estadisticas\analisis.html:564
+msgid "Despejes"
+msgstr "Clearances"
+
+#: .\estadisticas\models.py:86
+#: .\estadisticas\templates\estadisticas\analisis.html:333
+msgid "Faltas cometidas"
+msgstr "Fouls committed"
+
+#: .\estadisticas\models.py:92
+#: .\estadisticas\templates\estadisticas\analisis.html:343
+#: .\estadisticas\templates\estadisticas\analisis.html:576
+msgid "Tarjetas amarillas"
+msgstr "Yellow cards"
+
+#: .\estadisticas\models.py:98
+msgid "¿Recibió tarjeta roja?"
+msgstr "Did he receive a red card?"
+
+#: .\estadisticas\models.py:106
+msgid "Estadística"
+msgstr "Statistic"
+
+#: .\estadisticas\models.py:107 .\eventos\admin.py:89
+msgid "Estadísticas"
+msgstr "Statistics"
+
+#: .\estadisticas\templates\estadisticas\analisis.html:5
+#: .\estadisticas\templates\estadisticas\analisis.html:13
+#: .\football_stats_app\templates\includes\header.html:87
+msgid "Análisis"
+msgstr "Analysis"
+
+#: .\estadisticas\templates\estadisticas\analisis.html:16
+msgid "Añadir estadísticas"
+msgstr "Add statistics"
+
+#: .\estadisticas\templates\estadisticas\analisis.html:17
+msgid "Añadir Estadísticas"
+msgstr "Add Statistics"
+
+#: .\estadisticas\templates\estadisticas\analisis.html:19
+#: .\estadisticas\templates\estadisticas\analisis.html:20
+msgid "Importar CSV"
+msgstr "Import CSV"
+
+#: .\estadisticas\templates\estadisticas\analisis.html:22
+msgid "Eliminar estadísticas"
+msgstr "Delete statistics"
+
+#: .\estadisticas\templates\estadisticas\analisis.html:35
+msgid "Jugadores en forma"
+msgstr "Players in form"
+
+#: .\estadisticas\templates\estadisticas\analisis.html:40
+msgid "Listado de los jugadores en mejor forma"
+msgstr "List of the players in better form"
+
+#: .\estadisticas\templates\estadisticas\analisis.html:57
+#: .\estadisticas\templates\estadisticas\analisis.html:96
+#: .\estadisticas\templates\estadisticas\analisis.html:201
+msgid "Valoración"
+msgstr "Score"
+
+#: .\estadisticas\templates\estadisticas\analisis.html:62
+msgid "No hay jugadores en forma"
+msgstr "There are no available players in form."
+
+#: .\estadisticas\templates\estadisticas\analisis.html:74
+msgid "Jugadores en peor forma"
+msgstr "Players in poor form"
+
+#: .\estadisticas\templates\estadisticas\analisis.html:79
+msgid "Listado de los jugadores en peor forma"
+msgstr "List of players in poor form"
+
+#: .\estadisticas\templates\estadisticas\analisis.html:101
+msgid "Todos los jugadores están en forma"
+msgstr "All players are in good form"
+
+#: .\estadisticas\templates\estadisticas\analisis.html:116
+msgid "Rendimiento Ofensivo"
+msgstr "Offensive Analysis"
+
+#: .\estadisticas\templates\estadisticas\analisis.html:121
+msgid "Estadísticas acumuladas de ataque del equipo"
+msgstr "Offensive team statistics"
+
+#: .\estadisticas\templates\estadisticas\analisis.html:133
+msgid "Defensa vs Goles"
+msgstr "Defense vs Goals"
+
+#: .\estadisticas\templates\estadisticas\analisis.html:138
+msgid "Promedio de goles encajados vs acciones defensivas por partido"
+msgstr "Average of conceded goals vs defensives actions by match"
+
+#: .\estadisticas\templates\estadisticas\analisis.html:152
+msgid "Once recomendado"
+msgstr "Recommended lineup"
+
+#: .\estadisticas\templates\estadisticas\analisis.html:155
+msgid "Todas las posiciones"
+msgstr "All positions"
+
+#: .\estadisticas\templates\estadisticas\analisis.html:173
+msgid ""
+"Once con los jugadores más en forma. Haz clic en un jugador para ver sus "
+"estadísticas. Filtra por posición para ver solo jugadores de esa posición"
+msgstr ""
+"Lineup with the players in best shape. Click hover a player to see his "
+"statistics. Filter by position to see only players from an exact position"
+
+#: .\estadisticas\templates\estadisticas\analisis.html:183
+msgid "Jugador lesionado"
+msgstr "Injuried player"
+
+#: .\estadisticas\templates\estadisticas\analisis.html:188
+msgid "Jugador sancionado"
+msgstr "Sanctioned player"
+
+#: .\estadisticas\templates\estadisticas\analisis.html:207
+msgid "No hay suficientes jugadores en forma para formar un once"
+msgstr "There are not enough players in good form to form a lineup"
+
+#: .\estadisticas\templates\estadisticas\analisis.html:220
+msgid "Total Jugadores"
+msgstr "Total players"
+
+#: .\estadisticas\templates\estadisticas\analisis.html:226
+msgid "Lesiones Activas"
+msgstr "Active Injuries"
+
+#: .\estadisticas\templates\estadisticas\analisis.html:232
+msgid "Sanciones Activas"
+msgstr "Active Sanctions"
+
+#: .\estadisticas\templates\estadisticas\analisis.html:238
+msgid "Disponibles"
+msgstr "Available"
+
+#: .\estadisticas\templates\estadisticas\analisis.html:251
+msgid "Añadir Estadística"
+msgstr "Add Statistics"
+
+#: .\estadisticas\templates\estadisticas\analisis.html:266
+#: .\estadisticas\templates\estadisticas\analisis.html:397
+#: .\estadisticas\templates\estadisticas\analisis.html:399
+#: .\estadisticas\templates\estadisticas\analisis.html:435
+#: .\estadisticas\templates\estadisticas\analisis.html:499
+msgid "Selecciona un partido"
+msgstr "Select a match"
+
+#: .\estadisticas\templates\estadisticas\analisis.html:293
+#: .\estadisticas\templates\estadisticas\analisis.html:523
+msgid "Estadísticas Ofensivas"
+msgstr "Offensives Statistics"
+
+#: .\estadisticas\templates\estadisticas\analisis.html:322
+#: .\estadisticas\templates\estadisticas\analisis.html:558
+msgid "Estadísticas Defensivas"
+msgstr "Defensive statistics"
+
+#: .\estadisticas\templates\estadisticas\analisis.html:325
+msgid "Paradas (Portero)"
+msgstr "Saves (Goalkeeper)"
+
+#: .\estadisticas\templates\estadisticas\analisis.html:340
+msgid "Disciplina"
+msgstr "Discipline"
+
+#: .\estadisticas\templates\estadisticas\analisis.html:350
+msgid "¿Tarjeta roja?"
+msgstr "Red card?"
+
+#: .\estadisticas\templates\estadisticas\analisis.html:359
+msgid "Estadísticas registradas en este partido"
+msgstr "Statistics registered in this match"
+
+#: .\estadisticas\templates\estadisticas\analisis.html:368
+msgid "Acción"
+msgstr "Action"
+
+#: .\estadisticas\templates\estadisticas\analisis.html:380
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:123
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:223
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:316
+msgid "Guardar"
+msgstr "Save"
+
+#: .\estadisticas\templates\estadisticas\analisis.html:391
+msgid "Eliminar Estadística"
+msgstr "Delete Statistic"
+
+#: .\estadisticas\templates\estadisticas\analisis.html:408
+msgid "Estadísticas registradas"
+msgstr "Statistics registered"
+
+#: .\estadisticas\templates\estadisticas\analisis.html:410
+msgid "Selecciona un partido para ver las estadísticas"
+msgstr "Select a match to view statistics"
+
+#: .\estadisticas\templates\estadisticas\analisis.html:427
+msgid "Importar Estadísticas desde CSV"
+msgstr "Import Statistics from CSV"
+
+#: .\estadisticas\templates\estadisticas\analisis.html:433
+msgid "Selecciona el partido"
+msgstr "Select the match"
+
+#: .\estadisticas\templates\estadisticas\analisis.html:445
+msgid "Archivo CSV"
+msgstr "CSV File"
+
+#: .\estadisticas\templates\estadisticas\analisis.html:448
+msgid ""
+"Formato esperado: nombre, apellido, dorsal, titular, minutos_jugados, goles, "
+"asistencias, tiros, pases, fueras_de_juego, paradas, despejes, faltas, "
+"tarjetas_amarillas, tarjeta_roja"
+msgstr ""
+"Expected format: name, surname, number, starter, minutes_played, goals, "
+"assists, shots, passes, offsides, saves, clearances, fouls, yellow_cards, "
+"red_card"
+
+#: .\estadisticas\templates\estadisticas\analisis.html:453
+msgid "Instrucciones:"
+msgstr "Instructions:"
+
+#: .\estadisticas\templates\estadisticas\analisis.html:455
+msgid "El CSV debe tener encabezados en la primera fila"
+msgstr "The CSV must have headers in the first row"
+
+#: .\estadisticas\templates\estadisticas\analisis.html:456
+msgid "Los jugadores se identifican por: dorsal, nombre+apellido o email"
+msgstr "Players are identified by: jersey number, name+surname or email"
+
+#: .\estadisticas\templates\estadisticas\analisis.html:457
+msgid "Si hay errores, no se guardará nada"
+msgstr "If there are errors, nothing will be saved"
+
+#: .\estadisticas\templates\estadisticas\analisis.html:458
+msgid "Los valores numéricos deben ser números enteros"
+msgstr "Numeric values must be integers"
+
+#: .\estadisticas\templates\estadisticas\analisis.html:466
+msgid "Procesando..."
+msgstr "Processing..."
+
+#: .\estadisticas\templates\estadisticas\analisis.html:472
+msgid "Importar"
+msgstr "Import"
+
+#: .\estadisticas\templates\estadisticas\analisis.html:501
+msgid "Ver totales"
+msgstr "Watch all"
+
+#: .\estadisticas\templates\estadisticas\analisis.html:511
+msgid "Sin estadísticas disponibles"
+msgstr "No statistics availables"
+
+#: .\estadisticas\templates\estadisticas\analisis.html:512
+msgid "El jugador no participó en este partido"
+msgstr "The player didn't play in this match"
+
+#: .\estadisticas\templates\estadisticas\analisis.html:537
+msgid "Tiros"
+msgstr "Shoots"
+
+#: .\estadisticas\templates\estadisticas\analisis.html:541
+msgid "Pases"
+msgstr "Passes"
+
+#: .\estadisticas\templates\estadisticas\analisis.html:568
+msgid "Faltas"
+msgstr "Fouls"
+
+#: .\estadisticas\templates\estadisticas\analisis.html:580
+msgid "Tarjetas rojas"
+msgstr "Red Cards"
+
+#: .\estadisticas\templates\estadisticas\analisis.html:594
+#: .\eventos\admin.py:79
+msgid "Información del Partido"
+msgstr "Match Information"
+
+#: .\estadisticas\templates\estadisticas\analisis.html:600
+msgid "Titular"
+msgstr "Starter"
+
+#: .\eventos\admin.py:26
+msgid "Información básica"
+msgstr "Basic information"
+
+#: .\eventos\admin.py:32
+msgid "Fechas"
+msgstr "Dates"
+
+#: .\eventos\admin.py:35 .\eventos\admin.py:92 .\eventos\admin.py:128
+msgid "Metadata"
+msgstr "Metadata"
+
+#: .\eventos\admin.py:43
+msgid "Nº Partidos"
+msgstr "Matches"
+
+#: .\eventos\admin.py:75
+msgid "Competición (OBLIGATORIO)"
+msgstr "Competition (MANDATORY)"
+
+#: .\eventos\admin.py:77
+msgid "Selecciona la competición a la que pertenece este partido"
+msgstr "Select the competition to which this match belongs"
+
+#: .\eventos\admin.py:82 .\eventos\admin.py:100
+msgid "Equipo Visitante"
+msgstr "Visiting Team"
+
+#: .\eventos\admin.py:84
+msgid "Selecciona un equipo de la BD o introduce su nombre manualmente"
+msgstr "Select a team from the database or enter its name manually"
+
+#: .\eventos\admin.py:86
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:212
+msgid "Estadio"
+msgstr "Stadium"
+
+#: .\eventos\apps.py:8
+msgid "Eventos"
+msgstr "Events"
+
+#: .\eventos\models.py:10
+msgid "Liga"
+msgstr "League"
+
+#: .\eventos\models.py:11
+msgid "Copa"
+msgstr "Cup"
+
+#: .\eventos\models.py:12
+msgid "Amistoso"
+msgstr "Friendly"
+
+#: .\eventos\models.py:13
+msgid "Torneo"
+msgstr "Tournament"
+
+#: .\eventos\models.py:14
+msgid "Supercopa"
+msgstr "Super Cup"
+
+#: .\eventos\models.py:18
+msgid "Nombre de la competición"
+msgstr "Name of the competition"
+
+#: .\eventos\models.py:19
+msgid "Ej: Liga Local 2024-2025"
+msgstr "E.g: Local League 2024-2025"
+
+#: .\eventos\models.py:23
+msgid "Año/Temporada"
+msgstr "Year/Season"
+
+#: .\eventos\models.py:24
+msgid "Año de inicio de la temporada"
+msgstr "Year of start of the season"
+
+#: .\eventos\models.py:31
+msgid "Tipo de competición"
+msgstr "Type of competition"
+
+#: .\eventos\models.py:40
+msgid "Fecha de inicio"
+msgstr "Start date"
+
+#: .\eventos\models.py:46
+msgid "Fecha de fin"
+msgstr "End date"
+
+#: .\eventos\models.py:53
+msgid "Competición activa"
+msgstr "Active competition"
+
+#: .\eventos\models.py:60 .\eventos\models.py:79
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:184
+msgid "Competición"
+msgstr "Competition"
+
+#: .\eventos\models.py:61
+msgid "Competiciones"
+msgstr "Competitions"
+
+#: .\eventos\models.py:88
+msgid "Equipo local"
+msgstr "Home Team"
+
+#: .\eventos\models.py:97
+msgid "Equipo visitante (BD)"
+msgstr "Visiting Team (Database)"
+
+#: .\eventos\models.py:103
+msgid "Nombre equipo visitante (manual)"
+msgstr "Visiting Team Name (Manual)"
+
+#: .\eventos\models.py:108
+msgid "Nombre del estadio"
+msgstr "Stadium name"
+
+#: .\eventos\models.py:114
+msgid "Dirección del estadio"
+msgstr "Stadium address"
+
+#: .\eventos\models.py:118 .\eventos\models.py:190
+msgid "Fecha y hora de inicio"
+msgstr "Start date and time"
+
+#: .\eventos\models.py:123
+msgid "Porcentaje de posesión del equipo local"
+msgstr "Home team possession percentage"
+
+#: .\eventos\models.py:124
+msgid "Posesión local (%)"
+msgstr "Home possession (%%)"
+
+#: .\eventos\models.py:129
+msgid "Porcentaje de posesión del equipo visitante"
+msgstr "Visiting team possession percentage"
+
+#: .\eventos\models.py:130
+msgid "Posesión visitante (%)"
+msgstr "Visiting possession (%%)"
+
+#: .\eventos\models.py:135
+msgid "Partido finalizado"
+msgstr "Match finished"
+
+#: .\eventos\models.py:141
+msgid "Goles equipo local"
+msgstr "Home Team Goals"
+
+#: .\eventos\models.py:147
+msgid "Goles equipo visitante"
+msgstr "Visiting Team Goals"
+
+#: .\eventos\models.py:156
+msgid "Partidos"
+msgstr "Matches"
+
+#: .\eventos\models.py:175
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:108
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:349
+#: .\usuarios\templates\usuarios\inicio_jugador_con_equipo.html:116
+msgid "Fuerza"
+msgstr "Strength"
+
+#: .\eventos\models.py:176
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:109
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:350
+#: .\usuarios\templates\usuarios\inicio_jugador_con_equipo.html:117
+msgid "Táctico"
+msgstr "Tactical"
+
+#: .\eventos\models.py:177
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:110
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:351
+#: .\usuarios\templates\usuarios\inicio_jugador_con_equipo.html:118
+msgid "Ataque"
+msgstr "Attack"
+
+#: .\eventos\models.py:178
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:111
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:352
+#: .\usuarios\templates\usuarios\inicio_jugador_con_equipo.html:119
+msgid "Defensa"
+msgstr "Defense"
+
+#: .\eventos\models.py:179
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:112
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:353
+#: .\usuarios\templates\usuarios\inicio_jugador_con_equipo.html:120
+msgid "Recuperación"
+msgstr "Recovery"
+
+#: .\eventos\models.py:196
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:105
+msgid "Tipo de entrenamiento"
+msgstr "Training type"
+
+#: .\eventos\models.py:209
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:365
+#: .\usuarios\templates\usuarios\inicio_jugador_con_equipo.html:132
+msgid "Entrenamiento"
+msgstr "Training"
+
+#: .\eventos\models.py:210
+msgid "Entrenamientos"
+msgstr "Trainings"
+
+#: .\eventos\views.py:34
+msgid "No tienes permiso para crear partidos en este equipo"
+msgstr "You don't have permission to create matches in this team."
+
+#: .\eventos\views.py:47 .\eventos\views.py:103
+msgid "Debes seleccionar un equipo o introducir un nombre"
+msgstr "You must select a team or enter a name"
+
+#: .\eventos\views.py:72
+msgid "Partido creado correctamente"
+msgstr "Match created successfully"
+
+#: .\eventos\views.py:91
+msgid "No tienes permiso para editar este partido"
+msgstr "You don't have permission to edit this match."
+
+#: .\eventos\views.py:127
+msgid "Partido actualizado correctamente"
+msgstr "Match updated successfully"
+
+#: .\eventos\views.py:147
+msgid "No tienes permiso para eliminar este partido"
+msgstr "You don't have permission to delete this match."
+
+#: .\eventos\views.py:152
+msgid "Partido eliminado correctamente"
+msgstr "Match deleted successfully."
+
+#: .\eventos\views.py:179
+msgid "No tienes permiso para crear entrenamientos en este equipo"
+msgstr "You don't have permission to create trainings in this team."
+
+#: .\eventos\views.py:190
+msgid "Entrenamiento creado correctamente"
+msgstr "Training created successfully"
+
+#: .\eventos\views.py:209
+msgid "No tienes permiso para editar este entrenamiento"
+msgstr "You don't have permission to edit this training."
+
+#: .\eventos\views.py:218
+msgid "Entrenamiento actualizado correctamente"
+msgstr "Training updated successfully"
+
+#: .\eventos\views.py:238
+msgid "No tienes permiso para eliminar este entrenamiento"
+msgstr "You don't have permission to delete this training."
+
+#: .\eventos\views.py:243
+msgid "Entrenamiento eliminado correctamente"
+msgstr "Training deleted successfully."
+
+#: .\football_stats_app\settings.py:138
+#: .\football_stats_app\templates\includes\header.html:50
+msgid "Spanish"
+msgstr "Spanish"
+
+#: .\football_stats_app\settings.py:139
+#: .\football_stats_app\templates\includes\header.html:61
+msgid "English"
+msgstr "English"
+
+#: .\football_stats_app\templates\errors\400.html:3
+msgid "Error 400"
+msgstr "400 Error"
+
+#: .\football_stats_app\templates\errors\400.html:10
+msgid "Solicitud incorrecta"
+msgstr "Bad Request"
+
+#: .\football_stats_app\templates\errors\400.html:11
+msgid "La solicitud enviada al servidor no es válida."
+msgstr "The request sent to the server is not valid."
+
+#: .\football_stats_app\templates\errors\400.html:13
+#: .\football_stats_app\templates\errors\403.html:12
+#: .\football_stats_app\templates\errors\404.html:12
+#: .\football_stats_app\templates\errors\500.html:12
+msgid "Volver al inicio"
+msgstr "Back to home"
+
+#: .\football_stats_app\templates\errors\403.html:3
+msgid "Error 403"
+msgstr "403 Error"
+
+#: .\football_stats_app\templates\errors\403.html:9
+msgid "Acceso denegado"
+msgstr "Access Denied"
+
+#: .\football_stats_app\templates\errors\403.html:10
+msgid "No tienes permiso para acceder a este recurso."
+msgstr "You don't have permission to access this resource."
+
+#: .\football_stats_app\templates\errors\404.html:3
+msgid "Error 404"
+msgstr "404 Error"
+
+#: .\football_stats_app\templates\errors\404.html:9
+msgid "Página no encontrada"
+msgstr "Page not found"
+
+#: .\football_stats_app\templates\errors\404.html:10
+msgid "Lo sentimos, la página que buscas no existe."
+msgstr "Sorry, the page you're looking for doesn't exist."
+
+#: .\football_stats_app\templates\errors\500.html:3
+msgid "Error 500"
+msgstr "500 Error"
+
+#: .\football_stats_app\templates\errors\500.html:9
+msgid "Error del servidor"
+msgstr "Server Error"
+
+#: .\football_stats_app\templates\errors\500.html:10
+msgid "Ha ocurrido un error interno. Nuestro equipo ha sido notificado."
+msgstr "An internal error has occurred. Our team has been notified."
+
+#: .\football_stats_app\templates\includes\footer.html:18
+#: .\usuarios\templates\usuarios\password_forget_email.html:114
+msgid "Todos los derechos reservados."
+msgstr "All rights reserved."
+
+#: .\football_stats_app\templates\includes\footer.html:26
+msgid "Contacto"
+msgstr "Contact"
+
+#: .\football_stats_app\templates\includes\footer.html:31
+#: .\football_stats_app\templates\includes\footer.html:44
+msgid "Preguntas frecuentes"
+msgstr "Frequently Asked Questions"
+
+#: .\football_stats_app\templates\includes\footer.html:55
+msgid "¿Cómo me registro?"
+msgstr "How do I register?"
+
+#: .\football_stats_app\templates\includes\footer.html:60
+msgid "Pulsa en “Registrarse”, rellena el formulario y confirma tu correo."
+msgstr "Click on 'Register', fill out the form and confirm your email."
+
+#: .\football_stats_app\templates\includes\footer.html:69
+msgid "¿Puedo cambiar mi contraseña?"
+msgstr "Can I change my password?"
+
+#: .\football_stats_app\templates\includes\footer.html:74
+msgid "Sí, desde “¿Olvidaste tu contraseña?” recibirás un enlace por email."
+msgstr "Yes, from 'Forgot your password?' you will receive a link by email."
+
+#: .\football_stats_app\templates\includes\footer.html:83
+msgid "¿Puedo cambiar mi rol?"
+msgstr "Can I change my role?"
+
+#: .\football_stats_app\templates\includes\footer.html:88
+msgid "No directamente; debes contactar con un administrador."
+msgstr "Not directly; you must contact an administrator."
+
+#: .\football_stats_app\templates\includes\footer.html:97
+msgid "¿Cómo creo un equipo?"
+msgstr "How do I create a team?"
+
+#: .\football_stats_app\templates\includes\footer.html:102
+msgid "Desde el panel principal puedes añadir un nuevo equipo."
+msgstr "From the main panel you can add a new team."
+
+#: .\football_stats_app\templates\includes\footer.html:111
+msgid "¿Puedo borrar mi cuenta?"
+msgstr "Can I delete my account?"
+
+#: .\football_stats_app\templates\includes\footer.html:116
+msgid "Sí, desde “Mi perfil” → “Eliminar cuenta”."
+msgstr "Yes, from 'My profile' → 'Delete account'."
+
+#: .\football_stats_app\templates\includes\header.html:75
+#: .\football_stats_app\templates\landing.html:4
+#: .\usuarios\context_processors.py:11
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:4
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:4
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:33
+#: .\usuarios\templates\usuarios\inicio_jugador_con_equipo.html:4
+#: .\usuarios\templates\usuarios\inicio_jugador_sin_equipo.html:4
+#: .\usuarios\templates\usuarios\inicio_jugador_sin_equipo.html:32
+msgid "Inicio"
+msgstr "Home"
+
+#: .\football_stats_app\templates\includes\header.html:90
+msgid "Pizarra"
+msgstr "Tactic board"
+
+#: .\football_stats_app\templates\includes\header.html:115
+#: .\usuarios\context_processors.py:35
+#: .\usuarios\templates\usuarios\miperfil.html:7
+msgid "Mi perfil"
+msgstr "My profile"
+
+#: .\football_stats_app\templates\includes\header.html:123
+#: .\usuarios\context_processors.py:44
+#: .\usuarios\templates\usuarios\miperfil.html:459
+msgid "Cerrar sesión"
+msgstr "Sign out"
+
+#: .\football_stats_app\templates\includes\header.html:146
+#: .\usuarios\context_processors.py:38
+#: .\usuarios\templates\usuarios\login.html:4
+#: .\usuarios\templates\usuarios\login.html:78
+#: .\usuarios\templates\usuarios\new_password_done.html:26
+msgid "Iniciar sesión"
+msgstr "Sign in"
+
+#: .\football_stats_app\templates\includes\header.html:151
+#: .\usuarios\context_processors.py:41
+#: .\usuarios\templates\usuarios\signin.html:4
+#: .\usuarios\templates\usuarios\signin.html:187
+msgid "Registrarse"
+msgstr "Sign up"
+
+#: .\football_stats_app\templates\landing.html:12
+msgid "Descripción breve de la aplicación y su propósito"
+msgstr ""
+"Designed for amateur and semi-professional football teams that allows "
+"efficient management of player and team performance through advanced data "
+"analysis tools."
+
+#: .\football_stats_app\templates\landing.html:21
+msgid "Gestiona tu equipo"
+msgstr "Manage your team"
+
+#: .\football_stats_app\templates\landing.html:23
+msgid "Descripción de la característica gestión de equipo"
+msgstr ""
+"Manage your team easily and intuitively and collect all information in one "
+"place."
+
+#: .\football_stats_app\templates\landing.html:35
+msgid "Recoge información de los partidos"
+msgstr "Collect match information"
+
+#: .\football_stats_app\templates\landing.html:37
+msgid "Descripción de la característica recogida de información"
+msgstr "Collect and save all match information related to your team."
+
+#: .\football_stats_app\templates\landing.html:49
+msgid "Analiza los datos y toma decisiones"
+msgstr "Analyze data and make decisions"
+
+#: .\football_stats_app\templates\landing.html:51
+msgid "Descripción de la característica análisis de datos"
+msgstr ""
+"Analyze data collected from all your team's matches and get insights to help "
+"you make better decisions."
+
+#: .\football_stats_app\templates\landing.html:63
+msgid "Recibe avisos sobre eventos que ocurran en tu equipo"
+msgstr "Get alerts about team events"
+
+#: .\football_stats_app\templates\landing.html:65
+msgid "Descripción de la característica notificaciones"
+msgstr ""
+"Receive alerts about what happens in your team. From new calendar events to "
+"bans and injuries."
+
+#: .\usuarios\context_processors.py:47
+#: .\usuarios\templates\usuarios\miperfil.html:465
+#: .\usuarios\templates\usuarios\miperfil.html:473
+msgid "Eliminar cuenta"
+msgstr "Delete account"
+
+#: .\usuarios\context_processors.py:50 .\usuarios\context_processors.py:53
+#: .\usuarios\templates\usuarios\new_password.html:4
+#: .\usuarios\templates\usuarios\new_password_done.html:4
+#: .\usuarios\templates\usuarios\password_forget.html:4
+#: .\usuarios\templates\usuarios\password_forget_done.html:4
+#: .\usuarios\templates\usuarios\password_forget_email.html:7
+#: .\usuarios\templates\usuarios\password_forget_email.html:87
+msgid "Restablecer contraseña"
+msgstr "Reset password"
+
+#: .\usuarios\context_processors.py:56 .\usuarios\context_processors.py:59
+#: .\usuarios\templates\usuarios\new_password.html:41
+msgid "Nueva contraseña"
+msgstr "New password"
+
+#: .\usuarios\context_processors.py:69 .\usuarios\models.py:38
+msgid "Usuarios"
+msgstr "User"
+
+#: .\usuarios\context_processors.py:86 .\usuarios\context_processors.py:101
+msgid "Equipos"
+msgstr "Teams"
+
+#: .\usuarios\models.py:14
+msgid "Administrador"
+msgstr "Administrator"
+
+#: .\usuarios\models.py:17
+msgid "Invitado"
+msgstr "Invited"
+
+#: .\usuarios\models.py:20
+msgid "dirección de correo electrónico"
+msgstr "email address"
+
+#: .\usuarios\models.py:21
+msgid "teléfono"
+msgstr "phone"
+
+#: .\usuarios\models.py:22
+msgid "fecha de nacimiento"
+msgstr "date of birth"
+
+#: .\usuarios\models.py:37
+msgid "Usuario"
+msgstr "User"
+
+#: .\usuarios\models.py:71
+msgid "altura (cm)"
+msgstr "height (cm)"
+
+#: .\usuarios\models.py:72
+msgid "peso (kg)"
+msgstr "weight (kg)"
+
+#: .\usuarios\models.py:73
+msgid "dorsal"
+msgstr "shirt number"
+
+#: .\usuarios\models.py:109
+msgid "es capitán"
+msgstr "is captain"
+
+#: .\usuarios\models.py:129
+msgid "número de licencia"
+msgstr "license number"
+
+#: .\usuarios\models.py:130
+msgid "años de experiencia"
+msgstr "years of experience"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:10
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:10
+#: .\usuarios\templates\usuarios\inicio_jugador_con_equipo.html:10
+#: .\usuarios\templates\usuarios\inicio_jugador_sin_equipo.html:10
+msgid "Bienvenid@"
+msgstr "Welcome"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:22
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:178
+msgid "Añadir partido"
+msgstr "Add match"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:25
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:234
+msgid "Eliminar partido"
+msgstr "Delete match"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:28
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:95
+msgid "Añadir entrenamiento"
+msgstr "Add training"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:31
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:134
+msgid "Eliminar entrenamiento"
+msgstr "Delete training"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:43
+#: .\usuarios\templates\usuarios\inicio_jugador_con_equipo.html:25
+msgid "Próximos eventos"
+msgstr "Upcoming events"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:45
+#: .\usuarios\templates\usuarios\inicio_jugador_con_equipo.html:27
+msgid "Cargando eventos..."
+msgstr "Loading events..."
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:51
+#: .\usuarios\templates\usuarios\inicio_jugador_con_equipo.html:33
+msgid "Partidos anteriores"
+msgstr "Previous matches"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:53
+#: .\usuarios\templates\usuarios\inicio_jugador_con_equipo.html:35
+msgid "Cargando partidos anteriores..."
+msgstr "Loading previous matches..."
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:59
+#: .\usuarios\templates\usuarios\inicio_jugador_con_equipo.html:41
+msgid "Estadísticas del equipo"
+msgstr "Current team statistics"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:64
+#: .\usuarios\templates\usuarios\inicio_jugador_con_equipo.html:46
+msgid "Partidos jugados"
+msgstr "Matches played"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:68
+#: .\usuarios\templates\usuarios\inicio_jugador_con_equipo.html:50
+msgid "Victorias"
+msgstr "Victories"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:72
+#: .\usuarios\templates\usuarios\inicio_jugador_con_equipo.html:54
+msgid "Empates"
+msgstr "Draws"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:76
+#: .\usuarios\templates\usuarios\inicio_jugador_con_equipo.html:58
+msgid "Derrotas"
+msgstr "Defeats"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:101
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:190
+msgid "Fecha y hora"
+msgstr "Date and time"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:138
+msgid "Selecciona el entrenamiento que deseas eliminar:"
+msgstr "Select the training you want to delete:"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:140
+msgid "Cargando entrenamientos..."
+msgstr "Loading trainings..."
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:159
+msgid "¿Estás seguro de que deseas eliminar este entrenamiento?"
+msgstr "Are you sure you want to delete this training?"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:186
+msgid "Selecciona una competición"
+msgstr "Select a competition"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:194
+msgid "Posición de tu equipo"
+msgstr "Team position"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:196
+msgid "Selecciona una opción"
+msgstr "Select an option"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:202
+msgid "Equipo rival"
+msgstr "Rival Team"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:205
+msgid "Selecciona un equipo (opcional)"
+msgstr "Select a team (optional)"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:208
+msgid "O escribe el nombre si no usa la app"
+msgstr "Or write the name if they don't use the app"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:209
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:127
+msgid "Nombre del equipo"
+msgstr "Team name"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:238
+msgid "Selecciona el partido que deseas eliminar:"
+msgstr "Select the match you want to delete:"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:240
+msgid "Cargando partidos..."
+msgstr "Loading matches..."
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:259
+msgid "¿Estás seguro de que deseas eliminar este partido?"
+msgstr "Are you sure you want to delete this match?"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:279
+#: .\usuarios\templates\usuarios\inicio_jugador_con_equipo.html:77
+msgid "Información del evento"
+msgstr "Event information"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:287
+msgid "Marcar como finalizado"
+msgstr "Mark as finished"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:288
+msgid "Añadir resultado"
+msgstr "Add result"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:299
+msgid "Marcar resultado"
+msgstr "Add Result"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:305
+msgid "Goles Local"
+msgstr "Home Goals"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:309
+msgid "Goles Visitante"
+msgstr "Away Goals"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:336
+#: .\usuarios\templates\usuarios\inicio_jugador_con_equipo.html:103
+msgid "Sin próximos eventos"
+msgstr "No upcoming events"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_con_equipo.html:413
+#: .\usuarios\templates\usuarios\inicio_jugador_con_equipo.html:180
+msgid "Sin partidos anteriores"
+msgstr "No previous matches"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:14
+msgid "Puedes"
+msgstr "You can"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:15
+msgid "crear un equipo"
+msgstr "create a team"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:15
+msgid "y convertirte en su entrenador/a de forma sencilla."
+msgstr "and become its coach easily."
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:25
+msgid "Equipos donde ha entrenado"
+msgstr "Teams where you have coached"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:34
+#: .\usuarios\templates\usuarios\inicio_jugador_sin_equipo.html:33
+msgid "Fin"
+msgstr "End"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:58
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:103
+#: .\usuarios\templates\usuarios\inicio_jugador_sin_equipo.html:57
+#: .\usuarios\templates\usuarios\inicio_jugador_sin_equipo.html:106
+msgid "Ver equipo"
+msgstr "View team"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:64
+msgid "No has entrenado en ningún equipo aún."
+msgstr "You haven't coached any team yet."
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:70
+#: .\usuarios\templates\usuarios\inicio_jugador_sin_equipo.html:75
+msgid "Equipos registrados"
+msgstr "Registered teams"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:76
+#: .\usuarios\templates\usuarios\inicio_jugador_sin_equipo.html:81
+msgid "Buscar equipo"
+msgstr "Search team"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:116
+msgid "Crear nuevo equipo"
+msgstr "Create new team"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:118
+msgid "Crea un nuevo club y conviértete en su entrenador automáticamente."
+msgstr "Create a new club and become its coach automatically."
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:164
+msgid ""
+"Si no quieres añadir un escudo se utilizará por defecto el que se puede ver "
+"en el formulario."
+msgstr ""
+"If you don't want to add a shield, the default one shown in the form will be "
+"used."
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:180
+msgid "Elige el color principal"
+msgstr "Choose the primary color"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:190
+msgid "Elige el color secundario"
+msgstr "Choose the secondary color"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:195
+msgid ""
+"En caso de no modificar los colores, se tomarán los seleccionados por "
+"defecto."
+msgstr ""
+"If you don't change the colors, the default selected ones will be used."
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:202
+msgid "Añadir equipo"
+msgstr "Add team"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:221
+#: .\usuarios\templates\usuarios\inicio_jugador_sin_equipo.html:122
+msgid "Error al crear equipo"
+msgstr "Error creating team"
+
+#: .\usuarios\templates\usuarios\inicio_entrenador_sin_equipo.html:242
+#: .\usuarios\templates\usuarios\inicio_jugador_sin_equipo.html:143
+#: .\usuarios\templates\usuarios\signin.html:47
+msgid "Registro completado"
+msgstr "Sign up completed"
+
+#: .\usuarios\templates\usuarios\inicio_jugador_sin_equipo.html:12
+msgid "Actualmente no perteneces a ningún equipo."
+msgstr "You currently don't belong to any team."
+
+#: .\usuarios\templates\usuarios\inicio_jugador_sin_equipo.html:14
+msgid ""
+"Para poder pertenecer a un equipo registrado necesitas que un entrenador te "
+"añada a su equipo."
+msgstr ""
+"To become part of a registered team, you need a coach to add you to their "
+"team."
+
+#: .\usuarios\templates\usuarios\inicio_jugador_sin_equipo.html:24
+msgid "Equipos donde ha jugado"
+msgstr "Teams where you have played"
+
+#: .\usuarios\templates\usuarios\inicio_jugador_sin_equipo.html:63
+msgid "No has jugado en ningún equipo aún."
+msgstr "You haven't played for any team yet."
+
+#: .\usuarios\templates\usuarios\inicio_jugador_sin_equipo.html:69
+msgid "Estadísticas generales"
+msgstr "General statistics"
+
+#: .\usuarios\templates\usuarios\inicio_jugador_sin_equipo.html:70
+msgid "Listado de estadísticas del jugador"
+msgstr "List of player statistics"
+
+#: .\usuarios\templates\usuarios\login.html:14
+msgid "Introduzca la información para iniciar sesión"
+msgstr "Introduce the next information to sign in"
+
+#: .\usuarios\templates\usuarios\login.html:26
+msgid "Error en el inicio de sesión"
+msgstr "Error signing in"
+
+#: .\usuarios\templates\usuarios\login.html:47
+msgid "Inicio de sesión completado"
+msgstr "Sign in completed"
+
+#: .\usuarios\templates\usuarios\login.html:59
+msgid "Introduce tu correo electrónico."
+msgstr "Enter your email."
+
+#: .\usuarios\templates\usuarios\login.html:60
+msgid "Introduce tu contraseña."
+msgstr "Enter your password."
+
+#: .\usuarios\templates\usuarios\login.html:66
+#: .\usuarios\templates\usuarios\miperfil.html:53
+#: .\usuarios\templates\usuarios\miperfil.html:241
+#: .\usuarios\templates\usuarios\password_forget.html:27
+msgid "Email"
+msgstr "Email"
+
+#: .\usuarios\templates\usuarios\login.html:72
+#: .\usuarios\templates\usuarios\signin.html:109
+msgid "Contraseña"
+msgstr "Password"
+
+#: .\usuarios\templates\usuarios\login.html:82
+msgid "¿No recuerdas tu contraseña?"
+msgstr "Did you forget your password?"
+
+#: .\usuarios\templates\usuarios\miperfil.html:40
+msgid "Nombre Completo"
+msgstr "Full name"
+
+#: .\usuarios\templates\usuarios\miperfil.html:79
+#: .\usuarios\templates\usuarios\signin.html:91
+msgid "Fecha de Nacimiento"
+msgstr "Birthday"
+
+#: .\usuarios\templates\usuarios\miperfil.html:92
+msgid "Rol"
+msgstr "Role"
+
+#: .\usuarios\templates\usuarios\miperfil.html:105
+msgid "Miembro desde"
+msgstr "Member since"
+
+#: .\usuarios\templates\usuarios\miperfil.html:179
+msgid "Este jugador es"
+msgstr "This player is"
+
+#: .\usuarios\templates\usuarios\miperfil.html:179
+msgid "del equipo."
+msgstr "of the team."
+
+#: .\usuarios\templates\usuarios\miperfil.html:195
+#: .\usuarios\templates\usuarios\miperfil.html:207
+msgid "Editar información personal"
+msgstr "Edit personal information"
+
+#: .\usuarios\templates\usuarios\miperfil.html:212
+#: .\usuarios\templates\usuarios\signin.html:59
+msgid ""
+"El nombre debe tener al menos 2 caracteres. No puede contener números ni "
+"carácteres especiales."
+msgstr ""
+"The name must have at least 2 characters. Cannot contain numbers or special "
+"characters."
+
+#: .\usuarios\templates\usuarios\miperfil.html:213
+#: .\usuarios\templates\usuarios\signin.html:60
+msgid ""
+"Los apellidos deben tener al menos 2 caracteres. No puede contener números "
+"ni carácteres especiales."
+msgstr ""
+"Last names must be at least 2 characters. Cannot contain numbers or special "
+"characters."
+
+#: .\usuarios\templates\usuarios\miperfil.html:214
+#: .\usuarios\templates\usuarios\password_forget.html:20
+#: .\usuarios\templates\usuarios\signin.html:61
+msgid ""
+"Debe introducir un email válido. Se permite números, letras y caracteres "
+"especiales como '.', '_' y '-'."
+msgstr ""
+"You must enter a valid email. Numbers, letters and special characters are "
+"allowed like '.', '_' y '-'."
+
+#: .\usuarios\templates\usuarios\miperfil.html:215
+#: .\usuarios\templates\usuarios\signin.html:63
+msgid "El teléfono debe tener exactamente 9 números."
+msgstr "The phone must have exactly 9 numbers."
+
+#: .\usuarios\templates\usuarios\miperfil.html:216
+#: .\usuarios\templates\usuarios\signin.html:66
+msgid ""
+"Debes tener al menos 12 años. La fecha no puede ser anterior a 01/01/1900. "
+"El formato correcto es YYYY-MM-DD."
+msgstr ""
+"You must be at least 12 years old. The date cannot be before 01/01/1900. The "
+"correct format is YYYY-MM-DD."
+
+#: .\usuarios\templates\usuarios\miperfil.html:232
+#: .\usuarios\templates\usuarios\signin.html:79
+msgid "Apellidos"
+msgstr "Last name"
+
+#: .\usuarios\templates\usuarios\miperfil.html:258
+msgid "Fecha de nacimiento"
+msgstr "Birthday"
+
+#: .\usuarios\templates\usuarios\miperfil.html:268
+#: .\usuarios\templates\usuarios\signin.html:97
+msgid "Foto de perfil"
+msgstr "Profile picture"
+
+#: .\usuarios\templates\usuarios\miperfil.html:271
+msgid "Sube una nueva imagen solo si quieres cambiar la actual."
+msgstr "Upload a new image only if you want to change the current one."
+
+#: .\usuarios\templates\usuarios\miperfil.html:286
+msgid "¿Quieres cambiar tu contraseña?"
+msgstr "Do you want to change your password?"
+
+#: .\usuarios\templates\usuarios\miperfil.html:288
+msgid "Solicitar cambio por correo"
+msgstr "Request change via email"
+
+#: .\usuarios\templates\usuarios\miperfil.html:291
+msgid ""
+"Por seguridad, el cambio de contraseña se realiza mediante correo "
+"electrónico."
+msgstr "For security, password changes are made via email."
+
+#: .\usuarios\templates\usuarios\miperfil.html:318
+msgid "Información personal actualizada"
+msgstr "Personal information updated"
+
+#: .\usuarios\templates\usuarios\miperfil.html:374
+msgid "Duración estimada"
+msgstr "Estimated duration"
+
+#: .\usuarios\templates\usuarios\miperfil.html:374
+msgid "días"
+msgstr "days"
+
+#: .\usuarios\templates\usuarios\miperfil.html:387
+msgid "No hay lesiones registradas"
+msgstr "No injuries registered"
+
+#: .\usuarios\templates\usuarios\miperfil.html:417
+msgid "partidos"
+msgstr "matches"
+
+#: .\usuarios\templates\usuarios\miperfil.html:422
+msgid "Razón"
+msgstr "Reason"
+
+#: .\usuarios\templates\usuarios\miperfil.html:433
+msgid "No hay sanciones registradas"
+msgstr "No sanctions registered"
+
+#: .\usuarios\templates\usuarios\miperfil.html:441
+msgid "Equipos a los que ha entrenado"
+msgstr "Teams coached"
+
+#: .\usuarios\templates\usuarios\miperfil.html:442
+msgid "Información equipos que el entrenador ha entrenado"
+msgstr "Information about teams coached by the coach"
+
+#: .\usuarios\templates\usuarios\miperfil.html:447
+msgid "Estadísticas del equipo actual"
+msgstr "Current team statistics"
+
+#: .\usuarios\templates\usuarios\miperfil.html:448
+msgid "Estadisticas del equipo actual del entrenador"
+msgstr "Current team statistics of the coach"
+
+#: .\usuarios\templates\usuarios\miperfil.html:479
+msgid "¿Estás seguro de que quieres eliminar tu cuenta?"
+msgstr "Are you sure you want to delete your account?"
+
+#: .\usuarios\templates\usuarios\miperfil.html:490
+msgid "Sí, eliminar cuenta"
+msgstr "Yes, delete account"
+
+#: .\usuarios\templates\usuarios\miperfil.html:502
+msgid "Cuenta eliminada"
+msgstr "Account deleted"
+
+#: .\usuarios\templates\usuarios\miperfil.html:503
+msgid "Tu cuenta ha sido eliminada correctamente."
+msgstr "Your account has been successfully deleted."
+
+#: .\usuarios\templates\usuarios\new_password.html:13
+#: .\usuarios\templates\usuarios\new_password_done.html:13
+msgid "Introduzca su nueva contraseña"
+msgstr "Enter your new password"
+
+#: .\usuarios\templates\usuarios\new_password.html:20
+#: .\usuarios\templates\usuarios\signin.html:64
+msgid "La contraseña no cumple los requisitos."
+msgstr "The password does not meet the requirements."
+
+#: .\usuarios\templates\usuarios\new_password.html:21
+#: .\usuarios\templates\usuarios\signin.html:65 .\usuarios\views.py:58
+msgid "Las contraseñas no coinciden."
+msgstr "Passwords do not match."
+
+#: .\usuarios\templates\usuarios\new_password.html:46
+#: .\usuarios\templates\usuarios\signin.html:114
+msgid "• Al menos 6 caracteres"
+msgstr "• At least 6 characters"
+
+#: .\usuarios\templates\usuarios\new_password.html:47
+#: .\usuarios\templates\usuarios\signin.html:115
+msgid "• Al menos una mayúscula"
+msgstr "• At least one uppercase"
+
+#: .\usuarios\templates\usuarios\new_password.html:48
+#: .\usuarios\templates\usuarios\signin.html:116
+msgid "• Al menos un número"
+msgstr "• At least one number"
+
+#: .\usuarios\templates\usuarios\new_password.html:49
+#: .\usuarios\templates\usuarios\signin.html:117
+msgid "• Al menos un carácter especial"
+msgstr "• At least one special character"
+
+#: .\usuarios\templates\usuarios\new_password.html:54
+msgid "Confirmar contraseña"
+msgstr "Confirm password"
+
+#: .\usuarios\templates\usuarios\new_password.html:60
+msgid "Confirmar"
+msgstr "Confirm"
+
+#: .\usuarios\templates\usuarios\new_password_done.html:18
+msgid "¡Contraseña cambiada!"
+msgstr "Password changed!"
+
+#: .\usuarios\templates\usuarios\new_password_done.html:21
+msgid ""
+"Tu contraseña se ha restablecido correctamente. Ya puedes acceder a tu "
+"cuenta utilizando tu nueva contraseña."
+msgstr ""
+"Your password has been successfully reset. You can now access your account "
+"using your new password."
+
+#: .\usuarios\templates\usuarios\password_forget.html:13
+#: .\usuarios\templates\usuarios\password_forget_done.html:13
+msgid "Introduzca su correo electrónico para recuperar la contraseña"
+msgstr "Enter your email to recover your password"
+
+#: .\usuarios\templates\usuarios\password_forget.html:28
+#: .\usuarios\templates\usuarios\signin.html:104
+msgid "nombre@dominio.com"
+msgstr "name@domain.com"
+
+#: .\usuarios\templates\usuarios\password_forget.html:34
+msgid "Cambiar contraseña"
+msgstr "Change password"
+
+#: .\usuarios\templates\usuarios\password_forget_done.html:18
+msgid "¡Correo enviado!"
+msgstr "Email sent!"
+
+#: .\usuarios\templates\usuarios\password_forget_done.html:21
+msgid "Hemos recibido tu solicitud. "
+msgstr "We have received your request. "
+
+#: .\usuarios\templates\usuarios\password_forget_done.html:22
+msgid "Si el correo electrónico indicado existe en nuestra base de datos"
+msgstr "If the email provided exists in our database"
+
+#: .\usuarios\templates\usuarios\password_forget_done.html:23
+msgid ""
+"recibirás un mensaje en breve con las instrucciones para restablecer tu "
+"contraseña."
+msgstr ""
+"you will receive a message shortly with instructions to reset your password."
+
+#: .\usuarios\templates\usuarios\password_forget_done.html:27
+msgid "Por favor, revisa tu bandeja de entrada y la carpeta de spam."
+msgstr "Please check your inbox and spam folder."
+
+#: .\usuarios\templates\usuarios\password_forget_done.html:32
+msgid "Volver al inicio de sesión"
+msgstr "Back to sign in"
+
+#: .\usuarios\templates\usuarios\password_forget_email.html:90
+msgid "Hola"
+msgstr "Hello"
+
+#: .\usuarios\templates\usuarios\password_forget_email.html:92
+msgid ""
+"Hemos recibido una solicitud para restablecer la contraseña de tu cuenta de"
+msgstr "We have received a request to reset the password of your account"
+
+#: .\usuarios\templates\usuarios\password_forget_email.html:92
+msgid "asociada al correo"
+msgstr "associated with the email"
+
+#: .\usuarios\templates\usuarios\password_forget_email.html:94
+msgid "Para crear una nueva contraseña, haz clic en el siguiente botón:"
+msgstr "To create a new password, click the following button:"
+
+#: .\usuarios\templates\usuarios\password_forget_email.html:98
+msgid "Cambiar mi contraseña"
+msgstr "Change my password"
+
+#: .\usuarios\templates\usuarios\password_forget_email.html:102
+msgid ""
+"Si el botón anterior no funciona, copia y pega el siguiente enlace en tu "
+"navegador:"
+msgstr ""
+"If the button above doesn't work, copy and paste the following link in your "
+"browser:"
+
+#: .\usuarios\templates\usuarios\password_forget_email.html:110
+msgid ""
+"Si tú no solicitaste este cambio, puedes ignorar este mensaje de forma "
+"segura. Tu contraseña no cambiará."
+msgstr ""
+"If you did not request this change, you can safely ignore this message. Your "
+"password will not change."
+
+#: .\usuarios\templates\usuarios\password_forget_email.html:115
+msgid "Este es un mensaje automático, por favor no respondas a este correo."
+msgstr "This is an automatic message, please do not reply to this email."
+
+#: .\usuarios\templates\usuarios\signin.html:14
+msgid "Introduzca la información para registrarse"
+msgstr "Introduce the next information to sign up"
+
+#: .\usuarios\templates\usuarios\signin.html:26
+msgid "Error en el registro"
+msgstr "Registration error"
+
+#: .\usuarios\templates\usuarios\signin.html:62
+msgid "Solo se permiten números y como máximo 9 dígitos."
+msgstr "Only numbers are allowed and maximum 9 digits."
+
+#: .\usuarios\templates\usuarios\signin.html:67
+msgid "Debes aceptar los términos y condiciones."
+msgstr "You must accept the terms and conditions."
+
+#: .\usuarios\templates\usuarios\signin.html:86
+msgid "Número de 9 dígitos"
+msgstr "9 digits number"
+
+#: .\usuarios\templates\usuarios\signin.html:103
+msgid "Correo electrónico"
+msgstr "Email"
+
+#: .\usuarios\templates\usuarios\signin.html:122
+msgid "Repita su contraseña"
+msgstr "Repeat the password"
+
+#: .\usuarios\templates\usuarios\signin.html:133
+msgid "Marca esta casilla en caso de que quieras registrarte como entrenador"
+msgstr "Check this field if you want to sign up as coach"
+
+#: .\usuarios\templates\usuarios\signin.html:141
+msgid "Acepto los "
+msgstr "I accept the "
+
+#: .\usuarios\templates\usuarios\signin.html:141
+msgid "términos y condiciones*"
+msgstr "terms and conditions*"
+
+#: .\usuarios\templates\usuarios\signin.html:151
+msgid "Términos y condiciones"
+msgstr "Terms and conditions"
+
+#: .\usuarios\templates\usuarios\signin.html:157
+msgid ""
+"Al registrarte en FutDataManager, aceptas que los datos proporcionados son "
+"veraces y que los utilizarás de forma responsable."
+msgstr ""
+"By registering with FutDataManager, you accept that the data provided is "
+"truthful and that you will use it responsibly."
+
+#: .\usuarios\templates\usuarios\signin.html:161
+msgid ""
+"Los datos personales recogidos se usarán únicamente para la gestión de la "
+"cuenta de usuario, el acceso a los servicios ofrecidos y la mejora de la "
+"experiencia en la plataforma. En ningún caso serán cedidos a terceros sin "
+"consentimiento expreso."
+msgstr ""
+"Personal data collected will be used solely for user account management, "
+"access to offered services and improvement of the platform experience. In no "
+"case will they be transferred to third parties without express consent."
+
+#: .\usuarios\templates\usuarios\signin.html:165
+msgid ""
+"El usuario se compromete a no realizar un uso indebido del sitio web, ni a "
+"introducir contenido malicioso o fraudulento. La empresa se reserva el "
+"derecho de modificar estos términos o suspender cuentas que incumplan las "
+"normas establecidas."
+msgstr ""
+"The user undertakes not to make improper use of the website, nor to "
+"introduce malicious or fraudulent content. The company reserves the right to "
+"modify these terms or suspend accounts that violate established rules."
+
+#: .\usuarios\templates\usuarios\signin.html:169
+msgid ""
+"Al hacer clic en “Acepto”, confirmas que has leído y aceptas estos términos "
+"y condiciones."
+msgstr ""
+"By clicking 'Accept', you confirm that you have read and accept these terms "
+"and conditions."
+
+#: .\usuarios\templates\usuarios\signin.html:178
+msgid "Acepto"
+msgstr "Accept"
+
+#: .\usuarios\views.py:32
+msgid "Sesión inciada correctamente."
+msgstr "Session started successfully."
+
+#: .\usuarios\views.py:35
+msgid "El usuario no existe o la contraseña es incorrecta."
+msgstr "The user does not exist or the password is incorrect."
+
+#: .\usuarios\views.py:61
+msgid "Este correo electrónico ya está registrado."
+msgstr "This email is already registered."
+
+#: .\usuarios\views.py:91
+msgid "Te has registrado correctamente"
+msgstr "You have registered successfully"
+
+#: .\usuarios\views.py:97
+#, python-brace-format
+msgid "Error al registrar: {}"
+msgstr "Error registering: {}"
+
+#: .\usuarios\views.py:123
+msgid "Perfil actualizado correctamente"
+msgstr "Profile updated successfully"
+
+#: .\usuarios\views.py:132
+#, python-brace-format
+msgid "Error al actualizar: {}"
+msgstr "Error updating: {}"
+
+#: .\usuarios\views.py:198
+msgid "Te hemos enviado un correo para cambiar tu contraseña."
+msgstr "We have sent you an email to change your password."
+
+#~ msgid "Equipo creado"
+#~ msgstr "Team created"
+
+#~ msgid "No hay jugadores disponibles"
+#~ msgstr "There are no available players"
+
+#~ msgid "Últimos partidos del equipo"
+#~ msgstr "Latest team matches"
+
+#~ msgid "Próximos partidos del equipo"
+#~ msgstr "Upcoming team matches"
+
+#~ msgid "Análisis ofensivo"
+#~ msgstr "Offensive Analysis"
+
+#~ msgid "Análisis con respecto a ataque"
+#~ msgstr "Analysis with respect to attack"
+
+#~ msgid "Análisis defensivo"
+#~ msgstr "Defensive Analysis"
+
+#~ msgid "Análisis con respecto a defensa"
+#~ msgstr "Analysis with respect to defense"
+
+#~ msgid ""
+#~ "Once con los jugadores más en forma por cada posición filtrando "
+#~ "previamente por el número de jugadores por posición que desea el "
+#~ "entrenador jugar"
+#~ msgstr ""
+#~ "Lineup with the best players in form for each position, previously "
+#~ "filtered by the number of players per position that the coach wants to "
+#~ "play"
+
+#, python-format
+#~ msgid "Posesión local (%%)"
+#~ msgstr "Home possession (%%)"
+
+#, python-format
+#~ msgid "Posesión visitante (%%)"
+#~ msgstr "Visiting possession (%%)"
+
+#~ msgid "Abandonar equipo"
+#~ msgstr "Leave team"
+
+#~ msgid ""
+#~ "Quedarás sin equipo y el capitán más antiguo será asignado "
+#~ "automáticamente como entrenador interino."
+#~ msgstr ""
+#~ "You will be without a team and the oldest captain will be automatically "
+#~ "assigned as interim coach."
+
+#~ msgid "Sí, abandonar equipo"
+#~ msgstr "Yes, leave team"
+
+#~ msgid "Información lesiones del jugador"
+#~ msgstr "Player injury information"
+
+#~ msgid "Información sanciones del jugador"
+#~ msgstr "Player sanctions information"
+
+#~ msgid "No hay eventos próximos."
+#~ msgstr "No upcoming events."
+
+#~ msgid "Rival"
+#~ msgstr "Rival"

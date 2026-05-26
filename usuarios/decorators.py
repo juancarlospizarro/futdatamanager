@@ -2,6 +2,10 @@ from django.core.exceptions import PermissionDenied
 from usuarios.models import Usuario
 
 def entrenador_o_admin_required(view_func):
+    """
+    Decorador que requiere que el usuario sea entrenador, superusuario o staff.
+    Lanza PermissionDenied si el usuario no cumple con los requisitos.
+    """
     def wrapper(request, *args, **kwargs):
         user = request.user
 

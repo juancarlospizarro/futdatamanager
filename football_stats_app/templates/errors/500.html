@@ -1,14 +1,15 @@
 {% extends 'includes/base.html' %}
-
+{% load i18n %}
+{% block title %}FutDataManager - {% trans "Error 500" %}{% endblock %}
 {% block content %}
 <div class="container mt-5">
     <div class="alert alert-danger" role="alert">
         <div class="text-center">
             <h1 class="display-1">500</h1>
-            <h2>Error del servidor</h2>
-            <p class="lead">Ha ocurrido un error interno. Nuestro equipo ha sido notificado.</p>
+            <h2>{% trans "Error del servidor" %}</h2>
+            <p class="lead">{% trans "Ha ocurrido un error interno. Nuestro equipo ha sido notificado." %}</p>
             <hr>
-            <a href="/" class="btn btn-primary btn-lg">Volver al inicio</a>
+            <a href="/" class="btn btn-primary btn-lg">{% trans "Volver al inicio" %}</a>
         </div>
     </div>
 </div>

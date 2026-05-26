@@ -1,3 +1,16 @@
+// Mensajes de validación
+const validationMessages = {
+        nombre: document.getElementById('msg-nombre').textContent,
+        apellidos: document.getElementById('msg-apellidos').textContent,
+        email: document.getElementById('msg-email').textContent,
+        telefono_rango: document.getElementById('msg-telefono-rango').textContent,
+        telefono_exacto: document.getElementById('msg-telefono-exacto').textContent,
+        contraseña_requisitos: document.getElementById('msg-contraseña-requisitos').textContent,
+        contraseña_coinciden: document.getElementById('msg-contraseña-coinciden').textContent,
+        fecha: document.getElementById('msg-fecha').textContent,
+        terminos: document.getElementById('msg-terminos').textContent
+    };
+
 /* Funcion que valida cada campo y da estilo */
 function validarCampo(input, condicion, mensajeError) {
     const mensaje = input.nextElementSibling;
@@ -43,7 +56,7 @@ nombreRegistro.addEventListener("input", function () {
         function () { 
             return nombreRegistro.value.trim().length >= 2 && /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/.test(nombreRegistro.value.trim()); 
         },
-        "El nombre debe tener al menos 2 caracteres. No puede contener números ni carácteres especiales."
+        validationMessages.nombre
     );
 });
 
@@ -62,7 +75,7 @@ apellidosRegistro.addEventListener("input", function () {
         function () { 
             return apellidosRegistro.value.trim().length >= 2 && /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/.test(apellidosRegistro.value.trim()); 
         },
-        "Los apellidos deben tener al menos 2 caracteres. No puede contener números ni carácteres especiales."
+        validationMessages.apellidos
     );
 });
 
@@ -81,7 +94,7 @@ emailRegistro.addEventListener("input", function () {
         function () { 
             return /^[a-zA-Z0-9._]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(emailRegistro.value); 
         },
-        "Debe introducir un email válido. Se permite números, letras y caracteres especiales como '.', '_' y '-'."
+        validationMessages.email
     );
 });
 
@@ -99,7 +112,7 @@ telefonoRegistro.addEventListener("input", () => {
     validarCampo(
         telefonoRegistro,
         () => /^\d{0,9}$/.test(telefonoRegistro.value),
-        "Solo se permiten números y como máximo 9 dígitos."
+        validationMessages.telefono_rango
     );
 });
 
@@ -187,7 +200,7 @@ repetirContrasena.addEventListener("input", function () {
     } else {
         repetirContrasena.classList.add("is-invalid");
         repetirContrasena.classList.remove("is-valid");
-        mensaje.textContent = "Las contraseñas no coinciden.";
+        mensaje.textContent = validationMessages.contraseña_coinciden;
         mensaje.classList.remove("d-none");
     }
 });
@@ -253,7 +266,7 @@ fechaNacimiento.addEventListener("input", function () {
         function () {
             return validarFormatoFecha(fechaNacimiento.value) && esFechaValida(fechaNacimiento.value);
         },
-        "Debes tener al menos 12 años. La fecha no puede ser anterior a 01/01/1900. El formato correcto es YYYY-MM-DD."
+        validationMessages.fecha
     );
 });
 
@@ -281,7 +294,7 @@ terminosCheckbox.addEventListener("change", function () {
         terminosCheckbox.classList.remove("is-invalid");
         terminosCheckbox.classList.add("is-valid");
     } else {
-        errorTerminos.textContent = "Debes aceptar los términos y condiciones.";
+        errorTerminos.textContent = validationMessages.terminos;
         terminosCheckbox.classList.add("is-invalid");
         terminosCheckbox.classList.remove("is-valid");
     }
@@ -297,13 +310,13 @@ registroForm.addEventListener("submit", function (event) {
     var validarNombre = validarCampo(
         nombreRegistro,
         function () { return nombreRegistro.value.trim().length >= 2 && /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/.test(nombreRegistro.value.trim()); },
-        "El nombre debe tener al menos 2 caracteres. No puede contener números ni carácteres especiales."
+        validationMessages.nombre
     );
 
     var validarApellidos = validarCampo(
         apellidosRegistro,
         function () { return apellidosRegistro.value.trim().length >= 2 && /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/.test(apellidosRegistro.value.trim()); },
-        "Los apellidos deben tener al menos 2 caracteres. No puede contener números ni carácteres especiales."
+        validationMessages.apellidos
     );
 
     var validarEmail = validarCampo(
@@ -311,13 +324,13 @@ registroForm.addEventListener("submit", function (event) {
         function () {
             return /^[a-zA-Z0-9._]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(emailRegistro.value);
         },
-        "Debe introducir un email válido. Se permite números, letras y caracteres especiales como '.', '_' y '-'."
+        validationMessages.email
     );
 
     const validarTelefono = validarCampo(
         telefonoRegistro,
         () => /^\d{9}$/.test(telefonoRegistro.value),
-        "El teléfono debe tener exactamente 9 números."
+        validationMessages.telefono_exacto
     );
 
     var validarPassword = validarCampo(
@@ -329,7 +342,7 @@ registroForm.addEventListener("submit", function (event) {
                 /[0-9]/.test(valor) &&
                 /[!@#$%^&*()_+\-=[\]{};:'",.<>/?\\|]/.test(valor);
         },
-        "La contraseña no cumple los requisitos."
+        validationMessages.contraseña_requisitos
     );
 
     var validarRepetirPassword = 
@@ -339,7 +352,7 @@ registroForm.addEventListener("submit", function (event) {
     if (!validarRepetirPassword) {
         const mensaje = repetirContrasena.nextElementSibling;
         repetirContrasena.classList.add("is-invalid");
-        mensaje.textContent = "Las contraseñas no coinciden.";
+        mensaje.textContent = validationMessages.contraseña_coinciden;
         mensaje.classList.remove("d-none");
     }
 
@@ -348,13 +361,13 @@ registroForm.addEventListener("submit", function (event) {
         function () {
             return validarFormatoFecha(fechaNacimiento.value) && esFechaValida(fechaNacimiento.value);
         },
-        "Debes tener al menos 12 años. La fecha no puede ser anterior a 01/01/1900. El formato correcto es YYYY-MM-DD."
+        validationMessages.fecha
     );
 
     const validarTerminos = terminosCheckbox.checked;
 
     if (!validarTerminos) {
-        errorTerminos.textContent = "Debes aceptar los términos y condiciones.";
+        errorTerminos.textContent = validationMessages.terminos;
     }
 
     if (!(

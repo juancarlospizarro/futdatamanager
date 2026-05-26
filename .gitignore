@@ -156,3 +156,6 @@ postgres_data/
 
 # Contenedores y imágenes
 .docker/
+
+# Traducciones
+*.mo

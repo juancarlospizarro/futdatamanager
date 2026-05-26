@@ -1,3 +1,9 @@
+// Mensajes de validación para cada campo
+const validationMessages = {
+    contraseña_requisitos: document.getElementById('msg-contraseña-requisitos').textContent,
+    contraseña_coinciden: document.getElementById('msg-contraseña-coinciden').textContent
+};
+
 /* Funcion que valida cada campo y da estilo */
 function validarCampo(input, condicion, mensajeError) {
     const mensaje = input.nextElementSibling;
@@ -112,7 +118,7 @@ repetirContrasena.addEventListener("input", function () {
     } else {
         repetirContrasena.classList.add("is-invalid");
         repetirContrasena.classList.remove("is-valid");
-        mensaje.textContent = "Las contraseñas no coinciden.";
+        mensaje.textContent = validationMessages.contraseña_coinciden;
         mensaje.classList.remove("d-none");
     }
 });
@@ -133,7 +139,7 @@ validarForm.addEventListener("submit", function (event) {
                 /[0-9]/.test(valor) &&
                 /[!@#$%^&*()_+\-=[\]{};:'",.<>/?\\|]/.test(valor);
         },
-        "La contraseña no cumple los requisitos."
+        validationMessages.contraseña_requisitos
     );
 
     var validarRepetirPassword = 
@@ -143,7 +149,7 @@ validarForm.addEventListener("submit", function (event) {
     if (!validarRepetirPassword) {
         const mensaje = repetirContrasena.nextElementSibling;
         repetirContrasena.classList.add("is-invalid");
-        mensaje.textContent = "Las contraseñas no coinciden.";
+        mensaje.textContent = validationMessages.contraseña_coinciden;
         mensaje.classList.remove("d-none");
     }
 

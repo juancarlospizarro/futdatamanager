@@ -1,3 +1,8 @@
+// Mensajes de validación para cada campo
+const validationMessages = {
+    email: document.getElementById('msg-email').textContent
+};
+
 /* Funcion que valida cada campo y da estilo */
 function validarCampo(input, condicion, mensajeError) {
     const mensaje = input.nextElementSibling;
@@ -43,7 +48,7 @@ emailRegistro.addEventListener("input", function () {
         function () { 
             return /^[a-zA-Z0-9._]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(emailRegistro.value); 
         },
-        "Debe introducir un email válido. Se permite números, letras y caracteres especiales como '.', '_' y '-'."
+        validationMessages.email
     );
 });
 
@@ -60,7 +65,7 @@ validarForm.addEventListener("submit", function (event) {
         function () {
             return /^[a-zA-Z0-9._]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(emailRegistro.value);
         },
-        "Debe introducir un email válido. Se permite números, letras y caracteres especiales como '.', '_' y '-'."
+        validationMessages.email
     );
 
     if (!

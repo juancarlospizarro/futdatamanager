@@ -11998,4 +11998,183 @@ a.text-decoration-none:hover {
   padding: 1vh 1vw;
 }
 
+/* ========== CALENDARIO ESTILOS MODERNOS ========== */
+#calendario {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  padding: 25px;
+  margin-bottom: 30px;
+  font-family: "Inter", sans-serif;
+  /* Header del calendario */
+}
+#calendario .fc-toolbar {
+  gap: 20px;
+  padding: 0 0 20px 0;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #f0f0f0;
+}
+#calendario .fc-toolbar-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0;
+}
+#calendario {
+  /* Vista del mes */
+}
+#calendario .fc-daygrid-day {
+  border: 1px solid #e5e5e5;
+  background-color: #fafafa;
+  transition: all 0.2s ease;
+}
+#calendario .fc-daygrid-day:hover {
+  background-color: #f0f0f0;
+}
+#calendario .fc-daygrid-day.fc-day-other {
+  background-color: #f9f9f9;
+  opacity: 0.6;
+}
+#calendario .fc-daygrid-day.fc-day-today {
+  background-color: #e8f5f1;
+}
+#calendario .fc-daygrid-day-number {
+  padding: 8px;
+  font-size: 1rem;
+  color: #1a1a1a;
+  font-weight: 500;
+}
+#calendario .fc-daygrid-day-frame {
+  padding: 0;
+  min-height: 100px;
+}
+#calendario .fc-daygrid-day-main {
+  padding: 8px;
+}
+#calendario {
+  /* Días de la semana - IMPORTANTE: Sin estilo de enlace */
+}
+#calendario .fc-col-header-cell {
+  background-color: var(--primary);
+  color: white;
+  font-weight: 600;
+  padding: 12px 0;
+  border: none;
+  text-transform: capitalize;
+  /* Asegurar que no tenga comportamiento de enlace */
+}
+#calendario .fc-col-header-cell a {
+  color: white !important;
+  text-decoration: none !important;
+  cursor: default !important;
+  pointer-events: none !important;
+}
+#calendario .fc-col-header-cell a:hover {
+  color: white !important;
+  text-decoration: none !important;
+}
+#calendario {
+  /* Separadores */
+}
+#calendario .fc-daygrid-body {
+  border: 1px solid #e5e5e5;
+}
+#calendario table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+#calendario th {
+  border-width: 1px;
+  border-color: #e5e5e5;
+}
+#calendario td {
+  border-color: #e5e5e5;
+}
+#calendario {
+  /* Eventos en el calendario */
+}
+#calendario .fc-daygrid-event {
+  margin: 2px;
+  padding: 4px 8px;
+  background-color: var(--primary);
+  border-color: var(--primary);
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: white;
+}
+#calendario .fc-daygrid-event:hover {
+  background-color: rgb(8.4440789474, 67.0559210526, 47.1875);
+  border-color: rgb(8.4440789474, 67.0559210526, 47.1875);
+  box-shadow: 0 2px 8px rgba(var(--primary), 0.4);
+}
+
+/* Botones de navegación del calendario */
+.fc-button-primary {
+  background-color: var(--primary) !important;
+  border-color: var(--primary) !important;
+  color: white !important;
+  border-radius: 8px !important;
+  padding: 8px 14px !important;
+  font-size: 0.9rem !important;
+  font-weight: 500 !important;
+  transition: all 0.3s ease !important;
+}
+.fc-button-primary:hover:not(:disabled) {
+  background-color: rgb(8.4440789474, 67.0559210526, 47.1875) !important;
+  border-color: rgb(8.4440789474, 67.0559210526, 47.1875) !important;
+  box-shadow: 0 4px 12px rgba(var(--primary), 0.3) !important;
+}
+.fc-button-primary.fc-button-active {
+  background-color: rgb(8.4440789474, 67.0559210526, 47.1875) !important;
+  border-color: rgb(8.4440789474, 67.0559210526, 47.1875) !important;
+}
+
+/* Responsive calendario */
+@media (max-width: 768px) {
+  #calendario {
+    padding: 15px;
+  }
+  #calendario .fc-toolbar {
+    flex-direction: column;
+    gap: 10px;
+  }
+  #calendario .fc-toolbar-title {
+    font-size: 1.5rem;
+  }
+  #calendario .fc-daygrid-day-frame {
+    min-height: 80px;
+  }
+  #calendario .fc-daygrid-day-number {
+    font-size: 0.9rem;
+  }
+}
+/* Tema oscuro */
+body.dark-mode #calendario {
+  background-color: #1e1e1e;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+}
+body.dark-mode #calendario .fc-daygrid-day {
+  background-color: #2a2a2a;
+  border-color: #3a3a3a;
+}
+body.dark-mode #calendario .fc-daygrid-day:hover {
+  background-color: #333333;
+}
+body.dark-mode #calendario .fc-daygrid-day.fc-day-other {
+  background-color: #252525;
+}
+body.dark-mode #calendario .fc-daygrid-day .fc-daygrid-day-number {
+  color: #e0e0e0;
+}
+body.dark-mode #calendario .fc-toolbar-title {
+  color: #e0e0e0;
+}
+body.dark-mode #calendario th {
+  border-color: #3a3a3a;
+}
+body.dark-mode #calendario td {
+  border-color: #3a3a3a;
+}
+
 /*# sourceMappingURL=style.css.map */
