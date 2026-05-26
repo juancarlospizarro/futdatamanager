@@ -14,6 +14,9 @@ COPY . .
 
 RUN python manage.py compilemessages
 
+RUN sed -i 's/\r$//' /football_stats_app/start_app.sh
+RUN chmod +x /football_stats_app/start_app.sh
+
 EXPOSE 8000
 
 ENTRYPOINT ["/football_stats_app/start_app.sh"]
