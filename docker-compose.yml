@@ -16,7 +16,7 @@ services:
   web:
     image: juancarlospizarro/futdatamanager-web:latest
     volumes:
-      - .:/app
+      - .:/football_stats_app
     ports:
       - "8000:8000"
     env_file: .env
