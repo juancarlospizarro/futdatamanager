@@ -12,6 +12,7 @@ Este proyecto es una aplicación web desarrollada con **Django** que permite la 
 * **Frontend:** Django Templates (JavaScript, Bootstrap, JQuery)
 * **Base de Datos:** PostgreSQL
 * **Contenedores:** Docker & Docker Compose
+* **Análisis de datos:** Pandas (Librería de Python)
 * **Despliegue:** AlwaysData (Con posibilidad de despliegue en servicios cloud como AWS o Azure mediante Docker)
 
 ---
@@ -24,6 +25,7 @@ This project is a web application built with **Django** that enables the managem
 * **Frontend:** Django Templates (JavaScript, Bootstrap, JQuery)
 * **Database:** PostgreSQL
 * **Containerization:** Docker & Docker Compose
+* **Data analysis:** Pandas (Python's library)
 * **Deployment:** AlwaysData (Ready for cloud deployment on AWS or Azure via Docker)
 
 ---
